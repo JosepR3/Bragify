@@ -31,6 +31,7 @@ const AuthReducer = (state = AuthInitialState, action) => {
       };
     }
     case AuthTypes.SIGN_UP_SUCCESS: {
+      localStorage.setItem("currentUser", action.payload.email);
       return {
         ...state,
         isAuthenticated: true,

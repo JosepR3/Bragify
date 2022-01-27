@@ -50,9 +50,9 @@ function SignUp() {
     setPassword(e.target.value);
   }
 
-  if (isAuthenticated) {
-    return <Navigate to={ROUTES.LOGIN} />;
-  }
+  // if (isAuthenticated) {
+  //   return <Navigate to={ROUTES.LOGIN} />;
+  // }
 
   return (
     <>
