@@ -1,63 +1,66 @@
-// // import firebase from "firebase/app";
-// // import "firebase/auth";
+import firebase from 'firebase/compat/app';
+import 'firebase/compat/auth';
+import 'firebase/compat/firestore';
+// import 'dotenv/config';
 
-// if (!firebase.apps.length) {
-//   // Paste your config object here ⬇️
-//   const firebaseConfig = {
-//     apiKey: process.env.REACT_APP_API_KEY,
-//     authDomain: process.env.REACT_APP_AUTH_DOMAIN,
-//     projectId: process.env.REACT_APP_PROJECT_ID,
-//     storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
-//     messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
-//     appId: process.env.REACT_APP_APP_ID,
-//   };
+if (!firebase.apps.length) {
+  // Paste your config object here ⬇️
+  const firebaseConfig = {
+    apiKey: "AIzaSyC63tUa8KL1uJfbvdTW1mii0By8desbTfQ",
+    authDomain: "bragify-7cecc.firebaseapp.com",
+    projectId: "bragify-7cecc",
+    storageBucket: "bragify-7cecc.appspot.com",
+    messagingSenderId: "1029392003217",
+    appId: "1:1029392003217:web:827f53e05311a72362cf30",
+  };
 
-//   firebase.initializeApp(firebaseConfig);
-// } else {
-//   // if already initialized, use that one
-//   firebase.app();
-// }
+  firebase.initializeApp(firebaseConfig);
+} else {
+  // if already initialized, use that one
+  firebase.app();
+}
 
-// const auth = firebase.auth();
+const auth = firebase.auth();
 
-// export function onAuthStateChanged(...props) {
-//   return auth.onAuthStateChanged(...props);
-// }
+export function onAuthStateChanged(...props) {
+  return auth.onAuthStateChanged(...props);
+}
 
-// export function singInWithGoogle() {
-//   const GoogleAuthProvider = new firebase.auth.GoogleAuthProvider();
+export function singInWithGoogle() {
+  const GoogleAuthProvider = new firebase.auth.GoogleAuthProvider();
 
-//   return auth.signInWithPopup(GoogleAuthProvider);
-// }
+  return auth.signInWithPopup(GoogleAuthProvider);
+}
 
-// export function singInWithEmailAndPassword(email, password) {
-//   return auth.signInWithEmailAndPassword(email, password);
-// }
+export function singInWithEmailAndPassword(email, password) {
+  console.log(email,password)
+  return auth.signInWithEmailAndPassword(email, password);
+}
 
-// export function singUpWithEmailAndPassword(email, password) {
-//   return auth.createUserWithEmailAndPassword(email, password);
-// }
+export function singUpWithEmailAndPassword(email, password) {
+  return auth.createUserWithEmailAndPassword(email, password);
+}
 
-// export function sendPasswordResetEmail(email) {
-//   return auth.sendPasswordResetEmail(email);
-// }
+export function sendPasswordResetEmail(email) {
+  return auth.sendPasswordResetEmail(email);
+}
 
-// export function signOut() {
-//   return auth.signOut();
-// }
+export function signOut() {
+  return auth.signOut();
+}
 
-// export function getCurrentUserToken() {
-//   if (!auth.currentUser) {
-//     return null;
-//   }
+export function getCurrentUserToken() {
+  if (!auth.currentUser) {
+    return null;
+  }
 
-//   return auth.currentUser.getIdToken();
-// }
+  return auth.currentUser.getIdToken();
+}
 
-// export function getCurrentUserEmail() {
-//   if (!auth.currentUser) {
-//     return null;
-//   }
+export function getCurrentUserEmail() {
+  if (!auth.currentUser) {
+    return null;
+  }
 
-//   return auth.currentUser.email;
-// }
+  return auth.currentUser.email;
+}

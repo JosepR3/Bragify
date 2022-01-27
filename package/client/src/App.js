@@ -16,29 +16,29 @@ import { syncSignIn, signOut } from "./redux/auth/auth-actions";
 function App() {
   const dispatch = useDispatch();
 
-  // useEffect(() => {
-  //   let unsubscribeFromAuth = null;
+  useEffect(() => {
+    let unsubscribeFromAuth = null;
 
-  //   unsubscribeFromAuth = onAuthStateChanged((user) => {
-  //     if (user) {
-  //       dispatch(syncSignIn());
-  //     } else {
-  //       dispatch(signOut());
-  //     }
-  //   });
+    unsubscribeFromAuth = onAuthStateChanged((user) => {
+      if (user) {
+        dispatch(syncSignIn());
+      } else {
+        dispatch(signOut());
+      }
+    });
 
-  //   return () => {
-  //     if (unsubscribeFromAuth) {
-  //       unsubscribeFromAuth();
-  //     }
-  //   };
-  // }, [dispatch]);
+    return () => {
+      if (unsubscribeFromAuth) {
+        unsubscribeFromAuth();
+      }
+    };
+  }, [dispatch]);
 
   return (
     <div className="App__container">
       <Routes>
-        <Route path={ROUTES.SIGN_UP} element={SignUp} />
-        <Route path={ROUTES.LOGIN} element={Login} />
+        <Route path={ROUTES.SIGN_UP} element={<SignUp/>} />
+        <Route path={ROUTES.LOGIN} element={<Login/>} />
         <Route path={ROUTES.RESET_PASSWORD} element={<ResetPassword/>} />
         <Route path={ROUTES.HOME} element={<Home/>} />
       </Routes>
