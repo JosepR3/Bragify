@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, Navigate } from "react-router-dom";
+import Button from "react-bootstrap/Button";
+import Form from "react-bootstrap/Form";
 
-import "./SignUp.scss";
+import fbIcon from "../../assets/images/facebook-48.png"
+import ggIcon from "../../assets/images/google-48.png"
 
-import Header from "../../components/Header";
 import * as ROUTES from "../../routes";
 
 import {
@@ -55,63 +57,97 @@ function SignUp() {
   }
 
   return (
-    <>
-      <main className="SignUp">
-        <Header />
-        <section className="Login__wrapper">
-          <h1 className="text-2xl font-bold mb-6">SignUp</h1>
-          <hr className="my-4" />
-          <button
-            className="btn btn-primary w-full"
-            type="button"
-            onClick={handleLoginWithGoogle}
-            disabled={isSigningUp}
-          >
-            SignUp with Google
-          </button>
-          <hr className="mt-1 mb-4" />
-          <form onSubmit={handleSubmit}>
-            <label htmlFor="email" className="form-label">
-              Email
-            </label>
-            <input
+    <main className="container text-center">
+      <h1 className="main__bragify m-5">Bragify</h1>
+      <section className="login__signup__wrapper container p-5">
+        <h1 className="font-bold align-self-start m-4">Sign Up</h1>
+        <Button
+          className="login__facebook mt-3 mx-4"
+          type="submit"
+          variant="facebook-color"
+        >
+          <img className="login__signup__icon me-2" src={fbIcon} alt="fb-icon"></img>
+          Sign Up with Facebook
+        </Button>
+        <Button
+          className="login__google mt-3 mx-4"
+          type="submit"
+          variant="google-color"
+        >
+          <img className="login__signup__icon me-4" src={ggIcon} alt="gg-icon"></img>Sign Up with Google
+        </Button>
+        <div className="breaker my-5">
+          <hr className="division_line"></hr>
+          or
+          <hr className="division_line"></hr>
+        </div>
+        <Form className="px-4" onSubmit={handleSubmit}>
+          <Form.Group>
+            <Form.Control className="mb-2"
+              id="input-first-name"
               type="text"
-              id="email"
-              className="form-input"
-              value={email}
-              onChange={handleSetEmail}
+              placeholder="First Name"
+              required
             />
-            <label htmlFor="password" className="form-label">
-              Password
-            </label>
-            <input
+          </Form.Group>
+          <Form.Group className="mb-2">
+            <Form.Control
+              id="input-last-name"
+              type="text"
+              placeholder="Last Name"
+              required
+            />
+          </Form.Group>
+          <Form.Group className="mb-2">
+            <Form.Control
+              id="input-username"
+              type="text"
+              placeholder="Username"
+              required
+            />
+          </Form.Group>
+          <Form.Group className="mb-2">
+            <Form.Control
+              id="input-email"
+              type="email"
+              placeholder="Email"
+              required
+            />
+          </Form.Group>
+          <Form.Group className="mb-2">
+            <Form.Control
+              id="input-password"
               type="password"
-              id="password"
-              className="form-input"
-              value={password}
-              onChange={handleSetPassword}
+              placeholder="Password"
+              required
             />
-            <button
-              className="btn btn-primary w-full"
-              type="submit"
-              disabled={isSigningUp}
-            >
-              Sign Up
-            </button>
-          </form>
-          {signUpError && <section className="mt-4">{signUpError}</section>}
-          <section className="mt-4">
-            <hr className="mt-1 mb-4" />
-            <Link
-              to={ROUTES.RESET_PASSWORD}
-              className="underline text-blue-gray-200 w-full text-center block"
-            >
-              Reset password
-            </Link>
-          </section>
-        </section>
-      </main>
-    </>
+          </Form.Group>
+          <Form.Group className="mb-2">
+            <Form.Control
+              id="input-confirm-password"
+              type="password"
+              placeholder="Confirm Password"
+              required
+            />
+          </Form.Group>
+          <Button
+            className="my-4 w-100"
+            type="submit"
+            variant="log-color"
+            // disabled={isLoading}
+          >
+            Sign Up
+            {/* {isLoading && <div className="spinner-border spinner-border-sm" role="status"></div>} */}
+          </Button>
+        </Form>
+        <p className="mt-4">
+          Do you have an account?
+          <a className="register_link" href="">
+            Log in
+          </a>
+        </p>
+      </section>
+    </main>
   );
 }
 

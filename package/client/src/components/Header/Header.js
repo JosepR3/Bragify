@@ -1,7 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import "./header.scss"
 
 import * as ROUTES from "../../routes";
 import { signOut } from "../../redux/auth/auth-actions";

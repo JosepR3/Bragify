@@ -4,6 +4,10 @@ import { Navigate } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 
+import fbIcon from "../../assets/images/facebook-48.png"
+import ggIcon from "../../assets/images/google-48.png"
+
+
 
 import * as ROUTES from "../../routes";
 
@@ -58,21 +62,21 @@ function Login() {
   return (
     <main className="container text-center">
       <h1 className="main__bragify m-5">Bragify</h1>
-      <section className="login__register__wrapper container p-5">
+      <section className="login__signup__wrapper container p-5">
         <h1 className="font-bold align-self-start m-4">Log in</h1>
         <Button
           className="login__facebook mt-3 mx-4"
           type="submit"
           variant="facebook-color"
         >
-          Continue with Facebook
+          <img className="login__signup__icon me-2" src={fbIcon} alt="fb-icon"></img>Continue with Facebook
         </Button>
         <Button
           className="login__google mt-3 mx-4"
           type="submit"
           variant="google-color"
         >
-          Continue with Google
+          <img className="login__signup__icon me-4" src={ggIcon} alt="gg-icon"></img>Continue with Google
         </Button>
         <div className="breaker my-5">
           <hr className="division_line"></hr>
