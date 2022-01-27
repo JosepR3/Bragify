@@ -51,9 +51,9 @@ function Login() {
     setPassword(e.target.value);
   }
 
-  if (isAuthenticated) {
-    return <Navigate to={ROUTES.HOME} />;
-  }
+  // if (isAuthenticated) {
+  //   return <Navigate to={ROUTES.HOME} />;
+  // }
 
   return (
     <main className="container text-center">
