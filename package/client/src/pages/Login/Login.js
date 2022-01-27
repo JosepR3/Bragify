@@ -4,7 +4,7 @@ import { Link, Navigate } from "react-router-dom";
 
 import "./Login.scss";
 
-import Header from "../../components/Header";
+// import Header from "../../components/Header";
 import * as ROUTES from "../../routes";
 
 import {
@@ -57,7 +57,7 @@ function Login() {
   return (
     <>
       <main className="Login">
-        <Header />
+        {/* <Header /> */}
         <section className="Login__wrapper">
           <h1 className="text-2xl font-bold mb-6">Login</h1>
           <hr className="my-4" />

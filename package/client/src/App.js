@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import {  Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import { useDispatch } from "react-redux";
 
 import "./styles/App.scss";
@@ -12,6 +12,7 @@ import ResetPassword from "./pages/ResetPassword";
 
 import { onAuthStateChanged } from "./services/auth";
 import { syncSignIn, signOut } from "./redux/auth/auth-actions";
+import Dashboard from "./pages/Dashboard_test/Dashboard";
 
 function App() {
   const dispatch = useDispatch();
@@ -39,9 +40,12 @@ function App() {
       <Routes>
         <Route path={ROUTES.SIGN_UP} element={SignUp} />
         <Route path={ROUTES.LOGIN} element={Login} />
-        <Route path={ROUTES.RESET_PASSWORD} element={<ResetPassword/>} />
-        <Route path={ROUTES.HOME} element={<Home/>} />
+        <Route path={ROUTES.RESET_PASSWORD} element={<ResetPassword />} />
+        <Route path={ROUTES.HOME} element={<Home />} />
+        <Route path={ROUTES.DASHBOARD} element={<Dashboard />} />
+
       </Routes>
+
     </div>
   );
 }

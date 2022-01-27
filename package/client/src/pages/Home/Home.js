@@ -1,6 +1,8 @@
 import React from "react";
 import { useSelector } from "react-redux";
 
+import SongCard from "../../components/atoms/SongCard";
+
 import "./Home.scss";
 // import Header from "../../components/Header";
 // import { authSelector } from "../../redux/auth/auth-selectors";
@@ -13,10 +15,12 @@ function Home() {
       {/* <Header /> */}
       <section className="p-4">
         {/* {isAuthenticated ? ( */}
-          {/* <h1 className="text-xl">Hello {currentUser.email}</h1> */}
+        {/* <h1 className="text-xl">Hello {currentUser.email}</h1> */}
         {/* ) : ( */}
-          <h1 className="text-xl">Hello World</h1>
+        <h1 className="text-xl">Hello World</h1>
         {/* )} */}
+        
+
       </section>
     </main>
   );
