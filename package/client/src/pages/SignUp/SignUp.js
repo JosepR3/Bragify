@@ -51,7 +51,7 @@ function SignUp() {
   }
 
   if (isAuthenticated) {
-    return <Navigate to={ROUTES.HOME} />;
+    return <Navigate to={ROUTES.LOGIN} />;
   }
 
   return (

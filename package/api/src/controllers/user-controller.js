@@ -2,7 +2,7 @@ const { UserRepo } = require("../repositories");
 
 async function signUp(req, res, next) {
   const { uid, email } = req.user;
-  console.log(req);
+  console.log(req.user);
   try {
     const response = await UserRepo.findOne({ email: email });
 
