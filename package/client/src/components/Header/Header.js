@@ -1,10 +1,13 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
+import "./header.scss"
 
 import * as ROUTES from "../../routes";
 import { signOut } from "../../redux/auth/auth-actions";
 import { authSelector } from "../../redux/auth/auth-selectors";
+
+
 
 function Header() {
   const dispatch = useDispatch();
@@ -15,7 +18,7 @@ function Header() {
   }
 
   return (
-    <header className="p-4">
+    <header className="header-wrapper p-4">
       <nav className="flex align-items-middle">
         <ul className="list-none flex">
           <li className="mr-4 px-3 py-2 bg-gray-600">

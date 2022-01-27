@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, Navigate } from "react-router-dom";
-
-import "./Login.scss";
+import Button from "react-bootstrap/Button"
+import Form from "react-bootstrap/Form"
 
 import Header from "../../components/Header";
 import * as ROUTES from "../../routes";
+
+import './login.scss'
 
 import {
   resetAuthState,
@@ -55,63 +57,50 @@ function Login() {
   }
 
   return (
-    <>
-      <main className="Login">
-        <Header />
-        <section className="Login__wrapper">
-          <h1 className="text-2xl font-bold mb-6">Login</h1>
-          <hr className="my-4" />
-          <button
-            className="btn btn-primary w-full"
-            type="button"
-            onClick={handleLoginWithGoogle}
-            disabled={isSigningUp}
+      <main className="container text-center">
+        <h1 className="main__bragify m-5">Bragify</h1>
+        <section className="login__register__wrapper container p-5">
+          <h1 className="font-bold align-self-start m-4">Log in</h1>
+          <Button
+            className="login__facebook mt-3 mx-4"
+            type="submit"
+            variant="facebook-color"
           >
-            Login with Google
-          </button>
-          <hr className="mt-1 mb-4" />
-          <form onSubmit={handleSubmit}>
-            <label htmlFor="email" className="form-label">
-              Email
-            </label>
-            <input
-              type="text"
-              id="email"
-              className="form-input"
-              value={email}
-              onChange={handleSetEmail}
-            />
-            <label htmlFor="password" className="form-label">
-              Password
-            </label>
-            <input
-              type="password"
-              id="password"
-              className="form-input"
-              value={password}
-              onChange={handleSetPassword}
-            />
-            <button
-              className="btn btn-primary w-full"
-              type="submit"
-              disabled={isSigningUp}
-            >
-              Login
-            </button>
-          </form>
-          {signUpError && <section className="mt-4">{signUpError}</section>}
-          <section className="mt-4">
-            <hr className="mt-1 mb-4" />
-            <Link
-              to={ROUTES.RESET_PASSWORD}
-              className="underline text-blue-gray-200 w-full text-center block"
-            >
-              Reset password
-            </Link>
-          </section>
+            Continue with Facebook
+          </Button>
+          <Button
+            className="login__google mt-3 mx-4"
+            type="submit"
+            variant="google-color"
+          >
+            Continue with Google
+          </Button>
+          <div className="breaker my-5">
+            <hr className="division_line"></hr> 
+              or 
+            <hr className="division_line"></hr>
+          </div>
+          <Form className="px-4" onSubmit={handleSubmit}>
+							<Form.Group>
+								<Form.Control id="input_email" type="email" placeholder="Enter email" required />
+							</Form.Group>
+							<Form.Group className="mb-1">
+								<Form.Control id="input_password" type="password" placeholder="Password" required />
+							</Form.Group>
+              <div className="d-flex justify-content-end mb-3"><a href="">Have you forgotten your password?</a></div>
+							<Button
+								className="my-4 w-100"
+								type="submit"
+                variant="log-color"
+								// disabled={isLoading}
+							>
+							  Log In
+								{/* {isLoading && <div className="spinner-border spinner-border-sm" role="status"></div>} */}
+							</Button>
+						</Form>
+          <p className="mt-4">Don't you have an account?<a className="register_link" href=""> Create one</a></p>
         </section>
       </main>
-    </>
   );
 }
 
