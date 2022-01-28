@@ -11,7 +11,7 @@ import ggIcon from "../../assets/images/google-48.png"
 
 import * as ROUTES from "../../routes";
 
-import "./login.scss";
+import "./Login.scss";
 
 import {
   resetAuthState,
