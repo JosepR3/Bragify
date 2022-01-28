@@ -9,6 +9,7 @@ import store  from "./redux/store";
 
 import App from "./App";
 import "./styles/tailwind.css";
+import '@fontsource/roboto/400.css';
 
 ReactDOM.render(
   <React.StrictMode>
