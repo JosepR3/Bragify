@@ -24,7 +24,7 @@ export async function normalizeResponse(promise = Promise.resolve) {
 
 export function makeRequest(
   httpClient = axios,
-  baseURL = process.env.REACT_APP_API_BASE_URL,
+  baseURL = "http://localhost:4000",
   baseHeaders = {
     Accept: "application/json",
   },

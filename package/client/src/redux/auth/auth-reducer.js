@@ -31,13 +31,14 @@ const AuthReducer = (state = AuthInitialState, action) => {
       };
     }
     case AuthTypes.SIGN_UP_SUCCESS: {
+      localStorage.setItem("currentUser", action.payload);
       return {
         ...state,
         isAuthenticated: true,
         isSigningUp: false,
         signUpError: null,
         currentUser: {
-          email: action.payload.email,
+          email: action.payload,
         },
       };
     }

@@ -31,13 +31,16 @@ export function signUpWithEmailRequest(email, password) {
     dispatch(signUpRequest());
     try {
       await auth.singUpWithEmailAndPassword(email, password);
+      
     } catch (error) {
       dispatch(signUpError(error.message));
     }
+    
   };
 }
 
 export function signInWithEmailRequest(email, password) {
+  console.log(email, password);
   return async function signUpThunk(dispatch) {
     dispatch(signUpRequest());
     try {
@@ -59,19 +62,21 @@ export function syncSignIn() {
     const response = await api.signUp({
       Authorization: `Bearer ${token}`,
     });
-
+    
     if (response.errorMessage) {
       return dispatch(signUpError(response.errorMessage));
     }
 
-    return dispatch(signUpSuccess(response.data));
+    return dispatch(signUpSuccess(response.data.data));
   };
+  
 }
 
 export const signUpSuccess = (user) => ({
   type: AuthTypes.SIGN_UP_SUCCESS,
   payload: user,
 });
+
 
 export const signOutRequest = () => ({
   type: AuthTypes.SIGN_OUT_REQUEST,

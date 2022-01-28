@@ -15,23 +15,23 @@ import { syncSignIn, signOut } from "./redux/auth/auth-actions";
 function App() {
   const dispatch = useDispatch();
 
-  // useEffect(() => {
-  //   let unsubscribeFromAuth = null;
+  useEffect(() => {
+    let unsubscribeFromAuth = null;
 
-  //   unsubscribeFromAuth = onAuthStateChanged((user) => {
-  //     if (user) {
-  //       dispatch(syncSignIn());
-  //     } else {
-  //       dispatch(signOut());
-  //     }
-  //   });
+    unsubscribeFromAuth = onAuthStateChanged((user) => {
+      if (user) {
+        dispatch(syncSignIn());
+      } else {
+        dispatch(signOut());
+      }
+    });
 
-  //   return () => {
-  //     if (unsubscribeFromAuth) {
-  //       unsubscribeFromAuth();
-  //     }
-  //   };
-  // }, [dispatch]);
+    return () => {
+      if (unsubscribeFromAuth) {
+        unsubscribeFromAuth();
+      }
+    };
+  }, [dispatch]);
 
   return (
     <div className="app__container">

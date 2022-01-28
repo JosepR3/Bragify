@@ -4,8 +4,9 @@ import { Link, Navigate } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 
-import fbIcon from "../../assets/images/facebook-48.png"
-import ggIcon from "../../assets/images/google-48.png"
+import Header from "../../components/Header"
+import fbIcon from "../../assets/images/facebook-48.png";
+import ggIcon from "../../assets/images/google-48.png";
 
 import * as ROUTES from "../../routes";
 
@@ -19,12 +20,19 @@ import { authSelector } from "../../redux/auth/auth-selectors";
 
 function SignUp() {
   const dispatch = useDispatch();
-  const { isSigningUp, signUpError, isAuthenticated } = useSelector(
-    authSelector,
-  );
+  const { isSigningUp, signUpError, isAuthenticated } =
+    useSelector(authSelector);
 
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [user, setUser] = useState({
+    firstName: "",
+    lastName: "",
+    username: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
+  });
+
+
 
   useEffect(() => {
     dispatch(resetAuthState());
@@ -37,27 +45,24 @@ function SignUp() {
 
   function handleSubmit(e) {
     e.preventDefault();
-
-    dispatch(signUpWithEmailRequest(email, password));
-
-    setEmail("");
-    setPassword("");
+    
+    dispatch(signUpWithEmailRequest(user.email, user.password));
   }
+  
+  function handleInput(e){
 
-  function handleSetEmail(e) {
-    setEmail(e.target.value);
+    const { target } = e;
+    const { name, value } = target;
+    
+    const newUser = {
+      ...user,
+       [name]: value,
+    }
+    setUser(newUser);
   }
-
-  function handleSetPassword(e) {
-    setPassword(e.target.value);
-  }
-
-  if (isAuthenticated) {
-    return <Navigate to={ROUTES.HOME} />;
-  }
-
   return (
     <main className="container text-center">
+      <Header />
       <h1 className="main__bragify m-5">Bragify</h1>
       <section className="login__signup__wrapper container p-5">
         <h1 className="font-bold align-self-start m-4">Sign Up</h1>
@@ -66,15 +71,26 @@ function SignUp() {
           type="submit"
           variant="facebook-color"
         >
-          <img className="login__signup__icon me-2" src={fbIcon} alt="fb-icon"></img>
+          <img
+            className="login__signup__icon me-2"
+            src={fbIcon}
+            alt="fb-icon"
+          ></img>
           Sign Up with Facebook
         </Button>
         <Button
           className="login__google mt-3 mx-4"
-          type="submit"
+          type="button"
           variant="google-color"
+          onClick={handleLoginWithGoogle}
+          disabled={isSigningUp}
         >
-          <img className="login__signup__icon me-4" src={ggIcon} alt="gg-icon"></img>Sign Up with Google
+          <img
+            className="login__signup__icon me-4"
+            src={ggIcon}
+            alt="gg-icon"
+          ></img>
+          Sign Up with Google
         </Button>
         <div className="breaker my-5">
           <hr className="division_line"></hr>
@@ -84,49 +100,61 @@ function SignUp() {
         <Form className="px-4" onSubmit={handleSubmit}>
           <Form.Group>
             <Form.Control className="mb-2"
-              id="input-first-name"
+              name="firstName"
               type="text"
               placeholder="First Name"
+              value={user.firstName}
+              onChange={handleInput}
               required
             />
           </Form.Group>
           <Form.Group className="mb-2">
             <Form.Control
-              id="input-last-name"
+              name="lastName"
               type="text"
               placeholder="Last Name"
+              value={user.lastName}
+              onChange={handleInput}
               required
             />
           </Form.Group>
           <Form.Group className="mb-2">
             <Form.Control
-              id="input-username"
+              name="username"
               type="text"
               placeholder="Username"
+              value={user.username}
+              onChange={handleInput}
               required
             />
           </Form.Group>
           <Form.Group className="mb-2">
             <Form.Control
-              id="input-email"
+              name="email"
               type="email"
               placeholder="Email"
+              value={user.email}
+              onChange={handleInput}
               required
             />
           </Form.Group>
           <Form.Group className="mb-2">
             <Form.Control
-              id="input-password"
+              name="password"
               type="password"
               placeholder="Password"
+              value={user.password}
+              onChange={handleInput}
               required
             />
           </Form.Group>
           <Form.Group className="mb-2">
             <Form.Control
-              id="input-confirm-password"
+              name="confirmPassword"
               type="password"
               placeholder="Confirm Password"
+              value={user.confirmPassword}
+              onChange={handleInput}
               required
             />
           </Form.Group>
@@ -140,9 +168,10 @@ function SignUp() {
             {/* {isLoading && <div className="spinner-border spinner-border-sm" role="status"></div>} */}
           </Button>
         </Form>
+        {signUpError && <section className="mt-4">{signUpError}</section>}
         <p className="mt-4">
           Do you have an account?
-          <a className="register_link" href="">
+          <a className="register_link" href={ROUTES.LOGIN}>
             Log in
           </a>
         </p>
