@@ -115,7 +115,7 @@ function Login() {
         </Form>
         <p className="mt-4">
           Don't you have an account?
-          <a className="register_link" href="">
+          <a className="register_link" href={ROUTES.SIGN_UP}>
             {" "}
             Create one
           </a>

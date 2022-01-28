@@ -4,8 +4,8 @@ import { Link, Navigate } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 
-import fbIcon from "../../assets/images/facebook-48.png"
-import ggIcon from "../../assets/images/google-48.png"
+import fbIcon from "../../assets/images/facebook-48.png";
+import ggIcon from "../../assets/images/google-48.png";
 
 import * as ROUTES from "../../routes";
 
@@ -22,6 +22,9 @@ function SignUp() {
   const { isSigningUp, signUpError, isAuthenticated } =
     useSelector(authSelector);
 
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [username, setUserName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -36,17 +39,33 @@ function SignUp() {
 
   function handleSubmit(e) {
     e.preventDefault();
+    console.log(email)
 
-    dispatch(signUpWithEmailRequest(email, password));
+    dispatch(
+      signUpWithEmailRequest(firstName, lastName, username, email, password),
+    );
 
+    setFirstName("");
+    setLastName("");
     setEmail("");
+    setUserName("");
     setPassword("");
+  }
+
+  function handleSetFirstName(e) {
+    setFirstName(e.target.value);
+  }
+
+  function handleSetLastName(e) {
+    setLastName(e.target.value);
+  }
+  function handleSetUserName(e) {
+    setUserName(e.target.value);
   }
 
   function handleSetEmail(e) {
     setEmail(e.target.value);
   }
-
   function handleSetPassword(e) {
     setPassword(e.target.value);
   }
@@ -65,7 +84,11 @@ function SignUp() {
           type="submit"
           variant="facebook-color"
         >
-          <img className="login__signup__icon me-2" src={fbIcon} alt="fb-icon"></img>
+          <img
+            className="login__signup__icon me-2"
+            src={fbIcon}
+            alt="fb-icon"
+          ></img>
           Sign Up with Facebook
         </Button>
         <Button
@@ -75,7 +98,12 @@ function SignUp() {
           onClick={handleLoginWithGoogle}
           disabled={isSigningUp}
         >
-          <img className="login__signup__icon me-4" src={ggIcon} alt="gg-icon"></img>Sign Up with Google
+          <img
+            className="login__signup__icon me-4"
+            src={ggIcon}
+            alt="gg-icon"
+          ></img>
+          Sign Up with Google
         </Button>
         <div className="breaker my-5">
           <hr className="division_line"></hr>
@@ -84,10 +112,13 @@ function SignUp() {
         </div>
         <Form className="px-4" onSubmit={handleSubmit}>
           <Form.Group>
-            <Form.Control className="mb-2"
+            <Form.Control
+              className="mb-2"
               id="input-first-name"
               type="text"
               placeholder="First Name"
+              value={firstName}
+              onChange={handleSetFirstName}
               required
             />
           </Form.Group>
@@ -96,6 +127,8 @@ function SignUp() {
               id="input-last-name"
               type="text"
               placeholder="Last Name"
+              value={lastName}
+              onChange={handleSetLastName}
               required
             />
           </Form.Group>
@@ -104,13 +137,15 @@ function SignUp() {
               id="input-username"
               type="text"
               placeholder="Username"
+              value={username}
+              onChange={handleSetUserName}
               required
             />
           </Form.Group>
           <Form.Group className="mb-2">
             <Form.Control
               id="input-email"
-              type="email"
+              type="text"
               placeholder="Email"
               value={email}
               onChange={handleSetEmail}
@@ -148,7 +183,7 @@ function SignUp() {
         {signUpError && <section className="mt-4">{signUpError}</section>}
         <p className="mt-4">
           Do you have an account?
-          <a className="register_link" href="">
+          <a className="register_link" href={ROUTES.LOGIN}>
             Log in
           </a>
         </p>
