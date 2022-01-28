@@ -42,7 +42,7 @@ export function signUpWithEmailRequest(email, password) {
 export function signInWithEmailRequest(email, password) {
   console.log(email, password);
   return async function signUpThunk(dispatch) {
-    dispatch(signUpRequest());
+    dispatch(signUpRequest(email));
     try {
       await auth.singInWithEmailAndPassword(email, password);
     } catch (error) {

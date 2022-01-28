@@ -4,7 +4,7 @@ import { Link, Navigate } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 
-import Header from "../../components/Header"
+import Header from "../../components/Header";
 import fbIcon from "../../assets/images/facebook-48.png";
 import ggIcon from "../../assets/images/google-48.png";
 
@@ -20,7 +20,7 @@ import { authSelector } from "../../redux/auth/auth-selectors";
 
 function SignUp() {
   const dispatch = useDispatch();
-  const { isSigningUp, signUpError, isAuthenticated } =
+  const { isSigningUp, signUpError, isAuthenticated, isLoading } =
     useSelector(authSelector);
 
   const [user, setUser] = useState({
@@ -31,8 +31,6 @@ function SignUp() {
     password: "",
     confirmPassword: "",
   });
-
-
 
   useEffect(() => {
     dispatch(resetAuthState());
@@ -45,19 +43,18 @@ function SignUp() {
 
   function handleSubmit(e) {
     e.preventDefault();
-    
+
     dispatch(signUpWithEmailRequest(user.email, user.password));
   }
-  
-  function handleInput(e){
 
+  function handleInput(e) {
     const { target } = e;
     const { name, value } = target;
-    
+
     const newUser = {
       ...user,
-       [name]: value,
-    }
+      [name]: value,
+    };
     setUser(newUser);
   }
   return (
@@ -99,7 +96,8 @@ function SignUp() {
         </div>
         <Form className="px-4" onSubmit={handleSubmit}>
           <Form.Group>
-            <Form.Control className="mb-2"
+            <Form.Control
+              className="mb-2"
               name="firstName"
               type="text"
               placeholder="First Name"
@@ -165,7 +163,12 @@ function SignUp() {
             // disabled={isLoading}
           >
             Sign Up
-            {/* {isLoading && <div className="spinner-border spinner-border-sm" role="status"></div>} */}
+            {isLoading && (
+              <div
+                className="spinner-border spinner-border-sm"
+                role="status"
+              ></div>
+            )}
           </Button>
         </Form>
         {signUpError && <section className="mt-4">{signUpError}</section>}

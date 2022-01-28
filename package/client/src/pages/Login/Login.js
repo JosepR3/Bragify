@@ -23,8 +23,7 @@ import { authSelector } from "../../redux/auth/auth-selectors";
 
 function Login() {
   const dispatch = useDispatch();
-  const { isSigningUp, signUpErro, isAuthenticatedr } =
-    useSelector(authSelector);
+  const { isSigningUp, signUpErro, isAuthenticated, isLoading } = useSelector(authSelector);
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -55,9 +54,9 @@ function Login() {
     setPassword(e.target.value);
   }
 
-  // if (isAuthenticated) {
-  //   return <Navigate to={ROUTES.HOME} />;
-  // }
+  if (isAuthenticated) {
+    return <Navigate to={ROUTES.HOME} />;
+  }
 
   return (
     <main className="container text-center">
@@ -73,10 +72,17 @@ function Login() {
         </Button>
         <Button
           className="login__google mt-3 mx-4"
-          type="submit"
+          type="button"
           variant="google-color"
+          onClick={handleLoginWithGoogle}
+          disabled={isSigningUp}
         >
-          <img className="login__signup__icon me-4" src={ggIcon} alt="gg-icon"></img>Continue with Google
+          <img
+            className="login__signup__icon me-4"
+            src={ggIcon}
+            alt="gg-icon"
+          ></img>
+          Sign Up with Google
         </Button>
         <div className="breaker my-5">
           <hr className="division_line"></hr>
@@ -84,19 +90,23 @@ function Login() {
           <hr className="division_line"></hr>
         </div>
         <Form className="px-4" onSubmit={handleSubmit}>
-          <Form.Group>
+        <Form.Group className="mb-2">
             <Form.Control
-              id="input_email"
+              name="email"
               type="email"
-              placeholder="Enter email"
+              placeholder="Email"
+              value={email}
+              onChange={handleSetEmail}
               required
             />
           </Form.Group>
-          <Form.Group className="mb-1">
+          <Form.Group className="mb-2">
             <Form.Control
-              id="input_password"
+              name="password"
               type="password"
               placeholder="Password"
+              value={password}
+              onChange={handleSetPassword}
               required
             />
           </Form.Group>
@@ -107,10 +117,10 @@ function Login() {
             className="my-4 w-100"
             type="submit"
             variant="log-color"
-            // disabled={isLoading}
+            disabled={isLoading}
           >
             Log In
-            {/* {isLoading && <div className="spinner-border spinner-border-sm" role="status"></div>} */}
+            {isLoading && <div className="spinner-border  spinner-border-sm m-2" role="status"></div>}
           </Button>
         </Form>
         <p className="mt-4">
