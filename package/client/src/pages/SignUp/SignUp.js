@@ -23,11 +23,16 @@ function SignUp() {
   const { isSigningUp, signUpError, isAuthenticated } =
     useSelector(authSelector);
 
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [username, setUserName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [user, setUser] = useState({
+    firstName: "",
+    lastName: "",
+    username: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
+  });
+
+
 
   useEffect(() => {
     dispatch(resetAuthState());
@@ -40,41 +45,21 @@ function SignUp() {
 
   function handleSubmit(e) {
     e.preventDefault();
-    console.log(email)
-
-    dispatch(
-      signUpWithEmailRequest(firstName, lastName, username, email, password),
-    );
-
-    setFirstName("");
-    setLastName("");
-    setEmail("");
-    setUserName("");
-    setPassword("");
+    
+    dispatch(signUpWithEmailRequest(user.email, user.password));
   }
+  
+  function handleInput(e){
 
-  function handleSetFirstName(e) {
-    setFirstName(e.target.value);
+    const { target } = e;
+    const { name, value } = target;
+    
+    const newUser = {
+      ...user,
+       [name]: value,
+    }
+    setUser(newUser);
   }
-
-  function handleSetLastName(e) {
-    setLastName(e.target.value);
-  }
-  function handleSetUserName(e) {
-    setUserName(e.target.value);
-  }
-
-  function handleSetEmail(e) {
-    setEmail(e.target.value);
-  }
-  function handleSetPassword(e) {
-    setPassword(e.target.value);
-  }
-
-  // if (isAuthenticated) {
-  //   return <Navigate to={ROUTES.LOGIN} />;
-  // }
-
   return (
     <main className="container text-center">
       <Header />
@@ -114,61 +99,62 @@ function SignUp() {
         </div>
         <Form className="px-4" onSubmit={handleSubmit}>
           <Form.Group>
-            <Form.Control
-              className="mb-2"
-              id="input-first-name"
+            <Form.Control className="mb-2"
+              name="firstName"
               type="text"
               placeholder="First Name"
-              value={firstName}
-              onChange={handleSetFirstName}
+              value={user.firstName}
+              onChange={handleInput}
               required
             />
           </Form.Group>
           <Form.Group className="mb-2">
             <Form.Control
-              id="input-last-name"
+              name="lastName"
               type="text"
               placeholder="Last Name"
-              value={lastName}
-              onChange={handleSetLastName}
+              value={user.lastName}
+              onChange={handleInput}
               required
             />
           </Form.Group>
           <Form.Group className="mb-2">
             <Form.Control
-              id="input-username"
+              name="username"
               type="text"
               placeholder="Username"
-              value={username}
-              onChange={handleSetUserName}
+              value={user.username}
+              onChange={handleInput}
               required
             />
           </Form.Group>
           <Form.Group className="mb-2">
             <Form.Control
-              id="input-email"
-              type="text"
+              name="email"
+              type="email"
               placeholder="Email"
-              value={email}
-              onChange={handleSetEmail}
+              value={user.email}
+              onChange={handleInput}
               required
             />
           </Form.Group>
           <Form.Group className="mb-2">
             <Form.Control
-              id="input-password"
+              name="password"
               type="password"
               placeholder="Password"
-              value={password}
-              onChange={handleSetPassword}
+              value={user.password}
+              onChange={handleInput}
               required
             />
           </Form.Group>
           <Form.Group className="mb-2">
             <Form.Control
-              id="input-confirm-password"
+              name="confirmPassword"
               type="password"
               placeholder="Confirm Password"
+              value={user.confirmPassword}
+              onChange={handleInput}
               required
             />
           </Form.Group>
