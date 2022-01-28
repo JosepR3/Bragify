@@ -17,9 +17,8 @@ import { authSelector } from "../../redux/auth/auth-selectors";
 
 function SignUp() {
   const dispatch = useDispatch();
-  const { isSigningUp, signUpError, isAuthenticated } = useSelector(
-    authSelector,
-  );
+  const { isSigningUp, signUpError, isAuthenticated } =
+    useSelector(authSelector);
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -72,6 +71,37 @@ function SignUp() {
           <hr className="mt-1 mb-4" />
           <form onSubmit={handleSubmit}>
             <label htmlFor="email" className="form-label">
+              Name
+            </label>
+            <input
+              type="text"
+              id="first-name"
+              className="form-input"
+              // value={email}
+              // onChange={handleSetEmail}
+            />
+            <label htmlFor="email" className="form-label">
+              Last Name
+            </label>
+            <input
+              type="text"
+              id="last-name"
+              className="form-input"
+            //   value={email}
+            //   onChange={handleSetEmail}
+             />{" "}
+            <br/>
+            <label htmlFor="email" className="form-label">
+              Username
+            </label>
+            <input
+              type="text"
+              id="username"
+              className="form-input"
+              // value={email}
+              // onChange={handleSetEmail}
+            />
+            <label htmlFor="email" className="form-label">
               Email
             </label>
             <input
@@ -81,6 +111,7 @@ function SignUp() {
               value={email}
               onChange={handleSetEmail}
             />
+            <br/>
             <label htmlFor="password" className="form-label">
               Password
             </label>
@@ -91,6 +122,17 @@ function SignUp() {
               value={password}
               onChange={handleSetPassword}
             />
+            <label htmlFor="password" className="form-label">
+              Confirm Password
+            </label>
+            <input
+              type="password"
+              id="confirm-Password"
+              className="form-input"
+              // value={confirmPassword}
+              // onChange={handleSetConfirmPassword}
+            />
+            
             <button
               className="btn btn-primary w-full"
               type="submit"
