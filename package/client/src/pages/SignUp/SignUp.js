@@ -87,10 +87,10 @@ function SignUp() {
               type="text"
               id="last-name"
               className="form-input"
-            //   value={email}
-            //   onChange={handleSetEmail}
-             />{" "}
-            <br/>
+              //   value={email}
+              //   onChange={handleSetEmail}
+            />{" "}
+            <br />
             <label htmlFor="email" className="form-label">
               Username
             </label>
@@ -111,7 +111,7 @@ function SignUp() {
               value={email}
               onChange={handleSetEmail}
             />
-            <br/>
+            <br />
             <label htmlFor="password" className="form-label">
               Password
             </label>
@@ -132,7 +132,6 @@ function SignUp() {
               // value={confirmPassword}
               // onChange={handleSetConfirmPassword}
             />
-            
             <button
               className="btn btn-primary w-full"
               type="submit"
