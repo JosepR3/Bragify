@@ -14,6 +14,6 @@ export default function Dashboard() {
         <SongCarrousel />
         <h3>Followed Playlists</h3>
         <SongCarrousel />
-        <SongControls />
+        {/* <SongControls /> */}
     </div>;
 }

@@ -15,7 +15,6 @@ import SkipNextIcon from '@mui/icons-material/SkipNext';
 import LastPageIcon from '@mui/icons-material/LastPage';
 import PlayArrowSharpIcon from '@mui/icons-material/PlayArrowSharp';
 import PauseSharpIcon from '@mui/icons-material/PauseSharp';
-import getStoredState from 'redux-persist/es/getStoredState';
 
 export default function SongCard() {
     const theme = useTheme();
@@ -37,7 +36,7 @@ export default function SongCard() {
                         Mac Miller
                     </Typography>
                 </CardContent>
-                <Box sx={{ display: 'flex', alignItems: 'center', pl: 1, pb: 1 }}>
+                <Box sx={{ display: 'flex', alignItems: 'center', pl: 1, pb: 1 }} data-testid='PlayButtonBox'>
 
                     {isPlaying ? <PauseSharpIcon style={{ fill: "white" }} onClick={handleClick} /> : <PlayArrowSharpIcon style={{ fill: "white" }} onClick={handleClick} />}
 

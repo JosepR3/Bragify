@@ -1,6 +1,6 @@
-import SongControls from "./component";
-import { connect } from "react-redux";
-import { bindActionCreators } from "redux";
+// import SongControls from "./SongControls";
+// import { connect } from "react-redux";
+// import { bindActionCreators } from "redux";
 // import { increaseSongTime } from "../../actions/songActions";
 
 // const mapStateToProps = state => {
@@ -28,6 +28,6 @@ import { bindActionCreators } from "redux";
 //   );
 // };
 
-export default SongControls;
+// export default SongControls;
 
 // connect(mapStateToProps, mapDispatchToProps)

@@ -36,6 +36,6 @@ export default function SongList() {
                     <li>Hello from SongList</li>
                 </ul> : <h2>No songs yet</h2>
             }
- 
+
         </Box>)
 }
