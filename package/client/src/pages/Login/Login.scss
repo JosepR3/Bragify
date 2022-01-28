@@ -1,9 +1,80 @@
-.Login {
-  max-width: 32rem;
+@use '../../assets/scss/conf.scss' as a;
 
-  @apply h-full w-full p-1 flex flex-col align-middle mx-auto;
+.login__signup__wrapper {
+  background: linear-gradient(158deg, rgba(46, 46, 46, 0.86) 0%, hsl(0, 0%, 5%) 100%);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  width: 40%;
+  border-radius: 5%;
+}
+// ---------LOGO AND NAME
 
-  &__wrapper {
-    @apply p-4;
+.main__bragify{
+  color: white;
+  font-size: 4rem;
+}
+
+// ---------------- BUTTONS
+.btn{
+  height: 3.5rem;
+  font-size: 1.2rem;
+   &-facebook-color{
+     color: white;
+     border-radius: 15px;
+     }
+
+   &-google-color{
+     background-color: white;
+     color: a.$gg-green;
+     border-radius: 10px;
+   }
+   &-log-color{
+      border: none;
+      background-image: linear-gradient(45deg, a.$brand-color 20%, transparent 60%);
+      background-position: 100%;
+      background-size: 400%;
+      transition: background 500ms ease-in-out;
+    }
+  &-log-color:hover {
+      background-position: 0;
+      border: none;
+    }
+}
+
+.login__signup__icon{
+  width: 1.8rem;
+}
+
+// ----------------INPUTS
+  .form-control{
+    height: 3.5rem;
+    font-size: 1.2rem;
+    background-color: a.$web-background-color;
+    color: whitesmoke;
+    border: 1px solid black;
+
+    &::placeholder{
+      color:rgb(185, 165, 165);
+    }
   }
+
+// -------------DIVISOR
+
+.breaker{
+  display: flex;
+  flex-direction: row;
+  color: white;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.division_line{
+  width: 7.8rem;
+  height: 1px;
+  background-color: white;
+  border-style: none;
+  margin-left: 0;
+  margin-right: 0;
+  
 }
