@@ -4,6 +4,7 @@ import { Link, Navigate } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 
+import Header from "../../components/Header"
 import fbIcon from "../../assets/images/facebook-48.png";
 import ggIcon from "../../assets/images/google-48.png";
 
@@ -76,6 +77,7 @@ function SignUp() {
 
   return (
     <main className="container text-center">
+      <Header />
       <h1 className="main__bragify m-5">Bragify</h1>
       <section className="login__signup__wrapper container p-5">
         <h1 className="font-bold align-self-start m-4">Sign Up</h1>
