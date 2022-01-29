@@ -19,7 +19,10 @@ import PauseSharpIcon from '@mui/icons-material/PauseSharp';
 export default function SongCard() {
     const theme = useTheme();
     const [isPlaying, setIsPlaying] = useState(false);
-
+    const [albumName, setAlbumName] = useState('');
+    const [artistName, setArtistName] = useState('');
+    // Live From Space -- song.name
+    // Mac Miller -- song.owner.firstName + ' ' + song.owner.lastName
     const handleClick = () => {
         setIsPlaying(!isPlaying);
     };
@@ -29,10 +32,10 @@ export default function SongCard() {
             <Box sx={{ display: 'flex', flexDirection: 'column' }}>
                 <CardContent sx={{ flex: '1 0 auto' }}>
                     <Typography component="div" variant="h5" color="#ffebee">
-                        Live From Space
+                        {albumName}
                     </Typography>
                     <Typography variant="subtitle1" color="#ffebee" component="div">
-                        Mac Miller
+                        {artistName}
                     </Typography>
                 </CardContent>
                 <Box sx={{ display: 'flex', alignItems: 'center', pl: 1, pb: 1 }}>

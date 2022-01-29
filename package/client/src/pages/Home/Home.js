@@ -22,7 +22,7 @@ function Home() {
     <ThemeProvider theme={mdTheme}>
       <Box sx={{ display: "flex" }}>
         <CssBaseline />
-       
+
         <SideBar />
         <Box
           component="main"
@@ -36,7 +36,7 @@ function Home() {
             overflow: "auto",
           }}
         >
-           <NavBar />
+          <NavBar />
           <Toolbar />
           <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
             <InnerDash />

@@ -40,7 +40,7 @@ export default function SongCarrousel() {
   return (
 
     <Carousel
-      // swipeable={false}
+      swipeable={true}
       draggable={true}
       // showDots={true}
       responsive={responsive}
@@ -48,14 +48,14 @@ export default function SongCarrousel() {
       infinite={true}
       // autoPlay={this.props.deviceType !== "mobile" ? true : false}
       // autoPlaySpeed={1000}
-      // keyBoardControl={true}
+      keyBoardControl={true}
       // customTransition="all .5"
       transitionDuration={500}
       containerClass="carousel-container"
       removeArrowOnDeviceType={["tablet", "mobile"]}
-    // deviceType={this.props.deviceType}
-    // dotListClass="custom-dot-list-style"
-    // itemClass="carousel-item-padding-40-px"
+      // deviceType={this.props.deviceType}
+      // dotListClass="custom-dot-list-style"
+      itemClass="carousel-item-padding-40-px"
     // customRightArrow={<CustomRightArrow />}
     >
       <SongCard />
