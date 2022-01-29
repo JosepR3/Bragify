@@ -9,8 +9,10 @@ import Avatar from "@mui/material/Avatar";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 
+
+
 function NavBar() {
-  const [anchorElUser, setAnchorElUser] = React.useState(auth);
+  // const [anchorElUser, setAnchorElUser] = React.useState(auth);
 
   const settings = ["Profile", "Account", "Logout"];
 
@@ -45,7 +47,7 @@ function NavBar() {
             <Avatar alt="Remy Sharp" src="../avatar.png" />
           </IconButton>
         </Tooltip>
-        <Menu
+        {/* <Menu
           sx={{ mt: "45px" }}
           id="menu-appbar"
           anchorEl={anchorElUser}
@@ -66,7 +68,7 @@ function NavBar() {
               <Typography textAlign="center">{setting}</Typography>
             </MenuItem>
           ))}
-        </Menu>
+        </Menu> */}
         {/* </IconButton> */}
       </Toolbar>
     </MuiAppBar>

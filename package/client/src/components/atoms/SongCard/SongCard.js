@@ -20,6 +20,7 @@ export default function SongCard() {
     const theme = useTheme();
     const [isPlaying, setIsPlaying] = useState(false);
 
+
     const handleClick = () => {
         setIsPlaying(!isPlaying);
     };
