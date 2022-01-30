@@ -1,38 +1,32 @@
 const { UserRepo } = require("../repositories");
 
 async function signUp(req, res, next) {
-  
+
   try {
-    const { uid, firstName, lastName, username, email } = req.user;
+    const username = req.headers.data
+    const { email, uid } = req.user;
     const response = await UserRepo.findOne({ email: email });
 
-    // if (response.error) {
-    //   return res.status(400).send({
-    //     data: null,
-    //     error: response.error,
-    //   });
-    // }
+    if (response.data) {
+      return res.status(200).send({
+        data: email,
+        error: null,
+      });
+    }
 
-     if (response.data) {
-       return res.status(200).send({
-         data: email,
-         error: null,
-       });
-     }
-
-    const newUser = await UserRepo.create({
+    await UserRepo.create({
       _id: uid,
-      firstName: firstName,
-      lastName: lastName,
       username: username,
-      email: email
+      email: email,
     });
 
     res.status(201).send({
-      data: email,
+      data: firstName,
+      email,
       error: null,
     });
   } catch (error) {
+    console.log(error)
     next(error);
   }
 }

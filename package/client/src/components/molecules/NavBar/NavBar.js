@@ -1,5 +1,11 @@
 import * as React from "react";
 
+import { signOut } from "../../../redux/auth/auth-actions";
+import * as ROUTES from "../../../routes";
+import { useDispatch } from "react-redux";
+import { authSelector } from "../../../redux/auth/auth-selectors";
+import { useSelector } from "react-redux";
+
 import MuiAppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
@@ -10,12 +16,16 @@ import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 
 function NavBar() {
-  const [anchorElUser, setAnchorElUser] = React.useState(auth);
-
-  const settings = ["Profile", "Account", "Logout"];
+  const dispatch = useDispatch();
+  const { currentUser } = useSelector(authSelector);
+  const [anchorElUser, setAnchorElUser] = React.useState();
 
   const handleOpenUserMenu = (event) => {
     setAnchorElUser(event.currentTarget);
+  };
+
+  const handleSignOut = () => {
+    dispatch(signOut());
   };
 
   const handleCloseUserMenu = () => {
@@ -39,7 +49,15 @@ function NavBar() {
         >
           BRAGIFY MUSIC
         </Typography>
-        {/* <IconButton color="inherit"> */}
+
+        <Typography
+          color="inherit"
+          noWrap
+          sx={{ mr: "20px", fontFamily: "Mochiy Pop P One" }}
+        >
+          Welcome {currentUser.email}
+        </Typography>
+
         <Tooltip title="Open settings">
           <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
             <Avatar alt="Remy Sharp" src="../avatar.png" />
@@ -61,13 +79,13 @@ function NavBar() {
           open={Boolean(anchorElUser)}
           onClose={handleCloseUserMenu}
         >
-          {settings.map((setting) => (
-            <MenuItem key={setting} onClick={handleCloseUserMenu}>
-              <Typography textAlign="center">{setting}</Typography>
-            </MenuItem>
-          ))}
+          <MenuItem key="editProfile" >
+            <Typography textAlign="center">Edit Profile</Typography>
+          </MenuItem>
+          <MenuItem key="signOut" onClick={handleSignOut}>
+            <Typography textAlign="center">Sign Out</Typography>
+          </MenuItem>
         </Menu>
-        {/* </IconButton> */}
       </Toolbar>
     </MuiAppBar>
   );

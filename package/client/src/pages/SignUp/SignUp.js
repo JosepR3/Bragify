@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, Navigate } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 
-import Header from "../../components/Header";
 import fbIcon from "../../assets/images/facebook-48.png";
 import ggIcon from "../../assets/images/google-48.png";
 
@@ -14,13 +12,14 @@ import {
   resetAuthState,
   signUpWithEmailRequest,
   signUpWithGoogleRequest,
+  getUsername
 } from "../../redux/auth/auth-actions";
 
 import { authSelector } from "../../redux/auth/auth-selectors";
 
 function SignUp() {
   const dispatch = useDispatch();
-  const { isSigningUp, signUpError, isAuthenticated, isLoading } =
+  const { isSigningUp, signUpError, isLoading } =
     useSelector(authSelector);
 
   const [user, setUser] = useState({
@@ -36,7 +35,7 @@ function SignUp() {
     dispatch(resetAuthState());
   }, [dispatch]);
 
-  function handleLoginWithGoogle(e) {
+  function handleSignInWithGoogle(e) {
     e.preventDefault();
     dispatch(signUpWithGoogleRequest());
   }
@@ -44,7 +43,8 @@ function SignUp() {
   function handleSubmit(e) {
     e.preventDefault();
 
-    dispatch(signUpWithEmailRequest(user.email, user.password));
+    dispatch(signUpWithEmailRequest( user.email, user.password));
+    dispatch(getUsername(user.username))
   }
 
   function handleInput(e) {
@@ -57,33 +57,33 @@ function SignUp() {
     };
     setUser(newUser);
   }
+
   return (
     <main className="container text-center">
-      <Header />
       <h1 className="main__bragify m-5">Bragify</h1>
-      <section className="login__signup__wrapper container p-5">
+      <section className="signIn__signUp__wrapper container p-5">
         <h1 className="font-bold align-self-start m-4">Sign Up</h1>
         <Button
-          className="login__facebook mt-3 mx-4"
+          className="signIn__facebook mt-3 mx-4"
           type="submit"
           variant="facebook-color"
         >
           <img
-            className="login__signup__icon me-2"
+            className="signIn__signUp__icon me-2"
             src={fbIcon}
             alt="fb-icon"
           ></img>
           Sign Up with Facebook
         </Button>
         <Button
-          className="login__google mt-3 mx-4"
+          className="signIn__google mt-3 mx-4"
           type="button"
           variant="google-color"
-          onClick={handleLoginWithGoogle}
+          onClick={handleSignInWithGoogle}
           disabled={isSigningUp}
         >
           <img
-            className="login__signup__icon me-4"
+            className="signIn__signUp__icon me-4"
             src={ggIcon}
             alt="gg-icon"
           ></img>
@@ -160,7 +160,6 @@ function SignUp() {
             className="my-4 w-100"
             type="submit"
             variant="log-color"
-            // disabled={isLoading}
           >
             Sign Up
             {isLoading && (
@@ -174,8 +173,8 @@ function SignUp() {
         {signUpError && <section className="mt-4">{signUpError}</section>}
         <p className="mt-4">
           Do you have an account?
-          <a className="register_link" href={ROUTES.LOGIN}>
-            Log in
+          <a className="register_link" href={ROUTES.SIGN_IN}>
+            Sign in
           </a>
         </p>
       </section>

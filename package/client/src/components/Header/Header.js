@@ -7,14 +7,13 @@ import { signOut } from "../../redux/auth/auth-actions";
 import { authSelector } from "../../redux/auth/auth-selectors";
 
 
-
 function Header() {
   const dispatch = useDispatch();
   const { isAuthenticated } = useSelector(authSelector);
-
-  function handleSignOut() {
+  
+  const handleSignOut = () => {
     dispatch(signOut());
-  }
+  };
 
   return (
     <header className="header-wrapper p-4">
@@ -26,7 +25,7 @@ function Header() {
           {!isAuthenticated && (
             <>
               <li className="mr-4 px-3 py-2 bg-gray-600">
-                <NavLink to={ROUTES.LOGIN}>Login</NavLink>
+                <NavLink to={ROUTES.SIGN_IN}>Sign in</NavLink>
               </li>
               <li className="mr-4 px-3 py-2 bg-gray-600">
                 <NavLink to={ROUTES.SIGN_UP}>Sign up</NavLink>

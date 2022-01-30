@@ -10,6 +10,10 @@ const UserSchema = Schema(
       type: String,
       trim: true,
     },
+    firstName: {
+      type: String,
+      trim: true,
+    },
     lastName: {
       type: String,
       trim: true,

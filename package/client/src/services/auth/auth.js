@@ -36,7 +36,7 @@ export function singInWithEmailAndPassword(email, password) {
   return auth.signInWithEmailAndPassword(email, password);
 }
 
-export function singUpWithEmailAndPassword(email, password) {
+export function singUpWithEmailAndPassword( email, password) {
   return auth.createUserWithEmailAndPassword(email, password);
 }
 

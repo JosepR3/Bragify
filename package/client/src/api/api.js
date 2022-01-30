@@ -1,11 +1,13 @@
 import { makeRequest } from "./api-utils";
 
 function makeApi(request = makeRequest()) {
-  function signUp(headers) {
+  console.log("makeapiiii")
+  function signUp(headers, data) {
     return request({
       url: "/sign-up",
       requestMethod: "POST",
       headers: headers,
+      data: data
     });
   }
 

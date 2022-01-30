@@ -13,6 +13,7 @@ export const AuthInitialState = {
   currentUser: {
     email: null,
   },
+  username: null,
 };
 
 const AuthReducer = (state = AuthInitialState, action) => {
@@ -23,9 +24,6 @@ const AuthReducer = (state = AuthInitialState, action) => {
         isSigningUp: true,
         signUpError: null,
         isLoading: true,
-        currentUser: {
-          email: action.payload,
-        },
       };
     }
     case AuthTypes.SIGN_UP_ERROR: {
@@ -33,6 +31,7 @@ const AuthReducer = (state = AuthInitialState, action) => {
         ...state,
         isSigningUp: false,
         signUpError: action.payload,
+        isLoading: false,
       };
     }
     case AuthTypes.SIGN_UP_SUCCESS: {
@@ -45,6 +44,7 @@ const AuthReducer = (state = AuthInitialState, action) => {
         currentUser: {
           email: action.payload,
         },
+        username: action.payload,
         isLoading: false,
       };
     }
@@ -71,7 +71,7 @@ const AuthReducer = (state = AuthInitialState, action) => {
         currentUser: {
           email: null,
         },
-        
+        username: null
       };
     }
     case AuthTypes.SEND_PASSWORD_RESET_EMAIL_REQUEST: {

@@ -9,7 +9,8 @@ const { signOut } = require("./sign-out");
  * req.user = { email: userClaims.email, uid: userClaims.uid }
  * req.signOut = auth.signOut
  */
-function login(req = {}, userClaims = {}) {
+function signIn(req = {}, userClaims = {}) {
+  const username = req.username
   const { email, uid } = userClaims;
 
   if (typeof email !== "string" || typeof uid !== "string") {
@@ -17,6 +18,7 @@ function login(req = {}, userClaims = {}) {
   }
 
   req.user = {
+    username: username,
     email: email,
     uid: uid,
   };
@@ -25,5 +27,5 @@ function login(req = {}, userClaims = {}) {
 }
 
 module.exports = {
-  login: login,
+  signIn: signIn,
 };

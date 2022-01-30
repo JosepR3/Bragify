@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 import "./ResetPassword.scss";
 
-import Header from "../../components/Header";
+import Form from "react-bootstrap/Form";
 
 import {
   sendPasswordResetEmail,
@@ -25,11 +25,8 @@ function buttonText(loading, sent) {
 
 function ResetPassword() {
   const dispatch = useDispatch();
-  const {
-    isSendingPasswordReset,
-    passwordResetError,
-    passwordResetSent,
-  } = useSelector(authSelector);
+  const { isSendingPasswordReset, passwordResetSent } =
+    useSelector(authSelector);
 
   const [email, setEmail] = useState("");
 
@@ -49,22 +46,23 @@ function ResetPassword() {
 
   return (
     <>
-      <main className="ResetPassword">
-        <Header />
-        <section className="Login__wrapper">
-          <h1 className="text-2xl font-bold mb-6">Password Reset</h1>
-          <hr className="my-4" />
-          <form onSubmit={handleSubmit}>
-            <label htmlFor="email" className="form-label">
-              Email
-            </label>
-            <input
-              type="text"
-              id="email"
-              className="form-input"
-              value={email}
-              onChange={handleSetEmail}
-            />
+      <main className="container text-center">
+        <section className="resetPassword__wrapper container p-5">
+          <h1 className="font-bold align-self-start">Password reset 🔄</h1>
+          <h5 className="font-bold align-self-start text-secondary ">
+            Please write your email
+          </h5>
+          <Form onSubmit={handleSubmit} classname="mt-2">
+            <Form.Group>
+              <Form.Control
+                name="email"
+                type="email"
+                placeholder="Email"
+                value={email}
+                onChange={handleSetEmail}
+                required
+              />
+            </Form.Group>
             <button
               type="submit"
               className="btn btn-primary w-full"
@@ -72,10 +70,7 @@ function ResetPassword() {
             >
               {buttonText(isSendingPasswordReset, passwordResetSent)}
             </button>
-          </form>
-          {passwordResetError && (
-            <section className="mt-4">{passwordResetError}</section>
-          )}
+          </Form>
         </section>
       </main>
     </>
