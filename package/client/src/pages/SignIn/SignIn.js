@@ -4,8 +4,8 @@ import { Navigate } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 
-import fbIcon from "../../assets/images/facebook-48.png"
-import ggIcon from "../../assets/images/google-48.png"
+import fbIcon from "../../assets/images/facebook-48.png";
+import ggIcon from "../../assets/images/google-48.png";
 import * as ROUTES from "../../routes";
 import "./signIn.scss";
 
@@ -19,7 +19,8 @@ import { authSelector } from "../../redux/auth/auth-selectors";
 
 function SignIn() {
   const dispatch = useDispatch();
-  const { isSigningUp, isAuthenticated, isLoading, signUpError } = useSelector(authSelector);
+  const { isSigningUp, isAuthenticated, isLoading, signUpError } =
+    useSelector(authSelector);
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -64,7 +65,12 @@ function SignIn() {
           type="submit"
           variant="facebook-color"
         >
-          <img className="signIn__signUp__icon me-2" src={fbIcon} alt="fb-icon"></img>Continue with Facebook
+          <img
+            className="signIn__signUp__icon me-2"
+            src={fbIcon}
+            alt="fb-icon"
+          ></img>
+          Continue with Facebook
         </Button>
         <Button
           className="signIn__googUe mt-3 mx-4"
@@ -86,7 +92,7 @@ function SignIn() {
           <hr className="division_line"></hr>
         </div>
         <Form className="px-4" onSubmit={handleSubmit}>
-        <Form.Group className="mb-2">
+          <Form.Group className="mb-2">
             <Form.Control
               name="email"
               type="email"
@@ -107,24 +113,32 @@ function SignIn() {
             />
           </Form.Group>
           <div className="d-flex justify-content-end mb-3">
-            <a href={ROUTES.RESET_PASSWORD}>Reset pasword</a>
+            <a href={ROUTES.RESET_PASSWORD}>Did you forget your password?</a>
           </div>
-          
           <Button
             className="my-4 w-100"
             type="submit"
             variant="log-color"
             disabled={isLoading}
           >
-            Sign in  
-            {isLoading && <div className="spinner-border  spinner-border-sm ml-2" role="status"></div>}
-            {signUpError && <div className="bg-danger rounded mt-3" role="status">Sign in error, please try again</div>}
+            Sign in
+            {isLoading && (
+              <div
+                className="spinner-border  spinner-border-sm ml-2"
+                role="status"
+              ></div>
+            )}
           </Button>
+          {signUpError && (
+            <div className="bg-danger rounded h6" role="status">
+              Wrong email or password, <br />
+              please try again
+            </div>
+          )}
         </Form>
         <p className="mt-4">
           Don't you have an account?
           <a className="register_link" href={ROUTES.SIGN_UP}>
-            {" "}
             Create one
           </a>
         </p>
