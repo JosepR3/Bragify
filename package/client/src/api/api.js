@@ -2,6 +2,7 @@ import { makeRequest } from "./api-utils";
 
 function makeApi(request = makeRequest()) {
   console.log("makeapiiii")
+
   function signUp(headers, data) {
     return request({
       url: "/sign-up",
