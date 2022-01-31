@@ -7,6 +7,7 @@ const cors = require("cors");
 // const { config } = require("./config");
 const { errorMiddleware } = require("./middlewares");
 const { userRouter } = require("./routes");
+const notFoundMiddleware = require("./middlewares/notFound-middleware");
 
 const app = express();
 
@@ -28,7 +29,7 @@ app.get("/", (req, res) => {
 });
 
 app.use(errorMiddleware);
-
+app.use(notFoundMiddleware);
 module.exports = {
   app: app,
 };
