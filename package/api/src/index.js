@@ -1,5 +1,5 @@
 const { app } = require("./server");
-// const { config } = require("./config");
+const { config } = require("./config");
 const { connect } = require("./db/connect");
 
 if (!4000) {
