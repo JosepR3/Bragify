@@ -1,10 +1,12 @@
 import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 
 import SongCard from '../../atoms/SongCard';
 
 export default function SongCarrousel() {
+  const albums = useSelector(state => state.songs.result);
 
   const responsive = {
     desktop: {
@@ -54,16 +56,13 @@ export default function SongCarrousel() {
       containerClass="carousel-container"
       removeArrowOnDeviceType={["tablet", "mobile"]}
       // deviceType={this.props.deviceType}
-      // dotListClass="custom-dot-list-style"
+      dotListClass="custom-dot-list-style"
       itemClass="carousel-item-padding-40-px"
     // customRightArrow={<CustomRightArrow />}
     >
-      <SongCard />
-      <SongCard />
-      <SongCard />
-      <SongCard />
-      <SongCard />
-      <SongCard />
+      {albums.map(album => (
+        <SongCard key={album.id} albumName={album.name} artistName={album.owner.firstName + ' ' + album.owner.lastName} tracks={album.tracks} albumImageUrl={album.tracks[0].thumbnail} />
+      ))}
     </Carousel>
   )
 }

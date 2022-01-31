@@ -6,6 +6,11 @@ import {
     SONGS_RESET,
     SONGS_LOADING,
     SONGS_LOADING_SUCCESS,
+    PLAY_SONG,
+    PAUSE_SONG,
+    STOP_SONG,
+    PLAY_TRACK,
+
 } from "./songs-types"
 
 
@@ -41,6 +46,12 @@ export default function songsReducer(state = initialState, action) {
             return {
                 ...state,
                 status: "success",
+            }
+        case PLAY_TRACK:
+            return {
+                ...state,
+                isPlaying: true,
+                playingTrack: action.payload,
             }
         default:
             return state

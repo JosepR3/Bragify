@@ -13,6 +13,7 @@ import NavBar from "../../components/molecules/NavBar";
 import SideBar from "../../components/organisms/SideBar/SideBar";
 import InnerDash from "../../components/organisms/InnerDash";
 import Copyright from "../../components/atoms/Copyright";
+import EditUserForm from "../../components/organisms/EditUserForm";
 
 // const { isAuthenticated, currentUser } = useSelector(authSelector);
 
@@ -25,7 +26,7 @@ const mdTheme = createTheme({
 function Home() {
   return (
     <>
-    {/* <main className="p-4">
+      {/* <main className="p-4">
       <section className="p-4">
         {isAuthenticated ? (
           <h1 className="text-xl">Hello {currentUser.email}</h1>
@@ -34,32 +35,32 @@ function Home() {
         )}
       </section>
     </main> */}
-    <ThemeProvider theme={mdTheme}>
-      <Box sx={{ display: "flex" }}>
-        <CssBaseline />
-        <SideBar />
-        <Box
-          component="main"
-          sx={{
-            backgroundColor: (theme) =>
-              theme.palette.mode === "dark"
-                ? theme.palette.grey[100]
-                : theme.palette.grey[900],
-            flexGrow: 1,
-            height: "100vh",
-            overflow: "auto",
-          }}
-        >
-          <NavBar />
-          <Toolbar />
-          <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
-            <InnerDash />
-          </Container>
-          <Copyright sx={{ pt: 4, mt: 3 }} />
+      <ThemeProvider theme={mdTheme}>
+        <Box sx={{ display: "flex" }}>
+          <CssBaseline />
+          <SideBar />
+          <Box
+            component="main"
+            sx={{
+              backgroundColor: (theme) =>
+                theme.palette.mode === "dark"
+                  ? theme.palette.grey[100]
+                  : theme.palette.grey[900],
+              flexGrow: 1,
+              height: "100vh",
+              overflow: "auto",
+            }}
+          >
+            <NavBar />
+            <Toolbar />
+            <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
+              <InnerDash />
+            </Container>
+            <Copyright sx={{ pt: 4, mt: 3 }} />
+          </Box>
         </Box>
-      </Box>
-    </ThemeProvider>
-</>
+      </ThemeProvider>
+    </>
   );
 }
 export default Home;

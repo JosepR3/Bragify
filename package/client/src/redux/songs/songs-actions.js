@@ -6,6 +6,10 @@ import {
     SONGS_RESET,
     SONGS_LOADING,
     SONGS_LOADING_SUCCESS,
+    PLAY_SONG,
+    PAUSE_SONG,
+    STOP_SONG,
+    PLAY_TRACK,
 } from "./songs-types"
 
 
@@ -27,11 +31,29 @@ function setSongsError(error) {
     return { type: SONGS_SET_ERROR, payload: error };
 }
 
+function setPlayingSong(track, index) {
+    return {
+        type: PLAY_SONG, payload: { track, index }
+    };
+}
+function setPauseSong() {
+    return { type: PAUSE_SONG };
+
+}
+
+export function playTrack(track) {
+    console.log(track)
+    return {
+        type: { type: PLAY_TRACK, payload: track }
+    }
+
+}
+
 function giveLike(id) {
 
 }
 
-function loadMySongs(currentUser) {
+function getMySongs(currentUser) {
 
 }
 
@@ -46,8 +68,6 @@ function editSong(id) {
 function deleteSong(id) {
 
 }
-
-
 
 export function fetchAllSongs() {
     return async (dispatch) => {

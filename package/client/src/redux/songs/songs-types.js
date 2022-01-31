@@ -4,3 +4,7 @@ export const SONGS_SET_RESULT = "SONGS_SET_RESULT";
 export const SONGS_RESET = "SONGS_RESET";
 export const SONGS_LOADING = "SONGS_LOADING";
 export const SONGS_LOADING_SUCCESS = "SONGS_LOADING_SUCCESS";
+export const PLAY_SONG = "PLAY_SONG";
+export const PAUSE_SONG = "PAUSE_SONG";
+export const STOP_SONG = "STOP_SONG";
+export const PLAY_TRACK = "PLAY_TRACK";
