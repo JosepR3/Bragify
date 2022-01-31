@@ -1,12 +1,11 @@
 import { useNavigate } from "react-router-dom";
-import { Alert, Button } from "react-bootstrap";
-import { useState } from "react";
+
 import "./style.css";
 
 const NotFound = () => {
   const navigate = useNavigate();
   return (
-    <>
+    <main className="container">
       <div className="moon"></div>
       <div className="moon__crater moon__crater1"></div>
       <div className="moon__crater moon__crater2"></div>
@@ -22,7 +21,7 @@ const NotFound = () => {
         <div className="error__title">404</div>
         <div className="error__subtitle">Hmmm...</div>
         <div className="error__description">
-          It looks like one of the developers fell asleep
+        It seems that you have taken the wrong route :(
         </div>
         <button onClick={() => navigate("/")} className="error__button">
           Back to Home
@@ -56,7 +55,7 @@ const NotFound = () => {
           <div className="astronaut__head-visor-flare2"></div>
         </div>
       </div>
-    </>
+    </main>
   );
 };
 

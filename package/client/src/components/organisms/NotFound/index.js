@@ -1,1 +1,0 @@
-export {defaulf} from "./NotFound"
