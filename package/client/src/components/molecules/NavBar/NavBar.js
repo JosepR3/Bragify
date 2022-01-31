@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import { signOut } from "../../../redux/auth/auth-actions";
+import { signOut, editProfile } from "../../../redux/auth/auth-actions";
 import * as ROUTES from "../../../routes";
 import { useDispatch } from "react-redux";
 import { authSelector } from "../../../redux/auth/auth-selectors";
@@ -26,6 +26,10 @@ function NavBar() {
 
   const handleSignOut = () => {
     dispatch(signOut());
+  };
+
+  const handleEditProfile = () => {
+    dispatch(editProfile());
   };
 
   const handleCloseUserMenu = () => {
@@ -79,7 +83,7 @@ function NavBar() {
           open={Boolean(anchorElUser)}
           onClose={handleCloseUserMenu}
         >
-          <MenuItem key="editProfile" >
+          <MenuItem key="editProfile" onClick={handleEditProfile}>
             <Typography textAlign="center">Edit Profile</Typography>
           </MenuItem>
           <MenuItem key="signOut" onClick={handleSignOut}>
