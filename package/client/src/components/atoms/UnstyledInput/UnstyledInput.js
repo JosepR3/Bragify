@@ -1,11 +1,10 @@
 import * as React from 'react';
 import InputUnstyled from '@mui/base/InputUnstyled';
 import { styled } from '@mui/system';
-import SearchIcon from '@mui/icons-material/Search';
 
 const blue = {
-  200: '#F170FF',
-  400: '#C5DDE3',
+  200: '#80BFFF',
+  400: '#3399FF',
 };
 
 const grey = {
@@ -23,12 +22,11 @@ const grey = {
 
 const StyledInputElement = styled('input')(
   ({ theme }) => `
-  width: 220px;
-  height: 10px;
+  width: 320px;
   font-size: 0.875rem;
-  font-family: circular-std, Roboto;
+  font-family: IBM Plex Sans, sans-serif;
   font-weight: 400;
-  line-height: 1.6;
+  line-height: 1.5;
   color: ${theme.palette.mode === 'dark' ? grey[300] : grey[900]};
   background: ${theme.palette.mode === 'dark' ? grey[900] : grey[50]};
   border: 1px solid ${theme.palette.mode === 'dark' ? grey[800] : grey[300]};
@@ -55,5 +53,5 @@ const CustomInput = React.forwardRef(function CustomInput(props, ref) {
 });
 
 export default function UnstyledInput() {
-  return <CustomInput aria-label="Demo input" placeholder="🔎︎ Search" />;
+  return <CustomInput aria-label="Demo input" placeholder="Type the corresponding data here..." />;
 }
