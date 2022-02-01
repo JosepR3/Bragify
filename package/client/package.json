@@ -61,6 +61,12 @@
     ]
   },
   "devDependencies": {
+    "eslint": "^7.32.0",
+    "eslint-config-standard": "^16.0.3",
+    "eslint-plugin-import": "^2.25.4",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^5.2.0",
+    "eslint-plugin-react": "^7.28.0",
     "sass": "^1.49.0",
     "sass-loader": "^12.4.0",
     "webpack": "^5.67.0"

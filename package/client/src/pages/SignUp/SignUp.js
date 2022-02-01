@@ -12,7 +12,7 @@ import {
   resetAuthState,
   signUpWithEmailRequest,
   signUpWithGoogleRequest,
-  getUsername
+  editUser
 } from "../../redux/auth/auth-actions";
 
 import { authSelector } from "../../redux/auth/auth-selectors";
@@ -44,7 +44,7 @@ function SignUp() {
     e.preventDefault();
 
     dispatch(signUpWithEmailRequest( user.email, user.password));
-    dispatch(getUsername(user.username))
+    dispatch(editUser(user))
   }
 
   function handleInput(e) {
