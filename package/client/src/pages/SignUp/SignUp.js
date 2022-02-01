@@ -19,7 +19,7 @@ import { authSelector } from "../../redux/auth/auth-selectors";
 
 function SignUp() {
   const dispatch = useDispatch();
-  const { isSigningUp, signUpError, isLoading } =
+  const { isSigningUp, signUpError, isLoading, isAuthenticated } =
     useSelector(authSelector);
 
   const [user, setUser] = useState({
@@ -43,7 +43,7 @@ function SignUp() {
   function handleSubmit(e) {
     e.preventDefault();
 
-    dispatch(signUpWithEmailRequest( user.email, user.password));
+    dispatch(signUpWithEmailRequest( user));
     dispatch(editUser(user))
   }
 
@@ -57,6 +57,10 @@ function SignUp() {
     };
     setUser(newUser);
   }
+
+  // if (isAuthenticated) {
+  //   return <Navigate to={ROUTES.HOME} />;
+  // }
 
   return (
     <main className="container text-center">

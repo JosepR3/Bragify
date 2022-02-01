@@ -28,16 +28,15 @@ export function signUpWithGoogleRequest() {
   };
 }
 
-export function signUpWithEmailRequest(email, password) {
+export function signUpWithEmailRequest( user ) {
   return async function signUpThunk(dispatch) {
     dispatch(signUpRequest());
     try {
-      await auth.singUpWithEmailAndPassword(email, password);
-      
+    const result = await auth.singUpWithEmailAndPassword(user.email, user.password);
     } catch (error) {
       dispatch(signUpError(error.message));
     }
-    
+
   };
 }
 
@@ -62,34 +61,30 @@ export function syncSignIn() {
     const response = await api.signUp({
       Authorization: `Bearer ${token}`,
     });
-    
+
     if (response.errorMessage) {
       return dispatch(signUpError(response.errorMessage));
     }
-
     return dispatch(signUpSuccess(response.data.data));
   };
 }
 
 export function editUser( user ){
+  console.log("edit User")
   return async function syncSignInThunk(dispatch) {
     const token = await auth.getCurrentUserToken();
-    console.log(token)
     if (!token) {
       return dispatch(signOutSuccess());
     }
-    console.log(user)
       const reqBody = {
         firstName: user.firstName,
         lastName: user.lastName,
         username: user.username,
         email: user.email
     }
-    console.log(reqBody)
-
-    const response = await api.editUser({
+    await api.editUser({
       headers:
-      {Authorization: `Bearer ${token}`},
+        {Authorization: `Bearer ${token}`},
       body: reqBody
     });
   }
