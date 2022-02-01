@@ -40,7 +40,7 @@ export default function SongCarrousel() {
 
 
   return (
-
+    // https://youtu.be/o1chMISeTC0?t=1112  evenly spaced grid
     <Carousel
       swipeable={false}
       draggable={true}
@@ -60,6 +60,7 @@ export default function SongCarrousel() {
       itemClass="carousel-item-padding-40-px"
     // customRightArrow={<CustomRightArrow />}
     >
+      
       {albums.map(album => (
         <SongCard key={album.id} albumName={album.name} artistName={album.owner.firstName + ' ' + album.owner.lastName} tracks={album.tracks} albumImageUrl={album.tracks[0].thumbnail} />
       ))}

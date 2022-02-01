@@ -17,8 +17,6 @@ import LastPageIcon from '@mui/icons-material/LastPage';
 import PlayArrowSharpIcon from '@mui/icons-material/PlayArrowSharp';
 import PauseSharpIcon from '@mui/icons-material/PauseSharp';
 
-
-
 import { playSong } from '../../../api/mock-apis';
 import { pauseSong } from '../../../api/mock-apis';
 
@@ -36,15 +34,6 @@ export default function SongCard({ albumName, artistName, tracks, albumImageUrl 
     const [isPlaying, setIsPlaying] = useState(false);
 
     const handleClick = () => {
-        setIsPlaying(!isPlaying);
-        // if (isPlaying) {
-        //     pauseSong(tracks[0].url);
-        //     console.log('paused');
-        //     // dispatch({ type: 'PLAY_SONG', payload: { url: tracks[0].url } });8
-        // }
-        // else {
-        // dispatch({ type: 'PLAY_SONG', payload: { url: tracks[0].url } });
-        // };
 
         dispatch(playTrack(tracks));
 
@@ -59,11 +48,11 @@ export default function SongCard({ albumName, artistName, tracks, albumImageUrl 
 
 
     return (
-        <Card sx={{ display: 'flex', bgcolor: '#424242', padding: "10px", margin: '10px', borderRadius: '10%' }}>
+        <Card sx={{ display: 'flex', bgcolor: '#424242', padding: "10px", margin: '10px', borderRadius: '10%' }} >
             <Box sx={{ display: 'flex', flexDirection: 'column' }}>
 
                 <CardContent sx={{ flex: '1 0 auto' }}>
-                    {albumName !== null && <Typography component="div" variant="h5" color="#ffebee">
+                    {albumName !== null && <Typography component="div" variant="h7" color="#ffebee">
                         {albumName !== null && albumName}
                     </Typography>}
                     {artistName !== null && <Typography variant="subtitle1" color="#ffebee" component="div">
@@ -73,7 +62,7 @@ export default function SongCard({ albumName, artistName, tracks, albumImageUrl 
                 <CardMedia
                     onClick={viewSongs}
                     component="img"
-                    sx={{ width: '100%', height: '100%', backgroundColor: '#424242', borderRadius: '50%', position: 'relative', }}
+                    sx={{ width: '100%', height: '100%', backgroundColor: '#424242', position: 'relative', }}
                     image={albumImageUrl}
                     alt="Live from space album cover"
 
@@ -83,8 +72,6 @@ export default function SongCard({ albumName, artistName, tracks, albumImageUrl 
                     {isPlaying ? <PauseSharpIcon style={{ fill: "white" }} onClick={handleClick} id="pause-button" /> : <PlayArrowSharpIcon style={{ fill: "white" }} onClick={handleClick} id="play-button" />}
 
                 </Box>
-
-
             </Box>
         </Card>
     );

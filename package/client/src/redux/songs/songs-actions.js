@@ -36,15 +36,15 @@ function setPlayingSong(track, index) {
         type: PLAY_SONG, payload: { track, index }
     };
 }
+
 function setPauseSong() {
     return { type: PAUSE_SONG };
 
 }
 
 export function playTrack(track) {
-    console.log(track)
     return {
-        type: { type: PLAY_TRACK, payload: track }
+        type: PLAY_TRACK, payload: { track }
     }
 
 }

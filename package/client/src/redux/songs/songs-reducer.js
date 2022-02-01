@@ -48,6 +48,7 @@ export default function songsReducer(state = initialState, action) {
                 status: "success",
             }
         case PLAY_TRACK:
+            console.log(action.payload)
             return {
                 ...state,
                 isPlaying: true,
