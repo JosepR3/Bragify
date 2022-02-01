@@ -20,9 +20,19 @@ function makeApi(request = makeRequest()) {
     });
   }
 
+  function editUser({ headers, body }) {
+    return request({
+      url: "/edit-user",
+      requestMethod: "PUT",
+      body: body,
+      headers: headers,
+    });
+  }
+
   return {
     signUp: signUp,
     signOut: signOut,
+    editUser: editUser
   };
 }
 

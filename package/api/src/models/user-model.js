@@ -1,15 +1,11 @@
 const mongoose = require("mongoose");
-const { Schema } = require("mongoose");
+const  Schema  = mongoose.Schema
 const { isEmail } = require("validator");
 
-const UserSchema = Schema(
+const userSchema = new Schema(
   {
     // we use the uid from firebase as the _id
     _id: String,
-    firstName: {
-      type: String,
-      trim: true,
-    },
     firstName: {
       type: String,
       trim: true,
@@ -38,6 +34,6 @@ const UserSchema = Schema(
   }
 );
 
-const User = mongoose.model("user", UserSchema);
+const User = mongoose.model("user", userSchema);
 
 module.exports = User;

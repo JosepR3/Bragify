@@ -28,21 +28,19 @@ export function signUpWithGoogleRequest() {
   };
 }
 
-export function signUpWithEmailRequest(name, email, password) {
+export function signUpWithEmailRequest( user ) {
   return async function signUpThunk(dispatch) {
     dispatch(signUpRequest());
     try {
-      await auth.singUpWithEmailAndPassword(name, email, password);
-      
+    const result = await auth.singUpWithEmailAndPassword(user.email, user.password);
     } catch (error) {
       dispatch(signUpError(error.message));
     }
-    
+
   };
 }
 
 export function signInWithEmailRequest(email, password) {
-  console.log(email, password);
   return async function signUpThunk(dispatch) {
     dispatch(signUpRequest(email));
     try {
@@ -53,11 +51,6 @@ export function signInWithEmailRequest(email, password) {
   };
 }
 
-export function getUsername(username){
-  return username;
-  }
-  
-
 export function syncSignIn() {
   return async function syncSignInThunk(dispatch) {
     const token = await auth.getCurrentUserToken();
@@ -67,16 +60,34 @@ export function syncSignIn() {
 
     const response = await api.signUp({
       Authorization: `Bearer ${token}`,
-      data:"micaracuando"
     });
-    
+
     if (response.errorMessage) {
       return dispatch(signUpError(response.errorMessage));
     }
-
     return dispatch(signUpSuccess(response.data.data));
   };
-  
+}
+
+export function editUser( user ){
+  console.log("edit User")
+  return async function syncSignInThunk(dispatch) {
+    const token = await auth.getCurrentUserToken();
+    if (!token) {
+      return dispatch(signOutSuccess());
+    }
+      const reqBody = {
+        firstName: user.firstName,
+        lastName: user.lastName,
+        username: user.username,
+        email: user.email
+    }
+    await api.editUser({
+      headers:
+        {Authorization: `Bearer ${token}`},
+      body: reqBody
+    });
+  }
 }
 
 export const signUpSuccess = (user) => ({
