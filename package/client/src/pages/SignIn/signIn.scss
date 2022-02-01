@@ -1,7 +1,11 @@
-@use '../../assets/scss/conf.scss' as a;
+@use "../../assets/scss/conf.scss" as a;
 
 .signIn__signUp__wrapper {
-  background: linear-gradient(158deg, rgba(46, 46, 46, 0.86) 0%, hsl(0, 0%, 5%) 100%);
+  background: linear-gradient(
+    158deg,
+    rgba(46, 46, 46, 0.86) 0%,
+    hsl(0, 0%, 5%) 100%
+  );
   color: white;
   display: flex;
   flex-direction: column;
@@ -10,58 +14,62 @@
 }
 // ---------LOGO AND NAME
 
-.main__bragify{
+.main__bragify {
   color: white;
   font-size: 4rem;
 }
 
 // ---------------- BUTTONS
-.btn{
+.btn {
   height: 3.5rem;
   font-size: 1.2rem;
-   &-facebook-color{
-     color: white;
-     border-radius: 15px;
-     }
+  &-facebook-color {
+    color: white;
+    border-radius: 15px;
+  }
 
-   &-google-color{
-     background-color: white;
-     color: a.$gg-green;
-     border-radius: 10px;
-   }
-   &-log-color{
-      border: none;
-      background-image: linear-gradient(45deg, a.$brand-color 20%, transparent 60%);
-      background-position: 100%;
-      background-size: 400%;
-      transition: background 500ms ease-in-out;
-    }
+  &-google-color {
+    background-color: white;
+    color: a.$gg-green;
+    border-radius: 10px;
+  }
+  &-log-color {
+    border: none;
+    background-image: linear-gradient(
+      45deg,
+      a.$brand-color 20%,
+      transparent 60%
+    );
+    background-position: 100%;
+    background-size: 400%;
+    transition: background 500ms ease-in-out;
+  }
   &-log-color:hover {
-      background-position: 0;
-      border: none;
-    }
+    background-position: 0;
+    border: none;
+  }
 }
 
-.signIn__signUp__icon{
+.signIn__signUp__icon {
   width: 1.8rem;
 }
 
 // ----------------INPUTS
-  .form-control{
-    height: 3.5rem;
-    font-size: 1.2rem;
-    background-color: a.$web-background-color;
-    color: whitesmoke;
-    border: 1px solid black;
+.form-control {
+  height: 3.5rem;
+  font-size: 1.2rem;
+  background-color: a.$web-background-color;
+  color: whitesmoke;
+  border: 1px solid black;
 
-    &::placeholder{
-      color:rgb(185, 165, 165);
-    }
+  &::placeholder {
+    color: rgb(185, 165, 165);
   }
+}
 
 // -------------DIVISOR
 
-.breaker{
+.breaker {
   display: flex;
   flex-direction: row;
   color: white;
@@ -69,12 +77,11 @@
   justify-content: space-around;
 }
 
-.division_line{
+.division_line {
   width: 7.8rem;
   height: 1px;
   background-color: white;
   border-style: none;
   margin-left: 0;
   margin-right: 0;
-  
 }

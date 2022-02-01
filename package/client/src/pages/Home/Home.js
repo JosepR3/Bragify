@@ -1,4 +1,4 @@
-import  React from "react";
+import React from "react";
 import { Navigate } from "react-router-dom";
 import { authSelector } from "../../redux/auth/auth-selectors";
 import { useSelector } from "react-redux";
@@ -15,21 +15,22 @@ import NavBar from "../../components/molecules/NavBar";
 import SideBar from "../../components/organisms/SideBar/SideBar";
 import InnerDash from "../../components/organisms/InnerDash";
 import Copyright from "../../components/atoms/Copyright";
+import EditProfile from "../../components/molecules/EditProfile";
 
 const mdTheme = createTheme({
   typography: {
-    fontFamily: ["Roboto", "Mochiy Pop P One"].join(","),
+    fontFamily: ["circular-std", "Roboto"].join(","),
+    fontSize: 20,
   },
 });
 
 function Home() {
-
-  const { isAuthenticated } = useSelector(authSelector);
+  const { isAuthenticated, isEditing } = useSelector(authSelector);
 
   if (!isAuthenticated) {
     return <Navigate to={ROUTES.SIGN_IN} />;
   }
-  
+
   return (
     <>
       <ThemeProvider theme={mdTheme}>
@@ -51,7 +52,8 @@ function Home() {
             <NavBar />
             <Toolbar />
             <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
-              <InnerDash />
+              {isEditing && <EditProfile />}
+              {!isEditing && <InnerDash />}
             </Container>
             <Copyright sx={{ pt: 4, mt: 3 }} />
           </Box>

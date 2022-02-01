@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import { signOut } from "../../../redux/auth/auth-actions";
+import { signOut, editProfile } from "../../../redux/auth/auth-actions";
 import * as ROUTES from "../../../routes";
 import { useDispatch } from "react-redux";
 import { authSelector } from "../../../redux/auth/auth-selectors";
@@ -28,6 +28,10 @@ function NavBar() {
     dispatch(signOut());
   };
 
+  const handleEditProfile = () => {
+    dispatch(editProfile());
+  };
+
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
@@ -45,7 +49,7 @@ function NavBar() {
           variant="h6"
           color="inherit"
           noWrap
-          sx={{ flexGrow: 1, fontFamily: "Mochiy Pop P One" }}
+          sx={{ flexGrow: 1, fontFamily: 'Circular Std, sans-serif' }}
         >
           BRAGIFY MUSIC
         </Typography>
@@ -79,7 +83,7 @@ function NavBar() {
           open={Boolean(anchorElUser)}
           onClose={handleCloseUserMenu}
         >
-          <MenuItem key="editProfile" >
+          <MenuItem key="editProfile" onClick={handleEditProfile}>
             <Typography textAlign="center">Edit Profile</Typography>
           </MenuItem>
           <MenuItem key="signOut" onClick={handleSignOut}>

@@ -100,6 +100,10 @@ export const signOutRequest = () => ({
   type: AuthTypes.SIGN_OUT_REQUEST,
 });
 
+export const editProfile = () => ({
+  type: AuthTypes.EDIT_PROFILE,
+});
+
 export function signOut() {
   return async function signOutThunk(dispatch) {
     dispatch(signOutRequest());
