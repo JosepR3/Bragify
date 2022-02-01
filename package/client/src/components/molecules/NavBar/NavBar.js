@@ -15,6 +15,8 @@ import Avatar from "@mui/material/Avatar";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 
+
+
 function NavBar() {
   const dispatch = useDispatch();
   const { currentUser } = useSelector(authSelector);
