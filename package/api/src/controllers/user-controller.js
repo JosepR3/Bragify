@@ -38,7 +38,6 @@ async function signOut(req, res) {
 }
 
 const editUser = (req, res) => {
-   
   const { uid } = req.user;
 
   User.findByIdAndUpdate(uid, req.body, { useFindAndModify: false })

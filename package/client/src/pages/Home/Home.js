@@ -17,7 +17,7 @@ import SideBar from "../../components/organisms/SideBar/SideBar";
 import InnerDash from "../../components/organisms/InnerDash";
 import Copyright from "../../components/atoms/Copyright";
 import EditProfile from "../../components/molecules/EditProfile";
-import SingleAlbum from "../../components/atoms/singleAlbum";
+import TrackSongsList from "../../components/organisms/TrackSongList";
 
 
 const mdTheme = createTheme({
@@ -55,8 +55,9 @@ function Home() {
             <NavBar />
             <Toolbar />
             <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
-              {isEditing && <EditProfile />}
-              {!isEditing && <InnerDash />}
+              {/* {isEditing && <EditProfile />}
+              {!isEditing && <InnerDash />} */}
+              <TrackSongsList/>
             </Container>
             <Copyright sx={{ pt: 4, mt: 3 }} />
           </Box>
