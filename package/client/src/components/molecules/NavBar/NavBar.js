@@ -17,7 +17,7 @@ import MenuItem from "@mui/material/MenuItem";
 
 function NavBar() {
   const dispatch = useDispatch();
-  const { currentUser } = useSelector(authSelector);
+  const { currentUser, isEditing } = useSelector(authSelector);
   const [anchorElUser, setAnchorElUser] = React.useState();
 
   const handleOpenUserMenu = (event) => {
