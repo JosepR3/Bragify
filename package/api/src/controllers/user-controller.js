@@ -41,12 +41,12 @@ async function signOut(req, res) {
 }
 
 async function updateUser(req, res, next) {
-  console.log(req.headers)
+  console.log(req)
   // try {
-    const { email, firstName,lastName,username} = req.user;
-    console.log(req.user)
-    // const response = await UserRepo.findOne({ email:"sergi.sergi@gmail.com"});
-    console.log(response);
+    // const { email, firstName,lastName,username} = req.user;
+    // console.log(req.user)
+  // const response = await UserRepo.findOneAndUpdate({ email: "sergi.sergi@gmail.com" }, {$inc:{"firstName": "sergiño","lastName": "roca","username":"serroca"}});
+  //   console.log(response);
 //     if (response.error) {
 //       return res.status(400).send({
 //         data: null,
@@ -60,14 +60,14 @@ async function updateUser(req, res, next) {
 //         error: null,
 //       });
 //     }
-// console.log(req)
-    // await UserRepo.findOneAndUpdate({
-    //   email: email,
-    //   firstName: "sergiño",
-    //   lastName: "roca",
-    //   username:"serroca"
+// // console.log(req)
+//     await data.findOneAndUpdate({
+//       email: email,
+//       firstName: "sergiño",
+//       lastName: "roca",
+//       username:"serroca"
       
-    // });
+//     });
 
   //   res.status(201).send({
   //     data: uid,
