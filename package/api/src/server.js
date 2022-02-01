@@ -4,7 +4,7 @@ const morgan = require("morgan");
 const { json } = require("body-parser");
 const cors = require("cors");
 const { errorMiddleware } = require("./middlewares");
-const { userRouter } = require("./routes");
+const { userRouter,trackRouter} = require("./routes");
 const notFoundMiddleware = require("./middlewares/notFound-middleware");
 
 const app = express();
@@ -19,6 +19,8 @@ app.use(
 );
 
 app.use(userRouter);
+app.use(trackRouter);
+
 
 app.get("/", (req, res) => {
   res.status(200).send({

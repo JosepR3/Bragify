@@ -1,6 +1,7 @@
 const userController = require("./user-controller");
-const trackController
+const trackController=require("./track-controller")
 
 module.exports = {
   userController: userController,
+  trackController:trackController
 };

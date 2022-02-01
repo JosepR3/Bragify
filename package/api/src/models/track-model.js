@@ -31,18 +31,18 @@ const TrackSchema = Schema(
       trim: true,
     },
     genre: {
-      type: Schema.Types.ObjectId,
-      ref: "genre",
+      // type: Schema.Types.ObjectId,
+      // ref: "genre",
     },
     authorId: {
-      type: Schema.Types.ObjectId,
-      ref: "user",
+      // type: Schema.Types.ObjectId,
+      // ref: "user",
     },
     artists: {
       type: [
         {
-          type: Schema.Types.ObjectId,
-          ref: "user",
+          // type: Schema.Types.ObjectId,
+          // ref: "user",
         },
       ],
       default: [],
@@ -50,8 +50,8 @@ const TrackSchema = Schema(
     playlists: {
       type: [
         {
-          type: Schema.Types.ObjectId,
-          ref: "playlist",
+          // type: Schema.Types.ObjectId,
+          // ref: "playlist",
         },
       ],
       default: [],
@@ -59,8 +59,8 @@ const TrackSchema = Schema(
     likedBy: {
       type: [
         {
-          type: Schema.Types.ObjectId,
-          ref: "user",
+          // type: Schema.Types.ObjectId,
+          // ref: "user",
         },
       ],
       default: [],

@@ -4,7 +4,9 @@ let db = "mongodb+srv://bragifyAssembler123:bragifyAssembler123@cluster0.4pjlp.m
 
 function connect() {
   return mongoose.connect(db, {
-    autoIndex: true,
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useCreateIndex: true
   });
 }
 

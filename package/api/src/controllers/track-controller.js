@@ -3,34 +3,38 @@ const { handleDbResponse } = require("../repositories/repo-utils");
 
 
 async function createTrack(req, res, next) {
+  // console.log("Inside")
   // const {
   //   body: { title, url, thumbnail, genre, duration = 0 },
   //   user: { uid },
   // } = req;
-
+  
   try {
-    if (!title && !url) {
-      res.status(400).send({
-        data: null,
-        error: "Missing Fields (title, url)",
-      });
-    }
+  //   // if (!title && !url) {
+  //   //   res.status(400).send({
+  //   //     data: null,
+  //   //     error: "Missing Fields (title, url)",
+  //   //   });
+  //   // }
 
-    const user = await UserRepo.findOne({
-      firebase_id: uid,
-    });
+  //   // const user = await UserRepo.findOne({
+  //   //   firebase_id: "ge2WtP90RRV4udE7OMvNGmWsYl43",
+  //   // });
 
     const dbResponse = await TrackRepo.create({
-      title: title,
-      url: url ? url : null,
-      thumbnail: thumbnail ? thumbnail : null,
-      duration: duration ? duration : 0,
-      genre: genre ? genre : null,
-      authorId: user._id,
+      title: "title",
+      url: "url",
+      thumbnail: "thumbnail" ,
+      duration:  0,
+      genre: "pop" ,
+      authorId: "ge2WtP90RRV4udE7OMvNGmWsYl43",
     });
 
     handleDbResponse(res, dbResponse);
   } catch (error) {
     next(error);
   }
+}
+module.exports = {
+  createTrack:createTrack
 }
