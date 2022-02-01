@@ -17,7 +17,7 @@ import MenuItem from "@mui/material/MenuItem";
 
 function NavBar() {
   const dispatch = useDispatch();
-  const { currentUser } = useSelector(authSelector);
+  // const { currentUser } = useSelector(authSelector);
   const [anchorElUser, setAnchorElUser] = React.useState();
 
   const handleOpenUserMenu = (event) => {
@@ -55,7 +55,8 @@ function NavBar() {
           noWrap
           sx={{ mr: "20px", fontFamily: "Mochiy Pop P One" }}
         >
-          Welcome {currentUser.email}
+          Welcome
+          {/* Welcome {currentUser.email} */}
         </Typography>
 
         <Tooltip title="Open settings">

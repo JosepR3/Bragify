@@ -44,9 +44,21 @@ const AuthReducer = (state = AuthInitialState, action) => {
         currentUser: {
           email: action.payload,
         },
-        username: action.payload,
         isLoading: false,
       };
+    }
+    case AuthTypes.UPDATE_SUCCESS: {
+      console.log(action.payload)
+      // return {
+      //   ...state,
+      //   isAuthenticated: true,
+      //   isSigningUp: false,
+      //   signUpError: null,
+      //   currentUser: {
+      //     email: action.payload,
+      //   },
+      //   isLoading: false,
+      // };
     }
     case AuthTypes.SIGN_OUT_REQUEST: {
       return {

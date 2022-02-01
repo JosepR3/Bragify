@@ -28,77 +28,58 @@ export function signUpWithGoogleRequest() {
   };
 }
 
-export function signUpWithEmailRequest(name, email, password) {
+export function signUpWithEmailRequest(user) {
   return async function signUpThunk(dispatch) {
     dispatch(signUpRequest());
     try {
-      await auth.singUpWithEmailAndPassword(name, email, password);
+      const response = await auth.singUpWithEmailAndPassword(user.email, user.password);
+      if (response) {
+        dispatch(UpdateUsersync(user))
+      }
+    } catch (error) {
+      dispatch(signUpError(error.message));
+    }
+  }
+}
+
+
+// export function getUsername(username){
+  //   return username;
+  //   }
+  
+  export function UpdateUsersync(user) {
+    return async function syncSignInThunk(dispatch) {
+      const token = await auth.getCurrentUserToken();
+      const response = await api.update({
+        Authorization: `Bearer ${token}`,
+        data:user
+      });
       
-    } catch (error) {
-      dispatch(signUpError(error.message));
-    }
+      if (response.errorMessage) {
+        console.log(errorMessage);
+      }
+      
+      // return dispatch(console.log(response.data));
+    };
     
-  };
-}
+  }
 
-export function signInWithEmailRequest(email, password) {
-  console.log(email, password);
-  return async function signUpThunk(dispatch) {
-    dispatch(signUpRequest(email));
-    try {
-      await auth.singInWithEmailAndPassword(email, password);
-    } catch (error) {
-      dispatch(signUpError(error.message));
-    }
-  };
-}
-
-export function getUsername(username){
-  return username;
+  export function signInWithEmailRequest(email, password) {
+    return async function signUpThunk(dispatch) {
+      dispatch(signUpRequest());
+      try {
+        await auth.singInWithEmailAndPassword(email, password);
+      } catch (error) {
+        dispatch(signUpError(error.message));
+      }
+    };
   }
   
-
-export function syncSignIn() {
-  return async function syncSignInThunk(dispatch) {
+  export function signOut() {
+    return async function signOutThunk(dispatch) {
+      dispatch(signOutRequest());
+      
     const token = await auth.getCurrentUserToken();
-    if (!token) {
-      return dispatch(signOutSuccess());
-    }
-
-    const response = await api.signUp({
-      Authorization: `Bearer ${token}`,
-      data:"micaracuando"
-    });
-    
-    if (response.errorMessage) {
-      return dispatch(signUpError(response.errorMessage));
-    }
-
-    return dispatch(signUpSuccess(response.data.data));
-  };
-  
-}
-
-export const signUpSuccess = (user) => ({
-  type: AuthTypes.SIGN_UP_SUCCESS,
-  payload: user,
-});
-
-
-export const signOutRequest = () => ({
-  type: AuthTypes.SIGN_OUT_REQUEST,
-});
-
-export function signOut() {
-  return async function signOutThunk(dispatch) {
-    dispatch(signOutRequest());
-
-    const token = await auth.getCurrentUserToken();
-
-    if (!token) {
-      return dispatch(signOutSuccess());
-    }
-
     const response = await api.signOut({
       Authorization: `Bearer ${token}`,
     });
@@ -112,6 +93,40 @@ export function signOut() {
     return dispatch(signOutSuccess());
   };
 }
+export function syncSignIn() {
+  return async function syncSignInThunk(dispatch) {
+    const token = await auth.getCurrentUserToken();
+    if (!token) {
+      return dispatch(signOutSuccess());
+    }
+
+    const response = await api.signUp({
+      Authorization: `Bearer ${token}`,
+    });
+    
+    if (response.errorMessage) {
+      return dispatch(signUpError(response.errorMessage));
+    }
+
+    return dispatch(signUpSuccess(response.data));
+  };
+  
+}
+
+export const updateSuccess = (user) => ({
+  type: AuthTypes.UPDATE_SUCCESS,
+  payload: user,
+});
+export const signUpSuccess = (user) => ({
+  type: AuthTypes.SIGN_UP_SUCCESS,
+  payload: user,
+});
+
+
+export const signOutRequest = () => ({
+  type: AuthTypes.SIGN_OUT_REQUEST,
+});
+
 
 export const signOutError = (message) => ({
   type: AuthTypes.SIGN_OUT_ERROR,

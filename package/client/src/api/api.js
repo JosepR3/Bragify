@@ -1,14 +1,13 @@
 import { makeRequest } from "./api-utils";
 
 function makeApi(request = makeRequest()) {
-  console.log("makeapiiii")
   function signUp(headers, data) {
     return request({
       url: "/sign-up",
       requestMethod: "POST",
       headers: headers,
       data: data
-    });
+    })
   }
 
   function signOut(headers) {
@@ -19,9 +18,20 @@ function makeApi(request = makeRequest()) {
     });
   }
 
+
+  function update(headers, data) {
+    // console.log(data);
+    return request({
+      url: "/me",
+      requestMethod: "PATCH",
+      headers: headers,
+    })
+  }
+
   return {
     signUp: signUp,
     signOut: signOut,
+    update,update
   };
 }
 
