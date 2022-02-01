@@ -49,7 +49,7 @@ function NavBar() {
           variant="h6"
           color="inherit"
           noWrap
-          sx={{ flexGrow: 1, fontFamily: "Mochiy Pop P One" }}
+          sx={{ flexGrow: 1, fontFamily: 'Circular Std, sans-serif' }}
         >
           BRAGIFY MUSIC
         </Typography>

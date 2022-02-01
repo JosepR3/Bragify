@@ -19,7 +19,8 @@ import EditProfile from "../../components/molecules/EditProfile";
 
 const mdTheme = createTheme({
   typography: {
-    fontFamily: ["Roboto", "Mochiy Pop P One"].join(","),
+    fontFamily: ["circular-std", "Roboto"].join(","),
+    fontSize: 20,
   },
 });
 
