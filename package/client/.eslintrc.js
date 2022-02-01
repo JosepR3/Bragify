@@ -20,6 +20,6 @@ module.exports = {
   ],
   rules: {
     quotes: 0,
-    semicolon: "always"
+    "semicolon": "always"
   }
 }
