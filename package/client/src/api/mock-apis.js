@@ -16,13 +16,13 @@ audio.addEventListener('ended', () => {
 
 
 
-export async function playSong(url) {
+export async function playTrack(url) {
     audio.src = url
     audio.play()
 
 }
 
-export async function pauseSong() {
+export async function pauseTrack() {
     audio.pause()
 
 }

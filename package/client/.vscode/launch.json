@@ -3,11 +3,11 @@
     {
       "type": "aws-sam",
       "request": "direct-invoke",
-      "name": "client:src/redux/songs/songs-actions.playTrack (nodejs14.x)",
+      "name": "client:src/redux/tracks/tracks-actions.playTrack (nodejs14.x)",
       "invokeTarget": {
         "target": "code",
         "projectRoot": "${workspaceFolder}/",
-        "lambdaHandler": "src/redux/songs/songs-actions.playTrack"
+        "lambdaHandler": "src/redux/tracks/tracks-actions.playTrack"
       },
       "lambda": {
         "runtime": "nodejs14.x",
@@ -18,11 +18,11 @@
     {
       "type": "aws-sam",
       "request": "direct-invoke",
-      "name": "client:src/api/mock-apis.pauseSong (nodejs14.x)",
+      "name": "client:src/api/mock-apis.pauseTracks (nodejs14.x)",
       "invokeTarget": {
         "target": "code",
         "projectRoot": "${workspaceFolder}/",
-        "lambdaHandler": "src/api/mock-apis.pauseSong"
+        "lambdaHandler": "src/api/mock-apis.pauseTracks"
       },
       "lambda": {
         "runtime": "nodejs14.x",
