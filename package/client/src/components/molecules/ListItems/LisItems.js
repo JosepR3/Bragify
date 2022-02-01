@@ -3,28 +3,31 @@ import ListItem from '@mui/material/ListItem';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import ListSubheader from '@mui/material/ListSubheader';
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-import PeopleIcon from '@mui/icons-material/People';
-import AssignmentIcon from '@mui/icons-material/Assignment';
 import LibraryMusicIcon from '@mui/icons-material/LibraryMusic';
+import AlbumIcon from '@mui/icons-material/Album';
+import ExploreIcon from '@mui/icons-material/Explore';
+import RadioIcon from '@mui/icons-material/Radio';
+import PlayCircleOutlineIcon from '@mui/icons-material/PlayCircleOutline';
+import PlaylistPlayIcon from '@mui/icons-material/PlaylistPlay';
+import StarBorderIcon from '@mui/icons-material/StarBorder';
 
 export const mainListItems = (
   <div>
     <ListItem button>
       <ListItemIcon>
-        <LibraryMusicIcon />
+        <PlayCircleOutlineIcon style={{ fill: '#F170FF' }} />
       </ListItemIcon>
       <ListItemText primary="Listen" />
     </ListItem>
     <ListItem button>
       <ListItemIcon>
-        <ShoppingCartIcon />
+        <ExploreIcon style={{ fill: '#F170FF' }}  />
       </ListItemIcon>
       <ListItemText primary="Explore" />
     </ListItem>
     <ListItem button>
       <ListItemIcon>
-        <PeopleIcon />
+        <RadioIcon style={{ fill: '#F170FF' }}  />
       </ListItemIcon>
       <ListItemText primary="Radio" />
     </ListItem>
@@ -33,24 +36,36 @@ export const mainListItems = (
 
 export const secondaryListItems = (
   <div>
-    <ListSubheader inset>Library</ListSubheader>
+    <ListSubheader style={{background: 'inherit', color: '#C5DDE3'}}>Library</ListSubheader>
     <ListItem button>
       <ListItemIcon>
-        <AssignmentIcon />
+        <LibraryMusicIcon style={{ fill: '#F170FF' }} />
       </ListItemIcon>
       <ListItemText primary="Songs" />
     </ListItem>
     <ListItem button>
       <ListItemIcon>
-        <AssignmentIcon />
+        <AlbumIcon style={{ fill: '#F170FF' }} />
       </ListItemIcon>
-      <ListItemText primary="Artists" />
+      <ListItemText primary="Albums" />
     </ListItem>
     <ListItem button>
       <ListItemIcon>
-        <AssignmentIcon />
+        <StarBorderIcon style={{ fill: '#F170FF' }} />
+      </ListItemIcon >
+      <ListItemText primary="Artists" />
+    </ListItem>
+
+  </div>);
+
+export const playLists = (
+  <div>
+    <ListSubheader style={{background: 'inherit', color: '#C5DDE3'}}>Playlists</ListSubheader>
+    <ListItem button>
+      <ListItemIcon>
+        <PlaylistPlayIcon style={{ fill: '#F170FF' }} />
       </ListItemIcon>
-      <ListItemText primary="Albums" />
+      <ListItemText primary="List" />
     </ListItem>
   </div>
 );

@@ -13,7 +13,8 @@ import Copyright from "../../components/atoms/Copyright";
 
 const mdTheme = createTheme({
   typography: {
-    fontFamily: ["Roboto", "Mochiy Pop P One"].join(","),
+    fontFamily: ["circular-std", "Roboto"].join(","),
+    fontSize: 20,
   },
 });
 
@@ -22,7 +23,6 @@ function Home() {
     <ThemeProvider theme={mdTheme}>
       <Box sx={{ display: "flex" }}>
         <CssBaseline />
-       
         <SideBar />
         <Box
           component="main"
@@ -36,7 +36,7 @@ function Home() {
             overflow: "auto",
           }}
         >
-           <NavBar />
+          <NavBar />
           <Toolbar />
           <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
             <InnerDash />
