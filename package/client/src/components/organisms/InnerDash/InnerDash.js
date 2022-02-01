@@ -39,6 +39,5 @@ export default function InnerDash() {
         <br />
 
         {tracks && <MusicPlayer />}
-        <EditUserForm />
     </div>;
 }
