@@ -10,7 +10,6 @@ const { signOut } = require("./sign-out");
  * req.signOut = auth.signOut
  */
 function signIn(req = {}, userClaims = {}) {
-  const username = req.username
   const { email, uid } = userClaims;
 
   if (typeof email !== "string" || typeof uid !== "string") {
@@ -18,7 +17,6 @@ function signIn(req = {}, userClaims = {}) {
   }
 
   req.user = {
-    username: username,
     email: email,
     uid: uid,
   };
