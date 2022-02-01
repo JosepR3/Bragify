@@ -76,12 +76,13 @@ export function editUser( user ){
     if (!token) {
       return dispatch(signOutSuccess());
     }
-      const reqBody = {
-        firstName: user.firstName,
-        lastName: user.lastName,
-        username: user.username,
-        email: user.email
+      const reqBody = { user
+        // firstName: user.firstName,
+        // lastName: user.lastName,
+        // username: user.username,
+        // email: user.email
     }
+    console.log(user)
     await api.editUser({
       headers:
         {Authorization: `Bearer ${token}`},

@@ -5,7 +5,6 @@ import SongCarrousel from '../../../components/molecules/SongCarrousel';
 import MusicPlayer from '../../molecules/MusicPlayer';
 import './InnerDash.scss';
 import { fetchAllSongs } from '../../../redux/songs/songs-actions';
-import EditUserForm from '../EditUserForm';
 
 export default function InnerDash() {
     const songs = useSelector(state => state.songs.result);
