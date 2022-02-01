@@ -3,6 +3,7 @@ import { Navigate } from "react-router-dom";
 import { authSelector } from "../../redux/auth/auth-selectors";
 import { useSelector } from "react-redux";
 import * as ROUTES from "../../routes";
+
 // Material UI
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -16,7 +17,8 @@ import SideBar from "../../components/organisms/SideBar/SideBar";
 import InnerDash from "../../components/organisms/InnerDash";
 import Copyright from "../../components/atoms/Copyright";
 import EditProfile from "../../components/molecules/EditProfile";
-// import EditUserForm from "../../components/organisms/EditUserForm";
+import SingleAlbum from "../../components/atoms/singleAlbum";
+
 
 const mdTheme = createTheme({
   typography: {

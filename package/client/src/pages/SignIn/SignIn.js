@@ -84,7 +84,7 @@ function SignIn() {
             src={ggIcon}
             alt="gg-icon"
           ></img>
-          Sign Up with Google
+          Sign in with Google
         </Button>
         <div className="breaker my-5">
           <hr className="division_line"></hr>
