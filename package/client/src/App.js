@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import {  Route, Routes,NotFoundRoute} from "react-router-dom";
+import {  Route, Routes, NotFoundRoute} from "react-router-dom";
 import { useDispatch } from "react-redux";
 import "./app.scss";
 
@@ -9,9 +9,11 @@ import SignUp from "./pages/SignUp";
 import SignIn from "./pages/SignIn";
 import ResetPassword from "./pages/ResetPassword";
 import NotFound from "./pages/NotFound";
+import TrackSongsList from "./components/organisms/TrackSongList/TrackSongsList";
 
 import { onAuthStateChanged } from "./services/auth";
 import { syncSignIn, signOut } from "./redux/auth/auth-actions";
+import EditUserForm from "./components/organisms/EditUserForm";
 
 function App() {
   const dispatch = useDispatch();

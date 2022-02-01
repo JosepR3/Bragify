@@ -15,6 +15,8 @@ import Avatar from "@mui/material/Avatar";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 
+
+
 function NavBar() {
   const dispatch = useDispatch();
   const { currentUser, isEditing } = useSelector(authSelector);
@@ -49,7 +51,7 @@ function NavBar() {
           variant="h6"
           color="inherit"
           noWrap
-          sx={{ flexGrow: 1, fontFamily: "Mochiy Pop P One" }}
+          sx={{ flexGrow: 1, fontFamily: 'Circular Std, sans-serif' }}
         >
           BRAGIFY MUSIC
         </Typography>

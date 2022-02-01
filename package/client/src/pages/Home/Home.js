@@ -16,15 +16,17 @@ import SideBar from "../../components/organisms/SideBar/SideBar";
 import InnerDash from "../../components/organisms/InnerDash";
 import Copyright from "../../components/atoms/Copyright";
 import EditProfile from "../../components/molecules/EditProfile";
+// import EditUserForm from "../../components/organisms/EditUserForm";
 
 const mdTheme = createTheme({
   typography: {
-    fontFamily: ["Roboto", "Mochiy Pop P One"].join(","),
+    fontFamily: ["circular-std", "Roboto"].join(","),
+    fontSize: 20,
   },
 });
 
 function Home() {
-  const { isAuthenticated, isEditing } = useSelector(authSelector);
+  const { isAuthenticated, isEditing, currentUser } = useSelector(authSelector);
 
   if (!isAuthenticated) {
     return <Navigate to={ROUTES.SIGN_IN} />;
