@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import {  Route, Routes, NotFoundRoute} from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import "./app.scss";
 
@@ -9,11 +9,9 @@ import SignUp from "./pages/SignUp";
 import SignIn from "./pages/SignIn";
 import ResetPassword from "./pages/ResetPassword";
 import NotFound from "./pages/NotFound";
-import TrackSongsList from "./components/organisms/TrackSongList/TrackSongsList";
 
 import { onAuthStateChanged } from "./services/auth";
 import { syncSignIn, signOut } from "./redux/auth/auth-actions";
-import EditUserForm from "./components/organisms/EditUserForm";
 
 function App() {
   const dispatch = useDispatch();
@@ -39,7 +37,7 @@ function App() {
   return (
     <div className="app__container">
       <Routes>
-      <Route  path="*"   element={<NotFound />} />
+        <Route path="*" element={<NotFound />} />
         <Route exact path={ROUTES.SIGN_UP} element={<SignUp />} />
         <Route exact path={ROUTES.SIGN_IN} element={<SignIn />} />
         <Route exact path={ROUTES.RESET_PASSWORD} element={<ResetPassword/>} />

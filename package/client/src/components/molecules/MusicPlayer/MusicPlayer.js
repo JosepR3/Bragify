@@ -5,14 +5,12 @@ import AudioPlayer from 'react-h5-audio-player';
 // import 'react-h5-audio-player/lib/styles.css';
 import 'react-h5-audio-player/src/styles.scss';
 import './MusicPlayer.scss';
-import useTimer from '../../../hooks/useTimer';
 import { fetchAllSongs } from '../../../redux/songs/songs-actions';
 
 // https://www.npmjs.com/package/react-h5-audio-player
 export default function MusicPlayer() {
 
     const songTrack = useSelector(state => state.songs.playingTrack);
-    const { runTimer } = useTimer()
     console.log(songTrack);
     console.log(songTrack.track)
     console.log(songTrack.track[0])
@@ -37,8 +35,7 @@ export default function MusicPlayer() {
         }
     }
 
-    return <div>
-        {console.log(songTrack[0])}
+    return (
         <AudioPlayer
             autoPlay
             autoPlayAfterSrcChange={true}
@@ -49,10 +46,8 @@ export default function MusicPlayer() {
             onEnded={handleClickNext}
             header={songsToPlay[number].name + " - " + songsToPlay[number].owner.firstName + " " + songsToPlay[number].owner.lastName}
             src={songTrack && songsToPlay[number].url}
-
-        // other props here
-        />;
-    </div>
-
+            className='music-player'
+        />
+    )
 }
 

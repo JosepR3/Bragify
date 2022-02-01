@@ -2,14 +2,12 @@ import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 import SongCarrousel from '../../../components/molecules/SongCarrousel';
-import MusicPlayer from '../../molecules/MusicPlayer';
 import './InnerDash.scss';
 import { fetchAllSongs } from '../../../redux/songs/songs-actions';
 import EditUserForm from '../EditUserForm';
 
 export default function InnerDash() {
     const songs = useSelector(state => state.songs.result);
-    const tracks = useSelector(state => state.songs.playingTrack);
     const error = useSelector(state => state.songs.error);
     const status = useSelector(state => state.songs.status);
     const dispatch = useDispatch();
@@ -38,7 +36,5 @@ export default function InnerDash() {
         <br />
         <br />
 
-        {tracks && <MusicPlayer />}
-        <EditUserForm />
     </div>;
 }
