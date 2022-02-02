@@ -1,4 +1,5 @@
-import { getAllPlayLists } from "../../api/mock-apis";
+import { getAllPlayLists, asyncLikeSong } from "../../api/mock-apis";
+
 import {
     FETCH_SONGS,
     SONGS_SET_ERROR,
@@ -27,7 +28,7 @@ function setSongsResult(result) {
     return { type: SONGS_SET_RESULT, payload: result };
 }
 
-function setSongsError(error) {
+export function setSongsError(error) {
     return { type: SONGS_SET_ERROR, payload: error };
 }
 
@@ -37,11 +38,6 @@ function setPlayingSong(track, index) {
     };
 }
 
-function setPauseSong() {
-    return { type: PAUSE_SONG };
-
-}
-
 export function playTrack(track) {
     return {
         type: PLAY_TRACK, payload: { track }
@@ -49,7 +45,14 @@ export function playTrack(track) {
 
 }
 
-function giveLike(id) {
+export function giveLike(id) {
+    try {
+        const result = asyncLikeSong(id);
+        console.log(id)
+        return result;
+    } catch (error) {
+        console.log(error);
+    }
 
 }
 
@@ -80,4 +83,6 @@ export function fetchAllSongs() {
             dispatch(setSongsError(error));
         }
     };
-} 
+}
+
+

@@ -3,8 +3,8 @@ const initialState = {
     status: "idle",
     error: undefined,
     isPlaying: false,
+    isLiked: false,
     playingTrack: "",
-    playingTrackIndex: 0,
     myPlaylist: [],
     mySongs: [],
 }

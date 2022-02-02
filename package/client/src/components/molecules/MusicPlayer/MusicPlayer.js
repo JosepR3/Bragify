@@ -1,25 +1,17 @@
-import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import AudioPlayer from 'react-h5-audio-player';
+import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
 
-// import 'react-h5-audio-player/lib/styles.css';
+import AudioPlayer from 'react-h5-audio-player';
 import 'react-h5-audio-player/src/styles.scss';
 import './MusicPlayer.scss';
-import { fetchAllSongs } from '../../../redux/songs/songs-actions';
 
 // https://www.npmjs.com/package/react-h5-audio-player
 export default function MusicPlayer() {
 
     const songTrack = useSelector(state => state.songs.playingTrack);
-    console.log(songTrack);
-    console.log(songTrack.track)
-    console.log(songTrack.track[0])
-    console.log(songTrack.track[0].url)
-
     const songsToPlay = songTrack.track
 
     const [number, setNumber] = useState(0);
-    const dispatch = useDispatch();
 
     function handleClickPrevious() {
         setNumber(number - 1);
@@ -44,10 +36,20 @@ export default function MusicPlayer() {
             onClickPrevious={handleClickPrevious}
             onClickNext={handleClickNext}
             onEnded={handleClickNext}
-            header={songsToPlay[number].name + " - " + songsToPlay[number].owner.firstName + " " + songsToPlay[number].owner.lastName}
-            src={songTrack && songsToPlay[number].url}
+            header={songsToPlay && songsToPlay[number].name}
+            src={songsToPlay && songsToPlay[number].url}
             className='music-player'
+            timeFormat='auto'
+            hasDefaultKeyBindings={true}
+            footer={songsToPlay && songsToPlay[number].owner.firstName ? songsToPlay[number].owner.firstName + " " + songsToPlay[number].owner.lastName : "Enjoy the song!"}
+            onError={(e) => {
+                console.log(e);
+            }}
+            onPlayError={(e) => {
+                console.log(e);
+            }}
         />
-    )
+    );
 }
+
 

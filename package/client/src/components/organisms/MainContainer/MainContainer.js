@@ -13,9 +13,9 @@ import MusicPlayer from '../../molecules/MusicPlayer';
 
 function MainContainer() {
 
-    const tracks = useSelector(state => state.songs.playingTrack);
+  const tracks = useSelector(state => state.songs.playingTrack);
 
-    const { isAuthenticated, isEditing, currentUser } = useSelector(authSelector);
+  const { isAuthenticated, isEditing, currentUser } = useSelector(authSelector);
 
   return (
     <Box
@@ -31,15 +31,15 @@ function MainContainer() {
       }}
     >
       <NavBar />
-      
+
       <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
-      
-        
+
+
         <InnerDash />
       </Container>
-      
+
       <Copyright sx={{ pt: 4, mt: 3 }} />
-        {tracks && <MusicPlayer style={{ position: "absolute", bottom: 0, left: 0, right: 0 }}/>}
+      <MusicPlayer style={{ position: "absolute", bottom: 0, left: 0, right: 0 }} />
     </Box>
   );
 }

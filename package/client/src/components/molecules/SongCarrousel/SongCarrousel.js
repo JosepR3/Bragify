@@ -60,9 +60,9 @@ export default function SongCarrousel() {
       itemClass="carousel-item-padding-40-px"
     // customRightArrow={<CustomRightArrow />}
     >
-      
+
       {albums.map(album => (
-        <SongCard key={album.id} albumName={album.name} artistName={album.owner.firstName + ' ' + album.owner.lastName} tracks={album.tracks} albumImageUrl={album.tracks[0].thumbnail} />
+        <SongCard key={album.id} albumName={album.name && album.name} artistName={album.owner.firstName && album.owner.firstName + ' ' + album.owner.lastName} tracks={album.tracks} albumImageUrl={album.tracks[0].thumbnail} />
       ))}
     </Carousel>
   )
