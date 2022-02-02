@@ -20,7 +20,7 @@ function TrackSongsList() {
 
     }
     const handleDelete = (e) => {
-        dispatch(deleteTrack(e.target.id));
+        dispatch(deleteTrack("61f9b76a43ffd69a9d7e4f75"));
     }
     const handleLike = (e) => {
         dispatch(giveLike(e.target.id));
