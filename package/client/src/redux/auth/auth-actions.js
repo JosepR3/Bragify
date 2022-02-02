@@ -33,9 +33,9 @@ export function signUpWithEmailRequest(user) {
     dispatch(signUpRequest());
     try {
       const response = await auth.singUpWithEmailAndPassword(user.email, user.password);
-      if (response) {
-        dispatch(UpdateUsersync(user))
-      }
+      // if (response !== null) {
+      //   dispatch(UpdateUsersync(user))
+      // }
     } catch (error) {
       dispatch(signUpError(error.message));
     }
@@ -52,11 +52,10 @@ export function signUpWithEmailRequest(user) {
       const token = await auth.getCurrentUserToken();
       const response = await api.update({
         Authorization: `Bearer ${token}`,
-        data:user
-      });
+      },user);
       
-      if (response.errorMessage) {
-        console.log(errorMessage);
+      if (response) {
+        console.log(response);
       }
       
       // return dispatch(console.log(response.data));

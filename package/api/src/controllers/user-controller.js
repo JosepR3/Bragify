@@ -1,8 +1,10 @@
 const { UserRepo } = require("../repositories");
+const db = require("../models");
 async function signUp(req, res, next) {
 
   try {
     const { email, uid } = req.user;
+    console.log(email)
     const response = await UserRepo.findOne({ email: email });
     if (response.error) {
       return res.status(400).send({
@@ -21,6 +23,10 @@ async function signUp(req, res, next) {
     await UserRepo.create({
       _id: uid,
       email: email,
+      firstName: "",
+      lastName: "",
+      username:""
+
     });
 
     res.status(201).send({
@@ -41,41 +47,41 @@ async function signOut(req, res) {
 }
 
 async function updateUser(req, res, next) {
-  console.log(req)
-  // try {
-    // const { email, firstName,lastName,username} = req.user;
-    // console.log(req.user)
-  // const response = await UserRepo.findOneAndUpdate({ email: "sergi.sergi@gmail.com" }, {$inc:{"firstName": "sergiño","lastName": "roca","username":"serroca"}});
-  //   console.log(response);
-//     if (response.error) {
-//       return res.status(400).send({
-//         data: null,
-//         error: response.error,
-//       });
-//     }
+  try {
+    const response = await UserRepo.findOne({ email: "ch1@gmail.com" },);
+    // const response=await UserRepo.findOneAndUpdate({ email: "ch1@gmail.com" },{
+    //   email: "sergiño@gmail.com",
+    // }, { useFindAndModify: false })
+  
+console.log(response);
+    if (response.error) {
+      return res.status(400).send({
+        data: null,
+        error: response.error,
+      });
+    }
 
-//     if (response.data) {
-//       return res.status(200).send({
-//         data: "OK",
-//         error: null,
-//       });
-//     }
-// // console.log(req)
-//     await data.findOneAndUpdate({
-//       email: email,
-//       firstName: "sergiño",
-//       lastName: "roca",
-//       username:"serroca"
-      
-//     });
+    await UserRepo.findOneAndUpdate({ email: "joseprrr@gmail.com" },{
+      firstName: "sergiño",
+      lastName: "roca",
+      username: "serroca"
+    }, { useFindAndModify: true })
+  
 
-  //   res.status(201).send({
-  //     data: uid,
-  //     error: null,
-  //   });
-  // } catch (error) {
-  //   next(error);
-  // }
+    if (response.data) {
+      return res.status(200).send({
+        data: "",
+        error: null,
+      });
+    }
+
+    res.status(201).send({
+      data: "andresito",
+      error: null,
+    });
+  } catch (error) {
+    next(error);
+  }
 }
 
 module.exports = {
