@@ -4,8 +4,9 @@ import { useSelector, useDispatch } from 'react-redux';
 import MusicPlayer from '../../molecules/MusicPlayer'
 import PlayArrowSharpIcon from '@mui/icons-material/PlayArrowSharp';
 import { giveLike } from '../../../redux/songs/songs-actions';
+import withLayout from '../../HOC/withLayout';
 // LIKE SONGS
-export default function TrackSongsList() {
+function TrackSongsList() {
 
     const songs = useSelector(state => state.songs.result);
     const songTrack = useSelector(state => state.songs.playingTrack);
@@ -16,7 +17,9 @@ export default function TrackSongsList() {
     const dispatch = useDispatch();
 
     const handlePlay = (e) => {
-        dispatch(setPlayingSong(songsToPlay, e.target.id));
+
+
+
     }
     const handleLike = (e) => {
         dispatch(giveLike(e.target.id));
@@ -44,3 +47,5 @@ export default function TrackSongsList() {
     </div>;
 
 }
+
+export default withLayout(TrackSongsList);
