@@ -14,7 +14,7 @@ import MusicPlayer from '../../molecules/MusicPlayer';
 function MainContainer() {
 
   const tracks = useSelector(state => state.songs.playingTrack);
-
+console.log(tracks);
   const { isAuthenticated, isEditing, currentUser } = useSelector(authSelector);
 
   return (
