@@ -1,4 +1,4 @@
-import { getAllPlayLists, asyncLikeSong } from "../../api/mock-apis";
+import { getAllPlayLists, asyncLikeSong, asyncDeleteTrack } from "../../api/mock-apis";
 import {
     FETCH_TRACKS,
     TRACKS_SET_ERROR,
@@ -71,7 +71,15 @@ function editTracks(id) {
 
 }
 
-export function deleteTracks(id) {
+export function deleteTrack(id) {
+    try {
+        const result = asyncDeleteTrack(id);
+        console.log(id)
+        return result;
+    } catch (error) {
+        console.log(error);
+    }
+
 
 }
 

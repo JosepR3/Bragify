@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import MusicPlayer from '../../molecules/MusicPlayer'
 import PlayArrowSharpIcon from '@mui/icons-material/PlayArrowSharp';
-import { giveLike } from '../../../redux/tracks/tracks-actions';
+import { giveLike, deleteTrack } from '../../../redux/tracks/tracks-actions';
 import withLayout from '../../HOC/withLayout';
 // LIKE SONGS
 function TrackSongsList() {
@@ -18,6 +18,9 @@ function TrackSongsList() {
 
     const handlePlay = (e) => {
 
+    }
+    const handleDelete = (e) => {
+        dispatch(deleteTrack(e.target.id));
     }
     const handleLike = (e) => {
         dispatch(giveLike(e.target.id));
@@ -37,6 +40,7 @@ function TrackSongsList() {
                     key={song.id}>{song.name}
                     <button id={song.id} onClick={handleLike}>LIKE</button>
                     <PlayArrowSharpIcon style={{ fill: "white" }} onClick={handlePlay} id="play-button" />
+                    <button id={song.id} onClick={handleDelete}>DELETE</button>
                 </li>
             })}
         </ul>

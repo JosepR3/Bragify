@@ -17,7 +17,7 @@ export async function getAllPlayLists() {
 export async function asyncLikeSong(id) {
     const url = `${BASE_URL}api/tracks/${id}/like`;
     console.log(url);
-    const response = await axios.get(url, { headers: { 'Authorization': 'Bearer ' + 'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzZXJnaSIsImF1dGgiOiJST0xFX1VTRVIiLCJleHAiOjE2NDM4MzIxNjd9.bRWTZdvHOsvIdd5I9doX8VlpHMOS5kgydJ-wc_nI4sa7lgKhKNPTBbpW3pPayhQ9INU6m-e4Ov0FkkoR8Qhsnw' } }).catch(error => {
+    const response = await axios.put(url, { headers: { 'Authorization': 'Bearer ' + 'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzZXJnaSIsImF1dGgiOiJST0xFX1VTRVIiLCJleHAiOjE2NDM4MzIxNjd9.bRWTZdvHOsvIdd5I9doX8VlpHMOS5kgydJ-wc_nI4sa7lgKhKNPTBbpW3pPayhQ9INU6m-e4Ov0FkkoR8Qhsnw' } }).catch(error => {
         console.log(error);
 
         setTracksError(error);
@@ -27,14 +27,16 @@ export async function asyncLikeSong(id) {
 }
 
 
+export async function asyncDeleteTrack(id) {
+    const url = `${BASE_URL}api/tracks/${id}`;
+    console.log(url);
+    const response = await axios.get(url, { headers: { 'Authorization': 'Bearer ' + 'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzZXJnaSIsImF1dGgiOiJST0xFX1VTRVIiLCJleHAiOjE2NDM4MzIxNjd9.bRWTZdvHOsvIdd5I9doX8VlpHMOS5kgydJ-wc_nI4sa7lgKhKNPTBbpW3pPayhQ9INU6m-e4Ov0FkkoR8Qhsnw' } }).catch(error => {
+        console.log(error);
 
-// export async function playTrack(url) {
-//     audio.src = url
-//     audio.play()
-// }
+        setTracksError(error);
+    });
+    console.log(response)
+    return response.data;
+}
 
-
-//     export async function pauseTrack() {
-//         audio.pause()
-//     }
 
