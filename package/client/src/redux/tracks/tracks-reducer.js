@@ -9,7 +9,6 @@ import {
     PLAY_TRACK,
     PAUSE_TRACK,
     STOP_TRACK,
-    PLAY_TRACK,
 
 } from "./tracks-types"
 
@@ -22,7 +21,6 @@ export default function tracksReducer(state = initialState, action) {
                 status: "idle",
                 error: undefined,
                 isPlaying: false,
-
             }
         case TRACKS_SET_ERROR:
             return {
@@ -30,9 +28,10 @@ export default function tracksReducer(state = initialState, action) {
                 error: action.payload,
             }
         case TRACKS_SET_RESULT:
+        console.log(action.payload)
             return {
                 ...state,
-                result: action.payload,
+                tracks: action.payload,
             }
         case TRACKS_RESET:
             return {

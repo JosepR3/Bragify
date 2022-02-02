@@ -1,7 +1,6 @@
 import { makeRequest } from "./api-utils";
 
 function makeApi(request = makeRequest()) {
-  console.log("makeapiiii")
 
   function signUp(headers, data) {
     return request({
@@ -29,10 +28,19 @@ function makeApi(request = makeRequest()) {
     });
   }
 
+  function getAllTracks() {
+    return request({
+      url: "/get-tracks",
+      requestMethod: "GET",
+          });
+  }
+
+
   return {
     signUp: signUp,
     signOut: signOut,
-    editUser: editUser
+    editUser: editUser,
+    getAllTracks: getAllTracks
   };
 }
 

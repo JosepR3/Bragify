@@ -41,7 +41,7 @@ export const secondaryListItems = (
       <ListItemIcon>
         <LibraryMusicIcon style={{ fill: '#F170FF' }} />
       </ListItemIcon>
-      <ListItemText primary="Trackss" />
+      <ListItemText primary="" />
     </ListItem>
     <ListItem button>
       <ListItemIcon>

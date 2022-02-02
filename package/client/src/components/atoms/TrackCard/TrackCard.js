@@ -17,19 +17,18 @@ import LastPageIcon from '@mui/icons-material/LastPage';
 import PlayArrowSharpIcon from '@mui/icons-material/PlayArrowSharp';
 import PauseSharpIcon from '@mui/icons-material/PauseSharp';
 
-import { playTrack } from '../../../api/mock-apis';
+// import { playTrack } from '../../../api/mock-apis';
 import { pauseTrack } from '../../../api/mock-apis';
 
 import { playTrack } from '../../../redux/tracks/tracks-actions';
 
-import './TrackCard.scss';
 
-export default function TrackCard({ albumName, artistName, tracks, albumImageUrl }) {
+
+export default function TrackCard({ albumName, artistName, albumImageUrl }) {
     const theme = useTheme();
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const tracks = useSelector(state => state.tracks);
-    const { currentTrack } = tracks;
     const { currentTrack } = tracks;
     const [isPlaying, setIsPlaying] = useState(false);
 
