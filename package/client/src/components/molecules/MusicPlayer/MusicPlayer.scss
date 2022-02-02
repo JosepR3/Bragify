@@ -1,16 +1,22 @@
 body {
-  background-color: black;
+  background-color: #2D2F2C;
 }
 
 .music-player {
   position: absolute;
   bottom: 0;
-  left: 0;
+  left: 260px;
   right: 0;
+  width: calc(100% - 260px);
 }
 
 $rhap_theme-color: #868686 !default; // Color of all buttons and volume/progress indicators
-$rhap_background-color: #fff !default; // Color of the player background
-$rhap_bar-color: #e4e4e4 !default; // Color of volume and progress bar
+$rhap_background-color: #2D2F2C !default; // Color of the player background
+$rhap_bar-color: red !default; // Color of volume and progress bar
 $rhap_time-color: #333 !default; // Font color of current time and duration
 $rhap_font-family: inherit !default; // Font family of current time and duration
+
+.rhap_container{
+  // background-color: $rhap_theme-color;
+}
+
