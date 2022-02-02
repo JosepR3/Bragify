@@ -1,28 +1,40 @@
 import axios from "axios";
-const cors = require("cors")
+import { setTracksError } from "../redux/tracks/tracks-actions";
 
-const BASE_URL = 'apollo.eu-west-3.elasticbeanstalk.com/'
+const BASE_URL = 'http://apollo.eu-west-3.elasticbeanstalk.com/'
 
 export async function getAllPlayLists() {
-    const url = 'http://apollo.eu-west-3.elasticbeanstalk.com/api/playlists'
-    const response = await axios.get(url, { headers: { 'Authorization': 'Bearer ' + 'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzZXJnaSIsImF1dGgiOiJST0xFX1VTRVIiLCJleHAiOjE2NDM3NDAyMjd9.uEGzsjwoD_zssBsiC0IPcHPOAZZhrIP2OatVtYHeWrYcBVwvl9Gz245ERPgnzm2LFPSU7mCpqEdWKn1xGdTDdQ' } })
+    const url = `${BASE_URL}api/playlists`;
+    const response = await axios.get(url, { headers: { 'Authorization': 'Bearer ' + 'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzZXJnaSIsImF1dGgiOiJST0xFX1VTRVIiLCJleHAiOjE2NDM4MzIxNjd9.bRWTZdvHOsvIdd5I9doX8VlpHMOS5kgydJ-wc_nI4sa7lgKhKNPTBbpW3pPayhQ9INU6m-e4Ov0FkkoR8Qhsnw' } }).catch(error => {
+        console.log(error);
+        setTracksError(error);
+    });
+
     return response.data;
 }
 
-const audio = new Audio
-audio.addEventListener('ended', () => {
-    updateAudio()
-})
 
+export async function asyncLikeSong(id) {
+    const url = `${BASE_URL}api/tracks/${id}/like`;
+    console.log(url);
+    const response = await axios.get(url, { headers: { 'Authorization': 'Bearer ' + 'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzZXJnaSIsImF1dGgiOiJST0xFX1VTRVIiLCJleHAiOjE2NDM4MzIxNjd9.bRWTZdvHOsvIdd5I9doX8VlpHMOS5kgydJ-wc_nI4sa7lgKhKNPTBbpW3pPayhQ9INU6m-e4Ov0FkkoR8Qhsnw' } }).catch(error => {
+        console.log(error);
 
-
-export async function playTrack(url) {
-    audio.src = url
-    audio.play()
-
+        setTracksError(error);
+    });
+    console.log(response)
+    return response.data;
 }
 
-export async function pauseTrack() {
-    audio.pause()
 
-}
+
+// export async function playTrack(url) {
+//     audio.src = url
+//     audio.play()
+// }
+
+
+//     export async function pauseTrack() {
+//         audio.pause()
+//     }
+

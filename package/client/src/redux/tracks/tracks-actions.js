@@ -6,38 +6,37 @@ import {
     TRACKS_RESET,
     TRACKS_LOADING,
     TRACKS_LOADING_SUCCESS,
-    PLAY_TRACK,
     PAUSE_TRACK,
     STOP_TRACK,
     PLAY_TRACK,
 } from "./tracks-types"
 
 
-function setTracksLoading() {
+export function setTracksLoading() {
     return { type: TRACKS_LOADING };
 
 }
 
-function setTracksLoadingSuccess() {
+export function setTracksLoadingSuccess() {
     return { type: TRACKS_LOADING_SUCCESS };
 
 }
 
-function setTracksResult(result) {
+export function setTracksResult(result) {
     return { type: TRACKS_SET_RESULT, payload: result };
 }
 
-function setTracksError(error) {
+export function setTracksError(error) {
     return { type: TRACKS_SET_ERROR, payload: error };
 }
 
-function setPlayingTracks(track, index) {
+export function setPlayingTracks(track, index) {
     return {
         type: PLAY_TRACK, payload: { track, index }
     };
 }
 
-function setPauseTracks() {
+export function setPauseTracks() {
     return { type: PAUSE_TRACK };
 
 }
@@ -49,15 +48,15 @@ export function playTrack(track) {
 
 }
 
-function giveLike(id) {
+export function giveLike(id) {
 
 }
 
-function getMyTracks(currentUser) {
+export function getMyTracks(currentUser) {
 
 }
 
-function createTracks(data) {
+export function createTracks(data) {
 
 }
 
@@ -65,7 +64,7 @@ function editTracks(id) {
 
 }
 
-function deleteTracks(id) {
+export function deleteTracks(id) {
 
 }
 

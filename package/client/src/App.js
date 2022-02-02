@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import {  Route, Routes, NotFoundRoute} from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import "./app.scss";
 
@@ -9,12 +9,13 @@ import SignUp from "./pages/SignUp";
 import SignIn from "./pages/SignIn";
 import ResetPassword from "./pages/ResetPassword";
 import NotFound from "./pages/NotFound";
-import TracksList from "./components/organisms/TracksList/TracksList";
-
+// import TracksList from "./components/organisms/TracksList/TracksList";
+import TrackSongsList from "./components/organisms/TrackSongsList"
 import { onAuthStateChanged } from "./services/auth";
 import { syncSignIn, signOut } from "./redux/auth/auth-actions";
-import EditUserForm from "./components/organisms/EditUserForm";
 
+//TODO  private list 
+// import PrivateRoute from "./components/PrivateRoute";
 function App() {
   const dispatch = useDispatch();
 
@@ -39,11 +40,17 @@ function App() {
   return (
     <div className="app__container">
       <Routes>
-      <Route  path="*"   element={<NotFound />} />
+        <Route path="*" element={<NotFound />} />
         <Route exact path={ROUTES.SIGN_UP} element={<SignUp />} />
         <Route exact path={ROUTES.SIGN_IN} element={<SignIn />} />
-        <Route exact path={ROUTES.RESET_PASSWORD} element={<ResetPassword/>} />
-        <Route exact path={ROUTES.HOME} element={<Home/>} />
+        <Route exact path={ROUTES.RESET_PASSWORD} element={<ResetPassword />} />
+        <Route path={ROUTES.HOME} element={<Home />} >
+          <Route exact path={ROUTES.HOME} element={<Home />} />
+        </Route>
+        <Route path={ROUTES.TRACK_SONG_LIST} element={<TrackSongsList />} >
+          <Route exact path={ROUTES.TRACK_SONG_LIST} element={<TrackSongsList />} />
+        </Route>
+
       </Routes>
     </div>
   );

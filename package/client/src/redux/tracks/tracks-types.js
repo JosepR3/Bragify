@@ -7,4 +7,3 @@ export const TRACKS_LOADING_SUCCESS = "TRACKS_LOADING_SUCCESS";
 export const PLAY_TRACK = "PLAY_TRACK";
 export const PAUSE_TRACK = "PAUSE_TRACK";
 export const STOP_TRACK = "STOP_TRACK";
-export const PLAY_TRACK = "PLAY_TRACK";
