@@ -6,11 +6,11 @@ import List from "@mui/material/List";
 import SearchInput from '../../atoms/SearchInput/SearchInput';
 
 
-import  {mainListItems, secondaryListItems, playLists}  from "../../molecules/ListItems";
+import MainList  from "../../molecules/MainList";
 
 
 
-function SideBar({ width = '100%', height = '100%', altText = ''}) {
+function SideBar() {
   
     return (
       <Box
@@ -35,14 +35,10 @@ function SideBar({ width = '100%', height = '100%', altText = ''}) {
               justifyContent: 'flex',
               px: [1],
             }}>
-            <SearchInput></SearchInput>
+            <SearchInput/>
           </Toolbar>
+          <MainList/>
           <Divider />
-          <List>{mainListItems}</List>
-          <Divider />
-          <List>{secondaryListItems}</List>
-          <Divider />
-          <List>{playLists}</List>
         </Box>
     );
 }

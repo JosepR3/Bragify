@@ -6,4 +6,5 @@ export const TRACKS_LOADING = "TRACKS_LOADING";
 export const TRACKS_LOADING_SUCCESS = "TRACKS_LOADING_SUCCESS";
 export const PLAY_TRACK = "PLAY_TRACK";
 export const PAUSE_TRACK = "PAUSE_TRACK";
+export const TO_TRACKS = "TO_TRACKS";
 export const STOP_TRACK = "STOP_TRACK";

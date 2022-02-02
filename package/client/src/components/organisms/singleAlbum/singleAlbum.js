@@ -13,7 +13,10 @@ function singleAlbum() {
               alt=""
             />
           </div>
-          <div className="col-sm-8 d-flex flex-column justify-content-center" id="detail">
+          <div
+            className="col-sm-8 d-flex flex-column justify-content-center"
+            id="detail"
+          >
             <h3 id="shawn">
               <b>Dawn FM</b>
             </h3>
@@ -22,16 +25,6 @@ function singleAlbum() {
               <button id="play">▶ Play</button>
               <button id="play">⥃ Shuffle</button>
             </div>
-            {/* <span>
-              <button className="btn" id="like">
-                <i className="fa fa-heart-o"></i>
-              </button>
-            </span>
-            <span>
-              <button className="btn" id="more">
-                <b>...</b>
-              </button>
-            </span> */}
           </div>
         </div>
 

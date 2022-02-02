@@ -8,7 +8,7 @@ export const AuthInitialState = {
   isAuthenticated: false,
   isSendingPasswordReset: false,
   isLoading: false,
-  isEditing: false,
+  inEditing: false,
   passwordResetError: null,
   passwordResetSent: false,
   currentUser: {
@@ -38,7 +38,7 @@ const AuthReducer = (state = AuthInitialState, action) => {
     case AuthTypes.EDIT_PROFILE: {
       return {
         ...state,
-        isEditing: true
+        inEditing: true
       };
     }
     case AuthTypes.SIGN_UP_SUCCESS: {

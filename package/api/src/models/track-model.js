@@ -18,7 +18,7 @@ const TrackSchema = Schema(
       required: false,
     },
     duration: {
-      type: Number,
+      type: String,
       required: false,
     },
     rating: {

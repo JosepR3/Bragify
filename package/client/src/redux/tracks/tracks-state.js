@@ -6,7 +6,8 @@ const initialState = {
     playingTrackIndex: 0,
     myPlaylist: [],
     myTracks: [],
-    tracks: null
+    tracks: null,
+    inTracks: false
 }
 
 export default initialState 

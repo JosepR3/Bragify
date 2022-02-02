@@ -12,11 +12,15 @@ import {
   PLAY_TRACK,
   PAUSE_TRACK,
   STOP_TRACK,
-
+  TO_TRACKS
 } from "./tracks-types";
 
 function setTracksLoading() {
   return { type: TRACKS_LOADING };
+}
+
+export function toTracks() {
+  return { type: TO_TRACKS };
 }
 
 function setTracksLoadingSuccess() {
@@ -24,7 +28,7 @@ function setTracksLoadingSuccess() {
 }
 
 function setTracksResult(result) {
-   return { type: TRACKS_SET_RESULT, payload: result };
+  return { type: TRACKS_SET_RESULT, payload: result };
 }
 
 function setTracksError(error) {
@@ -61,17 +65,16 @@ function deleteTracks(id) {}
 
 export async function fetchAllTracks(dispatch) {
   try {
-    const userToken = await getCurrentUserToken()
+    const userToken = await getCurrentUserToken();
     if (!userToken) {
       return dispatch(signOutSuccess());
     }
-    console.log("inside fetch")
+    console.log("inside fetch");
     const res = await api.getAllTracks({
-      headers:
-        {Authorization: `Bearer ${userToken}`}
+      headers: { Authorization: `Bearer ${userToken}` },
     });
-    
-   return dispatch(setTracksResult(res.data.data));
+
+    return dispatch(setTracksResult(res.data.data));
 
     // if (res.errorMessage) {
     //   return dispatch(fetchTracksError(res.errorMessage));

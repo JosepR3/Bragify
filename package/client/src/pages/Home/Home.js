@@ -1,6 +1,7 @@
 import React from "react";
 import { Navigate } from "react-router-dom";
 import { authSelector } from "../../redux/auth/auth-selectors";
+import { Route, Routes} from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import * as ROUTES from "../../routes";
 
@@ -19,9 +20,8 @@ import Copyright from "../../components/atoms/Copyright";
 import EditProfile from "../../components/molecules/EditProfile";
 import TracksList from "../../components/organisms/TracksList";
 import SingleAlbum from "../../components/organisms/singleAlbum";
-import singleAlbum from "../../components/organisms/singleAlbum";
 import { fetchAllTracks } from "../../redux/tracks/tracks-actions";
-
+import { tracksSelector } from "../../redux/tracks/tracks-selector";
 
 const mdTheme = createTheme({
   typography: {
@@ -30,16 +30,17 @@ const mdTheme = createTheme({
   },
 });
 
-
 function Home() {
-  const { isAuthenticated, isEditing, currentUser } = useSelector(authSelector);
-  const dispatch = useDispatch()
+  const { isAuthenticated, inEditing, currentUser } = useSelector(authSelector);
+  const inTracks = useSelector(tracksSelector);
+  const dispatch = useDispatch();
 
   if (!isAuthenticated) {
     return <Navigate to={ROUTES.SIGN_IN} />;
   }
-  React.useEffect(async () =>{
-    await fetchAllTracks(dispatch)     },[])
+  React.useEffect(async () => {
+    await fetchAllTracks(dispatch);
+  }, []);
   return (
     <>
       <ThemeProvider theme={mdTheme}>
@@ -61,10 +62,11 @@ function Home() {
             <NavBar />
             <Toolbar />
             <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
-              {/* {isEditing && <EditProfile />}
-              {!isEditing && <InnerDash />} */}
-              <TracksList/> 
-               {/* <SingleAlbum/> */}
+              {/* {inEditing && !inTracks <EditProfile />}
+              {!inEditing && !inTracks && <InnerDash/>}  */}
+              {inTracks && <TracksList />}
+              {/* <SingleAlbum/> */}
+              
             </Container>
             <Copyright sx={{ pt: 4, mt: 3 }} />
           </Box>
