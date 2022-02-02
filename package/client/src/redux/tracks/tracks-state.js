@@ -4,7 +4,7 @@ const initialState = {
     error: undefined,
     isPlaying: false,
     isLiked: false,
-    playingTrack: "q",
+    playingTrack: "",
     myPlaylist: [],
     myTrackss: [],
 }
