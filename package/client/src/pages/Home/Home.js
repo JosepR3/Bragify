@@ -1,25 +1,27 @@
 import React from "react";
 import { Navigate } from "react-router-dom";
 import { authSelector } from "../../redux/auth/auth-selectors";
-import { Route, Routes} from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import * as ROUTES from "../../routes";
 // REDUX
 import { useDispatch, useSelector } from "react-redux";
+
 // MATERIAL UI
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import Box from "@mui/material/Box";
+import { fetchAllTracks } from "../../redux/tracks/tracks-actions";
+import { Container } from "@mui/material";
+import { tracksSelector } from "../../redux/tracks/tracks-selector";
+
+//COMPONENTS
+import NavBar from "../../components/molecules/NavBar";
 import SideBar from "../../components/organisms/SideBar/SideBar";
 import Copyright from "../../components/atoms/Copyright";
 import EditProfile from "../../components/molecules/EditProfile";
 import TracksList from "../../components/organisms/TracksList";
 import SingleAlbum from "../../components/organisms/SingleAlbum";
-import { fetchAllTracks } from "../../redux/tracks/tracks-actions";
-import { Container } from "@mui/material";
-import { tracksSelector } from "../../redux/tracks/tracks-selector";
-import NavBar from "../../components/molecules/NavBar";
 import FormCreateTracks from "../../components/organisms/FormCreateTracks/FormCreateTracks";
-
 
 const mdTheme = createTheme({
   typography: {
@@ -57,14 +59,14 @@ function Home() {
               overflow: "auto",
             }}
           >
-            <NavBar/>
+            <NavBar />
 
             <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
-              {isEditing  && <EditProfile/>}
-              {!isEditing && !inTracks && <InnerDash/>}  
+              {isEditing && <EditProfile />}
+              {!isEditing && !inTracks && <InnerDash />}
               {inTracks && <TracksList />}
               {/* <SingleAlbum/> */}
-              <FormCreateTracks/>
+              <FormCreateTracks />
             </Container>
             <Copyright sx={{ pt: 4, mt: 3 }} />
           </Box>
