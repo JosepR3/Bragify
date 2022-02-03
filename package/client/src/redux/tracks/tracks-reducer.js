@@ -27,7 +27,6 @@ export default function tracksReducer(state = initialState, action) {
         error: action.payload,
       };
     case TRACKS_SET_RESULT:
-      console.log(action.payload);
       return {
         ...state,
         tracks: action.payload,
@@ -48,10 +47,9 @@ export default function tracksReducer(state = initialState, action) {
       return {
         ...state,
         inTracks: true,
-        inEditing: false
+        isEditing: false
       };
     case PLAY_TRACK:
-      console.log(action.payload);
       return {
         ...state,
         isPlaying: true,

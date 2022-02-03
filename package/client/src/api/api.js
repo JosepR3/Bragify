@@ -49,13 +49,22 @@ function makeApi(request = makeRequest()) {
       { headers: headers }
     )
   }
+  function getUser({ headers }){
+    return request({
+      url:"/get-user",
+      requestMethod: "GET",
+      headers: headers
+    })
+  }
+
   return {
     signUp: signUp,
     signOut: signOut,
     editUser: editUser,
     getAllTracks: getAllTracks,
     deleteTrack: deleteTrack,
-    createTrack: createTrack
+    createTrack: createTrack,
+    getUser: getUser
   };
 };
 

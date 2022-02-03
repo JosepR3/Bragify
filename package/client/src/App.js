@@ -13,8 +13,7 @@ import NotFound from "./pages/NotFound";
 
 //REDUX
 import { onAuthStateChanged } from "./services/auth";
-import { syncSignIn, signOut } from "./redux/auth/auth-actions";
-
+import { syncSignIn, signOut, getUser } from "./redux/auth/auth-actions";
 
 function App() {
   const dispatch = useDispatch();
@@ -23,6 +22,7 @@ function App() {
     unsubscribeFromAuth = onAuthStateChanged((user) => {
       if (user) {
         dispatch(syncSignIn());
+        dispatch(getUser());
       } else {
         dispatch(signOut());
       }

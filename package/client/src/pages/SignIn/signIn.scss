@@ -65,6 +65,9 @@
   &::placeholder {
     color: rgb(185, 165, 165);
   }
+  &:disabled{
+    color:black 30% !important;
+  }
 }
 
 // -------------DIVISOR

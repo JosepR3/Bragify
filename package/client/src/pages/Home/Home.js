@@ -10,7 +10,6 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import Box from "@mui/material/Box";
 import SideBar from "../../components/organisms/SideBar/SideBar";
-import InnerDash from "../../components/organisms/InnerDash";
 import Copyright from "../../components/atoms/Copyright";
 import EditProfile from "../../components/molecules/EditProfile";
 import TracksList from "../../components/organisms/TracksList";
@@ -30,7 +29,7 @@ const mdTheme = createTheme({
 });
 
 function Home() {
-  const { isAuthenticated, inEditing, currentUser } = useSelector(authSelector);
+  const { isAuthenticated, isEditing, currentUser } = useSelector(authSelector);
   const inTracks = useSelector(tracksSelector);
   const dispatch = useDispatch();
 
@@ -61,8 +60,8 @@ function Home() {
             <NavBar/>
 
             <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
-              {/* {inEditing && !inTracks <EditProfile />}
-              {!inEditing && !inTracks && <InnerDash/>}  */}
+              {isEditing  && <EditProfile/>}
+              {!isEditing && !inTracks && <InnerDash/>}  
               {inTracks && <TracksList />}
               {/* <SingleAlbum/> */}
               <FormCreateTracks/>
