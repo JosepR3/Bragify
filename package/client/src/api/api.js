@@ -29,10 +29,19 @@ function makeApi(request = makeRequest()) {
     });
   }
 
+  function getUser({ headers }){
+    return request({
+      url:"/get-user",
+      requestMethod: "GET",
+      headers: headers
+    })
+  }
+
   return {
     signUp: signUp,
     signOut: signOut,
-    editUser: editUser
+    editUser: editUser,
+    getUser: getUser
   };
 }
 

@@ -20,8 +20,7 @@ import { authSelector } from "../../redux/auth/auth-selectors";
 
 function SignUp() {
   const dispatch = useDispatch();
-  const { isSigningUp, signUpError, isLoading, isAuthenticated } =
-    useSelector(authSelector);
+  const { isSigningUp, signUpError, isLoading, isAuthenticated } = useSelector(authSelector);
 
   const [user, setUser] = useState({
     firstName: "",
@@ -43,9 +42,8 @@ function SignUp() {
 
   function handleSubmit(e) {
     e.preventDefault();
-
     dispatch(signUpWithEmailRequest(user));
-    dispatch(editUser(user))
+    // dispatch(editUser(user))
   }
 
   function handleInput(e) {

@@ -61,7 +61,7 @@ function NavBar() {
           noWrap
           sx={{ mr: "20px", fontFamily: "Mochiy Pop P One" }}
         >
-          Welcome {currentUser.email}
+          Welcome {currentUser.username}
         </Typography>
 
         <Tooltip title="Open settings">
