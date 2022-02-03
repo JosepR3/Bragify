@@ -8,7 +8,7 @@ import NavBar from "../../molecules/NavBar";
 import InnerDash from "../../organisms/InnerDash";
 import Copyright from "../../atoms/Copyright";
 import MusicPlayer from '../../molecules/MusicPlayer';
-
+import FormCreateTracks from "../../organisms/FormCreateTracks"
 
 
 function MainContainer() {
@@ -35,11 +35,12 @@ function MainContainer() {
       <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
 
 
-        <InnerDash />
+        {/* <InnerDash /> */}
+        <FormCreateTracks/>
       </Container>
 
-      <Copyright sx={{ pt: 4, mt: 3 }} />
-      <MusicPlayer style={{ position: "absolute", bottom: 0, left: 0, right: 0 }} />
+      {/* <Copyright sx={{ pt: 4, mt: 3 }} /> */}
+      {/* <MusicPlayer style={{ position: "absolute", bottom: 0, left: 0, right: 0 }} /> */}
     </Box>
   );
 }

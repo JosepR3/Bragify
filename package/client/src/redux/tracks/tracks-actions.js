@@ -10,6 +10,8 @@ import {
     STOP_TRACK,
     PLAY_TRACK,
 } from "./tracks-types"
+import api from "../../api/track-api"
+import * as auth from "../../services/auth";
 
 
 export function setTracksLoading() {
@@ -56,9 +58,27 @@ export function getMyTracks(currentUser) {
 
 }
 
-export function createTracks(data) {
-
+export function createTrack(data) {
+// console.log(data)
+    return async function createThunk(dispatch) {
+        dispatch(authTrack(data))
+        try {
+        } catch (error) {
+        }
+      };
 }
+
+export function authTrack(data) {
+    return async function createThunk(dispatch) {
+      const token = await auth.getCurrentUserToken();
+      const response = await api.createTrack({
+        Authorization: `Bearer ${token}`,
+      },data);
+  
+      if (response.errorMessage) {
+      }
+    };
+  }
 
 function editTracks(id) {
 
@@ -67,6 +87,7 @@ function editTracks(id) {
 export function deleteTracks(id) {
 
 }
+
 
 export function fetchAllTracks() {
     return async (dispatch) => {
