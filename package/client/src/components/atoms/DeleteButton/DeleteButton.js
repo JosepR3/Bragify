@@ -1,6 +1,7 @@
 import React from 'react';
-import { BsFillTrashFill } from "react-icons/bs";
 import { useDispatch } from 'react-redux';
+
+import Button from 'react-bootstrap/Button';
 
 import { deleteTrack } from '../../../redux/tracks/tracks-actions';
 
@@ -13,5 +14,5 @@ export default function DeleteButton({ id }) {
         console.log(e.target.id);
     }
 
-    return <BsFillTrashFill data-test-id="delete-button" color="#ffebee" id={id} onClick={handleDelete} class="bi bi-trash" />;
+    return <Button variant="danger" data-test-id="delete-button" id={id} onClick={handleDelete} s />;
 }
