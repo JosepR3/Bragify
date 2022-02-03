@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
+import DeleteButton from '../../atoms/DeleteButton/DeleteButton';
 // LIKE SONGS
 export default function TracksList() {
     // const tracks = useSelector(state => state.tracks.result);
@@ -20,7 +21,7 @@ export default function TracksList() {
         <ul>
             {console.log(tracks)}
             {tracks.map((track) => {
-                return <li >{track} <button>LIKE</button></li>
+                return <li >{track} <button>LIKE</button><DeleteButton id="61fba6ccaa614993c073292a"/></li>
             })}
         </ul>
 

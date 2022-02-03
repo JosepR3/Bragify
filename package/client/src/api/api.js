@@ -1,5 +1,5 @@
 import { makeRequest } from "./api-utils";
-
+import axios from "axios";
 function makeApi(request = makeRequest()) {
   console.log("makeapiiii")
 
@@ -28,11 +28,25 @@ function makeApi(request = makeRequest()) {
       headers: headers,
     });
   }
-
+  function createTrack(headers, data) {
+    return axios.post(
+        "http://localhost:4000/tracks",
+        data,
+        {headers: headers}
+    );
+}
+ function deleteTrack(headers, data) {
+    return axios.delete(
+      `http://localhost:4000/tracks/${data}`,
+      {headers: headers}
+    )
+  }
   return {
     signUp: signUp,
     signOut: signOut,
-    editUser: editUser
+    editUser: editUser,
+    deleteTrack: deleteTrack,
+    createTrack:createTrack
   }; 
 }
 

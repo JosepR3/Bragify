@@ -1,11 +1,7 @@
-import React from 'react';
 import { useDispatch } from 'react-redux';
-
+import { deleteTrack } from '../../../redux/tracks/tracks-actions';
 import Button from 'react-bootstrap/Button';
 
-import { deleteTrack } from '../../../redux/tracks/tracks-actions';
-
-// Please find a testing example of this button at components/organisms/TrackSongsList/TrackSongsList.js
 export default function DeleteButton({ id }) {
     const dispatch = useDispatch();
 

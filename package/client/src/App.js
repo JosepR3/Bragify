@@ -10,14 +10,9 @@ import SignIn from "./pages/SignIn";
 import ResetPassword from "./pages/ResetPassword";
 import NotFound from "./pages/NotFound";
 // import TracksList from "./components/organisms/TracksList/TracksList";
-import TrackSongsList from "./components/organisms/TrackSongsList"
 import { onAuthStateChanged } from "./services/auth";
 import { syncSignIn, signOut } from "./redux/auth/auth-actions";
-
-import PrivateRoute from "./components/PrivateRoute";
-
-//TODO  private list 
-// import PrivateRoute from "./components/PrivateRoute";
+import TracksList from "./components/organisms/TracksList/TracksList";
 function App() {
   const dispatch = useDispatch();
 
@@ -46,12 +41,8 @@ function App() {
         <Route exact path={ROUTES.SIGN_UP} element={<SignUp />} />
         <Route exact path={ROUTES.SIGN_IN} element={<SignIn />} />
         <Route exact path={ROUTES.RESET_PASSWORD} element={<ResetPassword />} />
-        <Route path={ROUTES.HOME} element={<PrivateRoute />} >
-          <Route exact path={ROUTES.HOME} element={<Home />} />
-        </Route>
-        <Route path={ROUTES.TRACK_SONG_LIST} element={<PrivateRoute />} >
-          <Route exact path={ROUTES.TRACK_SONG_LIST} element={<TrackSongsList />} />
-        </Route>
+        <Route exact path={ROUTES.HOME} element={<Home />} />
+        <Route exact path={ROUTES.TRACK_SONG_LIST} element={<TracksList />} />
 
       </Routes>
     </div>

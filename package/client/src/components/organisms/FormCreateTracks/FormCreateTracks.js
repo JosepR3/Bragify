@@ -3,6 +3,8 @@ import { useDispatch } from 'react-redux';
 import { createTrack } from '../../../redux/tracks/tracks-actions';
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
+import {getCurrentUserUid} from "../../../services/auth"
+
 const FormCreateTracks = () => {
 
     const dispatch = useDispatch();
@@ -13,7 +15,7 @@ const FormCreateTracks = () => {
         thumbnail: "",
         duration: 0,
         genre: "",
-        authorId: "",
+        authorId:getCurrentUserUid()
     });
 
     //   useEffect(() => {

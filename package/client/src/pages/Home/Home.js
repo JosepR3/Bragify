@@ -8,13 +8,7 @@ import * as ROUTES from "../../routes";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import Box from "@mui/material/Box";
-
 import SideBar from "../../components/organisms/SideBar/SideBar";
-// import InnerDash from "../../components/organisms/InnerDash";
-// import Copyright from "../../components/atoms/Copyright";
-// import EditProfile from "../../components/molecules/EditProfile";
-// import TrackTrackssList from "../../components/organisms/TrackTracksList";
-
 import MainContainer from "../../components/organisms/MainContainer";
 
 const mdTheme = createTheme({
@@ -25,7 +19,7 @@ const mdTheme = createTheme({
 });
 
 function Home() {
-  const { isAuthenticated, isEditing, currentUser } = useSelector(authSelector);
+  const { isAuthenticated } = useSelector(authSelector);
 
   if (!isAuthenticated) {
     return <Navigate to={ROUTES.SIGN_IN} />;

@@ -1,4 +1,4 @@
-import { getAllPlayLists, asyncLikeSong, asyncDeleteTrack } from "../../api/mock-apis";
+import { getAllPlayLists  } from "../../api/mock-apis";
 import {
     FETCH_TRACKS,
     TRACKS_SET_ERROR,
@@ -10,18 +10,19 @@ import {
     STOP_TRACK,
     PLAY_TRACK,
 } from "./tracks-types"
-import api from "../../api/track-api"
+import api from "../../api"
 import * as auth from "../../services/auth";
+
 
 
 export function setTracksLoading() {
     return { type: TRACKS_LOADING };
-
+    
 }
 
 export function setTracksLoadingSuccess() {
     return { type: TRACKS_LOADING_SUCCESS };
-
+    
 }
 
 export function setTracksResult(result) {
@@ -40,68 +41,55 @@ export function setPlayingTracks(track, index) {
 
 export function setPauseTracks() {
     return { type: PAUSE_TRACK };
-
+    
 }
 
 export function playTrack(track) {
     return {
         type: PLAY_TRACK, payload: { track }
     }
-
+    
 }
 
-export function giveLike(id) {
-    try {
-        const result = asyncLikeSong(id);
-        console.log(id)
-        return result;
-    } catch (error) {
-        console.log(error);
-    }
-
-}
-
-export function getMyTracks(currentUser) {
-
-}
-
+// export function giveLike(id) {
+    //     try {
+        //         const result = asyncLikeSong(id);
+        //         console.log(id)
+        //         return result;
+        //     } catch (error) {
+            //         console.log(error);
+            //     }
+            
+            // }
+            
+            // export function getMyTracks(currentUser) {
+                
+            // }
+            
 export function createTrack(data) {
-// console.log(data)
     return async function createThunk(dispatch) {
-        dispatch(authTrack(data))
         try {
+            dispatch(authTrack(api.createTrack, data));
         } catch (error) {
+            console.log(error, "createTrackError")
         }
-      };
-}
-
-export function authTrack(data) {
-    return async function createThunk(dispatch) {
-      const token = await auth.getCurrentUserToken();
-      const response = await api.createTrack({
-        Authorization: `Bearer ${token}`,
-      },data);
-  
-      if (response.errorMessage) {
-      }
     };
-  }
-
-function editTracks(id) {
-
 }
+
 
 export function deleteTrack(id) {
-    try {
-        const result = asyncDeleteTrack(id);
-        console.log(id)
-        return result;
-    } catch (error) {
-        console.log(error);
+    return async function createThunk(dispatch) {
+        try {
+            dispatch(authTrack(api.deleteTrack,id));
+            return result;
+        } catch (error) {
+            console.log(error, "deleteTrackError")
+        }
     }
-
-
 }
+
+
+
 
 
 export function fetchAllTracks() {
@@ -115,4 +103,13 @@ export function fetchAllTracks() {
             dispatch(setTracksError(error));
         }
     };
-} 
+}
+
+export function authTrack(action, data) {
+    return async function createThunk(dispatch) {
+        const token = await auth.getCurrentUserToken();
+        const response = await action({
+            Authorization: `Bearer ${token}`
+        },data)
+    }
+}
