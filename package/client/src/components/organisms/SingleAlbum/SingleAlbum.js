@@ -1,7 +1,7 @@
 import React from "react";
 import "./singleAlbum.scss";
 
-function singleAlbum() {
+function SingleAlbum() {
   return (
     <>
       <main className="container" id="main">
@@ -95,4 +95,4 @@ function singleAlbum() {
   );
 }
 
-export default singleAlbum;
+export default SingleAlbum;

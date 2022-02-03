@@ -5,7 +5,7 @@ import TrackCarrousel from '../../../components/molecules/TracksCarrousel';
 import MusicPlayer from '../../molecules/MusicPlayer';
 import './InnerDash.scss';
 import { fetchAllTracks } from '../../../redux/tracks/tracks-actions';
-import EditUserForm from '../EditUserForm';
+// import EditUserForm from '../EditUserForm';
 
 export default function InnerDash() {
     const tracks = useSelector(state => state.tracks.result);
@@ -37,7 +37,5 @@ export default function InnerDash() {
         {error === true && <p>{error}</p>}
         <br />
         <br />
-
-        {tracks && <MusicPlayer />}
     </div>;
 }

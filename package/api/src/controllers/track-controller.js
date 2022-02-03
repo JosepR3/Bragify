@@ -1,32 +1,26 @@
-const { UserRepo, TrackRepo } = require("../repositories");
+const { TrackRepo } = require("../repositories");
 const { handleDbResponse } = require("../repositories/repo-utils");
 
 async function createTrack(req, res, next) {
-  // console.log("Inside")
-  // const {
-  //   body: { title, url, thumbnail, genre, duration = 0 },
-  //   user: { uid },
-  // } = req;
+  console.log(req.body)
+  
+  const {title, url, thumbnail, genre, duration,authorId } = req.body;
 
   try {
-    //   // if (!title && !url) {
-    //   //   res.status(400).send({
-    //   //     data: null,
-    //   //     error: "Missing Fields (title, url)",
-    //   //   });
-    //   // }
-
-    //   // const user = await UserRepo.findOne({
-    //   //   firebase_id: "ge2WtP90RRV4udE7OMvNGmWsYl43",
-    //   // });
-
+      if (!title && !url) {
+        res.status(400).send({
+          data: null,
+          error: "Missing Fields (title, url)",
+        });
+      }
+    
     const dbResponse = await TrackRepo.create({
-      title: "title",
-      url: "url",
-      thumbnail: "thumbnail",
-      duration: 0,
-      genre: "pop",
-      authorId: "ge2WtP90RRV4udE7OMvNGmWsYl43",
+      title: title,
+      url: url,
+      thumbnail: thumbnail,
+      duration: duration,
+      genre: genre,
+      authorId:authorId ,
     });
 
     handleDbResponse(res, dbResponse);
@@ -37,9 +31,21 @@ async function createTrack(req, res, next) {
 
 async function fetchTracks(req, res, next) {
   try {
-    const tracks = await TrackRepo.find({title: true}[0])
+    const tracks = await TrackRepo.find({ title: true }[0])
     handleDbResponse(res, tracks);
   } catch (error) {
+    next(error);
+  }
+}
+
+async function deleteTrack(req, res, next) {
+  id = (req.params.id)
+  try {
+    const tracks = await TrackRepo.deleteOne(id)
+    console.log(req.params.id)
+    handleDbResponse(res, tracks);
+  } catch (error) {
+    console.log(req.params)
     next(error);
   }
 }
@@ -47,4 +53,5 @@ async function fetchTracks(req, res, next) {
 module.exports = {
   createTrack: createTrack,
   fetchTracks: fetchTracks,
+  deleteTrack: deleteTrack,
 };

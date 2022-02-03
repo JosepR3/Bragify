@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 
-import "./style.css";
+import "./style.scss";
 
 const NotFound = () => {
   const navigate = useNavigate();
@@ -21,7 +21,7 @@ const NotFound = () => {
         <div className="error__title">404</div>
         <div className="error__subtitle">Hmmm...</div>
         <div className="error__description">
-        It seems that you have taken the wrong route :(
+          It seems that you have taken the wrong route :(
         </div>
         <button onClick={() => navigate("/")} className="error__button">
           Back to Home

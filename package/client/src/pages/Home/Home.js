@@ -2,26 +2,25 @@ import React from "react";
 import { Navigate } from "react-router-dom";
 import { authSelector } from "../../redux/auth/auth-selectors";
 import { Route, Routes} from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
 import * as ROUTES from "../../routes";
-
-// Material UI
+// REDUX
+import { useDispatch, useSelector } from "react-redux";
+// MATERIAL UI
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import Box from "@mui/material/Box";
-import Toolbar from "@mui/material/Toolbar";
-import Container from "@mui/material/Container";
-
-// Components
-import NavBar from "../../components/molecules/NavBar";
 import SideBar from "../../components/organisms/SideBar/SideBar";
 import InnerDash from "../../components/organisms/InnerDash";
 import Copyright from "../../components/atoms/Copyright";
 import EditProfile from "../../components/molecules/EditProfile";
 import TracksList from "../../components/organisms/TracksList";
-import SingleAlbum from "../../components/organisms/singleAlbum";
+import SingleAlbum from "../../components/organisms/SingleAlbum";
 import { fetchAllTracks } from "../../redux/tracks/tracks-actions";
+import { Container } from "@mui/material";
 import { tracksSelector } from "../../redux/tracks/tracks-selector";
+import NavBar from "../../components/molecules/NavBar";
+import FormCreateTracks from "../../components/organisms/FormCreateTracks/FormCreateTracks";
+
 
 const mdTheme = createTheme({
   typography: {
@@ -59,14 +58,14 @@ function Home() {
               overflow: "auto",
             }}
           >
-            <NavBar />
-            <Toolbar />
+            <NavBar/>
+
             <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
               {/* {inEditing && !inTracks <EditProfile />}
               {!inEditing && !inTracks && <InnerDash/>}  */}
               {inTracks && <TracksList />}
               {/* <SingleAlbum/> */}
-              
+              <FormCreateTracks/>
             </Container>
             <Copyright sx={{ pt: 4, mt: 3 }} />
           </Box>

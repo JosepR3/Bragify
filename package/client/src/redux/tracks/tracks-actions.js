@@ -1,7 +1,7 @@
-import { getAllPlayLists } from "../../api/mock-apis";
-import api from "../../api";
-import { getCurrentUserToken } from "../../services/auth";
 
+import api from "../../api"
+import * as auth from "../../services/auth";
+import { getCurrentUserToken } from "../../services/auth";
 import {
   FETCH_TRACKS,
   TRACKS_SET_ERROR,
@@ -15,53 +15,70 @@ import {
   TO_TRACKS
 } from "./tracks-types";
 
-function setTracksLoading() {
-  return { type: TRACKS_LOADING };
-}
 
+export function setTracksLoading() {
+    return { type: TRACKS_LOADING };
+    
+}
 export function toTracks() {
   return { type: TO_TRACKS };
 }
-
-function setTracksLoadingSuccess() {
-  return { type: TRACKS_LOADING_SUCCESS };
+export function setTracksLoadingSuccess() {
+    return { type: TRACKS_LOADING_SUCCESS };
+    
 }
 
-function setTracksResult(result) {
-  return { type: TRACKS_SET_RESULT, payload: result };
+export function setTracksResult(result) {
+    return { type: TRACKS_SET_RESULT, payload: result };
 }
 
-function setTracksError(error) {
-  return { type: TRACKS_SET_ERROR, payload: error };
+export function setTracksError(error) {
+    return { type: TRACKS_SET_ERROR, payload: error };
 }
 
-function setPlayingTracks(track, index) {
-  return {
-    type: PLAY_TRACK,
-    payload: { track, index },
-  };
+export function setPlayingTracks(track, index) {
+    return {
+        type: PLAY_TRACK, payload: { track, index }
+    };
 }
 
-function setPauseTracks() {
-  return { type: PAUSE_TRACK };
+export function setPauseTracks() {
+    return { type: PAUSE_TRACK };
+    
 }
 
 export function playTrack(track) {
-  return {
-    type: PLAY_TRACK,
-    payload: { track },
-  };
+    return {
+        type: PLAY_TRACK, payload: { track }
+    }
+    
 }
 
-function giveLike(id) {}
+export function createTrack(data) {
+    return async function createThunk(dispatch) {
+        try {
+            dispatch(authTrack(api.createTrack, data));
+        } catch (error) {
+            console.log(error, "createTrackError")
+        }
+    };
+}
 
-function getMyTracks(currentUser) {}
 
-function createTracks(data) {}
+export function deleteTrack(id) {
+    return async function createThunk(dispatch) {
+        try {
+            dispatch(authTrack(api.deleteTrack,id));
+            return result;
+        } catch (error) {
+            console.log(error, "deleteTrackError")
+        }
+    }
+}
 
-function editTracks(id) {}
 
-function deleteTracks(id) {}
+
+
 
 export async function fetchAllTracks(dispatch) {
   try {
@@ -69,17 +86,22 @@ export async function fetchAllTracks(dispatch) {
     if (!userToken) {
       return dispatch(signOutSuccess());
     }
-    console.log("inside fetch");
     const res = await api.getAllTracks({
       headers: { Authorization: `Bearer ${userToken}` },
     });
 
     return dispatch(setTracksResult(res.data.data));
 
-    // if (res.errorMessage) {
-    //   return dispatch(fetchTracksError(res.errorMessage));
-    // }
   } catch (err) {
-    // return dispatch(fetchTracksError(err));
+    console.log(error, "deleteTrackError")
   }
+}
+
+export function authTrack(action, data) {
+    return async function createThunk(dispatch) {
+        const token = await auth.getCurrentUserToken();
+        const response = await action({
+            Authorization: `Bearer ${token}`
+        },data)
+    }
 }

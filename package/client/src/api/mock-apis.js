@@ -1,28 +1,42 @@
 import axios from "axios";
-const cors = require("cors")
+import { setTracksError } from "../redux/tracks/tracks-actions";
 
-const BASE_URL = 'apollo.eu-west-3.elasticbeanstalk.com/'
+const BASE_URL = 'http://apollo.eu-west-3.elasticbeanstalk.com/'
 
 export async function getAllPlayLists() {
-    const url = 'http://apollo.eu-west-3.elasticbeanstalk.com/api/playlists'
-    const response = await axios.get(url, { headers: { 'Authorization': 'Bearer ' + 'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzZXJnaSIsImF1dGgiOiJST0xFX1VTRVIiLCJleHAiOjE2NDM3NDAyMjd9.uEGzsjwoD_zssBsiC0IPcHPOAZZhrIP2OatVtYHeWrYcBVwvl9Gz245ERPgnzm2LFPSU7mCpqEdWKn1xGdTDdQ' } })
+    const url = `${BASE_URL}api/playlists`;
+    const response = await axios.get(url, { headers: { 'Authorization': 'Bearer ' + 'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzZXJnaSIsImF1dGgiOiJST0xFX1VTRVIiLCJleHAiOjE2NDM5MjAyMzh9.UBkrD9dNSrjhr66ebtCXQi85NUDUb-a8PJOfwzcHi0tflrgexiAv-D75nkmjB4ZRo1MZClDOl5OrfZMr-3sawQ' } }).catch(error => {
+        console.log(error);
+        setTracksError(error);
+    });
+
     return response.data;
 }
 
-const audio = new Audio
-audio.addEventListener('ended', () => {
-    updateAudio()
-})
 
+export async function asyncLikeSong(id) {
+    const url = `${BASE_URL}api/tracks/${id}/like`;
+    console.log(url);
+    const response = await axios.put(url, { headers: { 'Authorization': 'Bearer ' + 'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzZXJnaSIsImF1dGgiOiJST0xFX1VTRVIiLCJleHAiOjE2NDM5MjAyMzh9.UBkrD9dNSrjhr66ebtCXQi85NUDUb-a8PJOfwzcHi0tflrgexiAv-D75nkmjB4ZRo1MZClDOl5OrfZMr-3sawQ' } }).catch(error => {
+        console.log(error);
 
-
-export async function playTrack(url) {
-    audio.src = url
-    audio.play()
-
+        setTracksError(error);
+    });
+    console.log(response)
+    return response.data;
 }
 
-export async function pauseTrack() {
-    audio.pause()
+export async function asyncDeleteTrack(id) {
+    const url = `http://localhost:4000/tracks/${id}`;
 
+    console.log(url);
+    const response = await axios.delete(url).catch(error => {
+        console.log(error);
+
+        setTracksError(error);
+    });
+    console.log(response)
+    return response;
 }
+
+

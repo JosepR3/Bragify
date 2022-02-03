@@ -44,11 +44,6 @@ export default function tracksReducer(state = initialState, action) {
         ...state,
         status: "success",
       };
-    case TRACKS_LOADING_SUCCESS:
-      return {
-        ...state,
-        status: "success",
-      };
     case TO_TRACKS:
       return {
         ...state,

@@ -1,13 +1,11 @@
-import React, { useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { fetchAllTracks } from "../../../redux/tracks/tracks-actions";
+import React from "react";
+import { useSelector } from "react-redux";
 import ListGroup from "react-bootstrap/ListGroup";
 import "./trackList.scss";
 import { tracksSelector } from "../../../redux/tracks/tracks-selector";
+import DeleteButton from "../../atoms/DeleteButton/DeleteButton";
 
 export default function TracksList() {
-  // const error = useSelector(state => state.tracks.error);
-  // const status = useSelector(state => state.tracks.status);
 
   const { tracks } = useSelector(tracksSelector);
 
@@ -43,6 +41,7 @@ export default function TracksList() {
               <ListGroup.Item  className="list_item">
                 {track.duration}
               </ListGroup.Item>
+              <DeleteButton id={track._id}/>
             </ListGroup>
           );
         })}
@@ -50,8 +49,3 @@ export default function TracksList() {
   );
 }
 
-//
-//   </ul>
-// </div>
-// );
-// }

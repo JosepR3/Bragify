@@ -1,5 +1,5 @@
 import { makeRequest } from "./api-utils";
-
+import axios from "axios";
 function makeApi(request = makeRequest()) {
 
   function signUp(headers, data) {
@@ -32,16 +32,32 @@ function makeApi(request = makeRequest()) {
     return request({
       url: "/get-tracks",
       requestMethod: "GET",
-          });
+    });
   }
 
 
+  function createTrack(headers, data) {
+    return axios.post(
+      "http://localhost:4000/tracks",
+      data,
+      { headers: headers }
+    );
+  }
+  function deleteTrack(headers, data) {
+    return axios.delete(
+      `http://localhost:4000/tracks/${data}`,
+      { headers: headers }
+    )
+  }
   return {
     signUp: signUp,
     signOut: signOut,
     editUser: editUser,
-    getAllTracks: getAllTracks
+    getAllTracks: getAllTracks,
+    deleteTrack: deleteTrack,
+    createTrack: createTrack
   };
-}
+};
+
 
 export default makeApi();
