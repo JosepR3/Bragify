@@ -5,7 +5,8 @@ import MusicPlayer from '../../molecules/MusicPlayer'
 import PlayArrowSharpIcon from '@mui/icons-material/PlayArrowSharp';
 import { giveLike, deleteTrack } from '../../../redux/tracks/tracks-actions';
 import withLayout from '../../HOC/withLayout';
-// LIKE SONGS
+import DeleteButton from '../../atoms/DeleteButton';
+
 function TrackSongsList() {
 
 
@@ -19,9 +20,6 @@ function TrackSongsList() {
     const handlePlay = (e) => {
 
     }
-    const handleDelete = (e) => {
-        dispatch(deleteTrack("61f9b76a43ffd69a9d7e4f75"));
-    }
     const handleLike = (e) => {
         dispatch(giveLike(e.target.id));
         console.log(e.target.id);
@@ -34,13 +32,14 @@ function TrackSongsList() {
         <br />
         <br />
         <ul>
+            {/* This is just a list to test the buttons, feel free to delete it if needed */}
             {console.log(songsToPlay)}
             {songsToPlay.map((song, index) => {
                 return <li
                     key={song.id}>{song.name}
                     <button id={song.id} onClick={handleLike}>LIKE</button>
                     <PlayArrowSharpIcon style={{ fill: "white" }} onClick={handlePlay} id="play-button" />
-                    <button id={song.id} onClick={handleDelete}>DELETE</button>
+                    <DeleteButton id={"61f9b8f143ffd69a9d7e4f76"} />
                 </li>
             })}
         </ul>
