@@ -33,7 +33,7 @@ function makeApi(request = makeRequest()) {
     signUp: signUp,
     signOut: signOut,
     editUser: editUser
-  };
+  }; 
 }
 
 export default makeApi();
