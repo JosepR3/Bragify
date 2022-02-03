@@ -8,17 +8,15 @@ import withLayout from '../../HOC/withLayout';
 // LIKE SONGS
 function TrackSongsList() {
 
-    const songs = useSelector(state => state.songs.result);
-    const songTrack = useSelector(state => state.songs.playingTrack);
+
+    const songTrack = useSelector(state => state.tracks.playingTrack);
     const songsToPlay = songTrack.track
-    const error = useSelector(state => state.songs.error);
-    const status = useSelector(state => state.songs.status);
+    const error = useSelector(state => state.tracks.error);
+    const status = useSelector(state => state.tracks.status);
 
     const dispatch = useDispatch();
 
     const handlePlay = (e) => {
-
-
 
     }
     const handleLike = (e) => {

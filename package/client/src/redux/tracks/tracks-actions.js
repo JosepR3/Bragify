@@ -1,4 +1,4 @@
-import { getAllPlayLists } from "../../api/mock-apis";
+import { getAllPlayLists, asyncLikeSong } from "../../api/mock-apis";
 import {
     FETCH_TRACKS,
     TRACKS_SET_ERROR,
@@ -51,6 +51,13 @@ export function playTrack(track) {
 }
 
 export function giveLike(id) {
+    try {
+        const result = asyncLikeSong(id);
+        console.log(id)
+        return result;
+    } catch (error) {
+        console.log(error);
+    }
 
 }
 
