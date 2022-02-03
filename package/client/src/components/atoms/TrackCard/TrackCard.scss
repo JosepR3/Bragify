@@ -2,18 +2,21 @@
 @use "../../../assets/scss/conf.scss" as a;
 
 
+.track_card_body {
+height: 10px;
+}
+
 .track_card_container {
     width: 250px !important;
     height: 250px !important;
-    background-color: rgb(218, 218, 218) !important;
+    background-color: rgb(49, 49, 49) !important;
     display: flex;
     justify-content: center;
+    padding: 20px;
 
   &_image{
-    max-width: 250px;
-    max-height: 150px;
-    overflow: hidden;
-    // position: absolute;
+    width: 2rem !important;
+    height: 2rem !important;
   }
 
   &_button{

@@ -46,14 +46,14 @@ export default function TrackCard() {
         <Card.Img
         className="track_card_container_image"
         variant="top"
-        src="https://images.pexels.com/photos/9420580/pexels-photo-9420580.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+        src="https://store-032.blobstore.apple.com/sq-mq-us-032-000002/dc/21/3b/dc213b08-221b-0777-32df-87ee8c9a812a/image?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20220203T151716Z&X-Amz-SignedHeaders=host&X-Amz-Expires=86400&X-Amz-Credential=MKIAJC19DXS75RV205ZP%2F20220203%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=8c6c557d11ad2a393e249e2a6a7b249bed93e46db820d172fbdd3b16a945e233"
         >
         </Card.Img>
         <Card.Body className="flex-column d-flex justify-content-center">
         <div className="d-flex gap-3 justify-content-between">
         <button variant="primary" className="track_card_container_button">▶</button>
         </div>
-        <Card.Title className="fs-5">Song</Card.Title>
+        <Card.Title className="fs-5 mt-2">Song</Card.Title>
         <Card.Text className="fs-6">Album</Card.Text>
         </Card.Body>
     </Card>
