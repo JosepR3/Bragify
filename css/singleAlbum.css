@@ -11673,10 +11673,6 @@ thead {
   color: rgba(255, 255, 255, 0.5);
 }
 
-.brand_color {
-  color: #bf58ca;
-}
-
 tbody tr:hover {
   background-color: #bf58ca;
   transition: 0.5s;

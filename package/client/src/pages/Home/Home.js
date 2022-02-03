@@ -19,7 +19,7 @@ import InnerDash from "../../components/organisms/InnerDash";
 import Copyright from "../../components/atoms/Copyright";
 import EditProfile from "../../components/molecules/EditProfile";
 import TracksList from "../../components/organisms/TracksList";
-import SingleAlbum from "../../components/organisms/singleAlbum";
+import SingleAlbum from "../../components/organisms/SingleAlbum";
 import { fetchAllTracks } from "../../redux/tracks/tracks-actions";
 import { tracksSelector } from "../../redux/tracks/tracks-selector";
 
@@ -62,10 +62,10 @@ function Home() {
             <NavBar />
             <Toolbar />
             <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
-              {/* {inEditing && !inTracks <EditProfile />}
+              {/* {/* {inEditing && !inTracks <EditProfile />}
               {!inEditing && !inTracks && <InnerDash/>}  */}
-              {inTracks && <TracksList />}
-              {/* <SingleAlbum/> */}
+              {/* {inTracks && <TracksList />} */}
+              <SingleAlbum/>
               
             </Container>
             <Copyright sx={{ pt: 4, mt: 3 }} />
