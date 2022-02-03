@@ -9,6 +9,7 @@ import { fetchAllTracks } from '../../../redux/tracks/tracks-actions';
 
 export default function InnerDash() {
     const tracks = useSelector(state => state.tracks.result);
+    console.log(tracks);
     // const tracks = useSelector(state => state.tracks.playingTrack);
     const error = useSelector(state => state.tracks.error);
     const status = useSelector(state => state.tracks.status);

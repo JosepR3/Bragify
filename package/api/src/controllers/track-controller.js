@@ -38,9 +38,21 @@ async function createTrack(req, res, next) {
 
 async function fetchTracks(req, res, next) {
   try {
-    const tracks = await TrackRepo.find({title: true}[0])
+    const tracks = await TrackRepo.find({ title: true }[0])
     handleDbResponse(res, tracks);
   } catch (error) {
+    next(error);
+  }
+}
+
+async function deleteTrack(req, res, next) {
+  id = (req.params.id)
+  try {
+    const tracks = await TrackRepo.deleteOne(id)
+    console.log(req.params.id)
+    handleDbResponse(res, tracks);
+  } catch (error) {
+    console.log(req.params)
     next(error);
   }
 }
@@ -48,4 +60,5 @@ async function fetchTracks(req, res, next) {
 module.exports = {
   createTrack: createTrack,
   fetchTracks: fetchTracks,
+  deleteTrack: deleteTrack,
 };

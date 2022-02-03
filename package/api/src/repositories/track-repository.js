@@ -18,6 +18,10 @@ class TrackRepository {
   findById(id) {
     return normalizeDBQuery(db.Track.findById(id, "-__v"));
   }
+
+  deleteOne(id) {
+    return normalizeDBQuery(db.Track.deleteOne({ _id: id }));
+  }
 }
 
 module.exports = new TrackRepository();

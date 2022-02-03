@@ -28,11 +28,11 @@ export function signUpWithGoogleRequest() {
   };
 }
 
-export function signUpWithEmailRequest( user ) {
+export function signUpWithEmailRequest(user) {
   return async function signUpThunk(dispatch) {
     dispatch(signUpRequest());
     try {
-    const result = await auth.singUpWithEmailAndPassword(user.email, user.password);
+      const result = await auth.singUpWithEmailAndPassword(user.email, user.password);
     } catch (error) {
       dispatch(signUpError(error.message));
     }
@@ -69,22 +69,22 @@ export function syncSignIn() {
   };
 }
 
-export function editUser( user ){
+export function editUser(user) {
   console.log("edit User")
   return async function syncSignInThunk(dispatch) {
     const token = await auth.getCurrentUserToken();
     if (!token) {
       return dispatch(signOutSuccess());
     }
-      const reqBody = {
-        firstName: user.firstName,
-        lastName: user.lastName,
-        username: user.username,
-        email: user.email
+    const reqBody = {
+      firstName: user.firstName,
+      lastName: user.lastName,
+      username: user.username,
+      email: user.email
     }
     await api.editUser({
       headers:
-        {Authorization: `Bearer ${token}`},
+        { Authorization: `Bearer ${token}` },
       body: reqBody
     });
   }

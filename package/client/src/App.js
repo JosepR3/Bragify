@@ -14,6 +14,8 @@ import TrackSongsList from "./components/organisms/TrackSongsList"
 import { onAuthStateChanged } from "./services/auth";
 import { syncSignIn, signOut } from "./redux/auth/auth-actions";
 
+import PrivateRoute from "./components/PrivateRoute";
+
 //TODO  private list 
 // import PrivateRoute from "./components/PrivateRoute";
 function App() {
@@ -44,10 +46,10 @@ function App() {
         <Route exact path={ROUTES.SIGN_UP} element={<SignUp />} />
         <Route exact path={ROUTES.SIGN_IN} element={<SignIn />} />
         <Route exact path={ROUTES.RESET_PASSWORD} element={<ResetPassword />} />
-        <Route path={ROUTES.HOME} element={<Home />} >
+        <Route path={ROUTES.HOME} element={<PrivateRoute />} >
           <Route exact path={ROUTES.HOME} element={<Home />} />
         </Route>
-        <Route path={ROUTES.TRACK_SONG_LIST} element={<TrackSongsList />} >
+        <Route path={ROUTES.TRACK_SONG_LIST} element={<PrivateRoute />} >
           <Route exact path={ROUTES.TRACK_SONG_LIST} element={<TrackSongsList />} />
         </Route>
 

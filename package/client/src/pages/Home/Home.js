@@ -32,14 +32,14 @@ function Home() {
   }
 
   return (
-      <ThemeProvider theme={mdTheme}>
-        <Box sx={{ display: "flex" }}>
-          <CssBaseline />
-          <SideBar />
-          <MainContainer />
-        </Box>
-      </ThemeProvider>
-    
+    <ThemeProvider theme={mdTheme}>
+      <Box sx={{ display: "flex" }}>
+        <CssBaseline />
+        <SideBar />
+        <MainContainer />
+      </Box>
+    </ThemeProvider>
+
   );
 }
 export default Home;
