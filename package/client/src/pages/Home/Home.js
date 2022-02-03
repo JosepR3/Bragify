@@ -1,35 +1,44 @@
-import  React from "react";
+import React from "react";
 import { Navigate } from "react-router-dom";
 import { authSelector } from "../../redux/auth/auth-selectors";
-import { useSelector } from "react-redux";
+import { Route, Routes} from "react-router-dom";
 import * as ROUTES from "../../routes";
-// Material UI
+// REDUX
+import { useDispatch, useSelector } from "react-redux";
+// MATERIAL UI
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import Box from "@mui/material/Box";
-import Toolbar from "@mui/material/Toolbar";
-import Container from "@mui/material/Container";
-
-// Components
-import NavBar from "../../components/molecules/NavBar";
 import SideBar from "../../components/organisms/SideBar/SideBar";
-import InnerDash from "../../components/organisms/InnerDash";
 import Copyright from "../../components/atoms/Copyright";
+import EditProfile from "../../components/molecules/EditProfile";
+import TracksList from "../../components/organisms/TracksList";
+import SingleAlbum from "../../components/organisms/SingleAlbum";
+import { fetchAllTracks } from "../../redux/tracks/tracks-actions";
+import { Container } from "@mui/material";
+import { tracksSelector } from "../../redux/tracks/tracks-selector";
+import NavBar from "../../components/molecules/NavBar";
+import FormCreateTracks from "../../components/organisms/FormCreateTracks/FormCreateTracks";
+
 
 const mdTheme = createTheme({
   typography: {
-    fontFamily: ["Roboto", "Mochiy Pop P One"].join(","),
+    fontFamily: ["circular-std", "Roboto"].join(","),
+    fontSize: 20,
   },
 });
 
 function Home() {
-
-  const { isAuthenticated } = useSelector(authSelector);
+  const { isAuthenticated, isEditing, currentUser } = useSelector(authSelector);
+  const inTracks = useSelector(tracksSelector);
+  const dispatch = useDispatch();
 
   if (!isAuthenticated) {
     return <Navigate to={ROUTES.SIGN_IN} />;
   }
-  
+  React.useEffect(async () => {
+    await fetchAllTracks(dispatch);
+  }, []);
   return (
     <>
       <ThemeProvider theme={mdTheme}>
@@ -48,10 +57,14 @@ function Home() {
               overflow: "auto",
             }}
           >
-            <NavBar />
-            <Toolbar />
+            <NavBar/>
+
             <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
-              <InnerDash />
+              {isEditing  && <EditProfile/>}
+              {!isEditing && !inTracks && <InnerDash/>}  
+              {inTracks && <TracksList />}
+              {/* <SingleAlbum/> */}
+              <FormCreateTracks/>
             </Container>
             <Copyright sx={{ pt: 4, mt: 3 }} />
           </Box>

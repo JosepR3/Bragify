@@ -4,7 +4,7 @@ export function createDefaultResponse() {
   return {
     isSuccessful: false,
     data: null,
-    errorMessage: null,
+    message: null,
   };
 }
 
@@ -52,3 +52,6 @@ export function makeRequest(
     );
   };
 }
+
+
+

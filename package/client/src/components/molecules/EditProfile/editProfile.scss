@@ -1,0 +1,49 @@
+@use "../../../assets/scss/conf.scss" as a;
+
+.profile__wrapper {
+  background: linear-gradient(
+    158deg,
+    rgba(46, 46, 46, 0.86) 0%,
+    hsl(0, 0%, 5%) 100%
+  );
+  color: white;
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+  border-radius: 5%;
+}
+
+// -----------------------INPUT
+
+.form-control {
+    height: 3.5rem;
+    font-size: 1.2rem;
+    background-color: a.$web-background-color;
+    color: whitesmoke;
+    border: 1px solid black;
+  
+    &::placeholder {
+      color: rgb(185, 165, 165);
+    }
+    &:disabled{
+      color:rgba(0, 0, 0, 0.363);
+    }
+  }
+
+.form__group{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+// ---------------------IMAGE
+
+.img-thumbnail{
+  width: 15rem;
+}
+
+// -----------------------BUTTON
+
+.btn-log-color{
+  width: 10rem;
+}

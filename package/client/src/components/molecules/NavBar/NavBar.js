@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import { signOut } from "../../../redux/auth/auth-actions";
+import { signOut, editProfile } from "../../../redux/auth/auth-actions";
 import * as ROUTES from "../../../routes";
 import { useDispatch } from "react-redux";
 import { authSelector } from "../../../redux/auth/auth-selectors";
@@ -15,6 +15,8 @@ import Avatar from "@mui/material/Avatar";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 
+
+
 function NavBar() {
   const dispatch = useDispatch();
   const { currentUser } = useSelector(authSelector);
@@ -26,6 +28,10 @@ function NavBar() {
 
   const handleSignOut = () => {
     dispatch(signOut());
+  };
+
+  const handleEditProfile = () => {
+    dispatch(editProfile());
   };
 
   const handleCloseUserMenu = () => {
@@ -45,7 +51,7 @@ function NavBar() {
           variant="h6"
           color="inherit"
           noWrap
-          sx={{ flexGrow: 1, fontFamily: "Mochiy Pop P One" }}
+          sx={{ flexGrow: 1, fontFamily: 'Circular Std, sans-serif' }}
         >
           BRAGIFY MUSIC
         </Typography>
@@ -55,7 +61,7 @@ function NavBar() {
           noWrap
           sx={{ mr: "20px", fontFamily: "Mochiy Pop P One" }}
         >
-          Welcome {currentUser.email}
+          Welcome {currentUser.username}
         </Typography>
 
         <Tooltip title="Open settings">
@@ -79,7 +85,7 @@ function NavBar() {
           open={Boolean(anchorElUser)}
           onClose={handleCloseUserMenu}
         >
-          <MenuItem key="editProfile" >
+          <MenuItem key="editProfile" onClick={handleEditProfile}>
             <Typography textAlign="center">Edit Profile</Typography>
           </MenuItem>
           <MenuItem key="signOut" onClick={handleSignOut}>

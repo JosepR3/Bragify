@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Navigate } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 
@@ -12,15 +13,14 @@ import {
   resetAuthState,
   signUpWithEmailRequest,
   signUpWithGoogleRequest,
-  getUsername
+  editUser
 } from "../../redux/auth/auth-actions";
 
 import { authSelector } from "../../redux/auth/auth-selectors";
 
 function SignUp() {
   const dispatch = useDispatch();
-  const { isSigningUp, signUpError, isLoading } =
-    useSelector(authSelector);
+  const { isSigningUp, signUpError, isLoading, isAuthenticated } = useSelector(authSelector);
 
   const [user, setUser] = useState({
     firstName: "",
@@ -42,9 +42,8 @@ function SignUp() {
 
   function handleSubmit(e) {
     e.preventDefault();
-
-    dispatch(signUpWithEmailRequest( user.email, user.password));
-    dispatch(getUsername(user.username))
+    dispatch(signUpWithEmailRequest(user));
+    // dispatch(editUser(user))
   }
 
   function handleInput(e) {
@@ -56,6 +55,10 @@ function SignUp() {
       [name]: value,
     };
     setUser(newUser);
+  }
+
+  if (isAuthenticated) {
+     return <Navigate to={ROUTES.HOME} />;
   }
 
   return (

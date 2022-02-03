@@ -1,4 +1,7 @@
 const { UserRepo } = require("../repositories");
+const { User } = require("../models/index")
+
+
 async function signUp(req, res, next) {
 
   try {
@@ -17,14 +20,13 @@ async function signUp(req, res, next) {
         error: null,
       });
     }
-
     await UserRepo.create({
       _id: uid,
       email: email,
     });
 
     res.status(201).send({
-      data: uid,
+      email,
       error: null,
     });
   } catch (error) {
@@ -40,46 +42,46 @@ async function signOut(req, res) {
   });
 }
 
-async function updateUser(req, res, next) {
-  console.log(req.headers)
-  // try {
-    const { email, firstName,lastName,username} = req.user;
-    console.log(req.user)
-    // const response = await UserRepo.findOne({ email:"sergi.sergi@gmail.com"});
-    console.log(response);
-//     if (response.error) {
-//       return res.status(400).send({
-//         data: null,
-//         error: response.error,
-//       });
-//     }
+const editUser = (req, res) => {
+  const { uid } = req.user;
 
-//     if (response.data) {
-//       return res.status(200).send({
-//         data: "OK",
-//         error: null,
-//       });
-//     }
-// console.log(req)
-    // await UserRepo.findOneAndUpdate({
-    //   email: email,
-    //   firstName: "sergiño",
-    //   lastName: "roca",
-    //   username:"serroca"
-      
-    // });
+  User.findByIdAndUpdate(uid, req.body, { useFindAndModify: false })
+    .then(data => {
+      if (!data) {
+        res.status(404).send({
+          message: `Cannot update User with id=${uid}. Maybe User was not found!`
+        });
+      }
+      else {
+        res.send({ message: "User was updated successfully." });
+      }
+    })
+    .catch((error) => {
+      res.status(500).send({
+        message: "Error updating User with id=" + uid
+      });
+    });
+};
 
-  //   res.status(201).send({
-  //     data: uid,
-  //     error: null,
-  //   });
-  // } catch (error) {
-  //   next(error);
-  // }
+async function getUser(req, res) {
+  const { uid } = req.user;
+  console.log(uid)
+  User.findById(uid)
+    .then(data => {
+      if (!data)
+        res.status(404).send({ message: "Not found User with id " + uid });
+      else res.send(data);
+    })
+    .catch(error => {
+      res
+        .status(500)
+        .send({ message: "Error retrieving user with id=" + uid });
+    });
 }
 
 module.exports = {
   signUp: signUp,
   signOut: signOut,
-  updateUser:updateUser
+  editUser: editUser,
+  getUser: getUser
 };

@@ -8,12 +8,18 @@ export const AuthInitialState = {
   isAuthenticated: false,
   isSendingPasswordReset: false,
   isLoading: false,
+  isEditing: false,
+  editSuccess: false,
+  editMessage: null,
   passwordResetError: null,
   passwordResetSent: false,
   currentUser: {
     email: null,
+    username: null,
+    firstName: null,
+    lastName: null,
   },
-  username: null,
+  
 };
 
 const AuthReducer = (state = AuthInitialState, action) => {
@@ -34,15 +40,24 @@ const AuthReducer = (state = AuthInitialState, action) => {
         isLoading: false,
       };
     }
+    case AuthTypes.EDIT_PROFILE: {
+      return {
+        ...state,
+        isEditing: true
+      };
+    }
     case AuthTypes.SIGN_UP_SUCCESS: {
-      localStorage.setItem("currentUser", action.payload);
+      const user = action.payload
       return {
         ...state,
         isAuthenticated: true,
         isSigningUp: false,
         signUpError: null,
         currentUser: {
-          email: action.payload,
+          email: user.email,
+          username: user.username,
+          firstName: user.firstName,
+          lastName: user.lastName,
         },
         username: action.payload,
         isLoading: false,
@@ -96,6 +111,20 @@ const AuthReducer = (state = AuthInitialState, action) => {
         isSendingPasswordReset: false,
         passwordResetError: null,
         passwordResetSent: true,
+      };
+    }
+    case AuthTypes.EDIT_REQUEST: {
+      return {
+        ...state,
+        isLoading: true,
+      };
+    }
+    case AuthTypes.EDIT_SUCCESS: {
+      return {
+        ...state,
+        isLoading: false,
+        editSuccess: true,
+        editMessage: action.payload,
       };
     }
     case AuthTypes.RESET_AUTH_STATE: {

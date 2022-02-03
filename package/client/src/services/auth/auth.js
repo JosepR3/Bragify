@@ -1,3 +1,4 @@
+import { logDOM } from '@testing-library/react';
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
 import 'firebase/compat/firestore';
@@ -62,4 +63,11 @@ export function getCurrentUserEmail() {
   }
 
   return auth.currentUser.email;
+}
+
+export function getCurrentUserUid() {
+  if (!auth.currentUser) {
+    return null;
+  }
+  return auth.currentUser.uid;
 }
