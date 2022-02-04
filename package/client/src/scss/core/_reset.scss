@@ -1,0 +1,5 @@
+@use '../abstracts/colors' as c;
+a{
+  text-decoration: none;
+  color: c.$brand-color;
+}

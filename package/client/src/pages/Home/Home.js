@@ -1,7 +1,6 @@
 import {useEffect} from "react";
 import { Navigate } from "react-router-dom";
 import { authSelector } from "../../redux/auth/auth-selectors";
-import { Route, Routes} from "react-router-dom";
 import * as ROUTES from "../../routes";
 // REDUX
 import { useDispatch, useSelector } from "react-redux";
@@ -59,7 +58,6 @@ function Home() {
             }}
           >
             <NavBar/>
-
             <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
               {isEditing  && <EditProfile/>}
               {!isEditing && !inTracks && <InnerDash/>}  

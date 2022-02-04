@@ -1,6 +1,5 @@
 import { useState}from "react";
 import { signOut, editProfile } from "../../../redux/auth/auth-actions";
-import * as ROUTES from "../../../routes";
 import { useDispatch } from "react-redux";
 import { authSelector } from "../../../redux/auth/auth-selectors";
 import { useSelector } from "react-redux";

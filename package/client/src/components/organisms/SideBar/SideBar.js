@@ -1,11 +1,7 @@
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import Divider from "@mui/material/Divider";
-import List from "@mui/material/List";
-
 import SearchInput from '../../atoms/SearchInput/SearchInput';
-
-
 import MainList  from "../../molecules/MainList";
 
 

@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 
-import "./style.scss";
+// import "./style.scss";
 
 const NotFound = () => {
   const navigate = useNavigate();

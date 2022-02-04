@@ -7,7 +7,6 @@ import Form from "react-bootstrap/Form";
 import fbIcon from "../../assets/images/facebook-48.png";
 import ggIcon from "../../assets/images/google-48.png";
 import * as ROUTES from "../../routes";
-import "./signIn.scss";
 
 import {
   resetAuthState,

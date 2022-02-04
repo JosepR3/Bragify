@@ -1,12 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Navigate } from "react-router-dom";
-import * as ROUTES from "../../../routes";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Image from "react-bootstrap/Image"
 
-import "./editProfile.scss"
+// import "./editProfile.scss"
 
 import {
   resetAuthState,

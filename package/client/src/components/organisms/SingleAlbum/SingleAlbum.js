@@ -1,5 +1,5 @@
 import React from "react";
-import "./singleAlbum.scss";
+// import "./singleAlbum.scss";
 
 function SingleAlbum() {
   return (

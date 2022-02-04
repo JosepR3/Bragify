@@ -1,4 +1,4 @@
-@use "../../../utils/scss/conf.scss" as a;
+@use '../abstracts/colors' as c;
 
 .profile__wrapper {
   background: linear-gradient(
@@ -18,7 +18,7 @@
 .form-control {
     height: 3.5rem;
     font-size: 1.2rem;
-    background-color: a.$web-background-color;
+    background-color: c.$web-background-color;
     color: whitesmoke;
     border: 1px solid black;
   
