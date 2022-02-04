@@ -1,4 +1,4 @@
-import React from "react";
+import {useEffect} from "react";
 import { Navigate } from "react-router-dom";
 import { authSelector } from "../../redux/auth/auth-selectors";
 import { Route, Routes} from "react-router-dom";
@@ -29,16 +29,15 @@ const mdTheme = createTheme({
 });
 
 function Home() {
-  const { isAuthenticated, isEditing, currentUser } = useSelector(authSelector);
-  const inTracks = useSelector(tracksSelector);
   const dispatch = useDispatch();
+  const inTracks = useSelector(tracksSelector);
+  const { isAuthenticated, isEditing, currentUser } = useSelector(authSelector);
 
   if (!isAuthenticated) {
     return <Navigate to={ROUTES.SIGN_IN} />;
+  } else {
+    dispatch(fetchAllTracks)
   }
-  React.useEffect(async () => {
-    await fetchAllTracks(dispatch);
-  }, []);
   return (
     <>
       <ThemeProvider theme={mdTheme}>

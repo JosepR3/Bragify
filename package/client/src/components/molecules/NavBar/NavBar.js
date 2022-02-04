@@ -1,11 +1,10 @@
-import * as React from "react";
-
+import { useState}from "react";
 import { signOut, editProfile } from "../../../redux/auth/auth-actions";
 import * as ROUTES from "../../../routes";
 import { useDispatch } from "react-redux";
 import { authSelector } from "../../../redux/auth/auth-selectors";
 import { useSelector } from "react-redux";
-
+import {useNavigate} from "react-router-dom"
 import MuiAppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
@@ -18,9 +17,10 @@ import MenuItem from "@mui/material/MenuItem";
 
 
 function NavBar() {
+  const navigate=useNavigate()
   const dispatch = useDispatch();
   const { currentUser } = useSelector(authSelector);
-  const [anchorElUser, setAnchorElUser] = React.useState();
+  const [anchorElUser, setAnchorElUser] = useState();
 
   const handleOpenUserMenu = (event) => {
     setAnchorElUser(event.currentTarget);
@@ -28,6 +28,7 @@ function NavBar() {
 
   const handleSignOut = () => {
     dispatch(signOut());
+navigate('/')
   };
 
   const handleEditProfile = () => {

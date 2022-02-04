@@ -1,11 +1,10 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useSelector } from 'react-redux';
 
 import AudioPlayer from 'react-h5-audio-player';
 import 'react-h5-audio-player/src/styles.scss';
 import './MusicPlayer.scss';
 // import useTimer from '../../../hooks/useTimer';
-// import { fetchAllTracks } from '../../../redux/tracks/tracks-actions';
 
 // https://www.npmjs.com/package/react-h5-audio-player
 export default function MusicPlayer() {
