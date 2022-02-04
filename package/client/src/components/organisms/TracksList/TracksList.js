@@ -43,6 +43,7 @@ export default function TracksList() {
               <ListGroup.Item className="list_item">
                 {track.duration}
               </ListGroup.Item>
+
               <LikeButton id={track._id} />
               <DeleteButton id={track._id} />
             </ListGroup>
