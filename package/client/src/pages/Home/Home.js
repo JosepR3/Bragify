@@ -36,7 +36,9 @@ function Home() {
   if (!isAuthenticated) {
     return <Navigate to={ROUTES.SIGN_IN} />;
   } else {
-    dispatch(fetchAllTracks)
+    useEffect(()=>{
+      dispatch(fetchAllTracks)
+    }, [dispatch]);
   }
   return (
     <>
