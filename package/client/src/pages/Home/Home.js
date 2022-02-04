@@ -1,7 +1,7 @@
-import React from "react";
-import { Navigate } from "react-router-dom";
+import React, { useEffect } from "react";
+import { Navigate, useNavigate } from "react-router-dom";
 import { authSelector } from "../../redux/auth/auth-selectors";
-import { Route, Routes} from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import * as ROUTES from "../../routes";
 // REDUX
 import { useDispatch, useSelector } from "react-redux";
@@ -29,14 +29,18 @@ const mdTheme = createTheme({
 });
 
 function Home() {
-  const { isAuthenticated, isEditing, currentUser } = useSelector(authSelector);
+  const { isAuthenticated, isEditing, currentUser, isSigningOut } = useSelector(authSelector);
   const inTracks = useSelector(tracksSelector);
+  const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  if (!isAuthenticated) {
-    return <Navigate to={ROUTES.SIGN_IN} />;
-  }
-  React.useEffect(async () => {
+  useEffect(() => {
+    if (!isAuthenticated) {
+      navigate(ROUTES.SIGN_IN)
+    }
+  }, [isAuthenticated])
+
+  useEffect(async () => {
     await fetchAllTracks(dispatch);
   }, []);
   return (
@@ -57,14 +61,14 @@ function Home() {
               overflow: "auto",
             }}
           >
-            <NavBar/>
+            <NavBar />
 
             <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
-              {isEditing  && <EditProfile/>}
-              {!isEditing && !inTracks && <InnerDash/>}  
+              {isEditing && <EditProfile />}
+              {!isEditing && !inTracks && <InnerDash />}
               {inTracks && <TracksList />}
               {/* <SingleAlbum/> */}
-              <FormCreateTracks/>
+              <FormCreateTracks />
             </Container>
             <Copyright sx={{ pt: 4, mt: 3 }} />
           </Box>

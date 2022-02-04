@@ -10,6 +10,7 @@ import SignUp from "./pages/SignUp";
 import SignIn from "./pages/SignIn";
 import ResetPassword from "./pages/ResetPassword";
 import NotFound from "./pages/NotFound";
+import PrivateRoute from "./components/PrivateRoute";
 
 //REDUX
 import { onAuthStateChanged } from "./services/auth";
@@ -41,7 +42,9 @@ function App() {
         <Route exact path={ROUTES.SIGN_UP} element={<SignUp />} />
         <Route exact path={ROUTES.SIGN_IN} element={<SignIn />} />
         <Route exact path={ROUTES.RESET_PASSWORD} element={<ResetPassword />} />
-        <Route exact path={ROUTES.HOME} element={<Home />} />
+        <Route path={ROUTES.HOME} element={<PrivateRoute />} >
+          <Route exact path={ROUTES.HOME} element={<Home />} />
+        </Route>
       </Routes>
     </div>
   );

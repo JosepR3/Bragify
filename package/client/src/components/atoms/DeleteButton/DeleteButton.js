@@ -7,7 +7,6 @@ export default function DeleteButton({ id }) {
 
     const handleDelete = (e) => {
         dispatch(deleteTrack(e.target.id));
-        
     }
 
     return <Button variant="danger" data-test-id="delete-button" id={id} onClick={handleDelete} />;

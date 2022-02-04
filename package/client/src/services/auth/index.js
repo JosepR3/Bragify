@@ -1,6 +1,6 @@
 export {
   onAuthStateChanged,
-  singInWithGoogle,
+  signInWithGoogle,
   singInWithEmailAndPassword,
   singUpWithEmailAndPassword,
   sendPasswordResetEmail,

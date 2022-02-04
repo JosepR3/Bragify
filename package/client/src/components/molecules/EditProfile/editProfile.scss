@@ -1,4 +1,4 @@
-@use "../../../assets/scss/conf.scss" as a;
+@use "../../../utils/scss/conf.scss" as a;
 
 .profile__wrapper {
   background: linear-gradient(
@@ -16,34 +16,34 @@
 // -----------------------INPUT
 
 .form-control {
-    height: 3.5rem;
-    font-size: 1.2rem;
-    background-color: a.$web-background-color;
-    color: whitesmoke;
-    border: 1px solid black;
-  
-    &::placeholder {
-      color: rgb(185, 165, 165);
-    }
-    &:disabled{
-      color:rgba(0, 0, 0, 0.363);
-    }
-  }
+  height: 3.5rem;
+  font-size: 1.2rem;
+  background-color: a.$web-background-color;
+  color: whitesmoke;
+  border: 1px solid black;
 
-.form__group{
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+  &::placeholder {
+    color: rgb(185, 165, 165);
+  }
+  &:disabled {
+    color: rgba(0, 0, 0, 0.363);
+  }
+}
+
+.form__group {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
 // ---------------------IMAGE
 
-.img-thumbnail{
+.img-thumbnail {
   width: 15rem;
 }
 
 // -----------------------BUTTON
 
-.btn-log-color{
+.btn-log-color {
   width: 10rem;
 }

@@ -1,10 +1,10 @@
-import * as React from "react";
+import React, { useState, useEffect } from "react";
 
 import { signOut, editProfile } from "../../../redux/auth/auth-actions";
-import * as ROUTES from "../../../routes";
 import { useDispatch } from "react-redux";
 import { authSelector } from "../../../redux/auth/auth-selectors";
 import { useSelector } from "react-redux";
+import { useNavigate } from 'react-router-dom';
 
 import MuiAppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
@@ -15,19 +15,20 @@ import Avatar from "@mui/material/Avatar";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 
-
-
 function NavBar() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const [anchorElUser, setAnchorElUser] = useState();
   const { currentUser } = useSelector(authSelector);
-  const [anchorElUser, setAnchorElUser] = React.useState();
 
   const handleOpenUserMenu = (event) => {
     setAnchorElUser(event.currentTarget);
   };
 
   const handleSignOut = () => {
+    console.log('signing out');
     dispatch(signOut());
+    navigate('/sign-in');
   };
 
   const handleEditProfile = () => {
@@ -88,9 +89,9 @@ function NavBar() {
           <MenuItem key="editProfile" onClick={handleEditProfile}>
             <Typography textAlign="center">Edit Profile</Typography>
           </MenuItem>
-          <MenuItem key="signOut" onClick={handleSignOut}>
+          <button type="button" key="signOut" onClick={handleSignOut}>
             <Typography textAlign="center">Sign Out</Typography>
-          </MenuItem>
+          </button>
         </Menu>
       </Toolbar>
     </MuiAppBar>
