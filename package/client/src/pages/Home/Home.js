@@ -24,7 +24,7 @@ import EditProfile from "../../components/molecules/EditProfile";
 import SingleAlbum from "../../components/organisms/SingleAlbum";
 import FormCreateTracks from "../../components/organisms/FormCreateTracks/FormCreateTracks";
 import MusicPlayer from "../../components/molecules/MusicPlayer";
-
+import TrackList from "../../components/molecules/TrackList";
 const mdTheme = createTheme({
   typography: {
     fontFamily: ["circular-std", "Roboto"].join(","),
@@ -66,6 +66,7 @@ function Home() {
               {!isEditing && !inTracks && <InnerDash />}
               <SingleAlbum />
               <FormCreateTracks />
+              <TrackList/>
             </Container>
             <Copyright sx={{ pt: 4, mt: 3 }} />
           </Box>

@@ -1,51 +1,40 @@
 import api from "../../api";
 import * as auth from "../../services/auth";
 import { getCurrentUserToken } from "../../services/auth";
-import {
-  FETCH_TRACKS,
-  TRACKS_SET_ERROR,
-  TRACKS_SET_RESULT,
-  TRACKS_RESET,
-  TRACKS_LOADING,
-  TRACKS_LOADING_SUCCESS,
-  PLAY_TRACK,
-  PAUSE_TRACK,
-  STOP_TRACK,
-  TO_TRACKS,
-} from "./tracks-types";
+import * as TrackTypes from "./tracks-types";
 
 export function setTracksLoading() {
-  return { type: TRACKS_LOADING };
+  return { type: TrackTypes.TRACKS_LOADING };
 }
 export function toTracks() {
-  return { type: TO_TRACKS };
+  return { type: TrackTypes.TO_TRACKS };
 }
 export function setTracksLoadingSuccess() {
-  return { type: TRACKS_LOADING_SUCCESS };
+  return { type: TrackTypes.TRACKS_LOADING_SUCCESS };
 }
 
 export function setTracksResult(result) {
-  return { type: TRACKS_SET_RESULT, payload: result };
+  return { type: TrackTypes.TRACKS_SET_RESULT, payload: result };
 }
 
 export function setTracksError(error) {
-  return { type: TRACKS_SET_ERROR, payload: error };
+  return { type: TrackTypes.TRACKS_SET_ERROR, payload: error };
 }
 
 export function setPlayingTracks(track, index) {
   return {
-    type: PLAY_TRACK,
+    type: TrackTypes.PLAY_TRACK,
     payload: { track, index },
   };
 }
 
 export function setPauseTracks() {
-  return { type: PAUSE_TRACK };
+  return {  type: TrackTypes.PAUSE_TRACK };
 }
 
 export function playTrack(track) {
   return {
-    type: PLAY_TRACK,
+    type: TrackTypes.PLAY_TRACK,
     payload: { track },
   };
 }

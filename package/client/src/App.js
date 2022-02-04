@@ -6,10 +6,12 @@ import "./app.scss";
 //COMPONENTS
 import * as ROUTES from "./routes";
 import Home from "./pages/Home";
+
 import SignUp from "./pages/SignUp";
 import SignIn from "./pages/SignIn";
-import Tracks from "./pages/Tracks";
 import ResetPassword from "./pages/ResetPassword";
+import Tracks from "./pages/Tracks";
+import Playlists from "./pages/Playlists";
 import NotFound from "./pages/NotFound";
 
 //REDUX
@@ -44,6 +46,7 @@ function App() {
         <Route exact path={ROUTES.SIGN_IN} element={<SignIn />} />
         <Route exact path={ROUTES.RESET_PASSWORD} element={<ResetPassword />} />
         <Route exact path={ROUTES.HOME} element={<Home />} />
+        <Route exact path={ROUTES.PLAYLISTS} element={<Playlists />} />
       </Routes>
     </div>
   );
