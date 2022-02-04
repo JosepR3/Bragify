@@ -28,11 +28,11 @@ function makeApi(request = makeRequest()) {
     });
   }
 
-  function getAllTracks() {
-    return request({
-      url: "/get-tracks",
-      requestMethod: "GET",
-    });
+  function getAllTracks(headers) {
+    return axios.get(
+      "http://localhost:4000/tracks",
+       headers,
+    );
   }
 
 

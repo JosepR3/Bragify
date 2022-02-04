@@ -57,7 +57,7 @@ export default function MainList() {
           <ListItemIcon>
             <AlbumIcon style={{ fill: "#F170FF" }} />
           </ListItemIcon>
-          <ListItemText primary="Albums" />
+          <ListItemText primary="Playlists" />
         </ListItem>
         <ListItem button>
           <ListItemIcon>

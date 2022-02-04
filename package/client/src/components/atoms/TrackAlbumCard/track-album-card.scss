@@ -1,0 +1,53 @@
+@use "../../../assets/scss/conf.scss" as a;
+
+// -----------------SONG AND LIST CARD
+.card {
+  width: 12rem;
+  height: 17rem;
+  border: none;
+  background-color: transparent;
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.24);
+  }
+  &:hover .card-img-top {
+    filter: brightness(70%);
+  }
+  &:hover .fa-play-circle {
+    visibility: visible;
+  }
+  &-body {
+    height: 40%;
+    text-align: start;
+  }
+  &-title {
+    color: white;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+  }
+  &-subtitle {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    overflow: hidden;
+    color: rgba(245, 245, 245, 0.651);
+  }
+  &-text {
+    font-size: 1.8rem;
+  }
+  &-img-top {
+    box-shadow: 0rem 0.6rem 0.5rem 0rem rgb(0 0 0 / 40%);
+  }
+}
+// ---------------------PLAY "BUTTON"
+.fa-play-circle {
+  font-size: 3rem;
+  color: a.$brand-color;
+  visibility: hidden;
+  cursor: pointer;
+  &:hover {
+    filter: brightness(150%);
+    font-size: 3.8rem;
+  }
+}

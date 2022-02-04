@@ -43,7 +43,7 @@ export default function withLayout(WrappedComponent) {
                         <WrappedComponent />
                     </Box>
                 </ThemeProvider>
-                {/* <MusicPlayer /> */}
+                <MusicPlayer />
                 <Copyright />
             </>
         );

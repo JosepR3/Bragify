@@ -5,8 +5,8 @@ import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import Stack from '@mui/material/Stack';
 
-import TrackCard from '../../atoms/TrackCard';
-import TrackCarrousel from '../TrackCarrousel';
+import TrackAlbumCard from '../../atoms/TrackAlbumCard';
+// import TrackCarrousel from '../TrackCarrousel';
 
 export default function TrackList() {
 
@@ -21,9 +21,9 @@ export default function TrackList() {
             <Box sx={{ display: 'flex', flexDirection: 'row' }}>
                 <Stack direction="row" spacing={2}>
                     <List component={Stack} direction="row">
-                        <ListItem direction="row" ><TrackCard /></ListItem>
-                        <ListItem ><TrackCard /></ListItem>
-                        <ListItem ><TrackCard /></ListItem>
+                        <ListItem direction="row" ><TrackAlbumCard /></ListItem>
+                        <ListItem ><TrackAlbumCard /></ListItem>
+                        <ListItem ><TrackAlbumCard /></ListItem>
                     </List>
                 </Stack>
             </Box>
