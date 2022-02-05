@@ -180,7 +180,6 @@ export function signOut() {
 }
 
 export function getUser() {
-  console.log("GET USER")
   return async function getUserThunk(dispatch) {
     const token = await auth.getCurrentUserToken();
     if (!token) {

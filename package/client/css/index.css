@@ -11779,6 +11779,11 @@ body {
   background-color: #4d4d4d;
 }
 
+.form__background-color {
+  background-color: black;
+  border-radius: 3%;
+}
+
 body {
   font-family: "Rubik", sans-serif;
 }
@@ -11825,10 +11830,6 @@ a {
 
 .img-thumbnail {
   width: 15rem;
-}
-
-.btn-log-color {
-  width: 10rem;
 }
 
 .music-player {
@@ -12025,4 +12026,12 @@ tbody tr:hover {
   font-size: 12px !important;
   height: 2rem;
   padding: 0.45rem !important;
+}
+
+.btn-log-color {
+  width: 10rem;
+}
+
+.custom_btn {
+  background-color: black;
 }/*# sourceMappingURL=index.css.map */

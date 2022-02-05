@@ -59,11 +59,11 @@ function Home() {
           >
             <NavBar/>
             <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
-              {isEditing  && <EditProfile/>}
-              {!isEditing && !inTracks && <InnerDash/>}  
-              {inTracks && <TracksList />}
+              {/* {isEditing  && <EditProfile/>} */}
               {/* <SingleAlbum/> */}
               <FormCreateTracks/>
+              {!isEditing && !inTracks && <InnerDash/>}  
+              {inTracks && <TracksList />}
             </Container>
             <Copyright sx={{ pt: 4, mt: 3 }} />
           </Box>
