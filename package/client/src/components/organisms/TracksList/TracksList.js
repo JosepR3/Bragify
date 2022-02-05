@@ -26,27 +26,30 @@ export default function TracksList() {
       {tracks &&
         tracks.map((track) => {
           return (
-            <ListGroup
-              horizontal
-              className="list-row w-100 d-flex justify-content-center"
-              key={track._id}
-            >
-              <ListGroup.Item className="list_item">
-                {track.title}
-              </ListGroup.Item>
-              <ListGroup.Item className="list_item">
-                {track.artists}
-              </ListGroup.Item>
-              <ListGroup.Item className="list_item">
-                {track.genre}
-              </ListGroup.Item>
-              <ListGroup.Item className="list_item">
-                {track.duration}
-              </ListGroup.Item>
+            <div>
+              <ListGroup
+                horizontal
+                className="list-row w-100 d-flex justify-content-center"
+                key={track._id}
+              >
+                <ListGroup.Item className="list_item">
+                  {track.title}
+                </ListGroup.Item>
+                <ListGroup.Item className="list_item">
+                  {track.artists}
+                </ListGroup.Item>
+                <ListGroup.Item className="list_item">
+                  {track.genre}
+                </ListGroup.Item>
+                <ListGroup.Item className="list_item">
+                  {track.duration}
+                </ListGroup.Item>
 
-              <LikeButton trackId={track._id} />
-              <DeleteButton id={track._id} />
-            </ListGroup>
+                <LikeButton trackId={track._id} />
+                <DeleteButton id={track._id} />
+              </ListGroup>
+            </div>
+
           );
         })}
     </div>

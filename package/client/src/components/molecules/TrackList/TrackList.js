@@ -9,7 +9,6 @@ import TrackCard from '../../atoms/TrackCard';
 import TrackCarrousel from '../TrackCarrousel';
 
 
-
 export default function TrackList() {
 
     // const tracks = useSelector(state => state.tracks.result);
@@ -34,6 +33,7 @@ export default function TrackList() {
                     <li>Hello from TrackList</li>
                 </ul> : <h2>No tracks yet</h2>
             } */}
- 
+
+
         </Box>)
 }

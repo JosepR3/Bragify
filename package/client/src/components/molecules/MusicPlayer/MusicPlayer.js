@@ -4,18 +4,11 @@ import { useSelector } from 'react-redux';
 import AudioPlayer from 'react-h5-audio-player';
 import 'react-h5-audio-player/src/styles.scss';
 import './MusicPlayer.scss';
-// import useTimer from '../../../hooks/useTimer';
-// import { fetchAllTracks } from '../../../redux/tracks/tracks-actions';
 
 // https://www.npmjs.com/package/react-h5-audio-player
-export default function MusicPlayer() {
+export default function MusicPlayer({ trackList = ["https://res.cloudinary.com/dv1gu7nub/video/upload/v1618299312/Apollofy/Songs/Superstition_zyuldq.mp3"], title = "Track Title", artist = "Artist Name" }) {
 
-    const trackTrack = useSelector(state => state.tracks.playingTrack);
-    // const { runTimer } = useTimer()
-    const tracksToPlay = trackTrack.track
-    // const songTrack = useSelector(state => state.songs.playingTrack);
-    // const songsToPlay = songTrack.track
-
+    const tracksToPlay = trackList
     const [number, setNumber] = useState(0);
 
     function handleClickPrevious() {
@@ -32,7 +25,6 @@ export default function MusicPlayer() {
         }
     }
 
-
     return (
         <AudioPlayer
             autoPlay
@@ -42,12 +34,12 @@ export default function MusicPlayer() {
             onClickPrevious={handleClickPrevious}
             onClickNext={handleClickNext}
             onEnded={handleClickNext}
-            header={tracksToPlay && tracksToPlay[number].name}
-            src={tracksToPlay && tracksToPlay[number].url}
+            header={title}
+            src={tracksToPlay && tracksToPlay[number]}
             className='music-player'
             timeFormat='auto'
             hasDefaultKeyBindings={true}
-            footer={tracksToPlay && tracksToPlay[number].owner.firstName ? tracksToPlay[number].owner.firstName + " " + tracksToPlay[number].owner.lastName : "Enjoy the song!"}
+            footer={artist || "Enjoy the song!"}
             onError={(e) => {
                 console.log(e);
             }}
