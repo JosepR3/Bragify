@@ -3,24 +3,24 @@ const { handleDbResponse } = require("../repositories/repo-utils");
 
 async function createTrack(req, res, next) {
   console.log(req.body)
-  
-  const {title, url, thumbnail, genre, duration,authorId } = req.body;
+
+  const { title, url, thumbnail, genre, duration, authorId } = req.body;
 
   try {
-      if (!title && !url) {
-        res.status(400).send({
-          data: null,
-          error: "Missing Fields (title, url)",
-        });
-      }
-    
+    if (!title && !url) {
+      res.status(400).send({
+        data: null,
+        error: "Missing Fields (title, url)",
+      });
+    }
+
     const dbResponse = await TrackRepo.create({
       title: title,
       url: url,
       thumbnail: thumbnail,
       duration: duration,
       genre: genre,
-      authorId:authorId ,
+      authorId: authorId,
     });
 
     handleDbResponse(res, dbResponse);
@@ -50,8 +50,52 @@ async function deleteTrack(req, res, next) {
   }
 }
 
+async function likeTrack(req, res, next) {
+  console.log("hello from likeTrack")
+  console.log(req.params)  // trackId
+  console.log(req.body) //userId
+  const trackId = req.params.id
+  const { userId } = req.body
+
+  try {
+    const tracks = await TrackRepo.likeTrack(trackId, userId)
+    handleDbResponse(res, tracks);
+  }
+  catch (error) {
+    next(error);
+  }
+}
+async function unlikeTrack(req, res, next) {
+  const trackId = req.params.id
+  const { userId } = req.body
+  try {
+    console.log("hello from unlikeTrack")
+    const tracks = await TrackRepo.unlikeTrack(trackId, userId)
+    handleDbResponse(res, tracks);
+  } catch (error) {
+    next(error);
+  }
+}
+
+async function fetchLikedTracks(req, res, next) {
+  const userId = req.params.id
+  try {
+    const tracks = await TrackRepo.fetchLikedTracks(userId)
+    handleDbResponse(res, tracks);
+  } catch (error) {
+    next(error);
+  }
+}
+
+
+
+
+
 module.exports = {
   createTrack: createTrack,
   fetchTracks: fetchTracks,
   deleteTrack: deleteTrack,
+  likeTrack: likeTrack,
+  unlikeTrack: unlikeTrack,
+  fetchLikedTracks: fetchLikedTracks,
 };

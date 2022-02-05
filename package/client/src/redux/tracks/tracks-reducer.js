@@ -10,7 +10,8 @@ import {
   PAUSE_TRACK,
   STOP_TRACK,
   TO_TRACKS,
-  LIKE_TRACK
+  LIKE_TRACK,
+  LIKE_TRACKS
 } from "./tracks-types";
 
 export default function tracksReducer(state = initialState, action) {
@@ -73,6 +74,16 @@ export default function tracksReducer(state = initialState, action) {
           ...state,
           likedTracks: likedTracks
         }
+      }
+    case LIKE_TRACKS:
+      const { idList } = action.payload;
+      const likedTracks = state.likedTracks.filter(track => !idList.includes(track));
+      idList.forEach(id => {
+        likedTracks.push(id)
+      });
+      return {
+        ...state,
+        likedTracks: likedTracks
       }
 
     default:
