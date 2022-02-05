@@ -5,6 +5,9 @@ import { getCurrentUserUid } from "../../../services/auth";
 import Button from "react-bootstrap/Button";
 import Container from '@mui/material/Container';
 import Form from "react-bootstrap/Form";
+import mp3Icon from "../../../assets/images/mp3.svg";
+import imgIcon from "../../../assets/images/img.png";
+
 
 const FormCreateTracks = () => {
 
@@ -27,6 +30,9 @@ const FormCreateTracks = () => {
         if (!author || author === '') newErrors.author = 'can not be blank!'
         else if (author.author > 10) newErrors.author = 'Name author  is too long!'
         if (!genre || genre === '') newErrors.genre = 'select a genre!'
+        if (!url || url === '') newErrors.url = 'insert MP3 file!'
+        if (!thumbnail || thumbnail === '') newErrors.thumbnail = 'insert JPG file!'
+
         // if (!duration || duration > 5 || duration < 1) newErrors.duration = 'must assign a duration between 1 and 5!'
         return newErrors
     }
@@ -58,7 +64,7 @@ const FormCreateTracks = () => {
     return (<>
         <Container className="form__background-color"maxWidth="sm">
             <Form className="px-4" onSubmit={handleSubmit}>
-                <Form.Label>Title</Form.Label>
+                <Form.Label className='text-light'>Title</Form.Label>
                 <Form.Control
                     type='text'
                     name="title"
@@ -70,7 +76,7 @@ const FormCreateTracks = () => {
                     {errors.title}
                 </Form.Control.Feedback>
                 <Form.Group>
-                    <Form.Label>Author of Track</Form.Label>
+                    <Form.Label className='text-light'>Author of Track</Form.Label>
                     <Form.Control
                         type="text"
                         name="author"
@@ -83,7 +89,7 @@ const FormCreateTracks = () => {
                     </Form.Control.Feedback>
                 </Form.Group>
                 <Form.Group controlId="formBasicSelect">
-                    <Form.Label>Select genre</Form.Label>
+                    <Form.Label className='text-light'>Select genre</Form.Label>
                     <Form.Control
                         as="select"
                         name="genre"
@@ -98,27 +104,48 @@ const FormCreateTracks = () => {
                         {errors.genre}
                     </Form.Control.Feedback>
                 </Form.Group>
-                <Form.Group >
-                    <Form.Label>Select genre</Form.Label>
+                <Form.Group>
+                    <Form.Label>----------
+                        <img
+                            className=" me-2"
+                            src={mp3Icon}
+                            alt="fb-mp3"
+                        ></img>
                     <Form.Control
+                        style={{display:"none"}}
                         type="file"
-                        value={track.url}
-                        onChange={handleInput}
                         name="url"
-                        accept=".mp3"
+                        onChange={handleInput}
+                            accept=".mp3"
+                            isInvalid={!!errors.url}
                     />
+                    </Form.Label>
                 </Form.Group>
-                {/* <Form.Group className="mb-2">
-                <Form.Label>Thumbnail</Form.Label>
-                <Form.Control
-                    type="file"
-                    value={track.thumbnail}
-                    onChange={handleInput}
-                    name="thumbnail"
-                    accept=".jpg"
-                // required
-                />
-            </Form.Group> */}
+                    <p className='text-light fs-6'> Insert mp3 file</p>
+                    <Form.Control.Feedback type='invalid'>
+                        {errors.url}
+                    </Form.Control.Feedback>
+                <Form.Group>
+                    <Form.Label>
+                        <img
+                            className="me-2 img_icon"
+                            src={imgIcon}
+                            alt="img-icon"
+                        ></img>
+                        <Form.Control
+                            style={{ display: "none" }}
+                            type="file"
+                            name="thumbnail"
+                            onChange={handleInput}
+                            accept=".jpg"
+                            isInvalid={!!errors.thumbnail}
+                        />
+                    </Form.Label>
+                    <p className='text-light fs-6'> Insert img</p>
+                </Form.Group>
+                <Form.Control.Feedback type='invalid'>
+                    {errors.thumbnail}
+                </Form.Control.Feedback>
                 <Button
                     className="my-4 w-100 custom_btn"
                     type="submit"

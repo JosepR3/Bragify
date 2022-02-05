@@ -12034,4 +12034,29 @@ tbody tr:hover {
 
 .custom_btn {
   background-color: black;
+}
+
+.input__track {
+  background-image: url(https://www.svgrepo.com/show/44854/mp3.svg);
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  height: -webkit-max-content;
+  height: -moz-max-content;
+  height: max-content;
+}
+
+.input__img {
+  background-image: url(https://www.svgrepo.com/show/44854/mp3.svg);
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  height: -webkit-max-content;
+  height: -moz-max-content;
+  height: max-content;
+}
+
+.img_icon {
+  width: 61px;
+  height: 56px;
 }/*# sourceMappingURL=index.css.map */
