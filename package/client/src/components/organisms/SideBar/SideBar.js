@@ -1,6 +1,5 @@
 import React from "react";
 import Nav from "react-bootstrap/Nav";
-import * as ROUTES from "../../../routes";
 
 import bIcon from "../../../assets/Icons/icon-b-64.png"
 import {
@@ -16,6 +15,7 @@ import {
 
 import "./sideBar.scss"
 
+import * as ROUTES from "../../../routes";
 
 
 function SideBar() {

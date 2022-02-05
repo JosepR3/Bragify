@@ -58,7 +58,6 @@ function Home() {
             <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
               {isEditing && <EditProfile />}
               <SingleAlbum />
-
               <TrackList/>
             </Container>
             <Copyright sx={{ pt: 4, mt: 3 }} />
