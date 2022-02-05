@@ -1,4 +1,4 @@
-const initialState = {
+const playlistsState = {
   toSingleAlbum: false,
 };
-export default initialState;
+export default playlistsState;

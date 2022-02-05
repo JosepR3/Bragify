@@ -34,7 +34,7 @@ export default function TrackList() {
                   className="list-row w-100 d-flex justify-content-center"
                   key="key"
                 >
-                  <ListItem onclick={handleToSingleAlbum}>{album}</ListItem>
+                  <ListItem onClick={handleToSingleAlbum}>{album}</ListItem>
                 </List>
               );
             })}
