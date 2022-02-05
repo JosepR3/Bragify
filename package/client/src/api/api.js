@@ -66,7 +66,7 @@ function makeApi(request = makeRequest()) {
     createTrack: createTrack,
     getUser: getUser
   };
-};
+}
 
 
 export default makeApi();

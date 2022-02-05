@@ -1,0 +1,40 @@
+@use "../../../utils/scss/conf.scss" as a;
+
+.nav{
+  background-color: a.$main-black;
+  border-right: rgba(145, 145, 145, 0.5) inset 1px;
+  &-item{
+    margin-left: 0.65rem;
+  }
+  &-link{
+    font-size: 1rem;
+    &:hover .nav__icon{
+      filter: invert(1);
+    }
+  }
+  &__icon{
+    width: 1.5rem;
+    margin-right: 0.45rem;
+    filter: invert(0.7);
+  }
+  
+}
+
+.brand__{
+  &img{
+    width: 2rem;
+    filter: invert(1);
+  }
+  
+  &link{
+    color: white;
+  
+    &:hover{
+      color: white;
+    }
+  }
+}
+
+
+
+

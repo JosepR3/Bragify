@@ -87,8 +87,8 @@ export async function fetchAllTracks(dispatch) {
       return dispatch(signOutSuccess());
     }
     const res = await api.getAllTracks({
-      headers: { Authorization: `Bearer ${userToken}` },
-    });
+       headers: { Authorization: `Bearer ${userToken}` },
+     });
 
     return dispatch(setTracksResult(res.data.data));
 

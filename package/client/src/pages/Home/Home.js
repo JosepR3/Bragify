@@ -1,4 +1,4 @@
-import {useEffect} from "react";
+import React, {useEffect} from "react";
 import { Navigate } from "react-router-dom";
 import { authSelector } from "../../redux/auth/auth-selectors";
 import { Route, Routes} from "react-router-dom";
@@ -9,7 +9,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import Box from "@mui/material/Box";
-import SideBar from "../../components/organisms/SideBar/SideBar";
+import SideBar from "../../components/organisms/SideBar";
 import Copyright from "../../components/atoms/Copyright";
 import EditProfile from "../../components/molecules/EditProfile";
 import TracksList from "../../components/organisms/TracksList";
@@ -33,10 +33,12 @@ function Home() {
   const inTracks = useSelector(tracksSelector);
   const { isAuthenticated, isEditing, currentUser } = useSelector(authSelector);
 
+  useEffect(() => {
+    dispatch(fetchAllTracks);
+  }, [dispatch]);
+
   if (!isAuthenticated) {
     return <Navigate to={ROUTES.SIGN_IN} />;
-  } else {
-    dispatch(fetchAllTracks)
   }
   return (
     <>
