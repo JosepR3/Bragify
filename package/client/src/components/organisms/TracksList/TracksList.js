@@ -26,7 +26,7 @@ export default function TracksList() {
       {tracks &&
         tracks.map((track) => {
           return (
-            <div>
+          
               <ListGroup
                 horizontal
                 className="list-row w-100 d-flex justify-content-center"
@@ -48,7 +48,7 @@ export default function TracksList() {
                 <LikeButton trackId={track._id} />
                 <DeleteButton id={track._id} />
               </ListGroup>
-            </div>
+           
 
           );
         })}
