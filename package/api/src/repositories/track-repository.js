@@ -24,7 +24,6 @@ class TrackRepository {
   }
 
   likeTrack(trackId, userId) {
-    console.log("hello from trackrepo")
     return normalizeDBQuery(db.Track.updateOne({ _id: trackId }, { $push: { likedBy: userId } }, { new: true }));
   }
 
@@ -33,7 +32,6 @@ class TrackRepository {
   }
 
   fetchLikedTracks(userId) {
-    // find all tracks where userId is in likedBy array
     return normalizeDBQuery(db.Track.find({ likedBy: { $in: [userId] } }, "-__v"));
   };
 }

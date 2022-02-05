@@ -40,9 +40,9 @@ function Home() {
     }
   }, [isAuthenticated])
 
-  useEffect(async () => {
-    await fetchAllTracks(dispatch);
-  }, []);
+  useEffect(() => {
+    dispatch(fetchAllTracks)
+  }, [dispatch]);
   return (
     <>
       <ThemeProvider theme={mdTheme}>

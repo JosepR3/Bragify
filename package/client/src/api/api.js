@@ -60,8 +60,6 @@ function makeApi(request = makeRequest()) {
   }
 
   function unlikeTrack(headers, data) {
-    console.log(data.userId)
-    console.log(data.trackId)
     return axios.put(
       `http://localhost:4000/tracks/${data.trackId}/unlike`,
       data,

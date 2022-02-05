@@ -75,14 +75,20 @@ export function createTrack(data) {
     };
 }
 
+export function setLikeTrack(id) {
+    console.log("inside setLikeTrack");
+    console.log(id);
+    return {
+        type: LIKE_TRACK, payload: { id }
+    }
+}
+
 export function likeTrack(id, userId) {
     const data = { trackId: id, userId: userId };
     return async function createThunk(dispatch) {
         try {
-            dispatch(authTrack(api.likeTrack, data));
-            return {
-                type: LIKE_TRACK, payload: { id }
-            }
+            const res = await dispatch(authTrack(api.likeTrack, data));
+            dispatch(setLikeTrack(id));
         } catch (error) {
             console.log(error, "likeTrackError")
         }
@@ -90,14 +96,14 @@ export function likeTrack(id, userId) {
 }
 
 export function unlikeTrack(id, userId) {
+
     const data = { trackId: id, userId: userId };
-    console.log(data, "data")
     return async function createThunk(dispatch) {
+
         try {
-            dispatch(authTrack(api.unlikeTrack, data));
-            return {
-                type: LIKE_TRACK, payload: { id }
-            }
+            const res = await dispatch(authTrack(api.unlikeTrack, data));
+            dispatch(setLikeTrack(id));
+
         } catch (error) {
             console.log(error, "unlikeTrackError")
         }
@@ -151,6 +157,7 @@ export function authTrack(action, data) {
         const response = await action({
             Authorization: `Bearer ${token}`
         }, data)
+        console.log(response.data)
         return response.data;
     }
 }

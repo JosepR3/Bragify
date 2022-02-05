@@ -58,24 +58,29 @@ export default function tracksReducer(state = initialState, action) {
         playingTrack: action.payload,
       };
     case LIKE_TRACK:
+      console.log("inside like track reducer");
       const { id } = action.payload;
-
-      if (state.likedTracks.find(track => track.id === id)) {
-        const likedTracks = state.likedTracks.filter(track => track.id !== id);
+      console.log(id);
+      if (state.likedTracks.find(track => track === id)) {
+        console.log("track already liked");
+        const likedTracks = state.likedTracks.filter(track => track !== id);
         return {
           ...state,
           likedTracks
         }
       }
       else {
-        const likedTracks = state.likedTracks.filter(track => track.id !== id);
-        likedTracks.push(action.payload);
+        console.log("track not liked");
+        const likedTracks = state.likedTracks.filter(track => track !== id);
+
+        likedTracks.push(action.payload.id);
         return {
           ...state,
           likedTracks: likedTracks
         }
       }
     case LIKE_TRACKS:
+      console.log("liked tracks");
       const { idList } = action.payload;
       const likedTracks = state.likedTracks.filter(track => !idList.includes(track));
       idList.forEach(id => {

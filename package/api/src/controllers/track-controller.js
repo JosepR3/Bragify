@@ -42,7 +42,6 @@ async function deleteTrack(req, res, next) {
   id = (req.params.id)
   try {
     const tracks = await TrackRepo.deleteOne(id)
-    console.log(req.params.id)
     handleDbResponse(res, tracks);
   } catch (error) {
     console.log(req.params)
@@ -51,9 +50,6 @@ async function deleteTrack(req, res, next) {
 }
 
 async function likeTrack(req, res, next) {
-  console.log("hello from likeTrack")
-  console.log(req.params)  // trackId
-  console.log(req.body) //userId
   const trackId = req.params.id
   const { userId } = req.body
 
@@ -69,7 +65,6 @@ async function unlikeTrack(req, res, next) {
   const trackId = req.params.id
   const { userId } = req.body
   try {
-    console.log("hello from unlikeTrack")
     const tracks = await TrackRepo.unlikeTrack(trackId, userId)
     handleDbResponse(res, tracks);
   } catch (error) {
