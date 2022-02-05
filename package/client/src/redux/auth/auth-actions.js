@@ -96,11 +96,10 @@ export function signUpWithEmailRequest(user) {
   return async function signUpThunk(dispatch) {
     dispatch(signUpRequest());
     try {
-      const result = await auth.singUpWithEmailAndPassword(user.email, user.password);
+      await auth.singUpWithEmailAndPassword(user.email, user.password);
     } catch (error) {
       dispatch(signUpError(error.message));
     }
-
   };
 }
 

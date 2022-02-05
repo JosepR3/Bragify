@@ -78,7 +78,7 @@ function SingleAlbum() {
             </tr>
             <tr>
               <td>7</td>
-              <td>I Don't Even Know Your Name</td>
+              <td>I Dont Even Know Your Name</td>
               <td>Dawn FM</td>
               <td>3:46</td>
             </tr>

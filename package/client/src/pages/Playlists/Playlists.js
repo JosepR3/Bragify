@@ -1,7 +1,7 @@
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import SingleAlbum from "../../components/organisms/SingleAlbum";
-import { fetchAllAlbums } from "../../redux/tracks/tracks-actions";
+// import { fetchAllAlbums } from "../../redux/tracks/tracks-actions";
 // import PlaylistsSelector from "../../redux/playlists/playlists-selector";
 import TrackList from "../../components/molecules/TrackList/TrackList";
 import "./playlists.scss";
@@ -16,11 +16,11 @@ export const PlaylistsSelector = createSelector(
 );
 
 export default function Playlists() {
-  const  toSingleAlbum  = useSelector(PlaylistsSelector);
+  const inSingleAlbum = useSelector(PlaylistsSelector);
   return (
     <>
       <div className="playLists_container">
-        {toSingleAlbum && <SingleAlbum />}
+        {inSingleAlbum && <SingleAlbum />}
         <TrackList />
       </div>
     </>

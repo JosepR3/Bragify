@@ -6,8 +6,8 @@ const playlistsReducer = (state = playlistsState, action) => {
     
     case PlaylistsTypes.TO_SINGLE_ALBUM: {
       return {
-        ...state,
-        toSingleAlbum: true,
+        ...playlistsState,
+        inSingleAlbum: true,
       };
     }
 

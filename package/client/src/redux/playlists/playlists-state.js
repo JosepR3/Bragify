@@ -1,4 +1,4 @@
 const playlistsState = {
-  toSingleAlbum: false,
+  inSingleAlbum: false
 };
 export default playlistsState;
