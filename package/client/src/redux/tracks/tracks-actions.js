@@ -14,7 +14,8 @@ import {
     STOP_TRACK,
     TO_TRACKS,
     LIKE_TRACK,
-    LIKE_TRACKS
+    LIKE_TRACKS,
+    DELETE_TRACK
 } from "./tracks-types";
 
 
@@ -76,8 +77,6 @@ export function createTrack(data) {
 }
 
 export function setLikeTrack(id) {
-    console.log("inside setLikeTrack");
-    console.log(id);
     return {
         type: LIKE_TRACK, payload: { id }
     }
@@ -126,11 +125,18 @@ export function fetchLikedTracks(userId) {
 export function deleteTrack(id) {
     return async function createThunk(dispatch) {
         try {
-            dispatch(authTrack(api.deleteTrack, id));
-            return result;
+            const res = dispatch(authTrack(api.deleteTrack, id));
+            dispatch(deleteTrackSuccess(id));
+
         } catch (error) {
             console.log(error, "deleteTrackError")
         }
+    }
+}
+
+export function deleteTrackSuccess(id) {
+    return {
+        type: DELETE_TRACK, payload: { id }
     }
 }
 
@@ -157,7 +163,6 @@ export function authTrack(action, data) {
         const response = await action({
             Authorization: `Bearer ${token}`
         }, data)
-        console.log(response.data)
         return response.data;
     }
 }

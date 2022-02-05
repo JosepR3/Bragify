@@ -44,7 +44,6 @@ async function deleteTrack(req, res, next) {
     const tracks = await TrackRepo.deleteOne(id)
     handleDbResponse(res, tracks);
   } catch (error) {
-    console.log(req.params)
     next(error);
   }
 }

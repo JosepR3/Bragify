@@ -11,7 +11,8 @@ import {
   STOP_TRACK,
   TO_TRACKS,
   LIKE_TRACK,
-  LIKE_TRACKS
+  LIKE_TRACKS,
+  DELETE_TRACK
 } from "./tracks-types";
 
 export default function tracksReducer(state = initialState, action) {
@@ -58,11 +59,8 @@ export default function tracksReducer(state = initialState, action) {
         playingTrack: action.payload,
       };
     case LIKE_TRACK:
-      console.log("inside like track reducer");
       const { id } = action.payload;
-      console.log(id);
       if (state.likedTracks.find(track => track === id)) {
-        console.log("track already liked");
         const likedTracks = state.likedTracks.filter(track => track !== id);
         return {
           ...state,
@@ -70,7 +68,6 @@ export default function tracksReducer(state = initialState, action) {
         }
       }
       else {
-        console.log("track not liked");
         const likedTracks = state.likedTracks.filter(track => track !== id);
 
         likedTracks.push(action.payload.id);
@@ -80,7 +77,6 @@ export default function tracksReducer(state = initialState, action) {
         }
       }
     case LIKE_TRACKS:
-      console.log("liked tracks");
       const { idList } = action.payload;
       const likedTracks = state.likedTracks.filter(track => !idList.includes(track));
       idList.forEach(id => {
@@ -89,6 +85,14 @@ export default function tracksReducer(state = initialState, action) {
       return {
         ...state,
         likedTracks: likedTracks
+      }
+
+    case DELETE_TRACK:
+      const { id: trackId } = action.payload;
+      const tracks = state.tracks.filter(track => track._id !== trackId);
+      return {
+        ...state,
+        tracks
       }
 
     default:

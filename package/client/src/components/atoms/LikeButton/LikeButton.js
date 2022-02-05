@@ -24,17 +24,11 @@ export default function LikeButton({ trackId }) {
 
         if (isLiked) {
             dispatch(unlikeTrack(trackId, userId)).then(() => {
-                // dispatch(fetchLikedTracks(userId)).then(() => {
                 return isLiked;
-                // }).catch(err => {
-                //     console.log(err);
-                // });
             });
         } else {
             dispatch(likeTrack(trackId, userId)).then(() => {
-                // dispatch(fetchLikedTracks(userId)).then(() => {
                 return isLiked
-                // });
             });
         }
 
