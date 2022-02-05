@@ -1,11 +1,12 @@
+/* eslint-disable react/no-unescaped-entities */
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Navigate } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 
-import fbIcon from "../../assets/images/facebook-48.png";
-import ggIcon from "../../assets/images/google-48.png";
+import fbIcon from "../../assets/Icons/facebook-48.png";
+import ggIcon from "../../assets/Icons/google-48.png";
 import * as ROUTES from "../../routes";
 import "./signIn.scss";
 

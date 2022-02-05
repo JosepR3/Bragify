@@ -1,4 +1,4 @@
-@use './assets/scss/conf' as a;
+@use './utils/scss/conf' as a;
 
 .app__container{
   background-color: a.$web-background-color;

@@ -39,7 +39,7 @@ async function fetchTracks(req, res, next) {
 }
 
 async function deleteTrack(req, res, next) {
-  id = (req.params.id)
+  const id = (req.params.id)
   try {
     const tracks = await TrackRepo.deleteOne(id)
     console.log(req.params.id)

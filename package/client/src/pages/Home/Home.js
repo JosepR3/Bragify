@@ -1,30 +1,26 @@
 import React from "react";
 import { Navigate } from "react-router-dom";
 import { authSelector } from "../../redux/auth/auth-selectors";
-import { Route, Routes } from "react-router-dom";
 import * as ROUTES from "../../routes";
 
 // REDUX
-import { useDispatch, useSelector } from "react-redux";
-import { tracksSelector } from "../../redux/tracks/tracks-selector";
-
+import { useSelector } from "react-redux";
 
 // MATERIAL UI
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
+import Container from "@mui/material/Container";
 import Box from "@mui/material/Box";
-import { Container } from "@mui/material";
 
 //COMPONENTS
-import NavBar from "../../components/molecules/NavBar";
-import SideBar from "../../components/organisms/SideBar/SideBar";
+import SideBar from "../../components/organisms/SideBar";
 import Copyright from "../../components/atoms/Copyright";
 import EditProfile from "../../components/molecules/EditProfile";
-
 import SingleAlbum from "../../components/organisms/SingleAlbum";
-import FormCreateTracks from "../../components/organisms/FormCreateTracks/FormCreateTracks";
+
 import MusicPlayer from "../../components/molecules/MusicPlayer";
 import TrackList from "../../components/molecules/TrackList";
+
 const mdTheme = createTheme({
   typography: {
     fontFamily: ["circular-std", "Roboto"].join(","),
@@ -33,8 +29,7 @@ const mdTheme = createTheme({
 });
 
 function Home() {
-  const { isAuthenticated, isEditing, currentUser } = useSelector(authSelector);
-  const inTracks = useSelector(tracksSelector);
+  const { isAuthenticated, isEditing} = useSelector(authSelector);
 
 
   if (!isAuthenticated) {
@@ -59,13 +54,11 @@ function Home() {
               overflow: "auto",
             }}
           >
-            <NavBar />
 
             <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
               {isEditing && <EditProfile />}
-              {!isEditing && !inTracks && <InnerDash />}
               <SingleAlbum />
-              <FormCreateTracks />
+
               <TrackList/>
             </Container>
             <Copyright sx={{ pt: 4, mt: 3 }} />
