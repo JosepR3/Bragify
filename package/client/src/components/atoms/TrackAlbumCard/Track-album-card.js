@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -11,16 +11,18 @@ import { useSelector, useDispatch } from "react-redux";
 import { playTrack } from "../../../redux/tracks/tracks-actions";
 import "./track-album-card.scss";
 
-export default function TrackAlbumCard({
-  albumName,
-  artistName,
-  albumImageUrl,
-}) {
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
-  const tracks = useSelector((state) => state.tracks);
-  const { currentTrack } = tracks;
-  const [isPlaying, setIsPlaying] = useState(false);
+export default function TrackAlbumCard(
+  {
+    //   albumName,
+    //   artistName,
+    //   albumImageUrl,
+  },
+) {
+  //   const navigate = useNavigate();
+  //   const dispatch = useDispatch();
+  //   const tracks = useSelector((state) => state.tracks);
+  //   const { currentTrack } = tracks;
+  //   const [isPlaying, setIsPlaying] = useState(false);
 
   // const handleClick = () => {
 

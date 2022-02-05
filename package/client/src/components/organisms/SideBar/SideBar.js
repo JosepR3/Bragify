@@ -1,5 +1,6 @@
 import React from "react";
 import Nav from "react-bootstrap/Nav";
+import * as ROUTES from "../../../routes";
 
 import bIcon from "../../../assets/Icons/icon-b-64.png"
 import {
@@ -16,7 +17,6 @@ import {
 import "./sideBar.scss"
 
 
-// import * as ROUTES from "../../../routes";
 
 function SideBar() {
   
@@ -27,37 +27,37 @@ function SideBar() {
         BRAGIFY
       </a>
         <Nav.Item className="mt-4">
-          <Nav.Link href="">
+          <Nav.Link href={ROUTES.HOME}>
             <img className="nav__icon" src={HomeIcon}></img>Home
           </Nav.Link>
         </Nav.Item>
         <Nav.Item className="mt-3">
-          <Nav.Link href="">
+          <Nav.Link href={ROUTES.TRACKS}>
             <img className="nav__icon" src={TracksIcon}></img>Tracks
           </Nav.Link>
         </Nav.Item>
         <Nav.Item>
-          <Nav.Link href="">
+          <Nav.Link href="{ROUTES.ALBUM}">
             <img className="nav__icon" src={AlbumsIcon}></img>Albums
           </Nav.Link>
         </Nav.Item>
         <Nav.Item>
-          <Nav.Link href="">
+          <Nav.Link href="{ROUTES.GENRES}">
             <img className="nav__icon" src={GenresIcon}></img>Genres
           </Nav.Link>
         </Nav.Item>
         <Nav.Item>
-          <Nav.Link href="">
+          <Nav.Link href={ROUTES.PLAYLISTS}>
             <img className="nav__icon" src={PlaylistsIcon}></img>Playlists
           </Nav.Link>
         </Nav.Item>
         <Nav.Item className="mt-3">
-          <Nav.Link href="">
+          <Nav.Link href="{ROUTES.PLAYLISTS}">
             <img className="nav__icon" src={CreatePlaylistIcon}></img>Create Playlist
           </Nav.Link>
         </Nav.Item>
         <Nav.Item>
-          <Nav.Link href="">
+          <Nav.Link href={ROUTES.UPLOAD_TRACK}>
             <img className="nav__icon" src={UploadTrackIcon}></img>Upload Track
           </Nav.Link>
         </Nav.Item>

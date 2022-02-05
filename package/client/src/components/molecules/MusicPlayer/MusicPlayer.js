@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, React } from 'react';
 import { useSelector } from 'react-redux';
 
 import AudioPlayer from 'react-h5-audio-player';
@@ -46,7 +46,7 @@ export default function MusicPlayer() {
             className='music-player'
             timeFormat='auto'
             hasDefaultKeyBindings={true}
-            footer={tracksToPlay && tracksToPlay[number].owner.firstName ? tracksToPlay[number].owner.firstName + " " + tracksToPlay[number].owner.lastName : "Enjoy the song!"}
+
             onError={(e) => {
                 console.log(e);
             }}

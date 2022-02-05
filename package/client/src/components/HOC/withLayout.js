@@ -8,7 +8,7 @@ import SideBar from "../../components/organisms/SideBar/SideBar";
 import MusicPlayer from '../../components/molecules/MusicPlayer/MusicPlayer';
 import Copyright from '../../components/atoms/Copyright/Copyright';
 import NavBar from "../molecules/NavBar";
-import MainContainer from "../../components/organisms/MainContainer";
+
 
 export default function withLayout(WrappedComponent) {
 
@@ -51,32 +51,3 @@ export default function withLayout(WrappedComponent) {
     return WrapperComponent;
 
 }
-
-
-
-// const mdTheme = createTheme({
-//     typography: {
-//         fontFamily: ["circular-std", "Roboto"].join(","),
-//         fontSize: 20,
-//     },
-// });
-
-// function Home() {
-//     const { isAuthenticated, isEditing, currentUser } = useSelector(authSelector);
-
-//     if (!isAuthenticated) {
-//         return <Navigate to={ROUTES.SIGN_IN} />;
-//     }
-
-//     return (
-//         <ThemeProvider theme={mdTheme}>
-//             <Box sx={{ display: "flex" }}>
-//                 <CssBaseline />
-//                 <SideBar />
-//                 <MainContainer />
-//             </Box>
-//         </ThemeProvider>
-
-//     );
-// }
-// export default Home;

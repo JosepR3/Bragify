@@ -1,7 +1,7 @@
-import api from "../../api";
-import * as auth from "../../services/auth";
-import { getCurrentUserToken } from "../../services/auth";
+// import * as auth from "../../services/auth";
 import * as TrackTypes from "./tracks-types";
+import api from "../../api";
+import { getCurrentUserToken } from "../../services/auth";
 
 export function setTracksLoading() {
   return { type: TrackTypes.TRACKS_LOADING };
@@ -29,7 +29,7 @@ export function setPlayingTracks(track, index) {
 }
 
 export function setPauseTracks() {
-  return {  type: TrackTypes.PAUSE_TRACK };
+  return { type: TrackTypes.PAUSE_TRACK };
 }
 
 export function playTrack(track) {
@@ -53,7 +53,6 @@ export function deleteTrack(id) {
   return async function createThunk(dispatch) {
     try {
       dispatch(authTrack(api.deleteTrack, id));
-      return result;
     } catch (error) {
       console.log(error, "deleteTrackError");
     }
@@ -64,8 +63,8 @@ export async function fetchAllTracks(dispatch) {
   try {
     const userToken = await getCurrentUserToken();
     const res = await api.getAllTracks({
-       headers: { Authorization: `Bearer ${userToken}` },
-     });
+      headers: { Authorization: `Bearer ${userToken}` },
+    });
 
     return dispatch(setTracksResult(res.data.data));
   } catch (error) {
@@ -74,9 +73,9 @@ export async function fetchAllTracks(dispatch) {
 }
 
 export function authTrack(action, data) {
-  return async function createThunk(dispatch) {
-    const token = await auth.getCurrentUserToken();
-    const response = await action(
+  return async function createThunk() {
+    const token = await getCurrentUserToken();
+    await action(
       {
         Authorization: `Bearer ${token}`,
       },

@@ -1,13 +1,12 @@
 import { makeRequest } from "./api-utils";
 import axios from "axios";
 function makeApi(request = makeRequest()) {
-
   function signUp(headers, data) {
     return request({
       url: "/sign-up",
       requestMethod: "POST",
       headers: headers,
-      data: data
+      data: data,
     });
   }
 
@@ -29,32 +28,25 @@ function makeApi(request = makeRequest()) {
   }
 
   function getAllTracks(headers) {
-    return axios.get(
-      "http://localhost:4000/tracks",
-       headers,
-    );
+    return axios.get("http://localhost:4000/tracks", headers);
   }
-
 
   function createTrack(headers, data) {
-    return axios.post(
-      "http://localhost:4000/tracks",
-      data,
-      { headers: headers }
-    );
+    return axios.post("http://localhost:4000/tracks", data, {
+      headers: headers,
+    });
   }
   function deleteTrack(headers, data) {
-    return axios.delete(
-      `http://localhost:4000/tracks/${data}`,
-      { headers: headers }
-    )
+    return axios.delete(`http://localhost:4000/tracks/${data}`, {
+      headers: headers,
+    });
   }
-  function getUser({ headers }){
+  function getUser({ headers }) {
     return request({
-      url:"/get-user",
+      url: "/get-user",
       requestMethod: "GET",
-      headers: headers
-    })
+      headers: headers,
+    });
   }
 
   return {
@@ -64,9 +56,8 @@ function makeApi(request = makeRequest()) {
     getAllTracks: getAllTracks,
     deleteTrack: deleteTrack,
     createTrack: createTrack,
-    getUser: getUser
+    getUser: getUser,
   };
 }
-
 
 export default makeApi();

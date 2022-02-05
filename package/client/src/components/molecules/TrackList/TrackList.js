@@ -1,5 +1,5 @@
-import React, { useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import React from "react";
+import { useDispatch } from "react-redux";
 import Box from "@mui/material/Box";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
@@ -16,11 +16,11 @@ export default function TrackList() {
   };
 
   const AlbumArray = [
-    <TrackAlbumCard />,
-    <TrackAlbumCard />,
-    <TrackAlbumCard />,
-    <TrackAlbumCard />,
-    <TrackAlbumCard />,
+    <TrackAlbumCard key="key" />,
+    <TrackAlbumCard key="key" />,
+    <TrackAlbumCard key="key" />,
+    <TrackAlbumCard key="key" />,
+    <TrackAlbumCard key="key" />,
   ];
 
   return (
@@ -32,7 +32,7 @@ export default function TrackList() {
               return (
                 <List
                   className="list-row w-100 d-flex justify-content-center"
-                  key="key"
+                  key= "key"
                 >
                   <ListItem onClick={handleToSingleAlbum}>{album}</ListItem>
                 </List>

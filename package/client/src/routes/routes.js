@@ -9,4 +9,7 @@ export const EDIT_PROFILE = "/edit-profile";
 //MUSIC ROUTES
 export const TRACKS = "/tracks";
 export const PLAYLISTS = "/playlists";
+export const ALBUMS = "/albums";
+export const UPLOAD_TRACK = "/upload-track";
+export const CREATE_PLAYLIST = "/create-playlist";
 
