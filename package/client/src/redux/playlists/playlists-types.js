@@ -1,1 +1,0 @@
-export const TO_SINGLE_ALBUM = "TO_SINGLE_ALBUM";

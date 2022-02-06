@@ -49,9 +49,7 @@ function App() {
         <Route exact path={ROUTES.RESET_PASSWORD} element={<ResetPassword />} />
         <Route exact path={ROUTES.HOME} element={<Home />} />
 
-        <Route exact path={ROUTES.PLAYLISTS} element={<Playlists />} />
-
-        <Route path="/playlists" element={<Playlists />}>
+        <Route path={ROUTES.PLAYLISTS} element={<Playlists />}>
           <Route path="single-album" element={<SingleAlbum />} />
         </Route>
 

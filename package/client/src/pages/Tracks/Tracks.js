@@ -1,4 +1,4 @@
-import {useEffect, React} from "react";
+import { useEffect, React } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { tracksSelector } from "../../redux/tracks/tracks-selector";
 import { fetchAllTracks } from "../../redux/tracks/tracks-actions";
@@ -7,18 +7,14 @@ import DeleteButton from "../../components/atoms/DeleteButton";
 
 import ListGroup from "react-bootstrap/ListGroup";
 
-
 import "./tracks.scss";
 
-
 export default function Tracks() {
-  
   const dispatch = useDispatch();
-  
-    useEffect(  () => {
-      dispatch(fetchAllTracks);
-    }, [dispatch]);
 
+  useEffect(() => {
+    dispatch(fetchAllTracks);
+  }, [dispatch]);
 
   const { tracks } = useSelector(tracksSelector);
 
@@ -43,6 +39,7 @@ export default function Tracks() {
               key={track._id}
             >
               <ListGroup.Item className="list_item">
+                {/* <img>{track.thumbnail}</img> */}
                 {track.title}
               </ListGroup.Item>
               <ListGroup.Item className="list_item">
