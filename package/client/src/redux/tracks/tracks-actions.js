@@ -12,7 +12,8 @@ import {
   PLAY_TRACK,
   PAUSE_TRACK,
   STOP_TRACK,
-  TO_TRACKS
+    TO_TRACKS,
+    RESET_TRACK_STATE
 } from "./tracks-types";
 
 
@@ -53,6 +54,10 @@ export function playTrack(track) {
     }
     
 }
+
+export const resetTrackState = () => ({
+    type: RESET_TRACK_STATE,
+});
 
 export function createTrack(data) {
     return async function createThunk(dispatch) {

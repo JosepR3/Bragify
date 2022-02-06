@@ -1,6 +1,6 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { createTrack } from '../../../redux/tracks/tracks-actions';
+import { createTrack, resetTrackState} from '../../../redux/tracks/tracks-actions';
 import { getCurrentUserUid } from "../../../services/auth";
 import Button from "react-bootstrap/Button";
 import Container from '@mui/material/Container';
@@ -22,6 +22,9 @@ const FormCreateTracks = () => {
         genre: "",
         authorId: getCurrentUserUid()
     });
+    useEffect(() => {
+        dispatch(resetTrackState());
+    }, [dispatch]);
     const findFormErrors = () => {
         const { title, url, author, thumbnail, duration, genre } = track
         const newErrors = {}
@@ -33,18 +36,16 @@ const FormCreateTracks = () => {
         if (!url || url === '') newErrors.url = 'insert MP3 file!'
         if (!thumbnail || thumbnail === '') newErrors.thumbnail = 'insert JPG file!'
 
-        // if (!duration || duration > 5 || duration < 1) newErrors.duration = 'must assign a duration between 1 and 5!'
+        // if (!duration || duration > 2 || duration < 0) newErrors.duration = 'Add valid duration!'
         return newErrors
     }
 
     const handleSubmit = e => {
         e.preventDefault()
         const newErrors = findFormErrors()
-        console.log(newErrors);
         if (Object.keys(newErrors).length > 0) {
             setErrors(newErrors)
         } else {
-            console.log(track);
             dispatch(createTrack(track));
         }
     }

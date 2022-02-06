@@ -10,6 +10,7 @@ import {
   PAUSE_TRACK,
   STOP_TRACK,
   TO_TRACKS,
+  RESET_TRACK_STATE
 } from "./tracks-types";
 
 export default function tracksReducer(state = initialState, action) {
@@ -54,6 +55,10 @@ export default function tracksReducer(state = initialState, action) {
         ...state,
         isPlaying: true,
         playingTrack: action.payload,
+      };
+    case RESET_TRACK_STATE:
+      return {
+        state,
       };
     default:
       return state;
