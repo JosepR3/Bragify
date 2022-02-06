@@ -1,9 +1,7 @@
 const mongoose = require("mongoose");
-
-let db = "mongodb+srv://bragifyAssembler123:bragifyAssembler123@cluster0.4pjlp.mongodb.net/bragify";
-
+require("dotenv").config()
 function connect() {
-  return mongoose.connect(db, {
+  return mongoose.connect(process.env.MONGODB_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useCreateIndex: true

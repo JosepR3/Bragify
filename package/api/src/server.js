@@ -14,7 +14,7 @@ app.use(helmet());
 app.use(json());
 app.use(
   cors({
-    origin: "http://localhost:3000",
+    origin: process.env.URL_CLIENT,
   })
 );
 
