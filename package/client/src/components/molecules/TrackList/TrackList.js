@@ -1,19 +1,15 @@
 import React from "react";
-import { useDispatch } from "react-redux";
+import {useNavigate} from "react-router-dom";
+
 import Box from "@mui/material/Box";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import Stack from "@mui/material/Stack";
 import TrackAlbumCard from "../../atoms/TrackAlbumCard";
-import { toSingleAlbum } from "../../../redux/playlists/playlists-actions";
 
 export default function TrackList() {
-  const dispatch = useDispatch();
-  // const tracks = useSelector(state => state.tracks.result);
-  // const error = useSelector(state => state.tracks.error);
-  const handleToSingleAlbum = () => {
-    dispatch(toSingleAlbum());
-  };
+const navigate = useNavigate();
+// const location = useLocation();
 
   const AlbumArray = [
     <TrackAlbumCard key="key" />,
@@ -32,9 +28,13 @@ export default function TrackList() {
               return (
                 <List
                   className="list-row w-100 d-flex justify-content-center"
-                  key= "key"
+                  key="key"
                 >
-                  <ListItem onClick={handleToSingleAlbum}>{album}</ListItem>
+                  <ListItem
+                    onClick={() => navigate("/playlists/single-album")}
+                  >
+                    {album}
+                  </ListItem>
                 </List>
               );
             })}

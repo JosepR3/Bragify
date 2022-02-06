@@ -1,11 +1,7 @@
 import React from "react";
-import { useSelector } from "react-redux";
-import SingleAlbum from "../../components/organisms/SingleAlbum";
-// import { fetchAllAlbums } from "../../redux/tracks/tracks-actions";
-// import PlaylistsSelector from "../../redux/playlists/playlists-selector";
+import { Outlet, useLocation } from "react-router-dom";
 import TrackList from "../../components/molecules/TrackList/TrackList";
 import "./playlists.scss";
-// import {getAllAlbums} from "../../redux/tracks/tracks-actions"
 import { createSelector } from "reselect";
 
 export const selectPlaylistsState = (state) => state.playlists;
@@ -16,12 +12,12 @@ export const PlaylistsSelector = createSelector(
 );
 
 export default function Playlists() {
-  const inSingleAlbum = useSelector(PlaylistsSelector);
+  const location = useLocation();
   return (
     <>
       <div className="playLists_container">
-        {inSingleAlbum && <SingleAlbum />}
-        <TrackList />
+        {location.pathname === "/playlists" && <TrackList />}
+        {location.pathname === "/playlists/single-album" && <Outlet/>}
       </div>
     </>
   );
