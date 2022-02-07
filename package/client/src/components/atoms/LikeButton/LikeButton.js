@@ -1,27 +1,28 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+// import { authSelector } from '../../../redux/auth/auth-selectors';
 
 import Button from 'react-bootstrap/Button';
 import { likeTrack, unlikeTrack, fetchLikedTracks } from '../../../redux/tracks/tracks-actions';
 import './likeButton.scss';
 import filledLike from '../../../assets/images/filled_like.svg';
+import { getCurrentUserUid } from '../../../services/auth';
 import unfilledLike from '../../../assets/images/unfilled_like.svg';
 
-export default function LikeButton({ trackId }) {
+export default function LikeButton( {trackId} ) {
     const dispatch = useDispatch();
-    const userId = useSelector((state) => state.auth.username._id);
+    const userId = getCurrentUserUid();
 
-    const [isLoading, setIsLoading] = useState(false);
     const likedTracks = useSelector((state) => state.tracks.likedTracks);
     const isLiked = likedTracks.find(e => e === trackId);
-
+    
     useEffect(() => {
         dispatch(fetchLikedTracks(userId));
     }, [dispatch]);
-
-
+    
+    
     const handleLike = () => {
-
+        
         if (isLiked) {
             dispatch(unlikeTrack(trackId, userId)).then(() => {
                 return isLiked;
