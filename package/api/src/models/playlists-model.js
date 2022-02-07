@@ -37,14 +37,14 @@ const PlaylistSchema = Schema(
       default: 0.0,
     },
     authorId: {
-      type: Schema.Types.ObjectId,
-      ref: "user",
+      // type: Schema.Types.ObjectId,
+      // ref: "user",
     },
     tracks: {
       type: [
         {
-          type: Schema.Types.ObjectId,
-          ref: "track",
+          // type: Schema.Types.ObjectId,
+          // ref: "track",
         },
       ],
       default: [],
@@ -52,8 +52,8 @@ const PlaylistSchema = Schema(
     followedBy: {
       type: [
         {
-          type: Schema.Types.ObjectId,
-          ref: "user",
+          // type: Schema.Types.ObjectId,
+          // ref: "user",
         },
       ],
       default: [],
@@ -61,8 +61,8 @@ const PlaylistSchema = Schema(
     collaborators: {
       type: [
         {
-          type: Schema.Types.ObjectId,
-          ref: "user",
+          // type: Schema.Types.ObjectId,
+          // ref: "user",
         },
       ],
       default: [],

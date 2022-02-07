@@ -21,8 +21,8 @@ import SingleAlbum from "./components/organisms/SingleAlbum";
 import CreatePlaylist from "./components/organisms/CreatePlaylist";
 
 //REDUX
-import { onAuthStateChanged } from "./services/auth";
-import { syncSignIn, signOut, getUser } from "./redux/auth/auth-actions";
+import { onAuthStateChanged} from "./services/auth";
+import { syncSignIn, signOut, getUser,  } from "./redux/auth/auth-actions";
 
 
 function App() {
