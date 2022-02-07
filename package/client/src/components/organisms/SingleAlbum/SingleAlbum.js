@@ -33,7 +33,8 @@ function SingleAlbum() {
               <td>#</td>
               <td>Title</td>
               <td>Album</td>
-              <td>
+              <td>duration</td>
+              <td >
                 <i className="fa fa-clock-o"></i>
               </td>
             </tr>
@@ -77,7 +78,7 @@ function SingleAlbum() {
             </tr>
             <tr>
               <td>7</td>
-              <td>I Don&apos t Even Know Your Name</td>
+              <td>I Dont Even Know Your Name</td>
               <td>Dawn FM</td>
               <td>3:46</td>
             </tr>

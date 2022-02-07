@@ -100,7 +100,6 @@ export function signUpWithEmailRequest(user) {
     } catch (error) {
       dispatch(signUpError(error.message));
     }
-
   };
 }
 

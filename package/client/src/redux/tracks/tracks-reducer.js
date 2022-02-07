@@ -7,8 +7,6 @@ import {
   TRACKS_LOADING,
   TRACKS_LOADING_SUCCESS,
   PLAY_TRACK,
-  PAUSE_TRACK,
-  STOP_TRACK,
   TO_TRACKS,
 } from "./tracks-types";
 

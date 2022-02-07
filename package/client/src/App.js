@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useEffect, React } from "react";
 import { Route, Routes } from "react-router-dom";
 import { useDispatch } from "react-redux";
 
@@ -8,10 +8,15 @@ import "./utils/scss/index.scss";
 //COMPONENTS
 import * as ROUTES from "./routes";
 import Home from "./pages/Home";
+
 import SignUp from "./pages/SignUp";
 import SignIn from "./pages/SignIn";
 import ResetPassword from "./pages/ResetPassword";
+import Tracks from "./pages/Tracks";
+import Playlists from "./pages/Playlists";
 import NotFound from "./pages/NotFound";
+import UploadTrack from "./components/organisms/UploadTrack";
+import SingleAlbum from "./components/organisms/SingleAlbum";
 
 //REDUX
 import { onAuthStateChanged } from "./services/auth";
@@ -37,13 +42,20 @@ function App() {
   }, [dispatch]);
 
   return (
-    <div className="app__container">
+    <div className="app__container p-3">
       <Routes>
         <Route path="*" element={<NotFound />} />
         <Route exact path={ROUTES.SIGN_UP} element={<SignUp />} />
+        <Route exact path={ROUTES.TRACKS} element={<Tracks />} />
         <Route exact path={ROUTES.SIGN_IN} element={<SignIn />} />
         <Route exact path={ROUTES.RESET_PASSWORD} element={<ResetPassword />} />
         <Route exact path={ROUTES.HOME} element={<Home />} />
+
+        <Route path={ROUTES.PLAYLISTS} element={<Playlists />}>
+          <Route path="single-album" element={<SingleAlbum />} />
+        </Route>
+
+        <Route exact path={ROUTES.UPLOAD_TRACK} element={<UploadTrack />} />
       </Routes>
     </div>
   );

@@ -1,9 +1,8 @@
-import { useState } from 'react';
+import { useState, React } from 'react';
 import { useSelector } from 'react-redux';
 
 import AudioPlayer from 'react-h5-audio-player';
-import 'react-h5-audio-player/src/styles.scss';
-import './MusicPlayer.scss';
+
 // import useTimer from '../../../hooks/useTimer';
 
 // https://www.npmjs.com/package/react-h5-audio-player
@@ -43,10 +42,10 @@ export default function MusicPlayer() {
             onEnded={handleClickNext}
             header={tracksToPlay && tracksToPlay[number].name}
             src={tracksToPlay && tracksToPlay[number].url}
-            className='music-player'
+            className='music-player fixed-bottom'
             timeFormat='auto'
             hasDefaultKeyBindings={true}
-            footer={tracksToPlay && tracksToPlay[number].owner.firstName ? tracksToPlay[number].owner.firstName + " " + tracksToPlay[number].owner.lastName : "Enjoy the song!"}
+
             onError={(e) => {
                 console.log(e);
             }}

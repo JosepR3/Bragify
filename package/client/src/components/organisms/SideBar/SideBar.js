@@ -5,12 +5,11 @@ import Nav from "react-bootstrap/Nav";
 import { bIcon } from "../../../assets";
 import { IoMusicalNotes, IoAlbums } from "react-icons/io5";
 import { RiPlayListAddLine, RiPlayListFill, RiUpload2Fill, RiDownload2Fill } from "react-icons/ri";
-import { FaGuitar } from "react-icons/fa";
 import { GiDrumKit } from "react-icons/gi";
 import { AiFillHome } from "react-icons/ai";
 
+import * as ROUTES from "../../../routes";
 
-// import * as ROUTES from "../../../routes";
 
 function SideBar() {
   
@@ -21,12 +20,12 @@ function SideBar() {
         BRAGIFY
       </a>
         <Nav.Item className="mt-4">
-          <Nav.Link href="">
+          <Nav.Link href={ROUTES.HOME}>
             <AiFillHome/>Home
           </Nav.Link>
         </Nav.Item>
         <Nav.Item className="mt-3">
-          <Nav.Link href="">
+          <Nav.Link href={ROUTES.TRACKS}>
             <IoMusicalNotes/>Tracks
           </Nav.Link>
         </Nav.Item>
@@ -41,7 +40,7 @@ function SideBar() {
           </Nav.Link>
         </Nav.Item>
         <Nav.Item>
-          <Nav.Link href="">
+          <Nav.Link href={ROUTES.PLAYLISTS}>
             <RiPlayListFill />Playlists
           </Nav.Link>
         </Nav.Item>
@@ -51,7 +50,7 @@ function SideBar() {
           </Nav.Link>
         </Nav.Item>
         <Nav.Item>
-          <Nav.Link href="">
+          <Nav.Link href={ROUTES.UPLOAD_TRACK}>
             <RiUpload2Fill/>Upload Track
           </Nav.Link>
         </Nav.Item>

@@ -21,6 +21,7 @@ $body-bg: $web-background-color;
 $input-disabled-bg: rgba(255, 255, 255, 0.623);
 $nav-link-color: rgba(255, 255, 255, 0.75);
 $nav-link-hover-color: white;
+$list-group-bg: transparent;
 
 // Merge the maps
 
@@ -32,6 +33,9 @@ $theme-colors: map-merge($theme-colors, $custom-colors);
 
 
 // -------------------Components
+//      atoms
+@import "../../components/atoms/TrackAlbumCard/track-album-card";
+@import "../../components/atoms/SearchInput/searchInput";
 
 //      molecules
 @import "../../components/molecules/AccountSetting/accountSetting";
@@ -42,11 +46,13 @@ $theme-colors: map-merge($theme-colors, $custom-colors);
 @import "../../components/organisms/Header/header";
 @import "../../components/organisms/SideBar/sideBar";
 @import "../../components/organisms/SingleAlbum/singleAlbum";
+@import"../../components/organisms/MainContainer/mainContainer";
 
 //      pages
 @import "../../pages/SignIn/signIn";
 @import "../../pages/Resetpassword/resetpassword";
 @import "../../pages/NotFound/notFound";
+@import "../../pages/Tracks/tracks";
 
 
 @import "../../app";

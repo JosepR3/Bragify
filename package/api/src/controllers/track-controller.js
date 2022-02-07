@@ -38,6 +38,7 @@ async function fetchTracks(req, res, next) {
   }
 }
 
+
 async function deleteTrack(req, res, next) {
   const id = (req.params.id)
   try {

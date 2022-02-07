@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Navigate } from "react-router-dom";
-import * as ROUTES from "../../../routes";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Image from "react-bootstrap/Image"
@@ -14,7 +12,7 @@ import { authSelector } from "../../../redux/auth/auth-selectors";
 
 export default function EditUserForm() {
   const dispatch = useDispatch();
-  const { currentUser, editSuccess, isLoading, editMessage, isAuthenticated } = useSelector(authSelector);
+  const { currentUser, editSuccess, isLoading, editMessage} = useSelector(authSelector);
 
   const [user, setUser] = useState({
     firstName: currentUser.firstName,

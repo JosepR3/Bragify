@@ -5,7 +5,7 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import {getCurrentUserUid} from "../../../services/auth"
 
-const FormCreateTracks = () => {
+const UploadTrack = () => {
 
     const dispatch = useDispatch();
     
@@ -17,10 +17,6 @@ const FormCreateTracks = () => {
         genre: "",
         authorId:getCurrentUserUid()
     });
-
-    //   useEffect(() => {
-    //     dispatch();
-    //   }, [dispatch]);
 
     function handleInput(e) {
         const { target } = e;
@@ -97,7 +93,7 @@ const FormCreateTracks = () => {
         </Form>
     </>);
 }
-export default FormCreateTracks;
+export default UploadTrack;
 
 
 

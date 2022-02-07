@@ -1,15 +1,24 @@
-import React from "react";
-import { useSelector } from "react-redux";
-import ListGroup from "react-bootstrap/ListGroup";
-import { tracksSelector } from "../../../redux/tracks/tracks-selector";
-import DeleteButton from "../../atoms/DeleteButton/DeleteButton";
+import { useEffect, React } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { tracksSelector } from "../../redux/tracks/tracks-selector";
+import { fetchAllTracks } from "../../redux/tracks/tracks-actions";
 
-export default function TracksList() {
+import withLayout from "../../components/HOC/withLayout";
+import DeleteButton from "../../components/atoms/DeleteButton";
+
+import ListGroup from "react-bootstrap/ListGroup";
+
+function Tracks() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchAllTracks);
+  }, [dispatch]);
 
   const { tracks } = useSelector(tracksSelector);
 
   return (
-    <div>
+    <div className="container">
       <ListGroup
         horizontal
         className="list-row w-100 d-flex justify-content-center"
@@ -28,19 +37,20 @@ export default function TracksList() {
               className="list-row w-100 d-flex justify-content-center"
               key={track._id}
             >
-              <ListGroup.Item  className="list_item">
+              <ListGroup.Item className="list_item">
+                {/* <img>{track.thumbnail}</img> */}
                 {track.title}
               </ListGroup.Item>
               <ListGroup.Item className="list_item">
                 {track.artists}
               </ListGroup.Item>
-              <ListGroup.Item  className="list_item">
+              <ListGroup.Item className="list_item">
                 {track.genre}
               </ListGroup.Item>
-              <ListGroup.Item  className="list_item">
+              <ListGroup.Item className="list_item">
                 {track.duration}
               </ListGroup.Item>
-              <DeleteButton id={track._id}/>
+              <DeleteButton id={track._id} />
             </ListGroup>
           );
         })}
@@ -48,3 +58,4 @@ export default function TracksList() {
   );
 }
 
+export default withLayout(Tracks);
