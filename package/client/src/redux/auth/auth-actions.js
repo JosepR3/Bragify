@@ -186,7 +186,6 @@ export function getUser() {
     const response = await api.getUser({
       headers: { Authorization: `Bearer ${token}` },
     });
-    console.log(response.data)
     localStorage.setItem('user', JSON.stringify(response.data));
     dispatch(signUpSuccess(response.data));
   };

@@ -1,20 +1,20 @@
 import React from "react";
-import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
+// import { useState, useEffect } from "react";
+// import { useNavigate } from "react-router-dom";
+// import { useSelector, useDispatch } from "react-redux";
 import Card from "react-bootstrap/Card";
 
 import { RiPlayCircleFill } from "react-icons/ri"
 
-import { playTrack } from "../../../redux/tracks/tracks-actions";
+// import { playTrack } from "../../../redux/tracks/tracks-actions";
 
 
 export default function TrackAlbumCard(
-  {
-    //   albumName,
-    //   artistName,
-    //   albumImageUrl,
-  },
+  // {
+  //   //   albumName,
+  //   //   artistName,
+  //   //   albumImageUrl,
+  // },
 ) {
   //   const navigate = useNavigate();
   //   const dispatch = useDispatch();
@@ -53,8 +53,8 @@ export default function TrackAlbumCard(
           Card Title a really long titile for example blabla
         </Card.Title>
         <Card.Subtitle className="m-0">
-          Some quick example text to build on the card title and make up the
-          bulk of the card's content.
+          {/* Some quick example text to build on the card title and make up the
+          bulk of the card&aposs content. */}
         </Card.Subtitle>
       </Card.Body>
     </Card>
