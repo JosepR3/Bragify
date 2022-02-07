@@ -1,7 +1,7 @@
 /* eslint-disable react/no-unescaped-entities */
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Navigate } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 
@@ -28,13 +28,11 @@ function SignIn() {
 
   useEffect(() => {
     dispatch(resetAuthState());
-
   }, [dispatch]);
 
   function handleSignInWithGoogle(e) {
     e.preventDefault();
     dispatch(signUpWithGoogleRequest());
-
   }
 
   useEffect(() => {
@@ -61,8 +59,8 @@ function SignIn() {
   }
 
   if (isAuthenticated) {
-     return <Navigate to={ROUTES.HOME} />;
-   }
+    return <Navigate to={ROUTES.HOME} />;
+  }
 
   return (
     <main className="container text-center">
