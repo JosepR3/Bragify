@@ -24,6 +24,7 @@ import EditProfile from "../../components/molecules/EditProfile";
 import SingleAlbum from "../../components/organisms/SingleAlbum";
 import FormCreateTracks from "../../components/organisms/FormCreateTracks/FormCreateTracks";
 import MusicPlayer from "../../components/molecules/MusicPlayer";
+import CreatePlaylist from "../PlayList/PlayList";
 
 const mdTheme = createTheme({
   typography: {
@@ -64,6 +65,7 @@ function Home() {
             <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
               {isEditing && <EditProfile />}
               {!isEditing && !inTracks && <InnerDash />}
+              <CreatePlaylist />
               <SingleAlbum />
               <FormCreateTracks />
             </Container>
