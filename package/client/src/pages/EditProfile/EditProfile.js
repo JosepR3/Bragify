@@ -2,17 +2,20 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-import Image from "react-bootstrap/Image"
+import Image from "react-bootstrap/Image";
+
+import withLayout from "../../components/HOC/withLayout";
 
 import {
   resetAuthState,
   editUser
-} from "../../../redux/auth/auth-actions";
-import { authSelector } from "../../../redux/auth/auth-selectors";
+} from "../../redux/auth/auth-actions";
+import { authSelector } from "../../redux/auth/auth-selectors";
 
-export default function EditUserForm() {
+function EditUserForm() {
   const dispatch = useDispatch();
-  const { currentUser, editSuccess, isLoading, editMessage} = useSelector(authSelector);
+  const currentUser = JSON.parse(localStorage.getItem('user'))
+  const { editSuccess, isLoading, editMessage} = useSelector(authSelector);
 
   const [user, setUser] = useState({
     firstName: currentUser.firstName,
@@ -116,3 +119,5 @@ export default function EditUserForm() {
     </main>
   );
 }
+
+export default withLayout(EditUserForm);

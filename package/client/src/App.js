@@ -15,6 +15,7 @@ import ResetPassword from "./pages/ResetPassword";
 import Tracks from "./pages/Tracks";
 import Playlists from "./pages/Playlists";
 import NotFound from "./pages/NotFound";
+import EditProfile from "./pages/EditProfile";
 import UploadTrack from "./components/organisms/UploadTrack";
 import SingleAlbum from "./components/organisms/SingleAlbum";
 
@@ -46,11 +47,11 @@ function App() {
       <Routes>
         <Route path="*" element={<NotFound />} />
         <Route exact path={ROUTES.SIGN_UP} element={<SignUp />} />
-        <Route exact path={ROUTES.TRACKS} element={<Tracks />} />
+        <Route exact path={ROUTES.EDIT_PROFILE} element={<EditProfile />} />
         <Route exact path={ROUTES.SIGN_IN} element={<SignIn />} />
         <Route exact path={ROUTES.RESET_PASSWORD} element={<ResetPassword />} />
         <Route exact path={ROUTES.HOME} element={<Home />} />
-
+        <Route exact path={ROUTES.TRACKS} element={<Tracks />} />
         <Route path={ROUTES.PLAYLISTS} element={<Playlists />}>
           <Route path="single-album" element={<SingleAlbum />} />
         </Route>

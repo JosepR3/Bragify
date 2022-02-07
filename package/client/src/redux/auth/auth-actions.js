@@ -158,13 +158,10 @@ export function editUser(user) {
 export function signOut() {
   return async function signOutThunk(dispatch) {
     dispatch(signOutRequest());
-
     const token = await auth.getCurrentUserToken();
-
     if (!token) {
       return dispatch(signOutSuccess());
     }
-
     const response = await api.signOut({
       Authorization: `Bearer ${token}`,
     });
@@ -172,9 +169,8 @@ export function signOut() {
     if (response.errorMessage) {
       return dispatch(signOutError(response.errorMessage));
     }
-
+    localStorage.removeItem("user");
     auth.signOut();
-
     return dispatch(signOutSuccess());
   };
 }
@@ -187,10 +183,11 @@ export function getUser() {
       console.log("NO TOKEN");
       return dispatch(signOutSuccess());
     }
-    console.log("TOKEN");
     const response = await api.getUser({
       headers: { Authorization: `Bearer ${token}` },
     });
+    console.log(response.data)
+    localStorage.setItem('user', JSON.stringify(response.data));
     dispatch(signUpSuccess(response.data));
   };
 }

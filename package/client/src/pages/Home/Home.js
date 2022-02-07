@@ -1,4 +1,4 @@
-import React  from "react";
+import React from "react";
 import { Navigate } from "react-router-dom";
 import { authSelector } from "../../redux/auth/auth-selectors";
 import * as ROUTES from "../../routes";
@@ -10,15 +10,12 @@ import { tracksSelector } from "../../redux/tracks/tracks-selector";
 // HOC
 import withLayout from "../../components/HOC/withLayout";
 // COMPONENTS
-import SideBar from "../../components/organisms/SideBar";
-import Copyright from "../../components/atoms/Copyright";
-import EditProfile from "../../components/molecules/EditProfile";
 import SingleAlbum from "../../components/organisms/SingleAlbum";
-import Header from "../../components/organisms/Header";
+
 
 function Home() {
-  const { isAuthenticated, isEditing} = useSelector(authSelector);
-
+  const { isAuthenticated, currentUser } = useSelector(authSelector);
+  console.log(currentUser);
 
   if (!isAuthenticated) {
     return <Navigate to={ROUTES.SIGN_IN} />;
@@ -26,7 +23,6 @@ function Home() {
 
   return (
     <>
-      {isEditing  && <EditProfile/>}
       <SingleAlbum/>
     </>
         

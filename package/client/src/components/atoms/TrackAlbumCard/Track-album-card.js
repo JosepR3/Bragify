@@ -45,7 +45,7 @@ export default function TrackAlbumCard(
           src="https://ih1.redbubble.net/image.1138204235.9642/st,small,507x507-pad,600x600,f8f8f8.u2.jpg"
         />
         <RiPlayCircleFill
-          className="position-absolute top-50 start-50 translate-middle"
+          className="card__play position-absolute top-50 start-50 translate-middle"
         />
       </div>
       <Card.Body className="p-1 mt-2">

@@ -37,8 +37,6 @@ $theme-colors: map-merge($theme-colors, $custom-colors);
 
 //      molecules
 @import "../../components/molecules/AccountSetting/accountSetting";
-@import "../../components/molecules/EditProfile/editProfile";
-
 
 //      organisms
 @import "../../components/organisms/Header/header";
@@ -47,6 +45,7 @@ $theme-colors: map-merge($theme-colors, $custom-colors);
 @import"../../components/organisms/MainContainer/mainContainer";
 
 //      pages
+@import "../../Pages/EditProfile/editProfile";
 @import "../../pages/SignIn/signIn";
 @import "../../pages/Resetpassword/resetpassword";
 @import "../../pages/NotFound/notFound";

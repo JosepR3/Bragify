@@ -12,7 +12,7 @@
   &:hover .card-img-top {
     filter: brightness(70%);
   }
-  &:hover .fa-play-circle {
+  &:hover .card__play {
     visibility: visible;
   }
   &-body {
@@ -41,7 +41,7 @@
   }
 }
 // ---------------------PLAY "BUTTON"
-.fa-play-circle {
+.card__play{
   font-size: 3rem;
   color: a.$brand-color;
   visibility: hidden;
