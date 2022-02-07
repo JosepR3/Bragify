@@ -4,7 +4,7 @@ const morgan = require("morgan");
 const { json } = require("body-parser");
 const cors = require("cors");
 const { errorMiddleware } = require("./middlewares");
-const { userRouter, trackRouter, listRouter} = require("./routes");
+const { userRouter, trackRouter, playlistRouter} = require("./routes");
 const notFoundMiddleware = require("./middlewares/notFound-middleware");
 
 const app = express();
@@ -20,7 +20,7 @@ app.use(
 
 app.use(userRouter);
 app.use(trackRouter);
-app.use(listRouter);
+app.use(playlistRouter);
 
 
 

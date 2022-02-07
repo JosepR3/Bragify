@@ -45,6 +45,7 @@ function makeApi(request = makeRequest()) {
       headers: headers,
     });
   }
+
   function deleteTrack(headers, data) {
     return axios.delete(`http://localhost:4000/tracks/${data}`, {
       headers: headers,
@@ -73,6 +74,21 @@ function makeApi(request = makeRequest()) {
     });
   }
 
+  // function createPlaylist(headers, data) {
+  //   return axios.post("http://localhost:4000/playlists", {
+  //     headers: headers,
+  //   });
+  // }
+
+  function createPlaylist({ headers, body }) {
+    return request({
+      url: "/playlists",
+      requestMethod: "POST",
+      body: body,
+      headers: headers,
+    });
+  }
+
   return {
     signUp: signUp,
     signOut: signOut,
@@ -84,6 +100,7 @@ function makeApi(request = makeRequest()) {
     likeTrack: likeTrack,
     unlikeTrack: unlikeTrack,
     fetchLikedTracks: fetchLikedTracks,
+    createPlaylist: createPlaylist
   };
 }
 

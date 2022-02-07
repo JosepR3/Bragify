@@ -28,6 +28,7 @@ const UploadTrack = () => {
         };
         settrack(newTrack);
     }
+    
     function handleSubmit(e) {
         e.preventDefault();
         dispatch(createTrack(track));

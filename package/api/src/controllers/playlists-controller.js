@@ -1,22 +1,16 @@
 const { playlistRepo } = require("../repositories");
 const { handleDbResponse } = require("../repositories/repo-utils");
 
-async function createList(req, res, next) {
-  console.log(req)
 
+async function createPlayList(req, res, next) {
+  console.log(req);
   const {
     name,
     description,
-    collaborative,
     thumbnail,
-    publicAccessible,
-    numberSongs,
-    rating,
     authorId,
-    tracks,
-    followedBy,
-    collaborators,
-} = req.body;
+
+  } = req.body;
 
   try {
     if (!name) {
@@ -29,15 +23,8 @@ async function createList(req, res, next) {
     const dbResponse = await playlistRepo.create({
       name: name,
       description: description,
-      collaborative: collaborative,
       thumbnail: thumbnail,
-      publicAccessible: publicAccessible,
-      numberSongs: numberSongs,
-      rating: rating,
       authorId: authorId,
-      tracks: tracks,
-      followedBy: followedBy,
-      collaborators: collaborators,
     });
 
     handleDbResponse(res, dbResponse);
@@ -46,7 +33,7 @@ async function createList(req, res, next) {
   }
 }
 
-async function fetchList(req, res, next) {
+async function fetchPlaylist(req, res, next) {
   // console.log(req);
   // try {
   //   const tracks = await playlistRepo.find({ title: true }[0])
@@ -56,8 +43,7 @@ async function fetchList(req, res, next) {
   // }
 }
 
-
-async function deleteList(req, res, next) {
+async function deletePlaylist(req, res, next) {
   // const id = (req.params.id)
   // try {
   //   const tracks = await playlistRepo.deleteOne(id)
@@ -70,7 +56,7 @@ async function deleteList(req, res, next) {
 }
 
 module.exports = {
-  createList: createList,
-  fetchList: fetchList,
-  deleteList: deleteList,
+  createPlayList: createPlayList,
+  // fetchList: fetchList,
+  // deleteList: deleteList,
 };

@@ -6,9 +6,7 @@ import { getCurrentUserToken } from "../../services/auth";
 export function setTracksLoading() {
   return { type: TrackTypes.TRACKS_LOADING };
 }
-export function toTracks() {
-  return { type: TrackTypes.TO_TRACKS };
-}
+
 export function setTracksLoadingSuccess() {
   return { type: TrackTypes.TRACKS_LOADING_SUCCESS };
 }
@@ -54,6 +52,8 @@ export function playTrack(track) {
   };
 }
 
+
+// track CRUD functions
 export function createTrack(data) {
   return async function createThunk(dispatch) {
     try {
@@ -87,22 +87,13 @@ export async function fetchAllTracks(dispatch) {
   }
 }
 
-export function authTrack(action, data) {
-  return async function createThunk() {
-    const token = await getCurrentUserToken();
-    const response = await action(
-      {
-        Authorization: `Bearer ${token}`,
-      },
-      data,
-    );
-    return  response.data;
-  };
-}
+
+
+
+// like button actions
 
 export function likeTrack(id, userId) {
   const data = { trackId: id, userId: userId };
-  console.log(data);
   return async function createThunk(dispatch) {
     try {
       await dispatch(authTrack(api.likeTrack, data));
@@ -136,3 +127,18 @@ export function fetchLikedTracks(userId) {
     }
   };
 }
+
+//auth function
+export function authTrack(action, data) {
+  return async function createThunk() {
+    const token = await getCurrentUserToken();
+    const response = await action(
+      {
+        Authorization: `Bearer ${token}`,
+      },
+      data,
+    );
+    return response.data;
+  };
+}
+

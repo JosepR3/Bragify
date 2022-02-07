@@ -2,7 +2,7 @@ const { TrackRepo } = require("../repositories");
 const { handleDbResponse } = require("../repositories/repo-utils");
 
 async function createTrack(req, res, next) {
-  console.log(req.body)
+  console.log(req.body);
 
   const { title, url, thumbnail, genre, duration, authorId } = req.body;
 
@@ -31,18 +31,17 @@ async function createTrack(req, res, next) {
 
 async function fetchTracks(req, res, next) {
   try {
-    const tracks = await TrackRepo.find({ title: true }[0])
+    const tracks = await TrackRepo.find({ title: true }[0]);
     handleDbResponse(res, tracks);
   } catch (error) {
     next(error);
   }
 }
 
-
 async function deleteTrack(req, res, next) {
-  const id = (req.params.id)
+  const id = req.params.id;
   try {
-    const tracks = await TrackRepo.deleteOne(id)
+    const tracks = await TrackRepo.deleteOne(id);
     handleDbResponse(res, tracks);
   } catch (error) {
     next(error);
@@ -50,22 +49,21 @@ async function deleteTrack(req, res, next) {
 }
 
 async function likeTrack(req, res, next) {
-  const trackId = req.params.id
-  const { userId } = req.body
-console.log(userId)
+  const trackId = req.params.id;
+  const { userId } = req.body;
+  console.log(userId);
   try {
-    const tracks = await TrackRepo.likeTrack(trackId, userId)
+    const tracks = await TrackRepo.likeTrack(trackId, userId);
     handleDbResponse(res, tracks);
-  }
-  catch (error) {
+  } catch (error) {
     next(error);
   }
 }
 async function unlikeTrack(req, res, next) {
-  const trackId = req.params.id
-  const { userId } = req.body
+  const trackId = req.params.id;
+  const { userId } = req.body;
   try {
-    const tracks = await TrackRepo.unlikeTrack(trackId, userId)
+    const tracks = await TrackRepo.unlikeTrack(trackId, userId);
     handleDbResponse(res, tracks);
   } catch (error) {
     next(error);
@@ -73,18 +71,14 @@ async function unlikeTrack(req, res, next) {
 }
 
 async function fetchLikedTracks(req, res, next) {
-  const userId = req.params.id
+  const userId = req.params.id;
   try {
-    const tracks = await TrackRepo.fetchLikedTracks(userId)
+    const tracks = await TrackRepo.fetchLikedTracks(userId);
     handleDbResponse(res, tracks);
   } catch (error) {
     next(error);
   }
 }
-
-
-
-
 
 module.exports = {
   createTrack: createTrack,

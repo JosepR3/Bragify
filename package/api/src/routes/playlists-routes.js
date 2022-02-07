@@ -1,13 +1,12 @@
-
 const Router = require("express").Router;
-const { authMiddleware } = require("../middlewares");
-const { listController } = require("../controllers");
-const listRouter = Router();
+// const { authMiddleware } = require("../middlewares");
+const { playlistController } = require("../controllers");
+const playlistRouter = Router();
 
-listRouter.post("/track-list",listController.createList);
-listRouter.get("/track-list", listController.fetchList);
-listRouter.delete("/track-list/:id", listController.deleteList);
+playlistRouter.post("/playlists", playlistController.createPlayList);
+// playListRouter.get("/playlist", playlistController.fetchList);
+// playListRouter.delete("/playlist/:id", playlistController.deleteList);
 
 module.exports = {
-  listRouter: listRouter,
+  playlistRouter: playlistRouter,
 };
