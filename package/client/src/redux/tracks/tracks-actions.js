@@ -32,6 +32,21 @@ export function setPauseTracks() {
   return { type: TrackTypes.PAUSE_TRACK };
 }
 
+export function setLikedTracks(idList) {
+  idList = idList.map((id) => id._id);
+  return {
+    type: TrackTypes.LIKE_TRACKS,
+    payload: { idList },
+  };
+}
+
+export function setLikeTrack(id) {
+  return {
+    type: TrackTypes.LIKE_TRACK,
+    payload: { id },
+  };
+}
+
 export function playTrack(track) {
   return {
     type: TrackTypes.PLAY_TRACK,
@@ -75,11 +90,49 @@ export async function fetchAllTracks(dispatch) {
 export function authTrack(action, data) {
   return async function createThunk() {
     const token = await getCurrentUserToken();
-    await action(
+    const response = await action(
       {
         Authorization: `Bearer ${token}`,
       },
       data,
     );
+    return  response.data;
+  };
+}
+
+export function likeTrack(id, userId) {
+  const data = { trackId: id, userId: userId };
+  console.log(data);
+  return async function createThunk(dispatch) {
+    try {
+      await dispatch(authTrack(api.likeTrack, data));
+      dispatch(setLikeTrack(id));
+    } catch (error) {
+      console.log(error, "likeTrackError");
+    }
+  };
+}
+
+export function unlikeTrack(id, userId) {
+  const data = { trackId: id, userId: userId };
+  console.log(data)
+  return async function createThunk(dispatch) {
+    try {
+      await dispatch(authTrack(api.unlikeTrack, data));
+      dispatch(setLikeTrack(id));
+    } catch (error) {
+      console.log(error, "unlikeTrackError");
+    }
+  };
+}
+
+export function fetchLikedTracks(userId) {
+  return async function createThunk(dispatch) {
+    try {
+      const res = await dispatch(authTrack(api.fetchLikedTracks, userId));
+      dispatch(setLikedTracks(res.data));
+    } catch (error) {
+      console.log(error, "fetchLikedTracksError");
+    }
   };
 }

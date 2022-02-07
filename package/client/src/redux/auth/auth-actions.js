@@ -85,9 +85,12 @@ export function signUpWithGoogleRequest() {
   return async function signUpThunk(dispatch) {
     dispatch(signUpRequest());
     try {
-      await auth.singInWithGoogle();
+      await auth.signInWithGoogle();
+      console.log("signin in with Google")
+      dispatch(signUpSuccess());
     } catch (error) {
-      dispatch(signUpError(error.message));
+      console.log(error)
+      // dispatch(signUpError(error.message));
     }
   };
 }
@@ -120,7 +123,7 @@ export function syncSignIn() {
     if (!token) {
       return dispatch(signOutSuccess());
     }
-    
+
     const response = await api.signUp({
       Authorization: `Bearer ${token}`,
     });
@@ -132,7 +135,7 @@ export function syncSignIn() {
   };
 }
 
-export function editUser( user ){
+export function editUser(user) {
   return async function editUserThunk(dispatch) {
     dispatch(editRequest());
     const token = await auth.getCurrentUserToken();
@@ -140,11 +143,11 @@ export function editUser( user ){
       return dispatch(signOutSuccess());
     }
     const reqBody = {
-        firstName: user.firstName,
-        lastName: user.lastName,
-        username: user.username,
-        email: user.email
-      }
+      firstName: user.firstName,
+      lastName: user.lastName,
+      username: user.username,
+      email: user.email
+    }
     const response = await api.editUser({
       headers:
         { Authorization: `Bearer ${token}` },
@@ -171,9 +174,6 @@ export function signOut() {
     if (response.errorMessage) {
       return dispatch(signOutError(response.errorMessage));
     }
-
-    auth.signOut();
-
     return dispatch(signOutSuccess());
   };
 }
@@ -183,11 +183,13 @@ export function getUser() {
   return async function getUserThunk(dispatch) {
     const token = await auth.getCurrentUserToken();
     if (!token) {
+      console.log("NO TOKEN")
       return dispatch(signOutSuccess());
     }
+    console.log("TOKEN")
     const response = await api.getUser({
       headers:
-        {Authorization: `Bearer ${token}`},
+        { Authorization: `Bearer ${token}` },
     });
     dispatch(signUpSuccess(response.data))
   };

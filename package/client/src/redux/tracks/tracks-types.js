@@ -8,3 +8,6 @@ export const PLAY_TRACK = "PLAY_TRACK";
 export const PAUSE_TRACK = "PAUSE_TRACK";
 export const TO_TRACKS = "TO_TRACKS";
 export const STOP_TRACK = "STOP_TRACK";
+export const LIKE_TRACK = "LIKE_TRACK";
+export const LIKE_TRACKS = "LIKE_TRACKS";
+export const DELETE_TRACK = "DELETE_TRACK";

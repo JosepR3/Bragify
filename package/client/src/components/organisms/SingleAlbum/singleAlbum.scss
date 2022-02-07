@@ -70,23 +70,23 @@ body {
 
 /* CSS */
 #play {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    padding: 6px 14px;
-    font-family: -apple-system, BlinkMacSystemFont, "Roboto", sans-serif;
-    border-radius: 6px;
-    border: none;
-    max-width: 15%;
-    height: 25px;
-    justify-content: center;
-    font-size: 15px;
-    color: #fff;
-    background-color: a.$brand_color;
-    background-origin: border-box;
-    box-shadow: 0px 0.5px 1.5px rgba(54, 122, 246, 0.25),
-      inset 0px 0.8px 0px -0.25px rgba(255, 255, 255, 0.2);
-  }
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 6px 14px;
+  font-family: -apple-system, BlinkMacSystemFont, "Roboto", sans-serif;
+  border-radius: 6px;
+  border: none;
+  max-width: 15%;
+  height: 25px;
+  justify-content: center;
+  font-size: 15px;
+  color: #fff;
+  background-color: a.$brand_color;
+  background-origin: border-box;
+  box-shadow: 0px 0.5px 1.5px rgba(54, 122, 246, 0.25),
+    inset 0px 0.8px 0px -0.25px rgba(255, 255, 255, 0.2);
+}
 
 #like {
   color: white;

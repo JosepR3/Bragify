@@ -14,11 +14,11 @@ import Avatar from "@mui/material/Avatar";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 
-
-
 function NavBar() {
   const navigate=useNavigate()
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const [anchorElUser, setAnchorElUser] = useState();
   const { currentUser } = useSelector(authSelector);
   const [anchorElUser, setAnchorElUser] = useState();
 
@@ -27,6 +27,7 @@ function NavBar() {
   };
 
   const handleSignOut = () => {
+    console.log('signing out');
     dispatch(signOut());
 navigate('/')
   };
@@ -89,9 +90,9 @@ navigate('/')
           <MenuItem key="editProfile" onClick={handleEditProfile}>
             <Typography textAlign="center">Edit Profile</Typography>
           </MenuItem>
-          <MenuItem key="signOut" onClick={handleSignOut}>
+          <button type="button" key="signOut" onClick={handleSignOut}>
             <Typography textAlign="center">Sign Out</Typography>
-          </MenuItem>
+          </button>
         </Menu>
       </Toolbar>
     </MuiAppBar>

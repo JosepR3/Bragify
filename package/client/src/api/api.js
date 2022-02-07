@@ -1,5 +1,6 @@
 import { makeRequest } from "./api-utils";
 import axios from "axios";
+
 function makeApi(request = makeRequest()) {
   function signUp(headers, data) {
     return request({
@@ -41,6 +42,30 @@ function makeApi(request = makeRequest()) {
       headers: headers,
     });
   }
+
+  function likeTrack(headers, data) {
+    return axios.put(
+      `http://localhost:4000/tracks/${data.trackId}/like`,
+      data,
+      { headers: headers }
+    )
+  }
+
+  function unlikeTrack(headers, data) {
+    return axios.put(
+      `http://localhost:4000/tracks/${data.trackId}/unlike`,
+      data,
+      { headers: headers }
+    )
+  }
+
+  function fetchLikedTracks(headers, userId) {
+    return axios.get(
+      `http://localhost:4000/tracks/${userId}/liked`,
+      { headers: headers }
+    )
+  }
+
   function getUser({ headers }) {
     return request({
       url: "/get-user",
@@ -57,6 +82,9 @@ function makeApi(request = makeRequest()) {
     deleteTrack: deleteTrack,
     createTrack: createTrack,
     getUser: getUser,
+    likeTrack: likeTrack,
+    unlikeTrack: unlikeTrack,
+    fetchLikedTracks: fetchLikedTracks
   };
 }
 

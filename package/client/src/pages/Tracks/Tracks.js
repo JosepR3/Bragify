@@ -3,11 +3,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { tracksSelector } from "../../redux/tracks/tracks-selector";
 import { fetchAllTracks } from "../../redux/tracks/tracks-actions";
 
-import DeleteButton from "../../components/atoms/DeleteButton";
-
 import ListGroup from "react-bootstrap/ListGroup";
 
-import "./tracks.scss";
+import DeleteButton from "../../components/atoms/DeleteButton";
+import LikeButton from "../../components/atoms/LikeButton";
+
+
 
 export default function Tracks() {
   const dispatch = useDispatch();
@@ -51,6 +52,7 @@ export default function Tracks() {
               <ListGroup.Item className="list_item">
                 {track.duration}
               </ListGroup.Item>
+              <LikeButton trackId={track._id} />
               <DeleteButton id={track._id} />
             </ListGroup>
           );
