@@ -1,7 +1,8 @@
 import React from "react";
 import { Outlet, useLocation } from "react-router-dom";
+
+import withLayout from "../../components/HOC/withLayout";
 import TrackList from "../../components/molecules/TrackList/TrackList";
-import "./playlists.scss";
 import { createSelector } from "reselect";
 
 export const selectPlaylistsState = (state) => state.playlists;
@@ -11,7 +12,7 @@ export const PlaylistsSelector = createSelector(
   (playlists) => playlists,
 );
 
-export default function Playlists() {
+function Playlists() {
   const location = useLocation();
   return (
     <>
@@ -22,3 +23,5 @@ export default function Playlists() {
     </>
   );
 }
+
+export default withLayout(Playlists)

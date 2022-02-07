@@ -1,19 +1,9 @@
-import AlbumsIcon from "./Icons/albums-icon.svg";
-import CreatePlaylistIcon from "./Icons/create-playlist-icon.svg";
-import GenresIcon from "./Icons/genres-icon.svg";
-import HomeIcon from "./Icons/home-icon.svg";
-import PlaylistsIcon from "./Icons/playlists-icon.svg";
-import TracksIcon from "./Icons/tracks-icon.svg";
-import UploadTrackIcon from "./Icons/upload-track-icon.svg";
-import DownloadIcon from "./Icons/download-icon.svg";
+import fbIcon from "./Icons/facebook-48.png";
+import ggIcon from "./Icons/google-48.png";
+import bIcon from "./Icons/icon-b-64.png";
 
 export {
-  AlbumsIcon,
-  CreatePlaylistIcon,
-  GenresIcon,
-  HomeIcon,
-  PlaylistsIcon,
-  TracksIcon,
-  UploadTrackIcon,
-  DownloadIcon
+  fbIcon,
+  ggIcon,
+  bIcon
 };

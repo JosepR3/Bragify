@@ -1,0 +1,11 @@
+@use "../../../utils/scss/variablesAndBootstrap" as a;
+
+.header{
+    background-color: a.$main-black;
+    border-bottom: a.$border-color;
+    position: fixed;
+    right: 0;
+    top: 0;
+    width: 91%;
+    z-index: 10;
+}

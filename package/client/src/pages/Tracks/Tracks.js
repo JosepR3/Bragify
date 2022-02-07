@@ -3,13 +3,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { tracksSelector } from "../../redux/tracks/tracks-selector";
 import { fetchAllTracks } from "../../redux/tracks/tracks-actions";
 
-import ListGroup from "react-bootstrap/ListGroup";
-
+import withLayout from "../../components/HOC/withLayout";
 import DeleteButton from "../../components/atoms/DeleteButton";
 import LikeButton from "../../components/atoms/LikeButton";
 
+import ListGroup from "react-bootstrap/ListGroup";
 
-export default function Tracks() {
+function Tracks() {
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -59,3 +59,5 @@ export default function Tracks() {
     </div>
   );
 }
+
+export default withLayout(Tracks);

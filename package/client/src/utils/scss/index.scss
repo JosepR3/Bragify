@@ -1,6 +1,66 @@
 // //  Basic configuration such as main colors, fonts and breakpoints.
+@import "../../../node_modules/bootstrap/scss/functions";
+@import "../../../node_modules/bootstrap/scss/mixins";
+@import "../../../node_modules/bootstrap/scss/variables";
 
-//  @import './conf.scss';
+
+@import "./variablesAndBootstrap";
+
+$custom-colors: (
+  "facebook-color": $fb-blue,
+  "google-color": $gg-green,
+  "log-color": white,
+  "main-black": $main-black,
+);
 
 
-// // -------------------Components
+$btn-border-radius: 10px;
+$body-bg: $web-background-color;
+$input-disabled-bg: rgba(255, 255, 255, 0.623);
+$nav-link-color: rgba(255, 255, 255, 0.75);
+$nav-link-hover-color: white;
+$list-group-bg: transparent;
+
+// Merge the maps
+
+$theme-colors: map-merge($theme-colors, $custom-colors);
+
+@import '../../../node_modules/bootstrap/scss/bootstrap.scss';
+
+@import "./mainConfig";
+
+
+// -------------------Components
+//      atoms
+@import "../../components/atoms/TrackAlbumCard/track-album-card";
+@import "../../components/atoms/SearchInput/searchInput";
+
+//      molecules
+@import "../../components/molecules/AccountSetting/accountSetting";
+@import "../../components/molecules/EditProfile/editProfile";
+
+
+//      organisms
+@import "../../components/organisms/Header/header";
+@import "../../components/organisms/SideBar/sideBar";
+@import "../../components/organisms/SingleAlbum/singleAlbum";
+@import"../../components/organisms/MainContainer/mainContainer";
+
+//      pages
+@import "../../pages/SignIn/signIn";
+@import "../../pages/Resetpassword/resetpassword";
+@import "../../pages/NotFound/notFound";
+@import "../../pages/Tracks/tracks";
+
+
+@import "../../app";
+
+
+
+
+
+
+
+
+
+

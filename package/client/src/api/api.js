@@ -15,7 +15,6 @@ function makeApi(request = makeRequest()) {
     return request({
       url: "/sign-out",
       requestMethod: "POST",
-      headers: headers,
     });
   }
 
@@ -24,6 +23,14 @@ function makeApi(request = makeRequest()) {
       url: "/edit-user",
       requestMethod: "PUT",
       body: body,
+      headers: headers,
+    });
+  }
+
+  function getUser({ headers }) {
+    return request({
+      url: "/get-user",
+      requestMethod: "GET",
       headers: headers,
     });
   }
@@ -47,29 +54,20 @@ function makeApi(request = makeRequest()) {
     return axios.put(
       `http://localhost:4000/tracks/${data.trackId}/like`,
       data,
-      { headers: headers }
-    )
+      { headers: headers },
+    );
   }
 
   function unlikeTrack(headers, data) {
     return axios.put(
       `http://localhost:4000/tracks/${data.trackId}/unlike`,
       data,
-      { headers: headers }
-    )
+      { headers: headers },
+    );
   }
 
   function fetchLikedTracks(headers, userId) {
-    return axios.get(
-      `http://localhost:4000/tracks/${userId}/liked`,
-      { headers: headers }
-    )
-  }
-
-  function getUser({ headers }) {
-    return request({
-      url: "/get-user",
-      requestMethod: "GET",
+    return axios.get(`http://localhost:4000/tracks/${userId}/liked`, {
       headers: headers,
     });
   }
@@ -84,7 +82,7 @@ function makeApi(request = makeRequest()) {
     getUser: getUser,
     likeTrack: likeTrack,
     unlikeTrack: unlikeTrack,
-    fetchLikedTracks: fetchLikedTracks
+    fetchLikedTracks: fetchLikedTracks,
   };
 }
 

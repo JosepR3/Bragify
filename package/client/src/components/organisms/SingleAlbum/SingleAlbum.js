@@ -1,5 +1,4 @@
 import React from "react";
-import "./singleAlbum.scss";
 
 function SingleAlbum() {
   return (

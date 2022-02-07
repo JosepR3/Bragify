@@ -1,15 +1,13 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlayCircle } from "@fortawesome/free-solid-svg-icons";
+import { useSelector, useDispatch } from "react-redux";
 import Card from "react-bootstrap/Card";
 
-import { useSelector, useDispatch } from "react-redux";
+import { RiPlayCircleFill } from "react-icons/ri"
 
 import { playTrack } from "../../../redux/tracks/tracks-actions";
-import "./track-album-card.scss";
+
 
 export default function TrackAlbumCard(
   {
@@ -46,9 +44,8 @@ export default function TrackAlbumCard(
           variant="top"
           src="https://ih1.redbubble.net/image.1138204235.9642/st,small,507x507-pad,600x600,f8f8f8.u2.jpg"
         />
-        <FontAwesomeIcon
+        <RiPlayCircleFill
           className="position-absolute top-50 start-50 translate-middle"
-          icon={faPlayCircle}
         />
       </div>
       <Card.Body className="p-1 mt-2">

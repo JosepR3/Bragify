@@ -1,7 +1,9 @@
 import { useEffect, React } from "react";
 import { Route, Routes } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import "./app.scss";
+
+
+import "./utils/scss/index.scss";
 
 //COMPONENTS
 import * as ROUTES from "./routes";
@@ -40,7 +42,7 @@ function App() {
   }, [dispatch]);
 
   return (
-    <div className="app__container">
+    <div className="app__container p-3">
       <Routes>
         <Route path="*" element={<NotFound />} />
         <Route exact path={ROUTES.SIGN_UP} element={<SignUp />} />
