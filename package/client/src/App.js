@@ -18,10 +18,12 @@ import NotFound from "./pages/NotFound";
 import EditProfile from "./pages/EditProfile";
 import UploadTrack from "./components/organisms/UploadTrack";
 import SingleAlbum from "./components/organisms/SingleAlbum";
+import CreatePlaylist from "./components/organisms/CreatePlaylist";
 
 //REDUX
 import { onAuthStateChanged } from "./services/auth";
 import { syncSignIn, signOut, getUser } from "./redux/auth/auth-actions";
+
 
 function App() {
   const dispatch = useDispatch();
@@ -57,6 +59,7 @@ function App() {
         </Route>
 
         <Route exact path={ROUTES.UPLOAD_TRACK} element={<UploadTrack />} />
+        <Route exact path={ROUTES.CREATE_PLAYLIST} element={<CreatePlaylist />} />
       </Routes>
     </div>
   );

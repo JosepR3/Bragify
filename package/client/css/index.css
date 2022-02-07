@@ -11890,6 +11890,7 @@ svg {
   border-style: none;
   margin-left: 0;
   margin-right: 0;
+<<<<<<< HEAD:package/client/css/index.css
 }
 
 .resetPassword__wrapper {
@@ -12313,3 +12314,6 @@ svg {
   height: 2rem;
   padding: 0.45rem !important;
 }/*# sourceMappingURL=index.css.map */
+=======
+}/*# sourceMappingURL=signIn.css.map */
+>>>>>>> origin/create-playlist:css/SignIn.css

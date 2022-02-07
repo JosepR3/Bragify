@@ -5,12 +5,13 @@ import * as ROUTES from "../../routes";
 
 // REDUX
 import { useSelector } from "react-redux";
-// import { fetchAllTracks } from "../../redux/tracks/tracks-actions";
-// import { tracksSelector } from "../../redux/tracks/tracks-selector";
+
 // HOC
 import withLayout from "../../components/HOC/withLayout";
+
 // COMPONENTS
 import SingleAlbum from "../../components/organisms/SingleAlbum";
+import CreatePlaylist from "../../components/organisms/CreatePlaylist";
 
 
 function Home() {
@@ -24,6 +25,7 @@ function Home() {
   return (
     <>
       <SingleAlbum/>
+      <CreatePlaylist/>
     </>
         
   );
