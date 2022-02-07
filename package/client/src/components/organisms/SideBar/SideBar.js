@@ -1,19 +1,13 @@
 import React from "react";
 import Nav from "react-bootstrap/Nav";
 
-import bIcon from "../../../assets/Icons/icon-b-64.png"
-import {
-  AlbumsIcon,
-  HomeIcon,
-  CreatePlaylistIcon,
-  GenresIcon,
-  PlaylistsIcon,
-  TracksIcon,
-  UploadTrackIcon,
-  DownloadIcon
-} from "../../../assets"
-
-import "./sideBar.scss"
+// ICONS
+import { bIcon } from "../../../assets";
+import { IoMusicalNotes, IoAlbums } from "react-icons/io5";
+import { RiPlayListAddLine, RiPlayListFill, RiUpload2Fill, RiDownload2Fill } from "react-icons/ri";
+import { FaGuitar } from "react-icons/fa";
+import { GiDrumKit } from "react-icons/gi";
+import { AiFillHome } from "react-icons/ai";
 
 
 // import * as ROUTES from "../../../routes";
@@ -21,49 +15,49 @@ import "./sideBar.scss"
 function SideBar() {
   
   return (
-    <Nav defaultActiveKey="/home" navbar="true" className="flex-column">
+    <Nav defaultActiveKey="/home" navbar="true" className="side__bar flex-column">
       <a className="d-flex align-items-center brand__link my-3 mx-4" href="#">
         <img className="brand__img me-3" src={bIcon}></img>
         BRAGIFY
       </a>
         <Nav.Item className="mt-4">
           <Nav.Link href="">
-            <img className="nav__icon" src={HomeIcon}></img>Home
+            <AiFillHome/>Home
           </Nav.Link>
         </Nav.Item>
         <Nav.Item className="mt-3">
           <Nav.Link href="">
-            <img className="nav__icon" src={TracksIcon}></img>Tracks
+            <IoMusicalNotes/>Tracks
           </Nav.Link>
         </Nav.Item>
         <Nav.Item>
           <Nav.Link href="">
-            <img className="nav__icon" src={AlbumsIcon}></img>Albums
+            <IoAlbums/>Albums
           </Nav.Link>
         </Nav.Item>
         <Nav.Item>
           <Nav.Link href="">
-            <img className="nav__icon" src={GenresIcon}></img>Genres
+            <GiDrumKit/>Genres
           </Nav.Link>
         </Nav.Item>
         <Nav.Item>
           <Nav.Link href="">
-            <img className="nav__icon" src={PlaylistsIcon}></img>Playlists
-          </Nav.Link>
-        </Nav.Item>
-        <Nav.Item className="mt-3">
-          <Nav.Link href="">
-            <img className="nav__icon" src={CreatePlaylistIcon}></img>Create Playlist
-          </Nav.Link>
-        </Nav.Item>
-        <Nav.Item>
-          <Nav.Link href="">
-            <img className="nav__icon" src={UploadTrackIcon}></img>Upload Track
+            <RiPlayListFill />Playlists
           </Nav.Link>
         </Nav.Item>
         <Nav.Item className="mt-5">
           <Nav.Link href="">
-            <img className="nav__icon" src={DownloadIcon}></img>Download App
+            <RiPlayListAddLine/>Create Playlist
+          </Nav.Link>
+        </Nav.Item>
+        <Nav.Item>
+          <Nav.Link href="">
+            <RiUpload2Fill/>Upload Track
+          </Nav.Link>
+        </Nav.Item>
+        <Nav.Item className="mt-5">
+          <Nav.Link href="">
+            <RiDownload2Fill/>Download App
           </Nav.Link>
         </Nav.Item>
     </Nav>

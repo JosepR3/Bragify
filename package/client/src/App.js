@@ -1,7 +1,9 @@
 import React, { useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import "./app.scss";
+
+
+import "./utils/scss/index.scss";
 
 //COMPONENTS
 import * as ROUTES from "./routes";

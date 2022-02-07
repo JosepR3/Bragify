@@ -1,0 +1,6 @@
+@use "../../../utils/scss/variablesAndBootstrap" as a;
+
+.header{
+    background-color: a.$main-black;
+    border-bottom: a.$border-color;
+}

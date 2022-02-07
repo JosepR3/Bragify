@@ -1,0 +1,38 @@
+@use "../../../utils/scss/variablesAndBootstrap" as a;
+.side__bar{
+  min-height: 90vh;
+  background-color: a.$main-black;
+  border-right: a.$border-color;
+}
+
+.nav{
+  &-item{
+    margin-left: 0.5rem;
+  }
+  &-link{
+    font-size: 0.9rem;
+  }
+}
+
+.brand__{
+  &img{
+    width: 2rem;
+    filter: invert(1);
+  }
+  
+  &link{
+    color: white;
+  
+    &:hover{
+      color: white;
+    }
+  }
+}
+
+svg{
+  margin-right: 0.4rem;
+}
+
+
+
+

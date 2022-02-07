@@ -4,7 +4,7 @@ import Container from "@mui/material/Container";
 import { authSelector } from "../../../redux/auth/auth-selectors";
 import { useSelector } from "react-redux";
 
-import NavBar from "../../molecules/NavBar";
+import NavBar from "../Header";
 import InnerDash from "../../organisms/InnerDash";
 import Copyright from "../../atoms/Copyright";
 import MusicPlayer from '../../molecules/MusicPlayer';

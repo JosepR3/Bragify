@@ -1,8 +1,4 @@
-@use "../../../utils/scss/conf.scss" as a;
-
-body {
-  font-family: "Rubik", sans-serif;
-}
+@use "../../../utils/scss/variablesAndBootstrap" as a;
 
 .container {
   margin-top: 50px;

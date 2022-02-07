@@ -7,7 +7,7 @@ import Box from "@mui/material/Box";
 import SideBar from "../../components/organisms/SideBar/SideBar";
 import MusicPlayer from '../../components/molecules/MusicPlayer/MusicPlayer';
 import Copyright from '../../components/atoms/Copyright/Copyright';
-import NavBar from "../molecules/NavBar";
+import Header from "../organisms/Header";
 import MainContainer from "../../components/organisms/MainContainer";
 
 export default function withLayout(WrappedComponent) {
@@ -37,7 +37,7 @@ export default function withLayout(WrappedComponent) {
                                 overflow: "auto",
                             }}
                         >
-                            <NavBar />
+                            <Header />
                         </Box>
                         <SideBar />
                         <WrappedComponent />

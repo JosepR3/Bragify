@@ -8,7 +8,6 @@ import Form from "react-bootstrap/Form";
 import fbIcon from "../../assets/Icons/facebook-48.png";
 import ggIcon from "../../assets/Icons/google-48.png";
 import * as ROUTES from "../../routes";
-import "./signIn.scss";
 
 import {
   resetAuthState,
@@ -53,8 +52,8 @@ function SignIn() {
   }
 
   if (isAuthenticated) {
-    return <Navigate to={ROUTES.HOME} />;
-  }
+     return <Navigate to={ROUTES.HOME} />;
+   }
 
   return (
     <main className="container text-center">
