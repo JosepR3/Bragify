@@ -17,9 +17,8 @@ import UploadTrack from "./components/organisms/UploadTrack";
 import SingleAlbum from "./components/organisms/SingleAlbum";
 
 //REDUX
-import { onAuthStateChanged} from "./services/auth";
-import { syncSignIn, signOut, getUser,  } from "./redux/auth/auth-actions";
-const { isAuthenticated } = useSelector(authSelector);
+import { onAuthStateChanged } from "./services/auth";
+import { syncSignIn, signOut, getUser } from "./redux/auth/auth-actions";
 
 function App() {
   const dispatch = useDispatch();
@@ -46,7 +45,7 @@ function App() {
         <Route path="*" element={<NotFound />} />
         <Route exact path={ROUTES.SIGN_UP} element={<SignUp />} />
         <Route exact path={ROUTES.TRACKS} element={<Tracks />} />
-        {isAuthenticated && <Route exact path={ROUTES.SIGN_IN} element={<SignIn />} />}
+        <Route exact path={ROUTES.SIGN_IN} element={<SignIn />} />
         <Route exact path={ROUTES.RESET_PASSWORD} element={<ResetPassword />} />
         <Route exact path={ROUTES.HOME} element={<Home />} />
 
