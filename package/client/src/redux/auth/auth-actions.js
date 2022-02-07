@@ -70,7 +70,6 @@ export const signUpSuccess = (user) => ({
   payload: user,
 });
 
-
 export const signOutRequest = () => ({
   type: AuthTypes.SIGN_OUT_REQUEST,
 });
@@ -86,10 +85,10 @@ export function signUpWithGoogleRequest() {
     dispatch(signUpRequest());
     try {
       await auth.signInWithGoogle();
-      console.log("signin in with Google")
+      console.log("signin in with Google");
       dispatch(signUpSuccess());
     } catch (error) {
-      console.log(error)
+      console.log(error);
       // dispatch(signUpError(error.message));
     }
   };
@@ -146,15 +145,14 @@ export function editUser(user) {
       firstName: user.firstName,
       lastName: user.lastName,
       username: user.username,
-      email: user.email
-    }
+      email: user.email,
+    };
     const response = await api.editUser({
-      headers:
-        { Authorization: `Bearer ${token}` },
-      body: reqBody
+      headers: { Authorization: `Bearer ${token}` },
+      body: reqBody,
     });
     dispatch(editSuccess(response));
-  }
+  };
 }
 
 export function signOut() {
@@ -174,24 +172,25 @@ export function signOut() {
     if (response.errorMessage) {
       return dispatch(signOutError(response.errorMessage));
     }
+
+    auth.signOut();
+
     return dispatch(signOutSuccess());
   };
 }
 
 export function getUser() {
-  console.log("GET USER")
+  console.log("GET USER");
   return async function getUserThunk(dispatch) {
     const token = await auth.getCurrentUserToken();
     if (!token) {
-      console.log("NO TOKEN")
+      console.log("NO TOKEN");
       return dispatch(signOutSuccess());
     }
-    console.log("TOKEN")
+    console.log("TOKEN");
     const response = await api.getUser({
-      headers:
-        { Authorization: `Bearer ${token}` },
+      headers: { Authorization: `Bearer ${token}` },
     });
-    dispatch(signUpSuccess(response.data))
+    dispatch(signUpSuccess(response.data));
   };
 }
-
