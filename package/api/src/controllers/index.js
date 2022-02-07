@@ -3,5 +3,6 @@ const trackController=require("./track-controller")
 
 module.exports = {
   userController: userController,
-  trackController:trackController
+  trackController: trackController,
+  listController: listController,
 };

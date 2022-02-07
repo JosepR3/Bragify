@@ -3,5 +3,6 @@ const TrackModel = require("./track-model");
 
 module.exports = {
   User: UserModel,
-  Track: TrackModel
+  Track: TrackModel,
+  Playlist: Playlist
 };
