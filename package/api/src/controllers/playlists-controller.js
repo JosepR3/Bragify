@@ -2,7 +2,7 @@ const { playlistRepo } = require("../repositories");
 const { handleDbResponse } = require("../repositories/repo-utils");
 
 async function createList(req, res, next) {
-  console.log(req.body)
+  console.log(req)
 
   const {
     name,
@@ -19,7 +19,7 @@ async function createList(req, res, next) {
 } = req.body;
 
   try {
-    if (!title && !url) {
+    if (!name) {
       res.status(400).send({
         data: null,
         error: "Missing Fields (title, url)",
@@ -47,29 +47,30 @@ async function createList(req, res, next) {
 }
 
 async function fetchList(req, res, next) {
-  try {
-    const tracks = await playlistRepo.find({ title: true }[0])
-    handleDbResponse(res, tracks);
-  } catch (error) {
-    next(error);
-  }
+  // console.log(req);
+  // try {
+  //   const tracks = await playlistRepo.find({ title: true }[0])
+  //   handleDbResponse(res, tracks);
+  // } catch (error) {
+  //   next(error);
+  // }
 }
 
 
 async function deleteList(req, res, next) {
-  const id = (req.params.id)
-  try {
-    const tracks = await playlistRepo.deleteOne(id)
-    console.log(req.params.id)
-    handleDbResponse(res, tracks);
-  } catch (error) {
-    console.log(req.params)
-    next(error);
-  }
+  // const id = (req.params.id)
+  // try {
+  //   const tracks = await playlistRepo.deleteOne(id)
+  //   console.log(req.params.id)
+  //   handleDbResponse(res, tracks);
+  // } catch (error) {
+  //   console.log(req.params)
+  //   next(error);
+  // }
 }
 
 module.exports = {
-  createList: createTrack,
+  createList: createList,
   fetchList: fetchList,
   deleteList: deleteList,
 };

@@ -1,6 +1,6 @@
 import { useEffect, React } from "react";
 import { Route, Routes } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import "./app.scss";
 
 //COMPONENTS
@@ -17,8 +17,9 @@ import UploadTrack from "./components/organisms/UploadTrack";
 import SingleAlbum from "./components/organisms/SingleAlbum";
 
 //REDUX
-import { onAuthStateChanged } from "./services/auth";
-import { syncSignIn, signOut, getUser } from "./redux/auth/auth-actions";
+import { onAuthStateChanged} from "./services/auth";
+import { syncSignIn, signOut, getUser,  } from "./redux/auth/auth-actions";
+const { isAuthenticated } = useSelector(authSelector);
 
 function App() {
   const dispatch = useDispatch();
@@ -45,7 +46,7 @@ function App() {
         <Route path="*" element={<NotFound />} />
         <Route exact path={ROUTES.SIGN_UP} element={<SignUp />} />
         <Route exact path={ROUTES.TRACKS} element={<Tracks />} />
-        <Route exact path={ROUTES.SIGN_IN} element={<SignIn />} />
+        {isAuthenticated && <Route exact path={ROUTES.SIGN_IN} element={<SignIn />} />}
         <Route exact path={ROUTES.RESET_PASSWORD} element={<ResetPassword />} />
         <Route exact path={ROUTES.HOME} element={<Home />} />
 
