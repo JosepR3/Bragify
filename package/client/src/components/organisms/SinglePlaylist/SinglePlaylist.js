@@ -1,6 +1,7 @@
 import React from "react";
+import withLayout from "../../HOC/withLayout";
 
-export default function SinglePlaylist() {
+function SinglePlaylist() {
   return (
     <>
       <main className="container" id="main">
@@ -94,3 +95,5 @@ export default function SinglePlaylist() {
     </>
   );
 }
+
+export default withLayout(SinglePlaylist);

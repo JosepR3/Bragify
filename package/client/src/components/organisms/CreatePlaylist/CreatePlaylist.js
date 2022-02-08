@@ -5,9 +5,10 @@ import { createPlaylist } from "../../../redux/playlists/playlists-actions";
 import { getCurrentUserToken } from "../../../services/auth";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
+import withLayout from "../../HOC/withLayout";
 
 
-export default function CreatePlaylist() {
+  function CreatePlaylist() {
   const dispatch = useDispatch();
   
   const [playlist, setplaylist] = useState({
@@ -71,11 +72,10 @@ export default function CreatePlaylist() {
           <Form.Group className="mb-2">
             <Form.Label>Thumbnail</Form.Label>
             <Form.Control
-              type="file"
+              type="text"
               value={playlist.thumbnail}
               onChange={handleInput}
               name="thumbnail"
-              accept=".jpg"
             />
           </Form.Group>
           <div className="d-flex justify-content-end">
@@ -88,3 +88,5 @@ export default function CreatePlaylist() {
     </main>
   );
 }
+
+export default withLayout(CreatePlaylist);
