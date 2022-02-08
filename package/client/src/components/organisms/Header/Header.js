@@ -5,16 +5,14 @@ import AccountSetting from "../../molecules/AccountSetting";
 // ---------REACT BOOTSTRAP
 import Nav from "react-bootstrap/Nav";
 
-
-
-
 function Header() {
-
   return (
-    <Nav className="d-flex justify-content-between header">
-      <SearchInput />
-      <AccountSetting />
-    </Nav>
+    <header className="header">
+      <Nav className="container justify-content-between">
+        <SearchInput />
+        <AccountSetting />
+      </Nav>
+    </header>
   );
 }
 
