@@ -38,6 +38,21 @@ async function fetchTracks(req, res, next) {
   }
 }
 
+
+
+async function fetchTrackById(req, res, next) {
+  const id = req.params.id;
+  try {
+    const dbResponse = await TrackRepo.findById({
+      _id: id,
+    });
+    console.log(dbResponse);
+    handleDbResponse(res, dbResponse);
+  } catch (err) {
+    next(err);
+  }
+}
+
 async function deleteTrack(req, res, next) {
   const id = req.params.id;
   try {
@@ -87,4 +102,5 @@ module.exports = {
   likeTrack: likeTrack,
   unlikeTrack: unlikeTrack,
   fetchLikedTracks: fetchLikedTracks,
+  fetchTrackById:fetchTrackById
 };
