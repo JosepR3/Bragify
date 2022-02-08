@@ -18,6 +18,7 @@ function Tracks() {
   }, [dispatch]);
 
   const { tracks } = useSelector(tracksSelector);
+
   const currentUser = JSON.parse(localStorage.getItem('user'))
   const userId = currentUser._id
   return (

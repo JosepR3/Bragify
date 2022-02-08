@@ -10,13 +10,10 @@ import { useSelector } from "react-redux";
 import withLayout from "../../components/HOC/withLayout";
 
 // COMPONENTS
-import SingleAlbum from "../../components/organisms/SingleAlbum";
-import CreatePlaylist from "../../components/organisms/CreatePlaylist";
-
+import SinglePlaylist from "../../components/organisms/SinglePlaylist/SinglePlaylist";
 
 function Home() {
-  const { isAuthenticated, currentUser } = useSelector(authSelector);
-  console.log(currentUser);
+  const { isAuthenticated} = useSelector(authSelector);
 
   if (!isAuthenticated) {
     return <Navigate to={ROUTES.SIGN_IN} />;
@@ -24,8 +21,7 @@ function Home() {
 
   return (
     <>
-      <SingleAlbum/>
-      <CreatePlaylist/>
+      <SinglePlaylist/>
     </>
         
   );

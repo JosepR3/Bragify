@@ -1,17 +1,15 @@
 import React, { useState } from "react";
 
 import { useDispatch } from "react-redux";
-// import { PlaylistsSelector } from "../../../redux/playlists/playlists-selector";
 import { createPlaylist } from "../../../redux/playlists/playlists-actions";
 import { getCurrentUserToken } from "../../../services/auth";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 
+
 export default function CreatePlaylist() {
   const dispatch = useDispatch();
-
-  // const { isLoading } = useSelector(PlaylistsSelector);
-
+  
   const [playlist, setplaylist] = useState({
     name: "",
     description: "",
@@ -81,12 +79,6 @@ export default function CreatePlaylist() {
             />
           </Form.Group>
           <div className="d-flex justify-content-end">
-            {/* {isLoading && (
-              <div
-                className="spinner-border  spinner-border-sm ml-2"
-                role="status"
-              ></div>
-            )} */}
             <Button className="my-4" type="submit" variant="log-color">
               Save
             </Button>

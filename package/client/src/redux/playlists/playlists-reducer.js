@@ -11,6 +11,13 @@ const playlistsReducer = (state = playlistsState, action) => {
       };
     }
 
+    case PlaylistTypes.SET_PLAYLISTS_RESULT: {
+      return {
+        ...state,
+        playlists: action.payload,
+      };
+    }
+
     case PlaylistTypes.CREATE_PLAYLIST_SUCCESS: {
       return {
         ...state,

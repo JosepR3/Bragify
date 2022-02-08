@@ -17,8 +17,9 @@ import Playlists from "./pages/Playlists";
 import NotFound from "./pages/NotFound";
 import EditProfile from "./pages/EditProfile";
 import UploadTrack from "./components/organisms/UploadTrack";
-import SingleAlbum from "./components/organisms/SingleAlbum";
 import CreatePlaylist from "./components/organisms/CreatePlaylist";
+import SinglePlaylist from "./components/organisms/SinglePlaylist/SinglePlaylist";
+
 
 //REDUX
 import { onAuthStateChanged} from "./services/auth";
@@ -55,7 +56,7 @@ function App() {
         <Route exact path={ROUTES.HOME} element={<Home />} />
         <Route exact path={ROUTES.TRACKS} element={<Tracks />} />
         <Route path={ROUTES.PLAYLISTS} element={<Playlists />}>
-          <Route path="single-album" element={<SingleAlbum />} />
+          <Route path="single-playlist" element={<SinglePlaylist />} />
         </Route>
 
         <Route exact path={ROUTES.UPLOAD_TRACK} element={<UploadTrack />} />

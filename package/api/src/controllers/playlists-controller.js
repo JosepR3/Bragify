@@ -1,16 +1,9 @@
 const { playlistRepo } = require("../repositories");
 const { handleDbResponse } = require("../repositories/repo-utils");
 
-
-async function createPlayList(req, res, next) {
+async function createPlaylist(req, res, next) {
   console.log(req);
-  const {
-    name,
-    description,
-    thumbnail,
-    authorId,
-
-  } = req.body;
+  const { name, description, thumbnail, authorId } = req.body;
 
   try {
     if (!name) {
@@ -33,30 +26,50 @@ async function createPlayList(req, res, next) {
   }
 }
 
-async function fetchPlaylist(req, res, next) {
-  // console.log(req);
-  // try {
-  //   const tracks = await playlistRepo.find({ title: true }[0])
-  //   handleDbResponse(res, tracks);
-  // } catch (error) {
-  //   next(error);
-  // }
+async function fetchPlaylistById(req, res, next) {
+  const id = req.params.id;
+  try {
+    const dbResponse = await playlistRepo.findById({
+      _id: id,
+    });
+    console.log(dbResponse);
+    handleDbResponse(res, dbResponse);
+  } catch (err) {
+    next(err);
+  }
+  console.log(id);
+}
+
+async function fetchPlaylists(req, res, next) {
+  try {
+    const playlist = await playlistRepo.find({ name: true }[0]);
+    handleDbResponse(res, playlist);
+  } catch (error) {
+    next(error);
+  }
+
+  res.status(201).send({
+    data: playlist,
+    error: null,
+  });
+
 }
 
 async function deletePlaylist(req, res, next) {
-  // const id = (req.params.id)
-  // try {
-  //   const tracks = await playlistRepo.deleteOne(id)
-  //   console.log(req.params.id)
-  //   handleDbResponse(res, tracks);
-  // } catch (error) {
-  //   console.log(req.params)
-  //   next(error);
-  // }
+  const id = req.params.id;
+  try {
+    const playlist = await playlistRepo.deleteOne(id);
+    console.log(req.params.id);
+    handleDbResponse(res, playlist);
+  } catch (error) {
+    console.log(req.params);
+    next(error);
+  }
 }
 
 module.exports = {
-  createPlayList: createPlayList,
-  // fetchList: fetchList,
-  // deleteList: deleteList,
+  createPlaylist: createPlaylist,
+  fetchPlaylistById: fetchPlaylistById,
+  fetchPlaylists: fetchPlaylists,
+  deletePlaylist: deletePlaylist,
 };

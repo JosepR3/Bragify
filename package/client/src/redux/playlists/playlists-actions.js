@@ -10,9 +10,14 @@ export function createPlaylistSuccess() {
   return { type: PlaylistsTypes.CREATE_PLAYLIST_SUCCESS };
 }
 
+export function setPlaylistsResult(result) {
+  return { type: PlaylistsTypes.SET_PLAYLISTS_RESULT, payload: result };
+}
+
 export function createPlaylist(data) {
-  return async function createThunk() {
+  return async function createThunk(dispatch) {
     const token = await getCurrentUserToken();
+    dispatch(createPlaylistRequest());
 
     const body = {
       name: data.name,
@@ -24,6 +29,7 @@ export function createPlaylist(data) {
       headers: { Authorization: `Bearer ${token}` },
       body: body,
     });
+    dispatch(createPlaylistSuccess());
   };
 }
 
@@ -50,10 +56,18 @@ export function playlistAuth(action, data) {
   };
 }
 
+export async function fetchAllPlaylists(dispatch) {
+  try {
+    const userToken = await getCurrentUserToken();
+    const res = await api.fetchAllPlaylists({
+      headers: { Authorization: `Bearer ${userToken}` },
+    });
 
-
-export function fetchAllPlaylists(data) {
-
+    return dispatch(setPlaylistsResult(res.data.data),  console.log(res.data.data));
+  
+  } catch (error) {
+    console.log(error, "fetch Playlists error");
+  }
 }
 
 // export function updatePlaylist(playlist) {
@@ -69,7 +83,6 @@ export function fetchAllPlaylists(data) {
 //     }
 //   };
 // }
-
 
 // export function fetchPlaylistById(data) {
 
