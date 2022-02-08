@@ -1,7 +1,6 @@
-import  { useState, useEffect } from "react";
+import  React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import * as ROUTES from "../../routes"; 
-import "./ResetPassword.scss";
 
 import Form from "react-bootstrap/Form";
 

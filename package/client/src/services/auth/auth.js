@@ -1,4 +1,4 @@
-import { logDOM } from '@testing-library/react';
+
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
 import 'firebase/compat/firestore';
@@ -26,18 +26,18 @@ export function onAuthStateChanged(...props) {
   return auth.onAuthStateChanged(...props);
 }
 
-export function singInWithGoogle() {
+export function signInWithGoogle() {
   const GoogleAuthProvider = new firebase.auth.GoogleAuthProvider();
 
   return auth.signInWithPopup(GoogleAuthProvider);
 }
 
 export function singInWithEmailAndPassword(email, password) {
-  console.log(email,password)
+  console.log(email, password)
   return auth.signInWithEmailAndPassword(email, password);
 }
 
-export function singUpWithEmailAndPassword( email, password) {
+export function singUpWithEmailAndPassword(email, password) {
   return auth.createUserWithEmailAndPassword(email, password);
 }
 

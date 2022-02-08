@@ -1,13 +1,12 @@
-import Typography from "@mui/material/Typography";
+import React from "react";
 
-function Copyright(props) {
-    return (
-      <Typography variant="body2" color="white" align="center" {...props}>
-        {"Copyright © "}
-        {"Made with ❤ by Pearls"} {new Date().getFullYear()}
-        {"."}
-      </Typography>
-    );
-  }
+function Copyright() {
+  return (
+      <div>
+        Copyright ©
+        Made with ❤ by Pearls {new Date().getFullYear()}
+      </div>
+  );
+}
 
-  export default Copyright;
+export default Copyright;

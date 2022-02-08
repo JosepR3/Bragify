@@ -1,3 +1,10 @@
 body {
   background-color: black;
 }
+
+.music-player {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}/*# sourceMappingURL=MusicPlayer.css.map */

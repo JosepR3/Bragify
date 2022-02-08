@@ -1,28 +1,7 @@
 import * as AuthTypes from "./auth-types";
+import initialState from "../auth/auth-state";
 
-export const AuthInitialState = {
-  isSigningUp: false,
-  signUpError: null,
-  isSigningOut: false,
-  signOutError: null,
-  isAuthenticated: false,
-  isSendingPasswordReset: false,
-  isLoading: false,
-  isEditing: false,
-  editSuccess: false,
-  editMessage: null,
-  passwordResetError: null,
-  passwordResetSent: false,
-  currentUser: {
-    email: null,
-    username: null,
-    firstName: null,
-    lastName: null,
-  },
-  
-};
-
-const AuthReducer = (state = AuthInitialState, action) => {
+const AuthReducer = (state = initialState, action) => {
   switch (action.type) {
     case AuthTypes.SIGN_UP_REQUEST: {
       return {
@@ -54,6 +33,7 @@ const AuthReducer = (state = AuthInitialState, action) => {
         isSigningUp: false,
         signUpError: null,
         currentUser: {
+          id:user._id,
           email: user.email,
           username: user.username,
           firstName: user.firstName,

@@ -7,9 +7,10 @@ import {
   TRACKS_LOADING,
   TRACKS_LOADING_SUCCESS,
   PLAY_TRACK,
-  PAUSE_TRACK,
-  STOP_TRACK,
   TO_TRACKS,
+  LIKE_TRACK,
+  LIKE_TRACKS,
+  DELETE_TRACK
 } from "./tracks-types";
 
 export default function tracksReducer(state = initialState, action) {
@@ -55,6 +56,43 @@ export default function tracksReducer(state = initialState, action) {
         isPlaying: true,
         playingTrack: action.payload,
       };
+    case LIKE_TRACK:
+      const { id } = action.payload;
+      if (state.likedTracks.find(track => track === id)) {
+        const likedTracks = state.likedTracks.filter(track => track !== id);
+        return {
+          ...state,
+          likedTracks
+        }
+      }
+      else {
+        const likedTracks = state.likedTracks.filter(track => track !== id);
+
+        likedTracks.push(action.payload.id);
+        return {
+          ...state,
+          likedTracks: likedTracks
+        }
+      }
+    case LIKE_TRACKS:
+      const { idList } = action.payload;
+      const likedTracks = state.likedTracks.filter(track => !idList.includes(track));
+      idList.forEach(id => {
+        likedTracks.push(id)
+      });
+      return {
+        ...state,
+        likedTracks: likedTracks
+      }
+
+    case DELETE_TRACK:
+      const { id: trackId } = action.payload;
+      const tracks = state.tracks.filter(track => track._id !== trackId);
+      return {
+        ...state,
+        tracks
+      }
+
     default:
       return state;
   }

@@ -22,6 +22,17 @@ class TrackRepository {
   deleteOne(id) {
     return normalizeDBQuery(db.Track.deleteOne({ _id: id }));
   }
-}
 
+  likeTrack(trackId, userId) {
+    return normalizeDBQuery(db.Track.updateOne({ _id: trackId }, { $push: { likedBy: userId } }, { new: true }));
+  }
+
+  unlikeTrack(trackId, userId) {
+    return normalizeDBQuery(db.Track.findByIdAndUpdate(trackId, { $pull: { likedBy: userId } }, { new: true }));
+  }
+
+  fetchLikedTracks(userId) {
+    return normalizeDBQuery(db.Track.find({ likedBy: { $in: [userId] } }, "-__v"));
+  };
+}
 module.exports = new TrackRepository();

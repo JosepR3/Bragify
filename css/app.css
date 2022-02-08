@@ -2234,7 +2234,7 @@ progress {
   opacity: 1;
 }
 .form-control:disabled, .form-control[readonly] {
-  background-color: #e9ecef;
+  background-color: rgba(255, 255, 255, 0.623);
   opacity: 1;
 }
 .form-control::-webkit-file-upload-button {
@@ -4676,7 +4676,7 @@ textarea.form-control-lg {
   flex-direction: column;
   min-width: 0;
   word-wrap: break-word;
-  background-color: #fff;
+  background-color: transparent;
   background-clip: border-box;
   border: 1px solid rgba(0, 0, 0, 0.125);
   border-radius: 0.25rem;
@@ -4750,6 +4750,10 @@ textarea.form-control-lg {
   margin-bottom: -0.5rem;
   margin-left: -0.5rem;
   border-bottom: 0;
+}
+.card-header-tabs .nav-link.active {
+  background-color: transparent;
+  border-bottom-color: transparent;
 }
 
 .card-header-pills {
@@ -11558,4 +11562,4 @@ a {
 
 .app__container {
   background-color: #4d4d4d;
-}
+}/*# sourceMappingURL=app.css.map */

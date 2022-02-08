@@ -2,12 +2,11 @@ const initialState = {
     status: "idle",
     error: undefined,
     isPlaying: false,
-    isLiked: false,
+    likedTracks: [],
     playingTrack: "",
     myPlaylist: [],
     myTracks: [],
     tracks: null,
-    inTracks: false
 }
 
 export default initialState 

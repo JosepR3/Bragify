@@ -1,5 +1,8 @@
 {
   "dependencies": {
     "dotenv": "^14.3.2"
+  },
+  "devDependencies": {
+    "svg-react-loader": "^0.4.6"
   }
 }
