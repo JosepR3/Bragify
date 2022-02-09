@@ -85,8 +85,8 @@ export default function tracksReducer(state = initialState, action) {
         likedTracks: likedTracks
       }
 
-    case DELETE_TRACK:
-      const { id: trackId } = action.payload;
+      case DELETE_TRACK:
+        const { id: trackId } = action.payload;
       const tracks = state.tracks.filter(track => track._id !== trackId);
       return {
         ...state,
