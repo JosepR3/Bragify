@@ -1,5 +1,7 @@
 import React from "react";
 
+import MusicPlayer from "../../molecules/MusicPlayer"
+
 export default function Footer(){
   return(
     <footer className="fixed-bottom footer">
@@ -7,7 +9,7 @@ export default function Footer(){
         Current Song
       </div>
       <div className="text-white">
-        AudioPlayer
+        <MusicPlayer />
       </div>
     </footer>
   );
