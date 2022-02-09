@@ -1,7 +1,5 @@
 import React from "react";
 import { Outlet, useLocation } from "react-router-dom";
-
-import withLayout from "../../components/HOC/withLayout";
 import TrackList from "../../components/molecules/TrackList/TrackList";
 
 function Playlists() {
@@ -16,4 +14,4 @@ function Playlists() {
   );
 }
 
-export default withLayout(Playlists)
+export default Playlists
