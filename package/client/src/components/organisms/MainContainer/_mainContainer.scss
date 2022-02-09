@@ -1,5 +1,7 @@
 
-.main__container{
-    margin-top: 8rem;
-    margin-left: 9%;
+.content__container{
+  overflow-x: hidden;
+  overflow-y: scroll;
+  min-height: 100%;
+  padding: 6em 0em;
 }

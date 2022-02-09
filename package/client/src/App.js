@@ -46,7 +46,6 @@ function App() {
   }, [dispatch]);
 
   return (
-    <div className="app__container p-3">
       <Routes>
         <Route path="*" element={<NotFound />} />
         <Route exact path={ROUTES.SIGN_UP} element={<SignUp />} />
@@ -62,7 +61,6 @@ function App() {
         <Route exact path={ROUTES.UPLOAD_TRACK} element={<UploadTrack />} />
         <Route exact path={ROUTES.CREATE_PLAYLIST} element={<CreatePlaylist />} />
       </Routes>
-    </div>
   );
 }
 

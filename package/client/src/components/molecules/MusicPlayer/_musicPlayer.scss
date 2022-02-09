@@ -1,15 +1,18 @@
-
-.music-player {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
+.footer{
+  background: linear-gradient(rgba(0,0,0,0.5) 0%, #000 100%);
+  backdrop-filter: blur(15px);
+  height: 15%;
   z-index: 12;
-  margin-top: 1rem;
 }
+// .music-player {
+  
+// }
 
-$rhap_theme-color: #868686 !default; // Color of all buttons and volume/progress indicators
-$rhap_background-color: #fff !default; // Color of the player background
-$rhap_bar-color: #e4e4e4 !default; // Color of volume and progress bar
-$rhap_time-color: #333 !default; // Font color of current time and duration
-$rhap_font-family: inherit !default; // Font family of current time and duration
+// .rhap_container{
+  
+// }
+
+.rhap_controls-section{
+  display: flex;
+  flex-direction: row;
+}

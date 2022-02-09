@@ -56,8 +56,8 @@ export default function tracksReducer(state = initialState, action) {
         isPlaying: true,
         playingTrack: action.payload,
       };
-    case LIKE_TRACK:
-      const { id } = action.payload;
+    case LIKE_TRACK:{
+      const id = action.payload;
       if (state.likedTracks.find(track => track === id)) {
         const likedTracks = state.likedTracks.filter(track => track !== id);
         return {
@@ -74,7 +74,8 @@ export default function tracksReducer(state = initialState, action) {
           likedTracks: likedTracks
         }
       }
-    case LIKE_TRACKS:
+    }
+    case LIKE_TRACKS:{
       const { idList } = action.payload;
       const likedTracks = state.likedTracks.filter(track => !idList.includes(track));
       idList.forEach(id => {
@@ -83,17 +84,18 @@ export default function tracksReducer(state = initialState, action) {
       return {
         ...state,
         likedTracks: likedTracks
-      }
+      }}
 
-      case DELETE_TRACK:
-        const { id: trackId } = action.payload;
+    case DELETE_TRACK:{
+      const { id: trackId } = action.payload;
       const tracks = state.tracks.filter(track => track._id !== trackId);
       return {
         ...state,
         tracks
       }
 
-    default:
-      return state;
+
   }
-}
+  default:
+    return state;
+}}

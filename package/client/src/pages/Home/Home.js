@@ -10,7 +10,7 @@ import { useSelector } from "react-redux";
 import withLayout from "../../components/HOC/withLayout";
 
 // COMPONENTS
-import SinglePlaylist from "../../components/organisms/SinglePlaylist/SinglePlaylist";
+
 
 function Home() {
   const { isAuthenticated} = useSelector(authSelector);
@@ -21,7 +21,7 @@ function Home() {
 
   return (
     <>
-      <SinglePlaylist/>
+    <div>holaaaa</div>
     </>
         
   );

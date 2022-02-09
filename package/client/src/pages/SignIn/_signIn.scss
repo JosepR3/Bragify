@@ -1,7 +1,8 @@
-@use "../../utils/scss/variablesAndBootstrap" as a;
+@use "../../utils/scss/variables" as a;
 
-.signIn__signUp__wrapper {
-  background: linear-gradient(
+.auth__ {
+  &wrapper{
+    background: linear-gradient(
     158deg,
     rgba(46, 46, 46, 0.86) 0%,
     hsl(0, 0%, 5%) 100%
@@ -11,29 +12,16 @@
   flex-direction: column;
   width: 40%;
   border-radius: 5%;
-}
-// ---------LOGO AND NAME
-
-.main__bragify {
-  color: white;
-  font-size: 4rem;
-}
-
-// ---------------- BUTTONS
-.btn {
-  height: 3.5rem;
-  font-size: 1.2rem;
-  &-facebook-color {
-    color: white;
-    border-radius: 15px;
   }
-
-  &-google-color {
-    background-color: white;
-    color: a.$gg-green;
+  // ---------------- BUTTONS
+  &facebook {
     border-radius: 10px;
   }
-  &-log-color {
+
+  &google {
+    border-radius: 10px;
+  }
+  &btn {
     border: none;
     background-image: linear-gradient(
       45deg,
@@ -44,29 +32,43 @@
     background-size: 400%;
     transition: background 500ms ease-in-out;
   }
+  &icon {
+    width: 1em;
+    color: a.$gg-green;
+  }
+  &link{
+    font-size: 0.8em;
+  }
+  // ----------------INPUTS
+  &input {
+    height: 2.3em;
+    font-size: 1em;
+    background-color: a.$web-background-color;
+    color: whitesmoke;
+    border: 1px solid black;
+  
+    &::placeholder {
+      color: rgb(185, 165, 165);
+    }
+    &:disabled{
+      color:black 30% !important;
+    }
+  }
+}
+
+
+.btn{
   &-log-color:hover {
     background-position: 0;
     border: none;
   }
-}
 
-.signIn__signUp__icon {
-  width: 1.8rem;
-}
-
-// ----------------INPUTS
-.form-control {
-  height: 3.5rem;
-  font-size: 1.2rem;
-  background-color: a.$web-background-color;
-  color: whitesmoke;
-  border: 1px solid black;
-
-  &::placeholder {
-    color: rgb(185, 165, 165);
+  &-google-color{
+    background-color: white;
   }
-  &:disabled{
-    color:black 30% !important;
+
+  &-facebook-color{
+    color: white;
   }
 }
 
@@ -78,10 +80,11 @@
   color: white;
   align-items: center;
   justify-content: space-around;
+  font-size: 0.8em;
 }
 
 .division_line {
-  width: 7.8rem;
+  width: 7em;
   height: 1px;
   background-color: white;
   border-style: none;
