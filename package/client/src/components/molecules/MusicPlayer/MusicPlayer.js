@@ -29,7 +29,7 @@ export default function MusicPlayer() {
   }
 
   return (
-    <div className="footer fixed-bottom">
+    <div>
       <AudioPlayer
         autoPlay
         autoPlayAfterSrcChange={true}

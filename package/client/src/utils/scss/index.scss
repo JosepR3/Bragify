@@ -44,7 +44,8 @@ $theme-colors: map-merge($theme-colors, $custom-colors);
 @import "../../components/organisms/Header/header";
 @import "../../components/organisms/SideBar/sideBar";
 @import "../../components/organisms/SingleAlbum/singleAlbum";
-@import"../../components/organisms/MainContainer/mainContainer";
+@import "../../components/organisms/MainContainer/mainContainer";
+@import "../../components/organisms/Footer/footer";
 
 //      pages
 @import "../../Pages/EditProfile/editProfile";
