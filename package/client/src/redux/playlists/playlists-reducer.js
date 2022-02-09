@@ -26,6 +26,15 @@ const playlistsReducer = (state = playlistsState, action) => {
       };
     }
 
+    case PlaylistTypes.GET_PLAYLIST_SUCCESS: {
+      return {
+        ...state,
+        isSuccess: true,
+        playlistId: action.payload
+      };
+    }
+
+
     default:
       return state;
   }

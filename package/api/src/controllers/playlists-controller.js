@@ -28,6 +28,7 @@ async function createPlaylist(req, res, next) {
 
 async function fetchPlaylistById(req, res, next) {
   const id = req.params.id;
+  console.log( req.params)
   try {
     const dbResponse = await playlistRepo.findById({
       _id: id,
@@ -37,7 +38,6 @@ async function fetchPlaylistById(req, res, next) {
   } catch (err) {
     next(err);
   }
-  console.log(id);
 }
 
 async function fetchPlaylists(req, res, next) {
