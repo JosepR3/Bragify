@@ -1,6 +1,7 @@
 import React from "react";
+import withLayout from "../../HOC/withLayout";
 
-function SingleAlbum() {
+function SinglePlaylist() {
   return (
     <>
       <main className="container" id="main">
@@ -34,7 +35,7 @@ function SingleAlbum() {
               <td>Title</td>
               <td>Album</td>
               <td>duration</td>
-              <td >
+              <td>
                 <i className="fa fa-clock-o"></i>
               </td>
             </tr>
@@ -95,4 +96,4 @@ function SingleAlbum() {
   );
 }
 
-export default SingleAlbum;
+export default withLayout(SinglePlaylist);

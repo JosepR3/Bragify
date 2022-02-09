@@ -1,4 +1,6 @@
-const playlistsState = {
-  
+const initialState = {
+  isLoading: false,
+  isSuccess: false,
+  playlists: null,
 };
-export default playlistsState;
+export default initialState;

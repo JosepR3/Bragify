@@ -3,7 +3,8 @@ import { useDispatch } from 'react-redux';
 import { createTrack } from '../../../redux/tracks/tracks-actions';
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-import {getCurrentUserUid} from "../../../services/auth"
+import {getCurrentUserUid} from "../../../services/auth";
+import withLayout from '../../HOC/withLayout';
 
 const UploadTrack = () => {
 
@@ -28,6 +29,7 @@ const UploadTrack = () => {
         };
         settrack(newTrack);
     }
+    
     function handleSubmit(e) {
         e.preventDefault();
         dispatch(createTrack(track));
@@ -93,7 +95,7 @@ const UploadTrack = () => {
         </Form>
     </>);
 }
-export default UploadTrack;
+export default withLayout(UploadTrack);
 
 
 

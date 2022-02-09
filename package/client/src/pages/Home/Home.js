@@ -5,17 +5,15 @@ import * as ROUTES from "../../routes";
 
 // REDUX
 import { useSelector } from "react-redux";
-// import { fetchAllTracks } from "../../redux/tracks/tracks-actions";
-// import { tracksSelector } from "../../redux/tracks/tracks-selector";
+
 // HOC
 import withLayout from "../../components/HOC/withLayout";
-// COMPONENTS
-import SingleAlbum from "../../components/organisms/SingleAlbum";
 
+// COMPONENTS
+import SinglePlaylist from "../../components/organisms/SinglePlaylist/SinglePlaylist";
 
 function Home() {
-  const { isAuthenticated, currentUser } = useSelector(authSelector);
-  console.log(currentUser);
+  const { isAuthenticated} = useSelector(authSelector);
 
   if (!isAuthenticated) {
     return <Navigate to={ROUTES.SIGN_IN} />;
@@ -23,7 +21,7 @@ function Home() {
 
   return (
     <>
-      <SingleAlbum/>
+      <SinglePlaylist/>
     </>
         
   );

@@ -10,7 +10,7 @@ function Playlists() {
     <>
       <div className="playLists_container">
         {location.pathname === "/playlists" && <TrackList />}
-        {location.pathname === "/playlists/single-album" && <Outlet/>}
+        {location.pathname === "/playlists/single-playlist" && <Outlet/>}
       </div>
     </>
   );
