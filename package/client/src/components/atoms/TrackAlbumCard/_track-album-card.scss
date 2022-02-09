@@ -1,7 +1,7 @@
 @use "../../../utils/scss/variables" as a;
 
 // -----------------SONG AND LIST CARD
-.card {
+.pl__card {
   width: 12rem;
   height: 17rem;
   border: none;
@@ -33,6 +33,9 @@
     overflow: hidden;
     color: rgba(245, 245, 245, 0.651);
   }
+}
+
+.card{
   &-text {
     font-size: 1.8rem;
   }

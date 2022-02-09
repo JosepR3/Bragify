@@ -1,15 +1,17 @@
 import React from "react";
 
 import MusicPlayer from "../../molecules/MusicPlayer"
+import CurrentPlaying from "../../molecules/CurrentPlaying"
 
 export default function Footer(){
   return(
-    <footer className="fixed-bottom footer">
-      <div className="text-white">
-        Current Song
-      </div>
-      <div className="text-white">
+    <footer className="d-flex flex-wrap fixed-bottom footer justify-content-between p-1">
+      <CurrentPlaying />
+      <div className="container container__player">
         <MusicPlayer />
+      </div>
+      <div className="w-25">
+        ...
       </div>
     </footer>
   );

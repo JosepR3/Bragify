@@ -1,9 +1,40 @@
+@use "../../../utils/scss/variables" as a;
 
-// .rhap_container{
-  
-// }
+.rhap_container{
+  background-color: transparent !important;
+  color: white !important;
+}
+.rhap_main{
+  flex-direction: column-reverse !important;
+}
 
 .rhap_controls-section{
   display: flex;
   flex-direction: row;
+  justify-content: space-around !important;
+  margin-bottom: 1em;
 }
+
+.rhap_additional-controls{
+  display: block !important;
+  flex: 0 0 auto !important;
+}
+
+.rhap_volume-controls{
+  display: block !important;
+  flex: 0 0 auto !important;
+  width: 6em;
+}
+
+.rhap_play-pause-button{
+  color: a.$brand-color !important;
+}
+
+.rhap_repeat-button, .rhap_skip-button, .rhap_volume-button, .rhap_time {
+  color: white !important;
+}
+
+.rhap_volume-indicator, .rhap_volume-bar, .rhap_progress-filled, .rhap_progress-indicator{
+  background: white !important;
+}
+

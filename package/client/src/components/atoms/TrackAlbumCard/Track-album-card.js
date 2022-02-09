@@ -10,11 +10,11 @@ import { playTrack } from "../../../redux/tracks/tracks-actions";
 
 
 export default function TrackAlbumCard(
-  {
+  // {
     //   albumName,
     //   artistName,
     //   albumImageUrl,
-  },
+  // },
 ) {
   //   const navigate = useNavigate();
   //   const dispatch = useDispatch();
@@ -38,7 +38,7 @@ export default function TrackAlbumCard(
   // }
 
   return (
-    <Card className="p-2 m-2">
+    <Card className="pl__card p-2 m-2">
       <div className="position-relative p-0">
         <Card.Img
           variant="top"
@@ -48,13 +48,13 @@ export default function TrackAlbumCard(
           className="card__play position-absolute top-50 start-50 translate-middle"
         />
       </div>
-      <Card.Body className="p-1 mt-2">
-        <Card.Title className="m-0">
+      <Card.Body className="pl__card-body p-1 mt-2">
+        <Card.Title className="pl__card-title m-0">
           Card Title a really long titile for example blabla
         </Card.Title>
-        <Card.Subtitle className="m-0">
+        <Card.Subtitle className="pl__card-subtitle m-0">
           Some quick example text to build on the card title and make up the
-          bulk of the card's content.
+          bulk of the cas content.
         </Card.Subtitle>
       </Card.Body>
     </Card>

@@ -20,6 +20,7 @@ $input-disabled-bg: rgba(255, 255, 255, 0.623);
 $nav-link-color: rgba(255, 255, 255, 0.75);
 $nav-link-hover-color: white;
 $list-group-bg: transparent;
+$card-bg: transparent;
 
 // Merge the maps
 
@@ -36,6 +37,7 @@ $theme-colors: map-merge($theme-colors, $custom-colors);
 @import "../../components/atoms/SearchInput/searchInput";
 
 //      molecules
+@import "../../components/molecules/CurrentPlaying/currentPlaying";
 @import "../../components/molecules/AccountSetting/accountSetting";
 @import "../../components/molecules/MusicPlayer/musicPlayer";
 

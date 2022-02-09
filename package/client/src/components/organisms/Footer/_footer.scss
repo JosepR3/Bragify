@@ -1,6 +1,10 @@
 .footer{
     background: linear-gradient(rgba(0,0,0,0.5) 0%, #000 100%);
     backdrop-filter: blur(15px);
-    height: 15%;
+    height: 7em;
     z-index: 12;
+  }
+
+  .container__player{
+    width: 40em;
   }
