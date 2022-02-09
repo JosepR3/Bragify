@@ -35,15 +35,15 @@ export const uploadImageSuccess = (imageUrl) => ({
   payload: imageUrl,
 });
 
-export function uploadTrack({ track, title }) {
-  return async function uploadThunk(dispatch) {
+// export function uploadTrack() {
+//   return async function uploadThunk(dispatch) {
 
-  };
-}
+//   };
+// }
 
-export function uploadImage() {
-  return async function uploadImageThunk(dispatch) {
+// export function uploadImage() {
+//   return async function uploadImageThunk(dispatch) {
 
 
-  };
-}
+//   };
+// }

@@ -8,37 +8,35 @@ import {getCurrentUserUid} from "../../../services/auth";
 import withLayout from '../../HOC/withLayout';
 
 const UploadTrack = () => {
-    const [link,setLink]=useState("")
-
     const dispatch = useDispatch();
+    const [linkTrack,setLinkTrack]=useState("")
+    const [linkImg, setLinkImg] = useState("")
+
     
     const [track, settrack] = useState({
         title: "",
-        link: "",
-        thumbnail: "",
-        duration: 0,
+        url:  "",
+        thumbnail:  "",
         genre: "",
-        authorId:getCurrentUserUid()
+        authorId:""
     });
-
+    
+        function uploadTrack(files) {
+            const formData = new FormData();
+            formData.append("file", files[0]);
+            formData.append("upload_preset", "d8nsvm8g");
+            axios.post("https://api.cloudinary.com/v1_1/drjrc7z28/video/upload", formData).then((res) => {
+                setLinkTrack(res.data.secure_url);
+            });
+        }
         function uploadImage(files) {
             const formData = new FormData();
             formData.append("file", files[0]);
             formData.append("upload_preset", "d8nsvm8g");
             axios.post("https://api.cloudinary.com/v1_1/drjrc7z28/image/upload", formData).then((res) => {
-                setLink(res.data.secure_url);
-            }).then(console.log(link));
+                setLinkImg(res.data.secure_url);
+            });
         }
-
-    function uploadTrack(files) {
-        console.log(files)
-        const formData = new FormData();
-        formData.append("file", files[0]);
-        formData.append("upload_preset", "d8nsvm8g");
-        axios.post("https://api.cloudinary.com/v1_1/drjrc7z28/video/upload", formData).then((res) => {
-            setLink(res.data.secure_url);
-        }).then(console.log(link));
-    }
     function handleInput(e) {
         const { target } = e;
         const { name, value } = target;
@@ -52,7 +50,8 @@ const UploadTrack = () => {
     
     function handleSubmit(e) {
         e.preventDefault();
-        dispatch(createTrack(track));
+        const completeTrack = Object.assign(track, { url: linkTrack }, { thumbnail: linkImg }, { authorId: getCurrentUserUid()})
+        dispatch(createTrack(completeTrack));
     }
 
 
