@@ -1,7 +1,7 @@
 import React from "react";
 
 import SideBar from "../../components/organisms/SideBar/SideBar";
-import MusicPlayer from '../../components/molecules/MusicPlayer/MusicPlayer';
+// import MusicPlayer from '../../components/molecules/MusicPlayer/MusicPlayer';
 import Header from "../organisms/Header";
 import MainContainer from "../../components/organisms/MainContainer";
 
@@ -16,7 +16,7 @@ export default function withLayout(WrappedComponent) {
           <MainContainer>
             <WrappedComponent {...props}/>
           </MainContainer>
-        <MusicPlayer/>
+        {/* <MusicPlayer/> */}
       </>
     );
   }

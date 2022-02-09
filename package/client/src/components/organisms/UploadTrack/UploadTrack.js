@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import axios from 'axios';
+import React, { useState} from 'react';
 import { useDispatch } from 'react-redux';
 import { createTrack } from '../../../redux/tracks/tracks-actions';
 import Button from "react-bootstrap/Button";
@@ -7,18 +8,37 @@ import {getCurrentUserUid} from "../../../services/auth";
 import withLayout from '../../HOC/withLayout';
 
 const UploadTrack = () => {
+    const [link,setLink]=useState("")
 
     const dispatch = useDispatch();
     
     const [track, settrack] = useState({
         title: "",
-        url: "",
+        link: "",
         thumbnail: "",
         duration: 0,
         genre: "",
         authorId:getCurrentUserUid()
     });
 
+        function uploadImage(files) {
+            const formData = new FormData();
+            formData.append("file", files[0]);
+            formData.append("upload_preset", "d8nsvm8g");
+            axios.post("https://api.cloudinary.com/v1_1/drjrc7z28/image/upload", formData).then((res) => {
+                setLink(res.data.secure_url);
+            }).then(console.log(link));
+        }
+
+    function uploadTrack(files) {
+        console.log(files)
+        const formData = new FormData();
+        formData.append("file", files[0]);
+        formData.append("upload_preset", "d8nsvm8g");
+        axios.post("https://api.cloudinary.com/v1_1/drjrc7z28/video/upload", formData).then((res) => {
+            setLink(res.data.secure_url);
+        }).then(console.log(link));
+    }
     function handleInput(e) {
         const { target } = e;
         const { name, value } = target;
@@ -46,7 +66,7 @@ const UploadTrack = () => {
                     placeholder="Title Track"
                     value={track.title}
                     onChange={handleInput}
-                    required
+                    // required
                 />
             </Form.Group>
             <Form.Group className="mb-2">
@@ -54,10 +74,10 @@ const UploadTrack = () => {
                 <Form.Control
                     type="file"
                     value={track.url}
-                    onChange={handleInput}
+                    onChange={(e) => { uploadTrack(e.target.files) }}
                     name="url"
                     accept=".mp3"
-                    required
+                    // required
                 />
             </Form.Group>
             <Form.Group controlId="formBasicSelect">
@@ -78,11 +98,11 @@ const UploadTrack = () => {
                 <Form.Label>Thumbnail</Form.Label>
                 <Form.Control
                     type="file"
-                    value={track.thumbnail}
-                    onChange={handleInput}
+                    value={track.link}
+                    onChange={(e) => { uploadImage(e.target.files) }}
                     name="thumbnail"
                     accept=".jpg"
-                    required
+                    // required
                 />
             </Form.Group>
             <Button
