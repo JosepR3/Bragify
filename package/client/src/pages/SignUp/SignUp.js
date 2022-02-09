@@ -3,23 +3,22 @@ import { useDispatch, useSelector } from "react-redux";
 import { Navigate } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-
-import fbIcon from "../../assets/Icons/facebook-48.png";
-import ggIcon from "../../assets/Icons/google-48.png";
+import { fbIcon, ggIcon, bIcon } from "../../assets";
 
 import * as ROUTES from "../../routes";
 
 import {
   resetAuthState,
   signUpWithEmailRequest,
-  signUpWithGoogleRequest
+  signUpWithGoogleRequest,
 } from "../../redux/auth/auth-actions";
 
 import { authSelector } from "../../redux/auth/auth-selectors";
 
 function SignUp() {
   const dispatch = useDispatch();
-  const { isSigningUp, signUpError, isLoading, isAuthenticated } = useSelector(authSelector);
+  const { isSigningUp, signUpError, isLoading, isAuthenticated } =
+    useSelector(authSelector);
 
   const [user, setUser] = useState({
     firstName: "",
@@ -57,49 +56,44 @@ function SignUp() {
   }
 
   if (isAuthenticated) {
-     return <Navigate to={ROUTES.HOME} />;
+    return <Navigate to={ROUTES.HOME} />;
   }
 
   return (
     <main className="container text-center">
-      <h1 className="main__bragify m-5">Bragify</h1>
-      <section className="signIn__signUp__wrapper container p-5">
-        <h1 className="font-bold align-self-start m-4">Sign Up</h1>
+      <div className="d-flex justify-content-center align-items-center my-4">
+        <img className="brand__img mx-2" src={bIcon}></img>
+        <h1 className="text-white">Bragify</h1>
+      </div>
+      <section className="auth__wrapper container px-5 py-2">
+        <h1 className="font-bold align-self-start my-3 mx-4">Sign Up</h1>
         <Button
-          className="signIn__facebook mt-3 mx-4"
+          className="btn__facebook mt-3 mx-4"
           type="submit"
           variant="facebook-color"
         >
-          <img
-            className="signIn__signUp__icon me-2"
-            src={fbIcon}
-            alt="fb-icon"
-          ></img>
+          <img className="auth__icon me-2" src={fbIcon} alt="fb-icon"></img>
           Sign Up with Facebook
         </Button>
         <Button
-          className="signIn__google mt-3 mx-4"
+          className="btn__google mt-3 mx-4"
           type="button"
           variant="google-color"
           onClick={handleSignInWithGoogle}
           disabled={isSigningUp}
         >
-          <img
-            className="signIn__signUp__icon me-4"
-            src={ggIcon}
-            alt="gg-icon"
-          ></img>
+          <img className="auth__icon me-4" src={ggIcon} alt="gg-icon"></img>
           Sign Up with Google
         </Button>
-        <div className="breaker my-5">
+        <div className="breaker my-3">
           <hr className="division_line"></hr>
           or
           <hr className="division_line"></hr>
         </div>
         <Form className="px-4" onSubmit={handleSubmit}>
-          <Form.Group>
+          <Form.Group className="mb-2">
             <Form.Control
-              className="mb-2"
+              className="auth__input"
               name="firstName"
               type="text"
               placeholder="First Name"
@@ -110,6 +104,7 @@ function SignUp() {
           </Form.Group>
           <Form.Group className="mb-2">
             <Form.Control
+              className="auth__input"
               name="lastName"
               type="text"
               placeholder="Last Name"
@@ -120,6 +115,7 @@ function SignUp() {
           </Form.Group>
           <Form.Group className="mb-2">
             <Form.Control
+              className="auth__input"
               name="username"
               type="text"
               placeholder="Username"
@@ -130,6 +126,7 @@ function SignUp() {
           </Form.Group>
           <Form.Group className="mb-2">
             <Form.Control
+              className="auth__input"
               name="email"
               type="email"
               placeholder="Email"
@@ -140,6 +137,7 @@ function SignUp() {
           </Form.Group>
           <Form.Group className="mb-2">
             <Form.Control
+              className="auth__input"
               name="password"
               type="password"
               placeholder="Password"
@@ -150,6 +148,7 @@ function SignUp() {
           </Form.Group>
           <Form.Group className="mb-2">
             <Form.Control
+              className="auth__input"
               name="confirmPassword"
               type="password"
               placeholder="Confirm Password"
@@ -159,7 +158,7 @@ function SignUp() {
             />
           </Form.Group>
           <Button
-            className="my-4 w-100"
+            className="auth__btn my-2 w-100"
             type="submit"
             variant="log-color"
           >
@@ -172,13 +171,15 @@ function SignUp() {
             )}
           </Button>
         </Form>
-        {signUpError && <section className="mt-4">{signUpError}</section>}
-        <p className="mt-4">
-          Do you have an account?
-          <a className="register_link" href={ROUTES.SIGN_IN}>
+        {signUpError && (
+          <section className="bg-danger rounded mt-2">{signUpError}</section>
+        )}
+        <div className="d-flex align-self-end mt-2 mx-4">
+          <p>Do you have an account?</p>
+          <a className="register__link ps-1" href={ROUTES.SIGN_IN}>
             Sign in
           </a>
-        </p>
+        </div>
       </section>
     </main>
   );

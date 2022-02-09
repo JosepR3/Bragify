@@ -1,21 +1,44 @@
-@use './variablesAndBootstrap' as a;
+@use "./variables" as a;
 
 // --------------MAIN CONFIG
 html { 
-  background-color: a.$main-black; 
-  max-width: 100vw;
+  background-color: a.$web-background-color;
 }
 
 body {
-    min-height: 100vh;
-    max-width: 100vw;
-    margin: 0 auto;
+    height: 100vh;
+    width: 100vw;
+    margin: 0;
+    overflow: hidden;
+}
+
+::-webkit-scrollbar {
+  width: 0.4em;               /* width of the entire scrollbar */
+}
+
+::-webkit-scrollbar-track {
+  background: a.$main-black;        /* color of the tracking area */
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: a.$web-background-color;    /* color of the scroll thumb */
+  border-radius: 10px;       /* roundness of the scroll thumb */
+  border: 1px solid a.$main-black;
 }
 
 // -------------- RESET
 
 a{
-    text-decoration: none;
-    color: white;
-  }
+  text-decoration: none;
+  color: white;
+  font-size: 0.8em;
+}
+
+h1 {
+  font-size: 2em;
+}
+ 
+p {
+   font-size: 0.8em;
+}
   

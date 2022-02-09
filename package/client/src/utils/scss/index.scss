@@ -4,7 +4,7 @@
 @import "../../../node_modules/bootstrap/scss/variables";
 
 
-@import "./variablesAndBootstrap";
+@import "./variables";
 
 $custom-colors: (
   "facebook-color": $fb-blue,
@@ -37,8 +37,10 @@ $theme-colors: map-merge($theme-colors, $custom-colors);
 
 //      molecules
 @import "../../components/molecules/AccountSetting/accountSetting";
+@import "../../components/molecules/MusicPlayer/musicPlayer";
 
 //      organisms
+
 @import "../../components/organisms/Header/header";
 @import "../../components/organisms/SideBar/sideBar";
 @import "../../components/organisms/SinglePlaylist/singlePlaylist.scss";

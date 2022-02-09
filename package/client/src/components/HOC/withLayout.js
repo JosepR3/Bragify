@@ -10,14 +10,16 @@ export default function withLayout(WrappedComponent) {
   function WrapperComponent({...props}) {
     
     return (
-      <>
+      <div className="d-flex h-100">
         <SideBar/>
-        <Header />
-          <MainContainer>
-            <WrappedComponent {...props}/>
-          </MainContainer>
+          <div className="d-flex flex-column vh-100 position-relative vw-100">
+          <Header />
+            <MainContainer>
+              <WrappedComponent className="container" {...props}/>
+            </MainContainer>
+          </div>
         <MusicPlayer/>
-      </>
+      </div>
     );
   }
   return WrapperComponent;

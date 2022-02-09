@@ -4,7 +4,7 @@ import withLayout from "../../HOC/withLayout";
 function SinglePlaylist() {
   return (
     <>
-      <main className="container" id="main">
+      <main id="main">
         <div className="flex-row d-flex gap-5">
           <div className="" id="photo">
             <img
