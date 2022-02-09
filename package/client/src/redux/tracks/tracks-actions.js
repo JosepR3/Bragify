@@ -41,7 +41,7 @@ export function setLikedTracks(idList) {
 export function setLikeTrack(id) {
   return {
     type: TrackTypes.LIKE_TRACK,
-    payload:  id ,
+    payload: id,
   };
 }
 
@@ -86,7 +86,6 @@ export async function fetchAllTracks(dispatch) {
     console.log(error, "deleteTrackError");
   }
 }
-
 
 
 

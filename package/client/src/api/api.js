@@ -41,7 +41,7 @@ function makeApi(request = makeRequest()) {
   // }
 
 
-  function getAllTracks( headers ) {
+  function getAllTracks(headers) {
     return request({
       url: "/tracks",
       requestMethod: "GET",
@@ -102,10 +102,16 @@ function makeApi(request = makeRequest()) {
   //   });
   // }
 
-  function fetchAllPlaylists( headers ){
+  function fetchAllPlaylists(headers) {
     return request({
       url: "/playlists",
       requestMethod: "get",
+      headers: headers,
+    });
+  }
+
+  function deletePlaylist(headers, data) {
+    return axios.delete(`http://localhost:4000/playlist/${data}`, {
       headers: headers,
     });
   }
@@ -122,7 +128,8 @@ function makeApi(request = makeRequest()) {
     unlikeTrack: unlikeTrack,
     fetchLikedTracks: fetchLikedTracks,
     createPlaylist: createPlaylist,
-    fetchAllPlaylists: fetchAllPlaylists
+    fetchAllPlaylists: fetchAllPlaylists,
+    deletePlaylist: deletePlaylist
   };
 }
 

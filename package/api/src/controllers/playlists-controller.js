@@ -56,6 +56,7 @@ async function fetchPlaylists(req, res, next) {
 }
 
 async function deletePlaylist(req, res, next) {
+
   const id = req.params.id;
   try {
     const playlist = await playlistRepo.deleteOne(id);
