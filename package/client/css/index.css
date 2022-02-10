@@ -11642,19 +11642,46 @@ textarea.form-control-lg {
   }
 }
 html {
-  background-color: #2e2e2e;
-  max-width: 100vw;
+  background-color: #4d4d4d;
 }
 
 body {
-  min-height: 100vh;
-  max-width: 100vw;
-  margin: 0 auto;
+  height: 100vh;
+  width: 100vw;
+  margin: 0;
+  overflow: hidden;
+}
+
+::-webkit-scrollbar {
+  width: 0.4em;
+  /* width of the entire scrollbar */
+}
+
+::-webkit-scrollbar-track {
+  background: #2e2e2e;
+  /* color of the tracking area */
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #4d4d4d;
+  /* color of the scroll thumb */
+  border-radius: 10px;
+  /* roundness of the scroll thumb */
+  border: 1px solid #2e2e2e;
 }
 
 a {
   text-decoration: none;
   color: white;
+  font-size: 0.8em;
+}
+
+h1, .h1 {
+  font-size: 2em;
+}
+
+p {
+  font-size: 0.8em;
 }
 
 .card {
@@ -11710,8 +11737,6 @@ a {
 
 .search {
   width: 18rem;
-  height: 80%;
-  margin-left: 5rem;
 }
 .search__icon {
   color: white;
@@ -11721,36 +11746,49 @@ a {
   font-size: 1rem;
 }
 
+.footer {
+  background: linear-gradient(rgba(0, 0, 0, 0.5) 0%, #000 100%);
+  -webkit-backdrop-filter: blur(15px);
+          backdrop-filter: blur(15px);
+  height: 15%;
+  z-index: 12;
+}
+
+.rhap_controls-section {
+  display: flex;
+  flex-direction: row;
+}
+
 .header {
   background-color: #2e2e2e;
   border-bottom: rgba(145, 145, 145, 0.5) inset 1px;
+  z-index: 5;
   position: fixed;
-  right: 0;
-  top: 0;
-  width: 91%;
-  z-index: 10;
+  width: calc(100vw - 9em);
 }
 
 .side__bar {
-  min-height: 100vh;
-  width: 9%;
+  width: 9em;
+  font-size: 1em;
+  max-height: 100%;
   background-color: #2e2e2e;
   border-right: rgba(145, 145, 145, 0.5) inset 1px;
-  position: fixed;
-  left: 0;
-  top: 0;
   z-index: 10;
+  flex-shrink: 0;
 }
-
-.nav-item {
-  margin-left: 0.5rem;
+.side__bar__nav {
+  display: block;
+  overflow-y: auto;
+  contain: strict;
+  flex-grow: 1;
 }
-.nav-link {
-  font-size: 0.9rem;
+.side__bar__nav__link {
+  font-size: 0.7em;
+  word-wrap: break-word;
 }
 
 .brand__img {
-  width: 2rem;
+  width: 3em;
   filter: invert(1);
 }
 .brand__link {
@@ -11764,9 +11802,11 @@ svg {
   margin-right: 0.4rem;
 }
 
-.main__container {
-  margin-top: 8rem;
-  margin-left: 9%;
+.content__container {
+  overflow-x: hidden;
+  overflow-y: scroll;
+  min-height: 100%;
+  padding: 6em 0em;
 }
 
 .profile__wrapper {
@@ -11812,7 +11852,26 @@ svg {
   width: 10rem;
 }
 
-.signIn__signUp__wrapper {
+.edit__form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.img-thumbnail {
+  width: 8em;
+}
+
+.btn__save {
+  width: 8em;
+  border: none;
+  background-image: linear-gradient(45deg, #bf58ca 20%, transparent 60%);
+  background-position: 100%;
+  background-size: 400%;
+  transition: background 500ms ease-in-out;
+}
+
+.auth__wrapper {
   background: linear-gradient(158deg, rgba(46, 46, 46, 0.86) 0%, #0d0d0d 100%);
   color: white;
   display: flex;
@@ -11820,59 +11879,55 @@ svg {
   width: 40%;
   border-radius: 5%;
 }
-
-.main__bragify {
-  color: white;
-  font-size: 4rem;
-}
-
-.btn {
-  height: 3.5rem;
-  font-size: 1.2rem;
-}
-.btn-facebook-color {
-  color: white;
-  border-radius: 15px;
-}
-.btn-google-color {
-  background-color: white;
-  color: #34a853;
+.auth__facebook {
   border-radius: 10px;
 }
-.btn-log-color {
+.auth__google {
+  border-radius: 10px;
+}
+.auth__btn {
   border: none;
   background-image: linear-gradient(45deg, #bf58ca 20%, transparent 60%);
   background-position: 100%;
   background-size: 400%;
   transition: background 500ms ease-in-out;
 }
-.btn-log-color:hover {
-  background-position: 0;
-  border: none;
+.auth__icon {
+  width: 1em;
+  color: #34a853;
 }
-
-.signIn__signUp__icon {
-  width: 1.8rem;
+.auth__link {
+  font-size: 0.8em;
 }
-
-.form-control {
-  height: 3.5rem;
-  font-size: 1.2rem;
+.auth__input {
+  height: 2.3em;
+  font-size: 1em;
   background-color: #4d4d4d;
   color: whitesmoke;
   border: 1px solid black;
 }
-.form-control::-moz-placeholder {
+.auth__input::-moz-placeholder {
   color: #b9a5a5;
 }
-.form-control:-ms-input-placeholder {
+.auth__input:-ms-input-placeholder {
   color: #b9a5a5;
 }
-.form-control::placeholder {
+.auth__input::placeholder {
   color: #b9a5a5;
 }
-.form-control:disabled {
+.auth__input:disabled {
   color: black 30% !important;
+}
+
+.btn-log-color:hover {
+  background-position: 0;
+  border: none;
+}
+.btn-google-color {
+  background-color: white;
+}
+.btn-facebook-color {
+  color: white;
 }
 
 .breaker {
@@ -11881,16 +11936,16 @@ svg {
   color: white;
   align-items: center;
   justify-content: space-around;
+  font-size: 0.8em;
 }
 
 .division_line {
-  width: 7.8rem;
+  width: 7em;
   height: 1px;
   background-color: white;
   border-style: none;
   margin-left: 0;
   margin-right: 0;
-<<<<<<< HEAD:package/client/css/index.css
 }
 
 .resetPassword__wrapper {
@@ -12314,6 +12369,3 @@ svg {
   height: 2rem;
   padding: 0.45rem !important;
 }/*# sourceMappingURL=index.css.map */
-=======
-}/*# sourceMappingURL=signIn.css.map */
->>>>>>> origin/create-playlist:css/SignIn.css
