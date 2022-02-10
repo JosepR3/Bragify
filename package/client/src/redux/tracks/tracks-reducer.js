@@ -75,6 +75,7 @@ export default function tracksReducer(state = initialState, action) {
         }
       }
     }
+    
     case LIKE_TRACKS:{
       const { idList } = action.payload;
       const likedTracks = state.likedTracks.filter(track => !idList.includes(track));

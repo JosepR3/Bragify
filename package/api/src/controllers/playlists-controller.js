@@ -28,6 +28,7 @@ async function createPlaylist(req, res, next) {
 
 async function fetchPlaylistById(req, res, next) {
   const id = req.params.id;
+  console.log( req.params)
   try {
     const dbResponse = await playlistRepo.findById({
       _id: id,
@@ -37,21 +38,21 @@ async function fetchPlaylistById(req, res, next) {
   } catch (err) {
     next(err);
   }
-  console.log(id);
 }
 
 async function fetchPlaylists(req, res, next) {
   try {
     const playlist = await playlistRepo.find({ name: true }[0]);
     handleDbResponse(res, playlist);
+    res.status(201).send({
+      data: playlist,
+      error: null,
+    });
   } catch (error) {
     next(error);
   }
 
-  res.status(201).send({
-    data: playlist,
-    error: null,
-  });
+  
 
 }
 

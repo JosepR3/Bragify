@@ -1,15 +1,21 @@
 import React from "react";
-import withLayout from "../../HOC/withLayout";
+import { useSelector } from "react-redux";
+import { playlistStateSelector } from "../../../redux/playlists/playlists-selector";
+// import { fetchPlaylistById } from "../../../redux/playlists/playlists-actions";
 
 function SinglePlaylist() {
+
+  const {playlistId} = useSelector(playlistStateSelector);
+
   return (
+    
     <>
       <main id="main">
         <div className="flex-row d-flex gap-5">
           <div className="" id="photo">
             <img
               id="sm"
-              src="https://is2-ssl.mzstatic.com/image/thumb/Music126/v4/2f/22/a9/2f22a9a6-5af1-5846-a44e-ba016724ed69/21UM1IM58860.rgb.jpg/1000x1000bb-60.jpg"
+              src={playlistId?.thumbnail}
               alt=""
             />
           </div>
@@ -18,7 +24,7 @@ function SinglePlaylist() {
             id="detail"
           >
             <h3 id="shawn">
-              <b>Dawn FM</b>
+              <b>{playlistId?.name}</b>
             </h3>
             <p className="brand_color">The Weeknd</p>
             <div className="d-flex gap-2 flex-row" id="interact_buttons">
@@ -96,4 +102,4 @@ function SinglePlaylist() {
   );
 }
 
-export default withLayout(SinglePlaylist);
+export default SinglePlaylist;

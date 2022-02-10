@@ -1,0 +1,12 @@
+@use "../../../utils/scss/variables" as a;
+
+.current__img{
+  width: 6em;
+  height: 100%
+}
+
+.btn__options {
+  background: transparent;
+  color: white;
+  border: none;
+}
