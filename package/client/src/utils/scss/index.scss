@@ -48,6 +48,7 @@ $theme-colors: map-merge($theme-colors, $custom-colors);
 @import "../../components/organisms/SingleAlbum/singleAlbum";
 @import "../../components/organisms/MainContainer/mainContainer";
 @import "../../components/organisms/Footer/footer";
+@import "../../components/organisms/UploadTrack/uploadTrack.scss";
 // @import "../../components/organisms/SinglePlaylist/singlePlaylist.scss";
 @import "../../components/organisms/CreatePlaylist/createPlaylist.scss";
 

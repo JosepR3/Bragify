@@ -58,7 +58,7 @@ function SideBar() {
           </Nav.Link>
         </Nav.Item>
         <Nav.Item className="mt-5 side__bar__item">
-          <Nav.Link href="" className="side__bar__link">
+          <Nav.Link href={ROUTES.CREATE_PLAYLIST} className="side__bar__link">
             <RiPlayListAddLine />
             Create Playlist
           </Nav.Link>
