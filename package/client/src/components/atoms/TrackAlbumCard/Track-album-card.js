@@ -27,7 +27,7 @@ export default function TrackAlbumCard() {
 
 
   return (
-    <div>
+    <>
       {playlists &&
         playlists.map((playlist) => {
           return (
@@ -37,14 +37,14 @@ export default function TrackAlbumCard() {
               onClick={(e) => {
                 handlePlaylistId(e);
               }}
-              className="p-2 m-2"
+              className="pl__card p-2 m-2"
             >
               <div
                 id={playlist._id}
                 onClick={(e) => {
                   handlePlaylistId(e);
                 }}
-                className="position-relative p-0"
+                className="pl__card-img-container position-relative p-0"
               >
                 <Card.Img
                   id={playlist._id}
@@ -52,6 +52,7 @@ export default function TrackAlbumCard() {
                     handlePlaylistId(e);
                   }}
                   variant="top"
+                  className="pl__card-img"
                   src={playlist.thumbnail}
                 />
                 <RiPlayCircleFill
@@ -67,14 +68,14 @@ export default function TrackAlbumCard() {
                 onClick={(e) => {
                   handlePlaylistId(e);
                 }}
-                className="p-1 mt-2"
+                className="pl__card-body p-1 pt-2"
               >
                 <Card.Title
                   id={playlist._id}
                   onClick={(e) => {
                     handlePlaylistId(e);
                   }}
-                  className="m-0"
+                  className="pl__card-title m-0"
                 >
                   {playlist.name}
                 </Card.Title>
@@ -84,13 +85,15 @@ export default function TrackAlbumCard() {
                   onClick={(e) => {
                     handlePlaylistId(e);
                   }}
+                  className="pl__card-subtitle m-0"
                 >
                   {playlist.description}
                 </Card.Subtitle>
               </Card.Body>
             </Card>
           );
-        })}
-    </div>
-  );
+        })
+      }
+    </>
+    );
 }

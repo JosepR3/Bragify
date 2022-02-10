@@ -1,5 +1,4 @@
 import React from "react";
-import withLayout from "../../HOC/withLayout";
 import { useSelector } from "react-redux";
 import { playlistStateSelector } from "../../../redux/playlists/playlists-selector";
 // import { fetchPlaylistById } from "../../../redux/playlists/playlists-actions";
@@ -103,4 +102,4 @@ function SinglePlaylist() {
   );
 }
 
-export default withLayout(SinglePlaylist);
+export default SinglePlaylist;
