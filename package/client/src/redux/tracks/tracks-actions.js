@@ -40,7 +40,7 @@ export function setLikedTracks(likedTracks) {
 export function setLikeTrack(id) {
   return {
     type: TrackTypes.LIKE_TRACK,
-    payload:  id ,
+    payload: id,
   };
 }
 
@@ -63,10 +63,19 @@ export function createTrack(data) {
   };
 }
 
+export function updateTrack(id) {
+  return {
+    type: TrackTypes.DELETE_TRACK,
+    payload: id,
+  }
+}
 export function deleteTrack(id) {
   return async function createThunk(dispatch) {
     try {
+      console.log(id);
       dispatch(authTrack(api.deleteTrack, id));
+      dispatch(updateTrack(id));
+
     } catch (error) {
       console.log(error, "deleteTrackError");
     }
@@ -79,10 +88,9 @@ export async function fetchAllTracks(dispatch) {
     const res = await api.getAllTracks({
       headers: { Authorization: `Bearer ${userToken}` },
     });
-
     return dispatch(setTracksResult(res.data.data));
   } catch (error) {
-    console.log(error, "deleteTrackError");
+    console.log(error, "fetcherror");
   }
 }
 
@@ -103,7 +111,6 @@ export function likeTrack(id, userId) {
 
 export function unlikeTrack(id, userId) {
   const data = { trackId: id, userId: userId };
-  console.log(data)
   return async function createThunk(dispatch) {
     try {
       await dispatch(authTrack(api.unlikeTrack, data));

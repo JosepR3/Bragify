@@ -1,0 +1,42 @@
+.profile__wrapper {
+  background: linear-gradient(158deg, rgba(46, 46, 46, 0.86) 0%, #0d0d0d 100%);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+  border-radius: 5%;
+}
+
+.form-control {
+  height: 3.5rem;
+  font-size: 1.2rem;
+  background-color: #4d4d4d;
+  color: whitesmoke;
+  border: 1px solid black;
+}
+.form-control::-moz-placeholder {
+  color: #b9a5a5;
+}
+.form-control:-ms-input-placeholder {
+  color: #b9a5a5;
+}
+.form-control::placeholder {
+  color: #b9a5a5;
+}
+.form-control:disabled {
+  color: rgba(0, 0, 0, 0.363);
+}
+
+.form__group {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.img-thumbnail {
+  width: 15rem;
+}
+
+.btn-log-color {
+  width: 10rem;
+}/*# sourceMappingURL=createPlaylist.css.map */

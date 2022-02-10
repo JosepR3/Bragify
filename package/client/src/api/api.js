@@ -68,7 +68,7 @@ function makeApi(request = makeRequest()) {
     );
   }
 
-  function fetchPlaylistById( headers, data ) {
+  function fetchPlaylistById(headers, data) {
     console.log(data)
     return request({
       url: "/playlist/" + data,

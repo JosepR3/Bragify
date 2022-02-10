@@ -3,6 +3,21 @@
     {
       "type": "aws-sam",
       "request": "direct-invoke",
+      "name": "client:src/redux/tracks/tracks-actions.likeTrack (nodejs14.x)",
+      "invokeTarget": {
+        "target": "code",
+        "projectRoot": "${workspaceFolder}/package/client",
+        "lambdaHandler": "src/redux/tracks/tracks-actions.likeTrack"
+      },
+      "lambda": {
+        "runtime": "nodejs14.x",
+        "payload": {},
+        "environmentVariables": {}
+      }
+    },
+    {
+      "type": "aws-sam",
+      "request": "direct-invoke",
       "name": "client:src/redux/songs/songs-actions. (nodejs14.x)",
       "invokeTarget": {
         "target": "code",
