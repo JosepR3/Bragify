@@ -1,7 +1,7 @@
 import React from "react";
 
 import Card from "react-bootstrap/Card";
-import { BsSuitHeart, BsSuitHeartFill } from "react-icons/bs";
+import { BsSuitHeart } from "react-icons/bs";
 import { FiMoreHorizontal } from "react-icons/fi";
 
 export default function CurrentPlaying(){

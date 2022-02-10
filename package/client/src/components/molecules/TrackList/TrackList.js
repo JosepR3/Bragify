@@ -1,7 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { authSelector } from "../../../redux/auth/auth-selectors";
-import TrackAlbumCard from "../../atoms/TrackAlbumCard";
+import TrackAlbumCard from "../../atoms/TrackAlbumCard/Track-album-card";
 
 function TrackList() {
   const { currentUser } = useSelector(authSelector);
