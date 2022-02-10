@@ -26,7 +26,7 @@ function Tracks() {
   const userId = currentUser._id;
   return (
     <>
-      <h2 className="page__title m-4">Tracks</h2>
+      <h2 className="page__title m-4">All Tracks</h2>
       <div className="container">
         <ListGroup
           horizontal

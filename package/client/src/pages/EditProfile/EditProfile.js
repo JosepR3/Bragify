@@ -53,7 +53,7 @@ function EditUserForm() {
   return (
     <>
       <section className="auth__wrapper container px-5 py-2">
-        <h1 className="font-bold align-self-start mx-4 my-2">Profile</h1>
+        <h1 className="font-bold align-self-start m-4">Profile</h1>
         <Form className="px-4  mb-3" onSubmit={handleSubmit}>
           <div className="d-flex mb-2">
             <Image

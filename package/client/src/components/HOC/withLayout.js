@@ -18,7 +18,7 @@ export default function withLayout(WrappedComponent) {
               <WrappedComponent className="container" {...props}/>
             </MainContainer>
           </div>
-        <Footer />
+        <Footer/>
       </div>
     );
   }

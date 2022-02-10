@@ -8,7 +8,7 @@ function SearchInput(){
   return(
     <InputGroup className="search">
       <GoSearch className="search__icon" />
-      <FormControl placeholder="search" />
+      <FormControl placeholder="search" className="search__input" />
     </InputGroup>
   )
 }
