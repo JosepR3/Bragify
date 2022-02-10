@@ -4,18 +4,16 @@ import { authSelector } from "../../redux/auth/auth-selectors";
 import * as ROUTES from "../../routes";
 
 // REDUX
-import { useDispatch, useSelector } from "react-redux";
-import { fetchAllTracks } from "../../redux/tracks/tracks-actions";
-import { tracksSelector } from "../../redux/tracks/tracks-selector";
+import { useSelector } from "react-redux";
+
 // HOC
 import withLayout from "../../components/HOC/withLayout";
+
 // COMPONENTS
-import SingleAlbum from "../../components/organisms/SingleAlbum";
 
 
 function Home() {
-  const { isAuthenticated, currentUser } = useSelector(authSelector);
-  console.log(currentUser);
+  const { isAuthenticated} = useSelector(authSelector);
 
   if (!isAuthenticated) {
     return <Navigate to={ROUTES.SIGN_IN} />;
@@ -23,7 +21,7 @@ function Home() {
 
   return (
     <>
-      <SingleAlbum/>
+    <div>holaaaa</div>
     </>
         
   );

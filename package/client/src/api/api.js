@@ -36,8 +36,16 @@ function makeApi(request = makeRequest()) {
     });
   }
 
+  // function getAllTracks(headers) {
+  //   return axios.get("http://localhost:4000/tracks", headers);
+  // }
+
   function getAllTracks(headers) {
-    return axios.get("http://localhost:4000/tracks", headers);
+    return request({
+      url: "/tracks",
+      requestMethod: "GET",
+      headers: headers,
+    });
   }
 
   function createTrack(headers, data) {
@@ -45,6 +53,7 @@ function makeApi(request = makeRequest()) {
       headers: headers,
     });
   }
+
   function deleteTrack(headers, data) {
     return axios.delete(`http://localhost:4000/tracks/${data}`, {
       headers: headers,
@@ -57,6 +66,15 @@ function makeApi(request = makeRequest()) {
       data,
       { headers: headers },
     );
+  }
+
+  function fetchPlaylistById( headers, data ) {
+    console.log(data)
+    return request({
+      url: "/playlist/" + data,
+      requestMethod: "GET",
+      headers: headers,
+    });
   }
 
   function unlikeTrack(headers, data) {
@@ -73,6 +91,23 @@ function makeApi(request = makeRequest()) {
     });
   }
 
+  function createPlaylist({ headers, body }) {
+    return request({
+      url: "/playlists",
+      requestMethod: "POST",
+      body: body,
+      headers: headers,
+    });
+  }
+
+  function fetchAllPlaylists(headers) {
+    return request({
+      url: "/playlists",
+      requestMethod: "get",
+      headers: headers,
+    });
+  }
+
   return {
     signUp: signUp,
     signOut: signOut,
@@ -84,6 +119,9 @@ function makeApi(request = makeRequest()) {
     likeTrack: likeTrack,
     unlikeTrack: unlikeTrack,
     fetchLikedTracks: fetchLikedTracks,
+    createPlaylist: createPlaylist,
+    fetchAllPlaylists: fetchAllPlaylists,
+    fetchPlaylistById: fetchPlaylistById,
   };
 }
 

@@ -1,7 +1,7 @@
 import { useEffect, React } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { tracksSelector } from "../../redux/tracks/tracks-selector";
-import { fetchAllTracks } from "../../redux/tracks/tracks-actions";
+import { fetchAllTracks, fetchLikedTracks } from "../../redux/tracks/tracks-actions";
 
 import withLayout from "../../components/HOC/withLayout";
 import DeleteButton from "../../components/atoms/DeleteButton";
@@ -14,10 +14,13 @@ function Tracks() {
 
   useEffect(() => {
     dispatch(fetchAllTracks);
+    dispatch(fetchLikedTracks(userId));
   }, [dispatch]);
 
   const { tracks } = useSelector(tracksSelector);
 
+  const currentUser = JSON.parse(localStorage.getItem('user'))
+  const userId = currentUser._id
   return (
     <div className="container">
       <ListGroup

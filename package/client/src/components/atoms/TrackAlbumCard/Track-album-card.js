@@ -1,62 +1,99 @@
 import React from "react";
-import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
+import { fetchAllPlaylists } from "../../../redux/playlists/playlists-actions";
+// import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import Card from "react-bootstrap/Card";
+import { playlistStateSelector } from "../../../redux/playlists/playlists-selector";
+import { RiPlayCircleFill } from "react-icons/ri";
+import { fetchPlaylistById } from "../../../redux/playlists/playlists-actions";
+// import { playTrack } from "../../../redux/tracks/tracks-actions";
 
-import { RiPlayCircleFill } from "react-icons/ri"
+export default function TrackAlbumCard() {
+  const dispatch = useDispatch();
 
-import { playTrack } from "../../../redux/tracks/tracks-actions";
+  useEffect(() => {
+    dispatch(fetchAllPlaylists);
+  }, [dispatch]);
+
+  const { playlists } = useSelector(playlistStateSelector);
+
+  const handlePlaylistId = (e) => {
+    const id = e.target.id;
+    dispatch(fetchPlaylistById(id))
+    ;
+  };
 
 
-export default function TrackAlbumCard(
-  // {
-    //   albumName,
-    //   artistName,
-    //   albumImageUrl,
-  // },
-) {
-  //   const navigate = useNavigate();
-  //   const dispatch = useDispatch();
-  //   const tracks = useSelector((state) => state.tracks);
-  //   const { currentTrack } = tracks;
-  //   const [isPlaying, setIsPlaying] = useState(false);
-
-  // const handleClick = () => {
-
-  //     dispatch(playTrack(tracks));
-
-  // };
-
-  // const viewTracks = (e) => {
-  //     if (e.target.id !== 'pause-button' && e.target.id !== 'play-button' && e.target.id !== 'button-box') {
-  //         navigate('/tracks');
-  //         dispatch(playTrack(tracks));
-  //         // navigate('/track-song-list');
-
-  //     }
-  // }
 
   return (
-    <Card className="pl__card p-2 m-2">
-      <div className="position-relative p-0">
-        <Card.Img
-          variant="top"
-          src="https://ih1.redbubble.net/image.1138204235.9642/st,small,507x507-pad,600x600,f8f8f8.u2.jpg"
-        />
-        <RiPlayCircleFill
-          className="card__play position-absolute top-50 start-50 translate-middle"
-        />
-      </div>
-      <Card.Body className="pl__card-body p-1 mt-2">
-        <Card.Title className="pl__card-title m-0">
-          Card Title a really long titile for example blabla
-        </Card.Title>
-        <Card.Subtitle className="pl__card-subtitle m-0">
-          Some quick example text to build on the card title and make up the
-          bulk of the cas content.
-        </Card.Subtitle>
-      </Card.Body>
-    </Card>
-  );
+    <>
+      {playlists &&
+        playlists.map((playlist) => {
+          return (
+            <Card
+              key={playlist._id}
+              id={playlist._id}
+              onClick={(e) => {
+                handlePlaylistId(e);
+              }}
+              className="pl__card p-2 m-2"
+            >
+              <div
+                id={playlist._id}
+                onClick={(e) => {
+                  handlePlaylistId(e);
+                }}
+                className="pl__card-img-container position-relative p-0"
+              >
+                <Card.Img
+                  id={playlist._id}
+                  onClick={(e) => {
+                    handlePlaylistId(e);
+                  }}
+                  variant="top"
+                  className="pl__card-img"
+                  src={playlist.thumbnail}
+                />
+                <RiPlayCircleFill
+                  id={playlist._id}
+                  onClick={(e) => {
+                    handlePlaylistId(e);
+                  }}
+                  className="card__play position-absolute top-50 start-50 translate-middle"
+                />
+              </div>
+              <Card.Body
+                id={playlist._id}
+                onClick={(e) => {
+                  handlePlaylistId(e);
+                }}
+                className="pl__card-body p-1 pt-2"
+              >
+                <Card.Title
+                  id={playlist._id}
+                  onClick={(e) => {
+                    handlePlaylistId(e);
+                  }}
+                  className="pl__card-title m-0"
+                >
+                  {playlist.name}
+                </Card.Title>
+
+                <Card.Subtitle
+                  id={playlist._id}
+                  onClick={(e) => {
+                    handlePlaylistId(e);
+                  }}
+                  className="pl__card-subtitle m-0"
+                >
+                  {playlist.description}
+                </Card.Subtitle>
+              </Card.Body>
+            </Card>
+          );
+        })
+      }
+    </>
+    );
 }

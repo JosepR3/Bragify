@@ -1,7 +1,5 @@
 import React from "react";
 import { Outlet, useLocation } from "react-router-dom";
-
-import withLayout from "../../components/HOC/withLayout";
 import TrackList from "../../components/molecules/TrackList/TrackList";
 
 function Playlists() {
@@ -10,10 +8,10 @@ function Playlists() {
     <>
       <div className="playLists_container">
         {location.pathname === "/playlists" && <TrackList />}
-        {location.pathname === "/playlists/single-album" && <Outlet/>}
+        {location.pathname === "/playlists/single-playlist" && <Outlet/>}
       </div>
     </>
   );
 }
 
-export default withLayout(Playlists)
+export default Playlists

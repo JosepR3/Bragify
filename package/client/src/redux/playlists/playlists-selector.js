@@ -1,8 +1,5 @@
 import { createSelector } from "reselect";
 
-export const selectPlaylistsState = (state) => state.playlists;
+export const selectPlaylistState = (state) => state.playlistsReducer;
 
-export const PlaylistsSelector = createSelector(
-  [selectPlaylistsState],
-  (playlists) => playlists,
-);
+export const playlistStateSelector = createSelector([selectPlaylistState],(playlistsReducer) => playlistsReducer);

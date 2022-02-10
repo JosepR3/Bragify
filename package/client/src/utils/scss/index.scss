@@ -48,11 +48,13 @@ $theme-colors: map-merge($theme-colors, $custom-colors);
 @import "../../components/organisms/SingleAlbum/singleAlbum";
 @import "../../components/organisms/MainContainer/mainContainer";
 @import "../../components/organisms/Footer/footer";
+// @import "../../components/organisms/SinglePlaylist/singlePlaylist.scss";
+@import "../../components/organisms/CreatePlaylist/createPlaylist.scss";
 
 //      pages
-@import "../../Pages/EditProfile/editProfile";
+@import "../../pages/EditProfile/editProfile";
 @import "../../pages/SignIn/signIn";
-@import "../../pages/Resetpassword/resetpassword";
+@import "../../pages/ResetPassword/resetPassword";
 @import "../../pages/NotFound/notFound";
 @import "../../pages/Tracks/tracks";
 
