@@ -1,7 +1,7 @@
 import React from "react";
 
 import SideBar from "../../components/organisms/SideBar/SideBar";
-import Footer from '../../components/organisms/Footer/Footer';
+import Footer from "../../components/organisms/Footer";
 import Header from "../organisms/Header";
 import MainContainer from "../../components/organisms/MainContainer";
 

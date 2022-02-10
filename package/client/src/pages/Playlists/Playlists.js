@@ -7,10 +7,13 @@ function Playlists() {
   const location = useLocation();
 
   return (
-    <div className="d-flex">
-      {location.pathname === "/playlists" && <TrackList />}
-      {location.pathname === "/playlists/single-playlist" && <Outlet />}
-    </div>
+    <>
+      <h2 className="m-4 page__title">Playlists</h2>
+      <div className="mx-4">
+        {location.pathname === "/playlists" && <TrackList />}
+        {location.pathname === "/playlists/single-playlist" && <Outlet />}
+      </div>
+    </>
   );
 }
 

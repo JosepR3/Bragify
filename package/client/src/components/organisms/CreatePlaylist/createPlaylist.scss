@@ -15,20 +15,20 @@
 
 // -----------------------INPUT
 
-.form-control {
-  height: 3.5rem;
-  font-size: 1.2rem;
-  background-color: a.$web-background-color;
-  color: whitesmoke;
-  border: 1px solid black;
+// .form-control {
+//   height: 3.5rem;
+//   font-size: 1.2rem;
+//   background-color: a.$web-background-color;
+//   color: whitesmoke;
+//   border: 1px solid black;
 
-  &::placeholder {
-    color: rgb(185, 165, 165);
-  }
-  &:disabled {
-    color: rgba(0, 0, 0, 0.363);
-  }
-}
+//   &::placeholder {
+//     color: rgb(185, 165, 165);
+//   }
+//   &:disabled {
+//     color: rgba(0, 0, 0, 0.363);
+//   }
+// }
 
 .form__group {
   display: flex;

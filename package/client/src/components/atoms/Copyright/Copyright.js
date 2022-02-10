@@ -2,7 +2,7 @@ import React from "react";
 
 function Copyright() {
   return (
-      <div className="text-center">
+      <div className="text-center py-5">
         Copyright ©
         Made with ❤ by Pearls {new Date().getFullYear()}
       </div>
