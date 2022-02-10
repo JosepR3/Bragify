@@ -64,9 +64,7 @@ const UploadTrack = () => {
   return (
     <main className="container text-center">
       <section className="profile__wrapper container p-5">
-        <h1 className="font-bold align-self-start mx-4 mb-5">
-          Upload a Track
-        </h1>
+        <h1 className="font-bold align-self-start mx-4 mb-5">Upload a Track</h1>
         <Form className="px-4" onSubmit={handleSubmit}>
           <Form.Group>
             <Form.Label>Title Track</Form.Label>
@@ -104,9 +102,9 @@ const UploadTrack = () => {
               <option value="Rock">Rock</option>
               <option value="Pop">Pop</option>
               <option value="Salsa">Salsa</option>
-              <option value="Salsa">House</option>
-              <option value="Salsa">Reggaeton</option>
-              <option value="Salsa">Trap</option>
+              <option value="House">House</option>
+              <option value="Reggaeton">Reggaeton</option>
+              <option value="Trap">Trap</option>
             </Form.Control>
           </Form.Group>
           <Form.Group className="mb-2">
