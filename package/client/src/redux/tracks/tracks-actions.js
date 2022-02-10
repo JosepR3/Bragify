@@ -83,7 +83,7 @@ export async function fetchAllTracks(dispatch) {
 
     return dispatch(setTracksResult(res.data.data));
   } catch (error) {
-    console.log(error, "deleteTrackError");
+    console.log(error, "fetcherror");
   }
 }
 

@@ -5,6 +5,7 @@ import TrackAlbumCard from "../../atoms/TrackAlbumCard";
 
 function TrackList() {
   const navigate = useNavigate();
+  
 
   return (
     <TrackAlbumCard onClick={() => navigate("/playlists/single-playlist")}/>

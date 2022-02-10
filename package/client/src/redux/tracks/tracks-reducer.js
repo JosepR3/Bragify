@@ -61,7 +61,6 @@ export default function tracksReducer(state = initialState, action) {
       const id = action.payload;
       console.log(id)
       if (state.likedTracks.find(track => track === id)) {
-        console.log("inside like track")
         const likedTracks = state.likedTracks.filter(track => track !== id);
         return {
           ...state,

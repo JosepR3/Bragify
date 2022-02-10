@@ -18,12 +18,10 @@ export default function LikeButton({ trackId }) {
         console.log(isLiked)
         if (isLiked) {
             dispatch(unlikeTrack(trackId, userId)).then(() => {
-                console.log(trackId, "liked trackId")
                 return isLiked;
             });
         } else {
             dispatch(likeTrack(trackId, userId)).then(() => {
-                console.log(trackId, "not liked trackId")
                 return isLiked
             });
         }
