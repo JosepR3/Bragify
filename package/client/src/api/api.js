@@ -116,6 +116,14 @@ function makeApi(request = makeRequest()) {
     });
   }
 
+  function search(headers, data) {
+    console.log(headers);
+    console.log(data)
+    return axios.get(`http://localhost:4000/search/${data}`, {
+      headers: headers,
+    });
+  }
+
   return {
     signUp: signUp,
     signOut: signOut,
@@ -129,7 +137,9 @@ function makeApi(request = makeRequest()) {
     fetchLikedTracks: fetchLikedTracks,
     createPlaylist: createPlaylist,
     fetchAllPlaylists: fetchAllPlaylists,
-    deletePlaylist: deletePlaylist
+    deletePlaylist: deletePlaylist,
+    search: search,
+
   };
 }
 
