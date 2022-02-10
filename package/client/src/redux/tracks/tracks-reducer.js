@@ -59,7 +59,6 @@ export default function tracksReducer(state = initialState, action) {
 
     case LIKE_TRACK: {
       const id = action.payload;
-      console.log(id)
       if (state.likedTracks.find(track => track === id)) {
         const likedTracks = state.likedTracks.filter(track => track !== id);
         return {
@@ -68,9 +67,7 @@ export default function tracksReducer(state = initialState, action) {
         }
       }
       else {
-        "inside unlike track"
         const likedTracks = state.likedTracks.filter(track => track !== id);
-
         likedTracks.push(id);
         return {
           ...state,
@@ -92,7 +89,8 @@ export default function tracksReducer(state = initialState, action) {
     }
 
     case DELETE_TRACK: {
-      const { id: trackId } = action.payload;
+      const trackId = action.payload;
+
       const tracks = state.tracks.filter(track => track._id !== trackId);
       return {
         ...state,

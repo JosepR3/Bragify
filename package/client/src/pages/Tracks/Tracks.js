@@ -13,7 +13,6 @@ function Tracks() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    console.log("called fetchAllTracks");
     dispatch(fetchAllTracks);
     dispatch(fetchLikedTracks(userId));
   }, [dispatch]);

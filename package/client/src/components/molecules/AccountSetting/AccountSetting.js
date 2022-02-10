@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { signOut, editProfile} from "../../../redux/auth/auth-actions";
+import { signOut, editProfile } from "../../../redux/auth/auth-actions";
 import { authSelector } from "../../../redux/auth/auth-selectors";
 
 import Dropdown from "react-bootstrap/Dropdown";
@@ -25,7 +25,7 @@ function AccountSetting() {
     dispatch(editProfile());
   };
   return (
-    <DropdownButton title={user} variant="main-black">
+    <DropdownButton title={user || "sergiño"} variant="main-black">
       <Dropdown.Item href={ROUTES.EDIT_PROFILE} onClick={handleEditProfile}>
         Edit Profile
       </Dropdown.Item>
