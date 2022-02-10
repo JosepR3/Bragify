@@ -30,11 +30,10 @@ export function setPauseTracks() {
   return { type: TrackTypes.PAUSE_TRACK };
 }
 
-export function setLikedTracks(idList) {
-  idList = idList.map((id) => id._id);
+export function setLikedTracks(likedTracks) {
   return {
     type: TrackTypes.LIKE_TRACKS,
-    payload: { idList },
+    payload:  likedTracks ,
   };
 }
 
@@ -86,8 +85,6 @@ export async function fetchAllTracks(dispatch) {
     console.log(error, "deleteTrackError");
   }
 }
-
-
 
 
 // like button actions

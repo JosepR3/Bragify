@@ -2,7 +2,8 @@ import React from "react";
 import { Navigate } from "react-router-dom";
 import { authSelector } from "../../redux/auth/auth-selectors";
 import * as ROUTES from "../../routes";
-
+import LikedMusic from "../../components/organisms/likedMusic/LikedMusic";
+import TrackList from "../../components/molecules/TrackList/TrackList";
 // REDUX
 import { useSelector } from "react-redux";
 
@@ -21,7 +22,8 @@ function Home() {
 
   return (
     <>
-    <div>holaaaa</div>
+    <TrackList/>
+    <LikedMusic/>
     </>
         
   );

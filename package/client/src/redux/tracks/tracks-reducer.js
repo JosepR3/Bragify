@@ -77,15 +77,13 @@ export default function tracksReducer(state = initialState, action) {
     }
     
     case LIKE_TRACKS:{
-      const { idList } = action.payload;
-      const likedTracks = state.likedTracks.filter(track => !idList.includes(track));
-      idList.forEach(id => {
-        likedTracks.push(id)
-      });
+      const likedTracksList  = action.payload;
+      console.log(likedTracksList)
       return {
         ...state,
-        likedTracks: likedTracks
+        likedTracksList: likedTracksList
       }}
+
 
     case DELETE_TRACK:{
       const { id: trackId } = action.payload;

@@ -26,7 +26,7 @@ function SinglePlaylist() {
             <h3 id="shawn">
               <b>{playlistId?.name}</b>
             </h3>
-            <p className="brand_color">The Weeknd</p>
+            <p className="brand_color">{playlistId?.description}</p>
             <div className="d-flex gap-2 flex-row" id="interact_buttons">
               <button id="play">▶ Play</button>
               <button id="play">⥃ Shuffle</button>
