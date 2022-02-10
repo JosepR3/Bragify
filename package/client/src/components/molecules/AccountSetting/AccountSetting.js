@@ -14,7 +14,7 @@ function AccountSetting() {
   const dispatch = useDispatch();
   const { currentUser } = useSelector(authSelector);
 
-  const title = currentUser.username;
+  const user = currentUser.username;
 
   const handleSignOut = () => {
     dispatch(signOut());
@@ -25,7 +25,7 @@ function AccountSetting() {
     dispatch(editProfile());
   };
   return (
-    <DropdownButton title={title} variant="main-black">
+    <DropdownButton title={user} variant="main-black">
       <Dropdown.Item href={ROUTES.EDIT_PROFILE} onClick={handleEditProfile}>
         Edit Profile
       </Dropdown.Item>

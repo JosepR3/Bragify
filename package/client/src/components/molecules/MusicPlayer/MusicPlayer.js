@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
+// import { useSelector } from 'react-redux';
 
 import AudioPlayer from 'react-h5-audio-player';
 import 'react-h5-audio-player/src/styles.scss';
 
-// https://www.npmjs.com/package/react-h5-audio-player
 export default function MusicPlayer() {
 
     const tracksToPlay = ["https://res.cloudinary.com/dv1gu7nub/video/upload/v1618299312/Apollofy/Songs/Superstition_zyuldq.mp3"]
@@ -26,7 +25,7 @@ export default function MusicPlayer() {
 
     return (
         <AudioPlayer
-            autoPlay
+            // autoPlay
             autoPlayAfterSrcChange={true}
             showSkipControls={true}
             showJumpControls={false}

@@ -44,14 +44,15 @@ async function fetchPlaylists(req, res, next) {
   try {
     const playlist = await playlistRepo.find({ name: true }[0]);
     handleDbResponse(res, playlist);
+    res.status(201).send({
+      data: playlist,
+      error: null,
+    });
   } catch (error) {
     next(error);
   }
 
-  res.status(201).send({
-    data: playlist,
-    error: null,
-  });
+  
 
 }
 
