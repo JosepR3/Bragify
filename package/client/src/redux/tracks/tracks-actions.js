@@ -41,7 +41,7 @@ export function setLikedTracks(idList) {
 export function setLikeTrack(id) {
   return {
     type: TrackTypes.LIKE_TRACK,
-    payload:  id ,
+    payload: id,
   };
 }
 
@@ -96,6 +96,7 @@ export function likeTrack(id, userId) {
   const data = { trackId: id, userId: userId };
   return async function createThunk(dispatch) {
     try {
+      console.log("inside likeTrack " + id);
       await dispatch(authTrack(api.likeTrack, data));
       dispatch(setLikeTrack(id));
     } catch (error) {
@@ -106,7 +107,6 @@ export function likeTrack(id, userId) {
 
 export function unlikeTrack(id, userId) {
   const data = { trackId: id, userId: userId };
-  console.log(data)
   return async function createThunk(dispatch) {
     try {
       await dispatch(authTrack(api.unlikeTrack, data));
@@ -138,6 +138,7 @@ export function authTrack(action, data) {
       },
       data,
     );
+    console.log(response.data);
     return response.data;
   };
 }

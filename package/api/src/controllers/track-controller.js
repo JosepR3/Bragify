@@ -66,7 +66,6 @@ async function deleteTrack(req, res, next) {
 async function likeTrack(req, res, next) {
   const trackId = req.params.id;
   const { userId } = req.body;
-  console.log(userId);
   try {
     const tracks = await TrackRepo.likeTrack(trackId, userId);
     handleDbResponse(res, tracks);
@@ -102,5 +101,5 @@ module.exports = {
   likeTrack: likeTrack,
   unlikeTrack: unlikeTrack,
   fetchLikedTracks: fetchLikedTracks,
-  fetchTrackById:fetchTrackById
+  fetchTrackById: fetchTrackById
 };

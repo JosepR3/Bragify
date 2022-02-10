@@ -56,27 +56,31 @@ export default function tracksReducer(state = initialState, action) {
         isPlaying: true,
         playingTrack: action.payload,
       };
-    case LIKE_TRACK:{
+
+    case LIKE_TRACK: {
       const id = action.payload;
+      console.log(id)
       if (state.likedTracks.find(track => track === id)) {
+        console.log("inside like track")
         const likedTracks = state.likedTracks.filter(track => track !== id);
         return {
           ...state,
-          likedTracks
+          likedTracks: [...likedTracks]
         }
       }
       else {
+        "inside unlike track"
         const likedTracks = state.likedTracks.filter(track => track !== id);
 
-        likedTracks.push(action.payload.id);
+        likedTracks.push(id);
         return {
           ...state,
-          likedTracks: likedTracks
+          likedTracks: [...likedTracks]
         }
       }
     }
-    
-    case LIKE_TRACKS:{
+
+    case LIKE_TRACKS: {
       const { idList } = action.payload;
       const likedTracks = state.likedTracks.filter(track => !idList.includes(track));
       idList.forEach(id => {
@@ -85,9 +89,10 @@ export default function tracksReducer(state = initialState, action) {
       return {
         ...state,
         likedTracks: likedTracks
-      }}
+      }
+    }
 
-    case DELETE_TRACK:{
+    case DELETE_TRACK: {
       const { id: trackId } = action.payload;
       const tracks = state.tracks.filter(track => track._id !== trackId);
       return {
@@ -96,7 +101,8 @@ export default function tracksReducer(state = initialState, action) {
       }
 
 
+    }
+    default:
+      return state;
   }
-  default:
-    return state;
-}}
+}
