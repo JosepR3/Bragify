@@ -39,35 +39,36 @@ function Tracks() {
           <ListGroup.Item className="list_item_titles">Duration</ListGroup.Item>
         </ListGroup>
 
-      {tracks &&
-        tracks.map((track) => {
-          return (
-            <ListGroup
-              horizontal
-              className="list-row w-100 d-flex justify-content-center"
-              key={track._id}
-            >
-              <ListGroup.Item className=" d-flex gap-2 list_item">
-                <Card className="thumbnail">
-                  <img src={track.thumbnail}></img>
-                </Card>
-                {track.title}
-              </ListGroup.Item>
-              <ListGroup.Item className="list_item">
-                {track.artists}
-              </ListGroup.Item>
-              <ListGroup.Item className="list_item">
-                {track.genre}
-              </ListGroup.Item>
-              <ListGroup.Item className="list_item">
-                {track.duration}
-              </ListGroup.Item>
-              <LikeButton trackId={track._id} />
-              <DeleteButton id={track._id} />
-            </ListGroup>
-          );
-        })}
-    </div>
+        {tracks &&
+          tracks.map((track) => {
+            return (
+              <ListGroup
+                horizontal
+                className="list-row w-100 d-flex justify-content-center"
+                key={track._id}
+              >
+                <ListGroup.Item className=" d-flex gap-2 list_item">
+                  <Card className="thumbnail">
+                    <img src={track.thumbnail}></img>
+                  </Card>
+                  {track.title}
+                </ListGroup.Item>
+                <ListGroup.Item className="list_item">
+                  {track.artists}
+                </ListGroup.Item>
+                <ListGroup.Item className="list_item">
+                  {track.genre}
+                </ListGroup.Item>
+                <ListGroup.Item className="list_item">
+                  {track.duration}
+                </ListGroup.Item>
+                <LikeButton trackId={track._id} />
+                <DeleteButton id={track._id} />
+              </ListGroup>
+            );
+          })}
+      </div>
+    </>
   );
 }
 
