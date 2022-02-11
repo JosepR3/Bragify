@@ -63,11 +63,11 @@ const UploadTrack = () => {
 
   return (
     <main className="container text-center">
-      <section className="profile__wrapper container p-5">
-        <h1 className="font-bold align-self-start mx-4 mb-5">Upload a Track</h1>
-        <Form className="px-4" onSubmit={handleSubmit}>
-          <Form.Group>
-            <Form.Label>Title Track</Form.Label>
+      <section className="auth__wrapper container px-5 py-2">
+        <h1 className="font-bold align-self-start m-4">Upload a Track</h1>
+        <Form className="px-4 mb-2" onSubmit={handleSubmit}>
+          <Form.Group className="edit__form mb-2">
+            <Form.Label>Track Title</Form.Label>
             <Form.Control
               className="mb-2"
               name="title"
@@ -91,7 +91,7 @@ const UploadTrack = () => {
               // required
             />
           </Form.Group>
-          <Form.Group controlId="formBasicSelect">
+          <Form.Group controlId="formBasicSelect" className="edit__form mb-2">
             <Form.Label>Select genre</Form.Label>
             <Form.Control
               as="select"
@@ -107,8 +107,8 @@ const UploadTrack = () => {
               <option value="Trap">Trap</option>
             </Form.Control>
           </Form.Group>
-          <Form.Group className="mb-2">
-            <Form.Label>Thumbnail</Form.Label>
+          <Form.Group className="edit__form mb-2">
+            <Form.Label>Track Thumbnail</Form.Label>
             <Form.Control
               type="text"
               value={track.thumbnail}
@@ -117,10 +117,15 @@ const UploadTrack = () => {
               // required
             />
           </Form.Group>
-
-          <Button className="my-4 w-100" type="submit" variant="log-color">
-            Create Track
-          </Button>
+          <div className="d-flex justify-content-end">
+            <Button
+              className="btn__save my-2"
+              type="submit"
+              variant="log-color"
+            >
+              Upload Track
+            </Button>
+          </div>
         </Form>
       </section>
     </main>

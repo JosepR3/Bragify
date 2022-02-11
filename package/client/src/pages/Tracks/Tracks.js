@@ -26,16 +26,18 @@ function Tracks() {
   const currentUser = JSON.parse(localStorage.getItem("user"));
   const userId = currentUser._id;
   return (
-    <div className="container">
-      <ListGroup
-        horizontal
-        className="list-row w-100 d-flex justify-content-center"
-      >
-        <ListGroup.Item className="list_item_titles">Track</ListGroup.Item>
-        <ListGroup.Item className="list_item_titles">Artist</ListGroup.Item>
-        <ListGroup.Item className="list_item_titles">Genre</ListGroup.Item>
-        <ListGroup.Item className="list_item_titles">Duration</ListGroup.Item>
-      </ListGroup>
+    <>
+      <h2 className="page__title m-4">All Tracks</h2>
+      <div className="container">
+        <ListGroup
+          horizontal
+          className="list-row w-100 d-flex justify-content-center"
+        >
+          <ListGroup.Item className="list_item_titles">Track</ListGroup.Item>
+          <ListGroup.Item className="list_item_titles">Artist</ListGroup.Item>
+          <ListGroup.Item className="list_item_titles">Genre</ListGroup.Item>
+          <ListGroup.Item className="list_item_titles">Duration</ListGroup.Item>
+        </ListGroup>
 
       {tracks &&
         tracks.map((track) => {

@@ -10,6 +10,12 @@ body {
     width: 100vw;
     margin: 0;
     overflow: hidden;
+    color: white;
+}
+
+.page__title{
+  font-size: 4em;
+  text-shadow: 0.1em 0.1em 0 a.$main-black;
 }
 
 ::-webkit-scrollbar {
@@ -40,5 +46,12 @@ h1 {
  
 p {
    font-size: 0.8em;
+   margin: 0;
+   padding: 0;
+}
+
+svg{
+  margin: 0;
+  padding: 0;
 }
   

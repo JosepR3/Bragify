@@ -39,7 +39,7 @@ export default function TrackAlbumCard() {
               onClick={(e) => {
                 handlePlaylistId(e);
               }}
-              className="pl__card p-2 m-2"
+              className="pl__card p-2 m-1"
             >
               <div
                 id={playlist._id}

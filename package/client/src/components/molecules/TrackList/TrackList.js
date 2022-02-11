@@ -8,7 +8,7 @@ function TrackList() {
   const user = currentUser.username;
 
   return (
-    <div>
+    <div className="mt-3">
       <h4>Playlists made By {user}</h4>
       <TrackAlbumCard />
     </div>

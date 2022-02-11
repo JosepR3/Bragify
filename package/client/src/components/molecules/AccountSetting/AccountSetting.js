@@ -1,8 +1,7 @@
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { signOut, editProfile } from "../../../redux/auth/auth-actions";
-import { authSelector } from "../../../redux/auth/auth-selectors";
 
 import Dropdown from "react-bootstrap/Dropdown";
 import DropdownButton from "react-bootstrap/esm/DropdownButton";
@@ -12,9 +11,7 @@ import * as ROUTES from "../../../routes";
 function AccountSetting() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { currentUser } = useSelector(authSelector);
-
-  const user = currentUser.username;
+  const currentUser = JSON.parse(localStorage.getItem('user'))
 
   const handleSignOut = () => {
     dispatch(signOut());
@@ -25,7 +22,7 @@ function AccountSetting() {
     dispatch(editProfile());
   };
   return (
-    <DropdownButton title={user} variant="main-black">
+    <DropdownButton title={currentUser.username} variant="main-black">
       <Dropdown.Item href={ROUTES.EDIT_PROFILE} onClick={handleEditProfile}>
         Edit Profile
       </Dropdown.Item>

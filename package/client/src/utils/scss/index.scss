@@ -40,16 +40,15 @@ $theme-colors: map-merge($theme-colors, $custom-colors);
 @import "../../components/molecules/CurrentPlaying/currentPlaying";
 @import "../../components/molecules/AccountSetting/accountSetting";
 @import "../../components/molecules/MusicPlayer/musicPlayer";
-
+@import "../../components/molecules/SinglePlaylistHeader/singlePlaylistHeader.scss";
 //      organisms
 
 @import "../../components/organisms/Header/header";
 @import "../../components/organisms/SideBar/sideBar";
-@import "../../components/organisms/SingleAlbum/singleAlbum";
 @import "../../components/organisms/MainContainer/mainContainer";
 @import "../../components/organisms/Footer/footer";
 @import "../../components/organisms/UploadTrack/uploadTrack.scss";
-// @import "../../components/organisms/SinglePlaylist/singlePlaylist.scss";
+@import "../../components/organisms/SinglePlaylist/singlePlaylist.scss";
 @import "../../components/organisms/CreatePlaylist/createPlaylist.scss";
 
 //      pages

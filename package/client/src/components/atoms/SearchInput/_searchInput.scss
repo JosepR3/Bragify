@@ -1,8 +1,13 @@
 @use "../../../utils/scss/variables" as a;
 
 .search{
-  width: 18rem;
+  width: 18em;
+  height: inherit;
+  padding: 0.1em;
   &__icon{
     color: white;
+  }
+  &__input{
+    height: inherit;
   }
 }
