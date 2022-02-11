@@ -10,7 +10,7 @@ import {
   TO_TRACKS,
   LIKE_TRACK,
   LIKE_TRACKS,
-  DELETE_TRACK
+  DELETE_TRACK,
 } from "./tracks-types";
 
 export default function tracksReducer(state = initialState, action) {
@@ -48,7 +48,7 @@ export default function tracksReducer(state = initialState, action) {
       return {
         ...state,
         inTracks: true,
-        isEditing: false
+        isEditing: false,
       };
     case PLAY_TRACK:
       return {
@@ -56,47 +56,43 @@ export default function tracksReducer(state = initialState, action) {
         isPlaying: true,
         playingTrack: action.payload,
       };
-    case LIKE_TRACK:{
-      const id = action.payload;
-      if (state.likedTracks.find(track => track === id)) {
-        const likedTracks = state.likedTracks.filter(track => track !== id);
-        return {
-          ...state,
-          likedTracks
-        }
-      }
-      else {
-        const likedTracks = state.likedTracks.filter(track => track !== id);
 
-        likedTracks.push(action.payload.id);
+    case LIKE_TRACK: {
+      const id = action.payload;
+      if (state.likedTracks.find((track) => track === id)) {
+        const likedTracks = state.likedTracks.filter((track) => track !== id);
         return {
           ...state,
-          likedTracks: likedTracks
-        }
+          likedTracks: [...likedTracks],
+        };
+      } else {
+        const likedTracks = state.likedTracks.filter((track) => track !== id);
+        likedTracks.push(id);
+        return {
+          ...state,
+          likedTracks: [...likedTracks],
+        };
       }
     }
-    
-    case LIKE_TRACKS:{
-      const { idList } = action.payload;
-      const likedTracks = state.likedTracks.filter(track => !idList.includes(track));
-      idList.forEach(id => {
-        likedTracks.push(id)
-      });
+
+    case LIKE_TRACKS: {
+      const likedTracksList = action.payload;
+      console.log(likedTracksList);
       return {
         ...state,
-        likedTracks: likedTracks
-      }}
+        likedTracksList: likedTracksList,
+      };
+    }
 
-    case DELETE_TRACK:{
-      const { id: trackId } = action.payload;
-      const tracks = state.tracks.filter(track => track._id !== trackId);
+    case DELETE_TRACK: {
+      const trackId = action.payload;
+      const tracks = state.tracks.filter((track) => track._id !== trackId);
       return {
         ...state,
-        tracks
-      }
-
-
+        tracks,
+      };
+    }
+    default:
+      return state;
   }
-  default:
-    return state;
-}}
+}
