@@ -5,7 +5,9 @@ import TrackList from "../../components/molecules/TrackList/TrackList";
 
 function Playlists() {
   const location = useLocation();
-
+  const path = window.location.pathname.split("/");
+  const id = path.slice(-1);
+  
   return (
     <>
       
@@ -16,10 +18,11 @@ function Playlists() {
             <TrackList />
           </div>
         )}
-        {location.pathname === "/playlists/single-playlist" && <Outlet />}
+        {location.pathname === `/playlists/single-playlist/${id}` && <Outlet />}
       </div>
     </>
   );
 }
+
 
 export default withLayout(Playlists);

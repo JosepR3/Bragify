@@ -2,7 +2,6 @@ const { TrackRepo } = require("../repositories");
 const { handleDbResponse } = require("../repositories/repo-utils");
 
 async function createTrack(req, res, next) {
-  console.log(req.body);
 
   const { title, url, thumbnail, genre, duration, authorId } = req.body;
 
@@ -46,7 +45,6 @@ async function fetchTrackById(req, res, next) {
     const dbResponse = await TrackRepo.findById({
       _id: id,
     });
-    console.log(dbResponse);
     handleDbResponse(res, dbResponse);
   } catch (err) {
     next(err);

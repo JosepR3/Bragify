@@ -55,7 +55,7 @@ function App() {
         <Route exact path={ROUTES.HOME} element={<Home />} />
         <Route exact path={ROUTES.TRACKS} element={<Tracks />} />
         <Route path={ROUTES.PLAYLISTS} element={<Playlists />}>
-          <Route path="single-playlist" element={<SinglePlaylist />} />
+          <Route path="single-playlist/:id" element={<SinglePlaylist />} />
         </Route>
 
         <Route exact path={ROUTES.UPLOAD_TRACK} element={<UploadTrack />} />

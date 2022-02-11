@@ -1,4 +1,3 @@
-// import * as auth from "../../services/auth";
 import * as TrackTypes from "./tracks-types";
 import api from "../../api";
 import { getCurrentUserToken } from "../../services/auth";
@@ -72,7 +71,6 @@ export function updateTrack(id) {
 export function deleteTrack(id) {
   return async function createThunk(dispatch) {
     try {
-      console.log(id);
       dispatch(authTrack(api.deleteTrack, id));
       dispatch(updateTrack(id));
 
@@ -93,7 +91,6 @@ export async function fetchAllTracks(dispatch) {
     console.log(error, "fetcherror");
   }
 }
-
 
 // like button actions
 

@@ -39,7 +39,6 @@ export function createPlaylist(data) {
 
 export function fetchPlaylistById(data) {
   const token = getCurrentUserToken();
-  console.log(data);
   return async function createThunk(dispatch) {
     const res = await api.fetchPlaylistById(
       {
@@ -51,12 +50,15 @@ export function fetchPlaylistById(data) {
   };
 }
 
-export function deletePlaylist(data) {
+
+
+export function deletePlaylist(id) {
   return async function createThunk(dispatch) {
     try {
-      dispatch(api.deletePlaylist, data);
+      dispatch(playlistAuth(api.deletePlaylist,
+        id));
     } catch (error) {
-      console.log(error, "createPlaylistError");
+      console.log(error, "deleteTrackError");
     }
   };
 }
@@ -80,11 +82,8 @@ export async function fetchAllPlaylists(dispatch) {
     const res = await api.fetchAllPlaylists({
       headers: { Authorization: `Bearer ${userToken}` },
     });
-
-    return dispatch(
-      setPlaylistsResult(res.data.data),
-      console.log(res.data.data),
-    );
+    return dispatch(setPlaylistsResult(res.data.data));
+  
   } catch (error) {
     console.log(error, "fetch Playlists error");
   }

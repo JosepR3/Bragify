@@ -77,7 +77,6 @@ export default function tracksReducer(state = initialState, action) {
 
     case LIKE_TRACKS: {
       const likedTracksList = action.payload;
-      console.log(likedTracksList);
       return {
         ...state,
         likedTracksList: likedTracksList,

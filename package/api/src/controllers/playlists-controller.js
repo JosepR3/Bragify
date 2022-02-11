@@ -2,7 +2,6 @@ const { playlistRepo } = require("../repositories");
 const { handleDbResponse } = require("../repositories/repo-utils");
 
 async function createPlaylist(req, res, next) {
-  console.log(req);
   const { name, description, thumbnail, authorId } = req.body;
 
   try {
@@ -28,12 +27,10 @@ async function createPlaylist(req, res, next) {
 
 async function fetchPlaylistById(req, res, next) {
   const id = req.params.id;
-  console.log( req.params)
   try {
     const dbResponse = await playlistRepo.findById({
       _id: id,
     });
-    console.log(dbResponse);
     handleDbResponse(res, dbResponse);
   } catch (err) {
     next(err);
@@ -57,13 +54,12 @@ async function fetchPlaylists(req, res, next) {
 }
 
 async function deletePlaylist(req, res, next) {
+
   const id = req.params.id;
   try {
     const playlist = await playlistRepo.deleteOne(id);
-    console.log(req.params.id);
     handleDbResponse(res, playlist);
   } catch (error) {
-    console.log(req.params);
     next(error);
   }
 }

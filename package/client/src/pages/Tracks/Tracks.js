@@ -7,9 +7,8 @@ import {
 } from "../../redux/tracks/tracks-actions";
 
 import withLayout from "../../components/HOC/withLayout";
-import DeleteButton from "../../components/atoms/DeleteButton";
 import LikeButton from "../../components/atoms/LikeButton";
-
+import DeleteButton from "../../components/atoms/DeleteButton";
 import ListGroup from "react-bootstrap/ListGroup";
 import Card from "react-bootstrap/Card";
 
@@ -63,7 +62,7 @@ function Tracks() {
                 {track.duration}
               </ListGroup.Item>
               <LikeButton trackId={track._id} />
-              <DeleteButton id={track._id} />
+              <DeleteButton trackId={track._id} />
             </ListGroup>
           );
         })}
