@@ -18,6 +18,7 @@ const UploadTrack = () => {
     thumbnail: "",
     genre: "",
     authorId: "",
+    artists: "",
   });
 
   function uploadTrack(files) {
@@ -75,7 +76,19 @@ const UploadTrack = () => {
               placeholder="Title Track"
               value={track.title}
               onChange={handleInput}
-              // required
+              required
+            />
+          </Form.Group>
+          <Form.Group className="edit__form mb-2">
+            <Form.Label>Artists</Form.Label>
+            <Form.Control
+              className="mb-2"
+              name="artists"
+              type="text"
+              placeholder="Artists"
+              value={track.artists}
+              onChange={handleInput}
+              required
             />
           </Form.Group>
           <Form.Group className="mb-2">
@@ -91,6 +104,7 @@ const UploadTrack = () => {
               // required
             />
           </Form.Group>
+
           <Form.Group controlId="formBasicSelect" className="edit__form mb-2">
             <Form.Label>Select genre</Form.Label>
             <Form.Control
@@ -106,6 +120,7 @@ const UploadTrack = () => {
               <option value="Reggaeton">Reggaeton</option>
               <option value="Trap">Trap</option>
             </Form.Control>
+
           </Form.Group>
           <Form.Group className="edit__form mb-2">
             <Form.Label>Track Thumbnail</Form.Label>
@@ -114,7 +129,7 @@ const UploadTrack = () => {
               value={track.thumbnail}
               onChange={handleInput}
               name="thumbnail"
-              // required
+              required
             />
           </Form.Group>
           <div className="d-flex justify-content-end">

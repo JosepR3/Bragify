@@ -11,6 +11,8 @@ import {
   LIKE_TRACK,
   LIKE_TRACKS,
   DELETE_TRACK,
+  GET_TRACK_SUCCESS,
+  TRACK_URL,
 } from "./tracks-types";
 
 export default function tracksReducer(state = initialState, action) {
@@ -57,6 +59,12 @@ export default function tracksReducer(state = initialState, action) {
         playingTrack: action.payload,
       };
 
+    case TRACK_URL:
+      return {
+        ...state,
+        trackURL: action.payload,
+      };
+
     case LIKE_TRACK: {
       const id = action.payload;
       if (state.likedTracks.find((track) => track === id)) {
@@ -75,9 +83,15 @@ export default function tracksReducer(state = initialState, action) {
       }
     }
 
+    case GET_TRACK_SUCCESS: {
+      return {
+        ...state,
+        trackId: action.payload,
+      };
+    }
+
     case LIKE_TRACKS: {
       const likedTracksList = action.payload;
-      console.log(likedTracksList);
       return {
         ...state,
         likedTracksList: likedTracksList,

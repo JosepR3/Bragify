@@ -7,7 +7,9 @@ const initialState = {
     myPlaylist: [],
     myTracks: [],
     tracks: null,
-    likedTracksList: null
+    likedTracksList: null,
+    trackId: null,
+    trackURL: null
 }
 
 export default initialState 

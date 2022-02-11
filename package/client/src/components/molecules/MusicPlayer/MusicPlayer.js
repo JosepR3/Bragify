@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
-// import { useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 import AudioPlayer from 'react-h5-audio-player';
 import 'react-h5-audio-player/src/styles.scss';
+import { tracksSelector } from '../../../redux/tracks/tracks-selector';
+
 
 export default function MusicPlayer() {
-
-    const tracksToPlay = ["https://res.cloudinary.com/dv1gu7nub/video/upload/v1618299312/Apollofy/Songs/Superstition_zyuldq.mp3"]
+    const { trackURL } = useSelector(tracksSelector);
+    const tracksToPlay = [trackURL]
     const [number, setNumber] = useState(0);
 
     function handleClickPrevious() {

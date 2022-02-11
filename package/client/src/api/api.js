@@ -69,9 +69,25 @@ function makeApi(request = makeRequest()) {
   }
 
   function fetchPlaylistById(headers, data) {
-    console.log(data)
     return request({
       url: "/playlist/" + data,
+      requestMethod: "GET",
+      headers: headers,
+    });
+  }
+
+  function fetchTrackUrl(headers, data) {
+    console.log(data);
+    return request({
+      url: "/track-url/" + data,
+      requestMethod: "GET",
+      headers: headers,
+    });
+  }
+
+  function fetchTrackById(headers, data) {
+    return request({
+      url: "/track/" + data,
       requestMethod: "GET",
       headers: headers,
     });
@@ -113,6 +129,7 @@ function makeApi(request = makeRequest()) {
     signOut: signOut,
     editUser: editUser,
     getAllTracks: getAllTracks,
+    fetchTrackById: fetchTrackById,
     deleteTrack: deleteTrack,
     createTrack: createTrack,
     getUser: getUser,
@@ -122,6 +139,7 @@ function makeApi(request = makeRequest()) {
     createPlaylist: createPlaylist,
     fetchAllPlaylists: fetchAllPlaylists,
     fetchPlaylistById: fetchPlaylistById,
+    fetchTrackUrl: fetchTrackUrl,
   };
 }
 

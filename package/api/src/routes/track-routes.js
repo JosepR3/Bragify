@@ -7,7 +7,8 @@ const trackRouter = Router();
 
 trackRouter.post("/tracks", trackController.createTrack);
 trackRouter.get("/tracks", trackController.fetchTracks);
-trackRouter.get("/tracks/:id", trackController.fetchTrackById);
+trackRouter.get("/track/:id", trackController.fetchTrackById);
+trackRouter.get("/track-url/:id", trackController.fetchTrackUrl);
 trackRouter.delete("/tracks/:id", trackController.deleteTrack);
 trackRouter.put("/tracks/:id/like", trackController.likeTrack);
 trackRouter.put("/tracks/:id/unlike", trackController.unlikeTrack);
