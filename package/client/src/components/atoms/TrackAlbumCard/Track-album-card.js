@@ -79,7 +79,6 @@ export default function TrackAlbumCard() {
                 >
                   {playlist.name}
                 </Card.Title>
-
                 <Card.Subtitle
                   id={playlist._id}
                   onClick={(e) => {

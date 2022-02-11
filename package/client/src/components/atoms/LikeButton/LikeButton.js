@@ -2,7 +2,6 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Button from 'react-bootstrap/Button';
 import { likeTrack, unlikeTrack} from '../../../redux/tracks/tracks-actions';
-import './likeButton.scss';
 import filledLike from '../../../assets/images/filled_like.svg';
 import unfilledLike from '../../../assets/images/unfilled_like.svg';
 

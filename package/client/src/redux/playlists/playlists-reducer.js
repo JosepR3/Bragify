@@ -34,7 +34,25 @@ const playlistsReducer = (state = playlistsState, action) => {
       };
     }
 
-
+    case PlaylistTypes.ADD_TO_PLAYLIST_SUCCESS: {
+      return {
+      };
+    }
+    case PlaylistTypes.ADD_TO_PLAYLIST_ERROR: {
+      return {
+        ...state,
+      };
+    }
+    case PlaylistTypes.REMOVE_TO_PLAYLIST_SUCCESS: {
+      return {
+        ...state,
+      };
+    }
+    case PlaylistTypes.REMOVE_TO_PLAYLIST_ERROR: {
+      return {
+        ...state,
+      };
+    }
     default:
       return state;
   }

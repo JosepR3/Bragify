@@ -6,8 +6,11 @@ import { fetchAllTracks, fetchLikedTracks } from "../../redux/tracks/tracks-acti
 import withLayout from "../../components/HOC/withLayout";
 import DeleteButton from "../../components/atoms/DeleteButton";
 import LikeButton from "../../components/atoms/LikeButton";
+import AddtoPlayListButton from "../../components/atoms/AddtoPlayListButton";
+
 
 import ListGroup from "react-bootstrap/ListGroup";
+// import { playlistStateSelector } from "../../redux/playlists/playlists-selector";
 
 function Tracks() {
   const dispatch = useDispatch();
@@ -18,10 +21,11 @@ function Tracks() {
   }, [dispatch]);
 
   const { tracks } = useSelector(tracksSelector);
-
+  // const playlistId = useSelector(playlistStateSelector)
   const currentUser = JSON.parse(localStorage.getItem('user'))
   const userId = currentUser._id
-  return (
+  const playlistId ="6206283424250128f02e65d5"
+  return (<>
     <div className="container">
       <ListGroup
         horizontal
@@ -54,13 +58,17 @@ function Tracks() {
               <ListGroup.Item className="list_item">
                 {track.duration}
               </ListGroup.Item>
+              <AddtoPlayListButton
+                playlistId={playlistId}
+                trackId={track._id}
+              />
               <LikeButton trackId={track._id} />
               <DeleteButton id={track._id} />
             </ListGroup>
           );
         })}
     </div>
-  );
+  </>);
 }
 
 export default withLayout(Tracks);

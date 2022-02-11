@@ -67,10 +67,21 @@ async function deletePlaylist(req, res, next) {
     next(error);
   }
 }
+// --------------------------actios  playlist logic -----------------------------------
+async function addtoList(req, res, next) {
+  const {trackId, playlistId, }= req.body;
+  try {
+    const playlist = await playlistRepo.addPlaylist(trackId, playlistId);
+    handleDbResponse(res, playlist);
+  } catch (error) {
+    next(error);
+  }
+}
 
 module.exports = {
   createPlaylist: createPlaylist,
   fetchPlaylistById: fetchPlaylistById,
   fetchPlaylists: fetchPlaylists,
   deletePlaylist: deletePlaylist,
+  addtoList: addtoList,
 };
