@@ -25,14 +25,15 @@ function Tracks() {
 
   const handleTrackId = (e) => {
     const id = e.target.id;
-    localStorage.setItem("trackId", id );
-    let trackId  = localStorage.getItem("trackId");
+    localStorage.setItem("trackId", id);
+    let trackId = localStorage.getItem("trackId");
     console.log(trackId);
     dispatch(fetchTrackById(trackId));
   };
 
   const { tracks } = useSelector(tracksSelector);
-
+  const status = useSelector((state) => state.tracks.status);
+  const deletedTrack = useSelector((state) => state.tracks.deletedTrack);
   const currentUser = JSON.parse(localStorage.getItem("user"));
   const userId = currentUser._id;
   return (
@@ -85,7 +86,7 @@ function Tracks() {
               </ListGroup.Item>
               <ListGroup.Item className="track__row-buttons">
                 <LikeButton trackId={track._id} />
-                <DeleteButton trackId={track._id} />
+                <DeleteButton id={track._id} />
                 <Button className="btn__options">
                   <BsPlusLg />{" "}
                 </Button>
@@ -93,6 +94,9 @@ function Tracks() {
             </ListGroup>
           );
         })}
+      {status === "DELETE_SUCCESS" && (
+        <p>{deletedTrack.title} deleted successfully</p>
+      )}
     </div>
   );
 }
