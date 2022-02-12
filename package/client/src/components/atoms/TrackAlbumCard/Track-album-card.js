@@ -8,7 +8,6 @@ import { playlistStateSelector } from "../../../redux/playlists/playlists-select
 import { RiPlayCircleFill } from "react-icons/ri";
 import { fetchPlaylistById } from "../../../redux/playlists/playlists-actions";
 // import { playTrack } from "../../../redux/tracks/tracks-actions";
-import DeletePlaylistButton from "../../../components/atoms/DeletePlaylistButton/DeletePlaylistButton";
 
 export default function TrackAlbumCard() {
   const dispatch = useDispatch();
@@ -22,10 +21,8 @@ export default function TrackAlbumCard() {
   const handlePlaylistId = (e) => {
     const id = e.target.id;
     dispatch(fetchPlaylistById(id))
-    ;
+      ;
   };
-
-
 
   return (
     <>
@@ -96,5 +93,5 @@ export default function TrackAlbumCard() {
         })
       }
     </>
-    );
+  );
 }

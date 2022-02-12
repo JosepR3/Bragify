@@ -3,6 +3,7 @@ const { handleDbResponse } = require('../repositories/repo-utils');
 
 
 async function search(req, res, next) {
+    console.log('searching');
     const string = req.params.string;
 
     try {
@@ -10,12 +11,16 @@ async function search(req, res, next) {
         const tracks = await TrackRepo.search(string);
         const playlists = await playlistRepo.search(string);
         const users = await UserRepo.search(string);
-        console.log(tracks);
-        console.log(playlists);
-        console.log(users);
-        const results =
-            [tracks, playlists, users]
-        console.log(results);
+        const results = {
+            data: {
+                tracks: [],
+                playlists: [],
+                users: []
+            }
+        }
+        tracks.data.length > 0 && results.data.tracks.push(tracks.data);
+        playlists.data.length > 0 && results.data.playlists.push(playlists.data);
+        users.data.length > 0 && results.data.users.push(users.data);
         handleDbResponse(res, results);
 
     } catch (error) {
