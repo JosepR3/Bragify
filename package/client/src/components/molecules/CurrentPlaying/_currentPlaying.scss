@@ -7,9 +7,20 @@
 
 .btn__options {
   background: transparent;
-  color: white;
+  color: rgb(175, 175, 175);
   border: none;
-  
+  &:active{
+    color: rgb(175, 175, 175);
+  }
+  &:focus{
+    background-color: transparent;
+    color: inherit;
+    outline: 0%;
+  }
+  &:hover{
+    color: white;
+    background-color: transparent;
+  }
   &-round{
     height: 2em;
     width: 2em;
@@ -20,6 +31,10 @@
     &:hover{
       background-color: rgba(255, 255, 255, 0.24);
       filter: brightness(150%);
+    }
+    &:focus{
+      background-color: inherit;
+      color: inherit;
     }
   }
 }

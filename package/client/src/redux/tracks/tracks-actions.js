@@ -1,4 +1,3 @@
-// import * as auth from "../../services/auth";
 import * as TrackTypes from "./tracks-types";
 import api from "../../api";
 import { getCurrentUserToken } from "../../services/auth";
@@ -44,12 +43,6 @@ export function setLikeTrack(id) {
   };
 }
 
-export function getTrackUrl(url) {
-  return {
-    type: TrackTypes.TRACK_URL,
-    payload: url,
-  };
-}
 
 export function playTrack(track) {
   return {
@@ -83,7 +76,6 @@ export function createTrack(data) {
 export function deleteTrack(id) {
   return async function createThunk(dispatch) {
     try {
-      console.log(id);
       dispatch(authTrack(api.deleteTrack, id));
       dispatch(updateTrack(id));
     } catch (error) {
@@ -113,7 +105,6 @@ export function fetchTrackById(data) {
       },
       data,
     );
-    dispatch(getTrackUrl(res?.data?.data?.url))
     dispatch(getTrackSuccess(res.data));
   };
 }

@@ -91,8 +91,8 @@ const UploadTrack = () => {
               required
             />
           </Form.Group>
-          <Form.Group className="mb-2">
-            <Form.Label>Upload Track</Form.Label>
+          <Form.Group className="edit__form mb-2">
+            <Form.Label>Track URL</Form.Label>
             <Form.Control
               type="file"
               value={track.url}

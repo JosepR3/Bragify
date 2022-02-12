@@ -1,0 +1,11 @@
+@use "../../../utils/scss/variables" as a;
+
+.fill_like{
+  color: a.$brand-color;
+  &:active{
+    border: none;
+    background-color: transparent;
+  }
+}
+
+

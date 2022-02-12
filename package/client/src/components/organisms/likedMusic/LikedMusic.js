@@ -20,8 +20,6 @@ function LikedMusic() {
   const userId = currentUser._id;
   const { likedTracksList } = useSelector(tracksSelector);
 
-  console.log(likedTracksList);
-
   return (
     <>
       <h1 className="font-bold text-center mx-4 mb-5">

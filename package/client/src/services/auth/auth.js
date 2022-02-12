@@ -33,7 +33,6 @@ export function signInWithGoogle() {
 }
 
 export function singInWithEmailAndPassword(email, password) {
-  console.log(email, password)
   return auth.signInWithEmailAndPassword(email, password);
 }
 

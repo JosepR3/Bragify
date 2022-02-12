@@ -5,7 +5,6 @@ import SinglePlaylistHeader from "../../molecules/SinglePlaylistHeader";
 import SinglePlaylistTracks from "../../molecules/SinglePlaylistTracks";
 
 function SinglePlaylist() {
-
   return (
     <div className="mb-3">
       <SinglePlaylistHeader />
