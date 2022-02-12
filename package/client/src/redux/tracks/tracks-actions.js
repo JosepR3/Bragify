@@ -33,7 +33,7 @@ export function setPauseTracks() {
 export function setLikedTracks(likedTracks) {
   return {
     type: TrackTypes.LIKE_TRACKS,
-    payload:  likedTracks ,
+    payload: likedTracks,
   };
 }
 
@@ -72,7 +72,6 @@ export function updateTrack(id) {
 export function deleteTrack(id) {
   return async function createThunk(dispatch) {
     try {
-      console.log(id);
       dispatch(authTrack(api.deleteTrack, id));
       dispatch(updateTrack(id));
 

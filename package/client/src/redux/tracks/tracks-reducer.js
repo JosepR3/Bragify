@@ -59,25 +59,25 @@ export default function tracksReducer(state = initialState, action) {
 
     case LIKE_TRACK: {
       const id = action.payload;
-      if (state.likedTracks.find((track) => track === id)) {
-        const likedTracks = state.likedTracks.filter((track) => track !== id);
+      if (state.likedTracksList.find((track) => track._id === id)) {
+        const likedTracks = state.likedTracksList.filter((track) => track._id !== id);
         return {
           ...state,
-          likedTracks: [...likedTracks],
+          likedTracksList: [...likedTracks],
         };
       } else {
-        const likedTracks = state.likedTracks.filter((track) => track !== id);
-        likedTracks.push(id);
+        const likedTracks = state.likedTracksList.filter((track) => track._id !== id);
+        const newlikedTrack = state.tracks.find((track) => track._id === id);
+        likedTracks.push(newlikedTrack);
         return {
           ...state,
-          likedTracks: [...likedTracks],
+          likedTracksList: [...likedTracks],
         };
       }
     }
 
     case LIKE_TRACKS: {
       const likedTracksList = action.payload;
-      console.log(likedTracksList);
       return {
         ...state,
         likedTracksList: likedTracksList,
@@ -86,10 +86,14 @@ export default function tracksReducer(state = initialState, action) {
 
     case DELETE_TRACK: {
       const trackId = action.payload;
+      const deletedTrack = state.tracks.find((track) => track._id === trackId);
       const tracks = state.tracks.filter((track) => track._id !== trackId);
+      const deletesuccess = "DELETE_SUCCESS"
       return {
         ...state,
         tracks,
+        status: deletesuccess,
+        deletedTrack,
       };
     }
     default:

@@ -10,8 +10,8 @@ export default function LikeButton({ trackId }) {
     const dispatch = useDispatch();
     const currentUser = JSON.parse(localStorage.getItem('user'))
     const userId = currentUser._id
-    const likedTracks = useSelector((state) => state.tracks.likedTracks);
-    const isLiked = likedTracks.find(e => e === trackId);
+    const likedTracks = useSelector((state) => state.tracks.likedTracksList);
+    const isLiked = likedTracks.find(e => e._id === trackId);
 
     const handleLike = () => {
 

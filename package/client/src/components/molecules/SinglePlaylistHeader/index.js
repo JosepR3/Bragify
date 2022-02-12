@@ -1,1 +1,1 @@
-export { default } from "./SinglePlaylistHeader"
+export { default } from "./SinglePlaylistHeader";

@@ -22,7 +22,8 @@ function Tracks() {
   }, [dispatch]);
 
   const { tracks } = useSelector(tracksSelector);
-
+  const status = useSelector((state) => state.tracks.status);
+  const deletedTrack = useSelector((state) => state.tracks.deletedTrack);
   const currentUser = JSON.parse(localStorage.getItem("user"));
   const userId = currentUser._id;
   return (
@@ -68,6 +69,9 @@ function Tracks() {
             );
           })}
       </div>
+      {status === "DELETE_SUCCESS" && <p>
+        {deletedTrack.title} deleted successfully
+      </p>}
     </>
   );
 }
