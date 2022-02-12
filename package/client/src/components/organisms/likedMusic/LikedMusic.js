@@ -6,6 +6,7 @@ import { tracksSelector } from "../../../redux/tracks/tracks-selector";
 
 import { fetchLikedTracks } from "../../../redux/tracks/tracks-actions";
 
+import { fetchTrackById } from "../../../redux/tracks/tracks-actions";
 import Card from "react-bootstrap/Card";
 import { RiPlayCircleFill } from "react-icons/ri";
 
@@ -16,22 +17,34 @@ function LikedMusic() {
     dispatch(fetchLikedTracks(userId));
   }, [dispatch]);
 
+  const handleTrackId = (e) => {
+    const id = e.target.id;
+    localStorage.setItem("trackId", id);
+    let trackId = localStorage.getItem("trackId");
+    console.log(trackId);
+    dispatch(fetchTrackById(trackId));
+  };
+
   const currentUser = JSON.parse(localStorage.getItem("user"));
   const userId = currentUser._id;
   const { likedTracksList } = useSelector(tracksSelector);
 
   return (
     <>
-      <h1 className="font-bold text-center mx-4 mb-5">
-        Tracks that you liked
-      </h1>
+      <h1 className="font-bold text-center mx-4 mb-5">Tracks that you liked</h1>
       <main className="container text-center d-flex">
-      {likedTracksList?.length == 0 && "Don't you have a favorite song yet? find one by listening to our list of available tracks!"}
+        {likedTracksList?.length == 0 &&
+          "Don't you have a favorite song yet? find one by listening to our list of available tracks!"}
 
         {likedTracksList &&
           likedTracksList.map((track) => {
             return (
-              <Card key={track._id} id={track._id} className="pl__card p-2 m-2">
+              <Card
+                onClick={(e) => handleTrackId(e)}
+                key={track._id}
+                id={track._id}
+                className="pl__card p-2 m-2"
+              >
                 <div
                   id={track._id}
                   className="pl__card-img-container position-relative p-0"

@@ -7,12 +7,11 @@ import {
   TRACKS_LOADING,
   TRACKS_LOADING_SUCCESS,
   PLAY_TRACK,
-  TO_TRACKS,
   LIKE_TRACK,
   LIKE_TRACKS,
   DELETE_TRACK,
   GET_TRACK_SUCCESS,
-  TRACK_URL,
+
 } from "./tracks-types";
 
 export default function tracksReducer(state = initialState, action) {
@@ -46,23 +45,12 @@ export default function tracksReducer(state = initialState, action) {
         ...state,
         status: "success",
       };
-    case TO_TRACKS:
-      return {
-        ...state,
-        inTracks: true,
-        isEditing: false,
-      };
+
     case PLAY_TRACK:
       return {
         ...state,
         isPlaying: true,
         playingTrack: action.payload,
-      };
-
-    case TRACK_URL:
-      return {
-        ...state,
-        trackURL: action.payload,
       };
 
     case LIKE_TRACK: {
@@ -84,9 +72,12 @@ export default function tracksReducer(state = initialState, action) {
     }
 
     case GET_TRACK_SUCCESS: {
+      localStorage.setItem("trackURL", action.payload.data.url);
+      let trackURL = localStorage.getItem("trackURL");
       return {
         ...state,
         trackId: action.payload,
+        trackURL: trackURL,
       };
     }
 

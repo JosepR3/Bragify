@@ -43,7 +43,6 @@ export function setLikeTrack(id) {
   };
 }
 
-
 export function playTrack(track) {
   return {
     type: TrackTypes.PLAY_TRACK,
@@ -64,6 +63,7 @@ export function getTrackSuccess(id) {
 
 // track CRUD functions
 export function createTrack(data) {
+  console.log(data)
   return async function createThunk(dispatch) {
     try {
       dispatch(authTrack(api.createTrack, data));
@@ -108,6 +108,7 @@ export function fetchTrackById(data) {
     dispatch(getTrackSuccess(res.data));
   };
 }
+
 
 // like button actions
 

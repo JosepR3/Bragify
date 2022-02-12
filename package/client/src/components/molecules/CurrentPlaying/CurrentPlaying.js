@@ -20,8 +20,7 @@ export default function CurrentPlaying() {
         {trackId?.data?.title}
         </Card.Title>
         <Card.Subtitle className="pl__card-subtitle m-0">
-          Some quick example text to build on the card title and make up the
-          bulk of the content.
+        {trackId?.data?.artists}
         </Card.Subtitle>
         <div className="cp__options">
           <button className="btn__options mx-1">

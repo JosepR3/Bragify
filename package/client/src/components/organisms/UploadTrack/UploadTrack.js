@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { createTrack } from "../../../redux/tracks/tracks-actions";
 import Button from "react-bootstrap/Button";
@@ -9,6 +10,7 @@ import withLayout from "../../HOC/withLayout";
 
 const UploadTrack = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [linkTrack, setLinkTrack] = useState("");
   // const [linkImg, setLinkImg] = useState("");
 
@@ -31,16 +33,7 @@ const UploadTrack = () => {
         setLinkTrack(res.data.secure_url);
       });
   }
-  // function uploadImage(files) {
-  //   const formData = new FormData();
-  //   formData.append("file", files[0]);
-  //   formData.append("upload_preset", "d8nsvm8g");
-  //   axios
-  //     .post("https://api.cloudinary.com/v1_1/drjrc7z28/image/upload", formData)
-  //     .then((res) => {
-  //       setLinkImg(res.data.secure_url);
-  //     });
-  // }
+
   function handleInput(e) {
     const { target } = e;
     const { name, value } = target;
@@ -53,6 +46,7 @@ const UploadTrack = () => {
   }
 
   function handleSubmit(e) {
+    console.log(track);
     e.preventDefault();
     const completeTrack = Object.assign(
       track,
@@ -60,6 +54,7 @@ const UploadTrack = () => {
       { authorId: getCurrentUserUid() },
     );
     dispatch(createTrack(completeTrack));
+    navigate("/tracks")
   }
 
   return (
@@ -120,7 +115,6 @@ const UploadTrack = () => {
               <option value="Reggaeton">Reggaeton</option>
               <option value="Trap">Trap</option>
             </Form.Control>
-
           </Form.Group>
           <Form.Group className="edit__form mb-2">
             <Form.Label>Track Thumbnail</Form.Label>
