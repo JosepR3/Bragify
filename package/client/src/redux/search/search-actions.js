@@ -14,7 +14,7 @@ export function search(data) {
             console.log(data)
             const res = await dispatch(searchAuth(api.search, data));
             console.log(res.data)
-            // dispatch(setResults(res.data));
+            dispatch(setResults(res.data));
         } catch (error) {
             console.log(error, "searchError");
         }
