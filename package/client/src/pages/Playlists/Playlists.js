@@ -14,7 +14,7 @@ function Playlists() {
       <div>
         {location.pathname === "/playlists" && (
           <div className="mx-4">
-            <h2 className="my-4 page__title">Playlists</h2>
+            <h2 className="my-4 px-5 page__title">Playlists</h2>
             <TrackList />
           </div>
         )}

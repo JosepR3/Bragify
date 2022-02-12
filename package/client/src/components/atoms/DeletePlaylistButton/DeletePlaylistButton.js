@@ -5,7 +5,7 @@ import { deletePlaylist } from "../../../redux/playlists/playlists-actions";
 
 import Button from "react-bootstrap/Button";
 
-import { BsTrash } from "react-icons/bs"
+import { BsTrash } from "react-icons/bs";
 
 export default function DeletePlaylistButton({ id }) {
   const dispatch = useDispatch();
@@ -17,7 +17,7 @@ export default function DeletePlaylistButton({ id }) {
     }
 
   return (
-    <Button className="btn__trash-round m-0 ms-3" data-test-id="delete-button" id={id} onClick={handleDelete}>
+    <Button className="btn__trash-round m-0 ms-3" id={id} onClick={handleDelete}>
       <BsTrash className="h-50 w-50" />
     </Button>
   );

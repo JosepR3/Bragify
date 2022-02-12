@@ -16,6 +16,7 @@ body {
 .page__title{
   font-size: 4em;
   text-shadow: 0.1em 0.1em 0 a.$main-black;
+  border-bottom: 1px gray solid;
 }
 
 ::-webkit-scrollbar {

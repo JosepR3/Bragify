@@ -1,10 +1,10 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { deleteTrack } from "../../../redux/tracks/tracks-actions";
+
 import Button from "react-bootstrap/Button";
 
-import deleteIcon from '../../../assets/images/delete.svg';
-
+import { BsTrash } from "react-icons/bs"
 
 export default function DeleteButton({ id }) {
     const dispatch = useDispatch();
@@ -13,7 +13,9 @@ export default function DeleteButton({ id }) {
         dispatch(deleteTrack(id));
     }
 
-    return <Button variant="danger" data-test-id="delete-button" id={id} onClick={handleDelete} >
-        <img src={deleteIcon} />
-    </Button>;
+  return (
+    <Button className="btn__options" id={id} onClick={handleDelete} >
+      <BsTrash />
+    </Button>
+    )
 }
