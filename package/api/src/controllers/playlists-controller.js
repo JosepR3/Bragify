@@ -69,10 +69,10 @@ async function deletePlaylist(req, res, next) {
 }
 // --------------------------actios  playlist logic -----------------------------------
 async function addtoList(req, res, next) {
-  const {trackId, playlistId, }= req.body;
+  const { TrackId, playListId }= req.body;
   try {
-    const playlist = await playlistRepo.addPlaylist(trackId, playlistId);
-    handleDbResponse(res, playlist);
+ playlistRepo.addPlaylist(TrackId, playListId);
+    // handleDbResponse(res, playlist);
   } catch (error) {
     next(error);
   }

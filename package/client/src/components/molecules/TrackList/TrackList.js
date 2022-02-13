@@ -1,14 +1,17 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
-import TrackAlbumCard from "../../atoms/TrackAlbumCard";
-
+import { useSelector } from "react-redux";
+import { authSelector } from "../../../redux/auth/auth-selectors";
+import TrackAlbumCard from "../../atoms/TrackAlbumCard/Track-album-card";
 
 function TrackList() {
-  const navigate = useNavigate();
-  
+  const { currentUser } = useSelector(authSelector);
+  const user = currentUser.username;
 
   return (
-    <TrackAlbumCard onClick={() => navigate("/playlists/single-playlist")}/>
+    <div>
+      <h4>Playlists made By {user}</h4>
+      <TrackAlbumCard />
+    </div>
   );
 }
 

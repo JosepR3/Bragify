@@ -51,6 +51,7 @@ import withLayout from "../../HOC/withLayout";
             <Form.Label>Playlist name</Form.Label>
             <Form.Control
               name="name"
+              className="mb-2"
               type="text"
               value={playlist.name}
               onChange={handleInput}

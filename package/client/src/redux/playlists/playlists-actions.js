@@ -96,13 +96,13 @@ export async function fetchAllPlaylists(dispatch) {
 
     return dispatch(
       setPlaylistsResult(res.data.data),
-      console.log(res.data.data),
+      // console.log(res.data.data),
     );
   } catch (error) {
     console.log(error, "fetch Playlists error");
   }
 }
-// ----------------------------------------- Actions add tracks ti list---------------------------------------------------------
+// ----------------------------------------- Actions add tracks to list---------------------------------------------------------
 
 // export function fetchLikedTracks(userId) {
 //   return async function createThunk(dispatch) {
@@ -116,8 +116,7 @@ export async function fetchAllPlaylists(dispatch) {
 // }
 
 
-export function addToList(id, playlistId,userId) {
-  const data = { trackId: id, playlistId: playlistId, userId: userId };
+export function addToList(data) {
   return async function createThunk(dispatch) {
     try {
       await dispatch(authList(api.addToList, data));
@@ -128,19 +127,6 @@ export function addToList(id, playlistId,userId) {
   };
 }
 
-
-// export function unlikeTrack(id, userId) {
-//   // const data = { trackId: id, userId: userId };
-//   // console.log(data)
-//   return async function createThunk(dispatch) {
-//     try {
-//       // await dispatch(authTrack(api.unlikeTrack, data));
-//       // dispatch(setLikeTrack(id));
-//     } catch (error) {
-//       // console.log(error, "unlikeTrackError");
-//     }
-//   };
-// }
 
 export function authList(action, data) {
   return async function createThunk() {

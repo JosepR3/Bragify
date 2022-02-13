@@ -6,25 +6,26 @@ import { fetchAllTracks, fetchLikedTracks } from "../../redux/tracks/tracks-acti
 import withLayout from "../../components/HOC/withLayout";
 import DeleteButton from "../../components/atoms/DeleteButton";
 import LikeButton from "../../components/atoms/LikeButton";
-import AddtoPlayListButton from "../../components/atoms/AddtoPlayListButton";
+import DropDownList from "../../components/atoms/DropDownList";
+// import AddtoPlayListButton from "../../components/atoms/AddtoPlayListButton";
 
 
 import ListGroup from "react-bootstrap/ListGroup";
-// import { playlistStateSelector } from "../../redux/playlists/playlists-selector";
+import { fetchAllPlaylists } from "../../redux/playlists/playlists-actions";
+import { playlistStateSelector } from "../../redux/playlists/playlists-selector";
 
 function Tracks() {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    dispatch(fetchAllPlaylists) 
     dispatch(fetchAllTracks);
     dispatch(fetchLikedTracks(userId));
   }, [dispatch]);
-
   const { tracks } = useSelector(tracksSelector);
-  // const playlistId = useSelector(playlistStateSelector)
+  const playlist = useSelector(playlistStateSelector)
   const currentUser = JSON.parse(localStorage.getItem('user'))
   const userId = currentUser._id
-  const playlistId ="6206283424250128f02e65d5"
   return (<>
     <div className="container">
       <ListGroup
@@ -58,8 +59,12 @@ function Tracks() {
               <ListGroup.Item className="list_item">
                 {track.duration}
               </ListGroup.Item>
-              <AddtoPlayListButton
+              {/* <AddtoPlayListButton
                 playlistId={playlistId}
+                trackId={track._id}
+              /> */}
+              <DropDownList
+                playlist={playlist}
                 trackId={track._id}
               />
               <LikeButton trackId={track._id} />

@@ -23,8 +23,8 @@ class PlaylistRepository {
     return normalizeDBQuery(db.Playlist.deleteOne({ _id: id }));
   }
 
-  addPlaylist(trackId, playlistId) {
-    return normalizeDBQuery(db.Playlist.updateOne({ _id: playlistId }, { $push: { tracks: trackId } }, { new: true }));
+  addPlaylist(TrackId, playListId) {
+    return normalizeDBQuery(db.Playlist.updateOne({ _id: playListId }, { $push: { tracks: TrackId } }, { new: true }));
   }
 }
 

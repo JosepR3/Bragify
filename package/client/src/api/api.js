@@ -110,7 +110,7 @@ function makeApi(request = makeRequest()) {
 
   function addToList(headers, data) {
     return axios.put(
-      `http://localhost:4000/playlist/add-playlist/${data.trackId}`,
+      `http://localhost:4000/playlist/add-playlist/${data.playListId}`,
       data,
       { headers: headers },
     );

@@ -1,7 +1,7 @@
 import React from "react";
 import { useEffect } from "react";
 import { fetchAllPlaylists } from "../../../redux/playlists/playlists-actions";
-// import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import Card from "react-bootstrap/Card";
 import { playlistStateSelector } from "../../../redux/playlists/playlists-selector";
@@ -11,6 +11,7 @@ import { fetchPlaylistById } from "../../../redux/playlists/playlists-actions";
 
 export default function TrackAlbumCard() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   useEffect(() => {
     dispatch(fetchAllPlaylists);
@@ -20,14 +21,15 @@ export default function TrackAlbumCard() {
 
   const handlePlaylistId = (e) => {
     const id = e.target.id;
+
     dispatch(fetchPlaylistById(id))
-    ;
+    navigate("/playlists/single-playlist");
   };
 
 
 
   return (
-    <>
+    <div className="d-flex">
       {playlists &&
         playlists.map((playlist) => {
           return (
@@ -93,6 +95,6 @@ export default function TrackAlbumCard() {
           );
         })
       }
-    </>
+    </div>
     );
 }
