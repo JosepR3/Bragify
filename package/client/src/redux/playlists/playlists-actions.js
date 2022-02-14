@@ -6,8 +6,8 @@ export function createPlaylistRequest() {
   return { type: PlaylistsTypes.CREATE_PLAYLIST_REQUEST };
 }
 
-export function getPlaylistSuccess(id) {
-  return { type: PlaylistsTypes.GET_PLAYLIST_SUCCESS, payload: id };
+export function getPlaylistSuccess(data) {
+  return { type: PlaylistsTypes.GET_PLAYLIST_SUCCESS, payload: data };
 }
 
 export function createPlaylistSuccess() {

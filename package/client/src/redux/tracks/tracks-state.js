@@ -7,7 +7,7 @@ const initialState = {
     myPlaylist: [],
     myTracks: [],
     tracks: null,
-    trackId: null,
+    trackId: [],
     trackURL: null,
     deletedTrack: [],
 }
