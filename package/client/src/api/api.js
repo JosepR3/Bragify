@@ -93,13 +93,6 @@ function makeApi(request = makeRequest()) {
       headers: headers,
     });
   }
-  function fetchPlaylistById(headers, data) {
-    return request({
-      url: "/playlist/" + data,
-      requestMethod: "GET",
-      headers: headers,
-    });
-  }
 
   function createPlaylist({ headers, body }) {
     return request({

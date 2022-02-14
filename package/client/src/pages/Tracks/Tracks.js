@@ -27,7 +27,6 @@ function Tracks() {
     const id = e.target.id;
     localStorage.setItem("trackId", id);
     let trackId = localStorage.getItem("trackId");
-    console.log(trackId);
     dispatch(fetchTrackById(trackId));
   };
 
