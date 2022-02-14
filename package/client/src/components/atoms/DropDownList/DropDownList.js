@@ -17,7 +17,7 @@ const DropDownList = (props) => {
     <div className="dropdown">
       <AddtoPlayListButton isAddList={isAddList} />
       <div className="dropdown-content">
-        {listPlaylist.map((item, index) =>
+        {listPlaylist && listPlaylist.map((item, index) =>
           <a
             key={index + 1}
             onClick={() => handleAddTrack({ TrackId: trackId, playListId: item._id, userId: userId, url: url, name: name})} 
