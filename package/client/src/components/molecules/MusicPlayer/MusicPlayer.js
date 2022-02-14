@@ -10,7 +10,6 @@ export default function MusicPlayer() {
 
   useEffect(() => {
     let trackId = localStorage.getItem("trackId");
-    console.log(trackId);
     dispatch(fetchTrackById(trackId));
   }, [dispatch]);
   
@@ -18,7 +17,6 @@ export default function MusicPlayer() {
   const {trackURL} = useSelector(tracksSelector);
 
   const tracksToPlay = [trackURL];
-  console.log(tracksToPlay)
   
   const [number, setNumber] = useState(0);
 

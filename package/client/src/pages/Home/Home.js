@@ -9,8 +9,7 @@ import { useSelector } from "react-redux";
 
 // HOC
 import withLayout from "../../components/HOC/withLayout";
-
-// COMPONENTS
+import PlaylistsByUser from "../../components/organisms/PlaylistsByUser";
 
 
 function Home() {
@@ -22,7 +21,8 @@ function Home() {
 
   return (
     <>
-    <TrackList/>
+    <PlaylistsByUser/>
+    {/* <TrackList/> */}
     <LikedMusic/>
     </>
         

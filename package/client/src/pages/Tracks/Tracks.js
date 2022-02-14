@@ -94,7 +94,7 @@ function Tracks() {
           );
         })}
       {status === "DELETE_SUCCESS" && (
-        <p>{deletedTrack.title} was deleted successfully</p>
+        <p>{deletedTrack.title} was successfully deleted </p>
       )}
     </div>
   );
