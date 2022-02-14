@@ -117,6 +117,15 @@ function makeApi(request = makeRequest()) {
     });
   }
 
+  function addToList(headers, data) {
+    console.log(data);
+    return axios.put(
+      `http://localhost:4000/playlist/add-playlist/${data.playListId}`,
+      data,
+      { headers: headers },
+    );
+  }
+
   return {
     signUp: signUp,
     signOut: signOut,
@@ -132,7 +141,7 @@ function makeApi(request = makeRequest()) {
     createPlaylist: createPlaylist,
     fetchAllPlaylists: fetchAllPlaylists,
     fetchPlaylistById: fetchPlaylistById,
-
+    addToList: addToList,
     deletePlaylist: deletePlaylist
   };
 }

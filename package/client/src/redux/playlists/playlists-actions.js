@@ -18,6 +18,19 @@ export function setPlaylistsResult(result) {
   return { type: PlaylistsTypes.SET_PLAYLISTS_RESULT, payload: result };
 }
 
+export function addToPlaylistSucess(result) {
+  return { type: PlaylistsTypes.ADD_TO_PLAYLIST_SUCCESS, payload: result };
+}
+export function addToPlaylistError(result) {
+  return { type: PlaylistsTypes.ADD_TO_PLAYLIST_ERROR, payload: result };
+}
+export function removeToPlaylistSucess(result) {
+  return { type: PlaylistsTypes.REMOVE_TO_PLAYLIST_SUCCESS, payload: result };
+}
+export function removeToPlaylistError(result) {
+  return { type: PlaylistsTypes.REMOVE_TO_PLAYLIST_ERROR, payload: result };
+}
+
 export function createPlaylist(data) {
   return async function createThunk(dispatch) {
     const token = await getCurrentUserToken();
@@ -88,7 +101,34 @@ export async function fetchAllPlaylists(dispatch) {
     console.log(error, "fetch Playlists error");
   }
 }
+// ----------------------------------------- Actions add tracks to list---------------------------------------------------------
 
+
+export function addToList(data) {
+  return async function createThunk(dispatch) {
+    try {
+      await dispatch(authList(api.addToList, data));
+      // dispatch(setLikeTrack(id));
+    } catch (error) {
+      dispatch(addToPlaylistError("error add track to list"));
+    }
+  };
+}
+
+
+export function authList(action, data) {
+  return async function createThunk() {
+    const token = await getCurrentUserToken();
+    const response = await action(
+      {
+        Authorization: `Bearer ${token}`,
+      },
+      data,
+    );
+    return response.data;
+  };
+}
+// -------------------------------------------------Finish add tracks to List-----------------------------------------------------
 // export function updatePlaylist(playlist) {
 //   return async function updatePlaylistThunk(dispatch) {
 //     dispatch(playlistUpdateRequest());

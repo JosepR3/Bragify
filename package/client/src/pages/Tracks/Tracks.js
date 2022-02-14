@@ -8,6 +8,9 @@ import {
 
 import withLayout from "../../components/HOC/withLayout";
 import LikeButton from "../../components/atoms/LikeButton";
+import DropDownList from "../../components/atoms/DropDownList";
+import { fetchAllPlaylists } from "../../redux/playlists/playlists-actions";
+import { playlistStateSelector } from "../../redux/playlists/playlists-selector";
 import DeleteButton from "../../components/atoms/DeleteButton";
 import ListGroup from "react-bootstrap/ListGroup";
 import { fetchTrackById } from "../../redux/tracks/tracks-actions";
@@ -19,10 +22,12 @@ function Tracks() {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    dispatch(fetchAllPlaylists) 
     dispatch(fetchAllTracks);
     dispatch(fetchLikedTracks(userId));
   }, [dispatch]);
-
+  const { tracks } = useSelector(tracksSelector);
+  const playlist = useSelector(playlistStateSelector)
   const handleTrackId = (e) => {
     const id = e.target.id;
     localStorage.setItem("trackId", id);
@@ -30,12 +35,11 @@ function Tracks() {
     dispatch(fetchTrackById(trackId));
   };
 
-  const { tracks } = useSelector(tracksSelector);
   const status = useSelector((state) => state.tracks.status);
   const deletedTrack = useSelector((state) => state.tracks.deletedTrack);
   const currentUser = JSON.parse(localStorage.getItem("user"));
   const userId = currentUser._id;
-  return (
+  return (<>
     <div className="mx-4 my-2">
       <h2 className="page__title px-5">All Tracks</h2>
       <ListGroup horizontal className="tracks__titles-row d-flex w-100 mb-1">
@@ -83,9 +87,16 @@ function Tracks() {
               <ListGroup.Item className="track__row-duration">
                 {track.duration}
               </ListGroup.Item>
+              <DropDownList
+                playlist={playlist}
+                trackId={track._id}
+                url={track.url}
+                name={track.title}
+                
+              />
+              <LikeButton trackId={track._id} />
+              <DeleteButton id={track._id} />
               <ListGroup.Item className="track__row-buttons">
-                <LikeButton trackId={track._id} />
-                <DeleteButton id={track._id} />
                 <Button className="btn__options">
                   <BsPlusLg />{" "}
                 </Button>
@@ -97,7 +108,7 @@ function Tracks() {
         <p>{deletedTrack.title} deleted successfully</p>
       )}
     </div>
-  );
+  </>);
 }
 
 export default withLayout(Tracks);

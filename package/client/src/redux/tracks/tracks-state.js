@@ -4,7 +4,6 @@ const initialState = {
     isPlaying: false,
     likedTracksList: [],
     playingTrack: "",
-    myPlaylist: [],
     myTracks: [],
     tracks: null,
     trackId: [],

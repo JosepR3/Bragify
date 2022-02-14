@@ -46,6 +46,9 @@ $theme-colors: map-merge($theme-colors, $custom-colors);
 //      atoms
 @import "../../components/atoms/TrackAlbumCard/track-album-card";
 @import "../../components/atoms/SearchInput/searchInput";
+@import "../../components/atoms/AddtoPlayListButton/AddList";
+// @import "../../components/atoms/LikeButton/likeButton";
+@import "../../components/atoms/DropDownList/dropDownlist";
 @import "../../components/atoms/LikeButton/likeButton";
 
 //      molecules
