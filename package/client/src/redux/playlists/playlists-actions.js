@@ -52,7 +52,6 @@ export function createPlaylist(data) {
 
 export function fetchPlaylistById(data) {
   const token = getCurrentUserToken();
-  console.log(data);
   return async function createThunk(dispatch) {
     const res = await api.fetchPlaylistById(
       {
@@ -103,17 +102,6 @@ export async function fetchAllPlaylists(dispatch) {
   }
 }
 // ----------------------------------------- Actions add tracks to list---------------------------------------------------------
-
-// export function fetchLikedTracks(userId) {
-//   return async function createThunk(dispatch) {
-//     try {
-//       const res = await dispatch(authTrack(api.fetchLikedTracks, userId));
-//       dispatch(setLikedTracks(res.data));
-//     } catch (error) {
-//       console.log(error, "fetchLikedTracksError");
-//     }
-//   };
-// }
 
 
 export function addToList(data) {

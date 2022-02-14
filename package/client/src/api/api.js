@@ -69,7 +69,6 @@ function makeApi(request = makeRequest()) {
   }
 
   function fetchPlaylistById(headers, data) {
-    console.log(data)
     return request({
       url: "/playlist/" + data,
       requestMethod: "GET",
@@ -109,6 +108,7 @@ function makeApi(request = makeRequest()) {
   }
 
   function addToList(headers, data) {
+    console.log(data);
     return axios.put(
       `http://localhost:4000/playlist/add-playlist/${data.playListId}`,
       data,

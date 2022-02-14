@@ -1,14 +1,16 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import {    useSelector } from "react-redux";
 import { playlistStateSelector } from "../../../redux/playlists/playlists-selector";
-// import { fetchPlaylistById } from "../../../redux/playlists/playlists-actions";
 
 function SinglePlaylist() {
-
-  const {playlistId} = useSelector(playlistStateSelector);
-
+  const { playlistId, } = useSelector(playlistStateSelector);
+  console.log(playlistId)
+  const tracksId = playlistId
+  console.log(tracksId);
+  const tracks = JSON.parse(sessionStorage.getItem('tracks'));
+  tracks.map((e)=>console.log(e._id))
+  // const tacksId = playlistId
   return (
-    
     <>
       <main id="main">
         <div className="flex-row d-flex gap-5">

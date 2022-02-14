@@ -59,13 +59,12 @@ function Tracks() {
               <ListGroup.Item className="list_item">
                 {track.duration}
               </ListGroup.Item>
-              {/* <AddtoPlayListButton
-                playlistId={playlistId}
-                trackId={track._id}
-              /> */}
               <DropDownList
                 playlist={playlist}
                 trackId={track._id}
+                url={track.url}
+                name={track.title}
+                
               />
               <LikeButton trackId={track._id} />
               <DeleteButton id={track._id} />

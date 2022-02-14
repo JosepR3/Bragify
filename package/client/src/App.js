@@ -44,7 +44,6 @@ function App() {
       }
     };
   }, [dispatch]);
-
   return (
       <Routes>
         <Route path="*" element={<NotFound />} />
@@ -59,7 +58,7 @@ function App() {
         </Route>
 
         <Route exact path={ROUTES.UPLOAD_TRACK} element={<UploadTrack />} />
-        <Route exact path={ROUTES.CREATE_PLAYLIST} element={<CreatePlaylist />} />
+      <Route exact path={ROUTES.CREATE_PLAYLIST} element={<CreatePlaylist />} />
       </Routes>
   );
 }
