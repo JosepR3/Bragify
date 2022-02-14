@@ -36,6 +36,10 @@ function makeApi(request = makeRequest()) {
     });
   }
 
+  // function getAllTracks(headers) {
+  //   return axios.get("http://localhost:4000/tracks", headers);
+  // }
+
   function getAllTracks(headers) {
     return request({
       url: "/tracks",
@@ -65,16 +69,9 @@ function makeApi(request = makeRequest()) {
   }
 
   function fetchPlaylistById(headers, data) {
+    console.log(data)
     return request({
       url: "/playlist/" + data,
-      requestMethod: "GET",
-      headers: headers,
-    });
-  }
-
-  function fetchTrackById(headers, data) {
-    return request({
-      url: "/track/" + data,
       requestMethod: "GET",
       headers: headers,
     });
@@ -93,13 +90,6 @@ function makeApi(request = makeRequest()) {
       headers: headers,
     });
   }
-  function fetchPlaylistById(headers, data) {
-    return request({
-      url: "/playlist/" + data,
-      requestMethod: "GET",
-      headers: headers,
-    });
-  }
 
   function createPlaylist({ headers, body }) {
     return request({
@@ -113,7 +103,7 @@ function makeApi(request = makeRequest()) {
   function fetchAllPlaylists(headers) {
     return request({
       url: "/playlists",
-      requestMethod: "GET",
+      requestMethod: "get",
       headers: headers,
     });
   }
@@ -124,12 +114,19 @@ function makeApi(request = makeRequest()) {
     });
   }
 
+  function search(headers, data) {
+    console.log(headers);
+    console.log(data)
+    return axios.get(`http://localhost:4000/search/${data}`, {
+      headers: headers,
+    });
+  }
+
   return {
     signUp: signUp,
     signOut: signOut,
     editUser: editUser,
     getAllTracks: getAllTracks,
-    fetchTrackById: fetchTrackById,
     deleteTrack: deleteTrack,
     createTrack: createTrack,
     getUser: getUser,
@@ -138,9 +135,9 @@ function makeApi(request = makeRequest()) {
     fetchLikedTracks: fetchLikedTracks,
     createPlaylist: createPlaylist,
     fetchAllPlaylists: fetchAllPlaylists,
+    deletePlaylist: deletePlaylist,
+    search: search,
     fetchPlaylistById: fetchPlaylistById,
-
-    deletePlaylist: deletePlaylist
   };
 }
 

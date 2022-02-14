@@ -1,4 +1,5 @@
 async function handleDbResponse(res, dbResponse) {
+  console.log(dbResponse);
   if (dbResponse.error) {
     return res.status(400).send({
       data: null,

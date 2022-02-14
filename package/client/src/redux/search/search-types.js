@@ -1,0 +1,2 @@
+export const SEARCH_CONTENT = 'SEARCH_CONTENT';
+export const SET_RESULTS = 'SET_RESULTS';
