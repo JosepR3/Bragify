@@ -1,26 +1,24 @@
 import { useEffect, React } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch, useSelector} from "react-redux";
 import { tracksSelector } from "../../redux/tracks/tracks-selector";
 import {
   fetchAllTracks,
   fetchLikedTracks,
 } from "../../redux/tracks/tracks-actions";
-
 import withLayout from "../../components/HOC/withLayout";
 import LikeButton from "../../components/atoms/LikeButton";
 import DropDownList from "../../components/atoms/DropDownList";
 import { fetchAllPlaylists } from "../../redux/playlists/playlists-actions";
 import { playlistStateSelector } from "../../redux/playlists/playlists-selector";
 import DeleteButton from "../../components/atoms/DeleteButton";
-import ListGroup from "react-bootstrap/ListGroup";
 import { fetchTrackById } from "../../redux/tracks/tracks-actions";
-import Button from "react-bootstrap/Button";
+import ListGroup from "react-bootstrap/ListGroup";
+import Alert from "react-bootstrap/Alert";
 
-import { BsPlusLg } from "react-icons/bs";
+
 
 function Tracks() {
   const dispatch = useDispatch();
-
   useEffect(() => {
     dispatch(fetchAllPlaylists) 
     dispatch(fetchAllTracks);
@@ -95,17 +93,16 @@ function Tracks() {
                 
               />
               <LikeButton trackId={track._id} />
-              <DeleteButton id={track._id} />
-              <ListGroup.Item className="track__row-buttons">
-                <Button className="btn__options">
-                  <BsPlusLg />{" "}
-                </Button>
-              </ListGroup.Item>
+              <DeleteButton id={track._id}/>
             </ListGroup>
+            
+
           );
         })}
       {status === "DELETE_SUCCESS" && (
-        <p>{deletedTrack.title} deleted successfully</p>
+        <Alert variant="success">
+          <p>{ deletedTrack.title} Delete successfully</p>
+        </Alert>
       )}
     </div>
   </>);

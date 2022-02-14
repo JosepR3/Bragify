@@ -90,10 +90,9 @@ export async function fetchAllTracks(dispatch) {
     const res = await api.getAllTracks({
       headers: { Authorization: `Bearer ${userToken}` },
     });
-    const reposn = res.data.data
-    console.log(reposn)
-    sessionStorage.setItem('tracks', JSON.stringify(reposn));
-    return dispatch(setTracksResult(reposn));
+    const response = res.data.data
+    sessionStorage.setItem('tracks', JSON.stringify(response));
+    return dispatch(setTracksResult(response));
   } catch (error) {
     console.log(error, "fetcherror");
   }
