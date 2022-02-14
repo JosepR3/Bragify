@@ -29,49 +29,49 @@ function SideBar() {
         </a>
         <Nav.Item className="mt-4 side__bar__item">
           <Nav.Link href={ROUTES.HOME} className="side__bar__link">
-            <AiFillHome />
+            <AiFillHome className="side__bar-icon" />
             Home
           </Nav.Link>
         </Nav.Item>
         <Nav.Item className="mt-3 side__bar__item">
           <Nav.Link href={ROUTES.TRACKS} className="side__bar__link">
-            <IoMusicalNotes />
+            <IoMusicalNotes className="side__bar-icon" />
             Tracks
           </Nav.Link>
         </Nav.Item>
         <Nav.Item className="side__bar__item">
           <Nav.Link href="" className="side__bar__link">
-            <IoAlbums />
+            <IoAlbums className="side__bar-icon" />
             Albums
           </Nav.Link>
         </Nav.Item>
         <Nav.Item className="side__bar__item">
           <Nav.Link href="" className="side__bar__link">
-            <GiDrumKit />
+            <GiDrumKit className="side__bar-icon" />
             Genres
           </Nav.Link>
         </Nav.Item >
         <Nav.Item className="side__bar__item">
           <Nav.Link href={ROUTES.PLAYLISTS} className="side__bar__link">
-            <RiPlayListFill />
+            <RiPlayListFill className="side__bar-icon" />
             Playlists
           </Nav.Link>
         </Nav.Item>
         <Nav.Item className="mt-5 side__bar__item">
           <Nav.Link href={ROUTES.CREATE_PLAYLIST} className="side__bar__link">
-            <RiPlayListAddLine />
+            <RiPlayListAddLine className="side__bar-icon" />
             Create Playlist
           </Nav.Link>
         </Nav.Item>
         <Nav.Item className="side__bar__item">
           <Nav.Link href={ROUTES.UPLOAD_TRACK} className="side__bar__link">
-            <RiUpload2Fill />
+            <RiUpload2Fill className="side__bar-icon" />
             Upload Track
           </Nav.Link>
         </Nav.Item>
         <Nav.Item className="mt-5 side__bar__item">
           <Nav.Link href="" className="side__bar__link">
-            <RiDownload2Fill />
+            <RiDownload2Fill className="side__bar-icon" />
             Download App
           </Nav.Link>
         </Nav.Item>

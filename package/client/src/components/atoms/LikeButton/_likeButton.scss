@@ -1,6 +1,14 @@
-.btn-secondary {
-  background-color: #292929 !important;
-  border-color: none !important;
+@use "../../../utils/scss/variables" as a;
+
+.fill_like{
+  color: a.$brand-color;
+  &:active{
+    border: none;
+    background-color: transparent;
+  }
+  &:hover{
+    filter: brightness(120%);
+  }
 }
 
 

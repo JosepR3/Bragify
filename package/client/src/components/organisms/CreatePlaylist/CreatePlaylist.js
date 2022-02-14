@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { createPlaylist } from "../../../redux/playlists/playlists-actions";
 import { getCurrentUserToken } from "../../../services/auth";
@@ -8,9 +8,9 @@ import Form from "react-bootstrap/Form";
 import withLayout from "../../HOC/withLayout";
 
 
-  function CreatePlaylist() {
+function CreatePlaylist() {
   const dispatch = useDispatch();
-  
+  const navigate = useNavigate();
   const [playlist, setplaylist] = useState({
     name: "",
     description: "",
@@ -38,16 +38,17 @@ import withLayout from "../../HOC/withLayout";
   function handleSubmit(e) {
     e.preventDefault();
     dispatch(createPlaylist(playlist));
+    navigate("/playlists")
   }
 
   return (
     <main className="container text-center">
-      <section className="profile__wrapper container p-5">
+      <section className="auth__wrapper container p-5">
         <h1 className="font-bold align-self-start mx-4 mb-5">
           Create your playlist
         </h1>
-        <Form className="px-4 mb-5" onSubmit={handleSubmit}>
-          <Form.Group className="form__group mb-4">
+        <Form className="px-4 mb-2" onSubmit={handleSubmit}>
+          <Form.Group className="edit__form mb-4">
             <Form.Label>Playlist name</Form.Label>
             <Form.Control
               name="name"
@@ -59,7 +60,7 @@ import withLayout from "../../HOC/withLayout";
               required
             />
           </Form.Group>
-          <Form.Group className="form__group mb-4">
+          <Form.Group className="edit__form mb-4">
             <Form.Label>Description</Form.Label>
             <Form.Control
               name="description"
@@ -70,7 +71,7 @@ import withLayout from "../../HOC/withLayout";
               required
             />
           </Form.Group>
-          <Form.Group className="mb-2">
+          <Form.Group className="edit__form mb-2">
             <Form.Label>Thumbnail</Form.Label>
             <Form.Control
               type="text"
@@ -80,7 +81,7 @@ import withLayout from "../../HOC/withLayout";
             />
           </Form.Group>
           <div className="d-flex justify-content-end">
-            <Button className="my-4" type="submit" variant="log-color">
+            <Button className="btn__save my-2" type="submit" variant="log-color">
               Save
             </Button>
           </div>

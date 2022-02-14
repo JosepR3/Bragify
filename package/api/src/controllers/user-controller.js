@@ -65,7 +65,6 @@ const editUser = (req, res) => {
 
 async function getUser(req, res) {
   const { uid } = req.user;
-  console.log(uid)
   User.findById(uid)
     .then(data => {
       if (!data)

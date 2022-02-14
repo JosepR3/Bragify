@@ -11,6 +11,7 @@ $custom-colors: (
   "google-color": $gg-green,
   "log-color": white,
   "main-black": $main-black,
+  "brand": $brand-color,
 );
 
 
@@ -19,8 +20,18 @@ $body-bg: $web-background-color;
 $input-disabled-bg: rgba(255, 255, 255, 0.623);
 $nav-link-color: rgba(255, 255, 255, 0.75);
 $nav-link-hover-color: white;
-$list-group-bg: transparent;
-$card-bg: transparent;
+$list-group-bg: unset;
+$card-bg: unset;
+$list-group-border-color: unset;
+$list-group-color: unset;
+$btn-active-box-shadow: unset;
+$btn-active-border-shade-amount: 0%;
+$btn-active-border-tint-amount: 0%;
+// $btn-active-bg-shade-amount: 0;
+// $btn-active-bg-tint-amount: 0%;
+$btn-focus-width: unset;
+$btn-focus-box-shadow: unset;
+// $btn-transition: unset;
 
 // Merge the maps
 
@@ -38,20 +49,21 @@ $theme-colors: map-merge($theme-colors, $custom-colors);
 @import "../../components/atoms/AddtoPlayListButton/AddList";
 // @import "../../components/atoms/LikeButton/likeButton";
 @import "../../components/atoms/DropDownList/dropDownlist";
+@import "../../components/atoms/LikeButton/likeButton";
+
 //      molecules
 @import "../../components/molecules/CurrentPlaying/currentPlaying";
 @import "../../components/molecules/AccountSetting/accountSetting";
 @import "../../components/molecules/MusicPlayer/musicPlayer";
-
+@import "../../components/molecules/SinglePlaylistHeader/singlePlaylistHeader.scss";
 //      organisms
 
 @import "../../components/organisms/Header/header";
 @import "../../components/organisms/SideBar/sideBar";
-@import "../../components/organisms/SingleAlbum/singleAlbum";
 @import "../../components/organisms/MainContainer/mainContainer";
 @import "../../components/organisms/Footer/footer";
 @import "../../components/organisms/UploadTrack/uploadTrack.scss";
-// @import "../../components/organisms/SinglePlaylist/singlePlaylist.scss";
+@import "../../components/organisms/SinglePlaylist/singlePlaylist.scss";
 @import "../../components/organisms/CreatePlaylist/createPlaylist.scss";
 
 //      pages

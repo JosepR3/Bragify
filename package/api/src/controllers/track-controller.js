@@ -2,9 +2,8 @@ const { TrackRepo } = require("../repositories");
 const { handleDbResponse } = require("../repositories/repo-utils");
 
 async function createTrack(req, res, next) {
-  console.log(req.body);
 
-  const { title, url, thumbnail, genre, duration, authorId } = req.body;
+  const { title, url, thumbnail, genre, duration, authorId, artists } = req.body;
 
   try {
     if (!title && !url) {
@@ -15,6 +14,7 @@ async function createTrack(req, res, next) {
     }
 
     const dbResponse = await TrackRepo.create({
+      artists: artists,
       title: title,
       url: url,
       thumbnail: thumbnail,
@@ -38,15 +38,12 @@ async function fetchTracks(req, res, next) {
   }
 }
 
-
-
 async function fetchTrackById(req, res, next) {
   const id = req.params.id;
   try {
     const dbResponse = await TrackRepo.findById({
       _id: id,
     });
-    console.log(dbResponse);
     handleDbResponse(res, dbResponse);
   } catch (err) {
     next(err);
@@ -101,5 +98,5 @@ module.exports = {
   likeTrack: likeTrack,
   unlikeTrack: unlikeTrack,
   fetchLikedTracks: fetchLikedTracks,
-  fetchTrackById: fetchTrackById
+  fetchTrackById: fetchTrackById,
 };

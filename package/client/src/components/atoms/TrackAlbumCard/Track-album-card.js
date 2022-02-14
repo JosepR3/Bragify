@@ -1,5 +1,4 @@
-import React from "react";
-import { useEffect } from "react";
+import React, { useEffect } from "react";
 import { fetchAllPlaylists } from "../../../redux/playlists/playlists-actions";
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
@@ -21,13 +20,10 @@ export default function TrackAlbumCard() {
 
   const handlePlaylistId = (e) => {
     const id = e.target.id;
-
     dispatch(fetchPlaylistById(id))
-    navigate("/playlists/single-playlist");
+    navigate(`/playlists/single-playlist/${id}`);
   };
-
-
-
+  
   return (
     <div className="d-flex">
       {playlists &&
@@ -39,7 +35,7 @@ export default function TrackAlbumCard() {
               onClick={(e) => {
                 handlePlaylistId(e);
               }}
-              className="pl__card p-2 m-2"
+              className="pl__card p-2 m-1"
             >
               <div
                 id={playlist._id}
@@ -91,6 +87,7 @@ export default function TrackAlbumCard() {
                   {playlist.description}
                 </Card.Subtitle>
               </Card.Body>
+              
             </Card>
           );
         })

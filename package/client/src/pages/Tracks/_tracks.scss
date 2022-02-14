@@ -1,22 +1,68 @@
 @use "../../utils/scss/variables" as a;
 
-.list-row {
-  width: 100% !important;
-}
-
-.list_item {
-  background-color: rgb(41, 41, 41) !important;
-  width: 50% !important;
-  color: white !important;
-  font-size: 15px !important;
-  padding-left: 0.45rem !important;
-
-  &_titles {
-    background-color: rgb(41, 41, 41) !important;
-    width: 50% !important;
-    color: rgb(104, 104, 104) !important;
-    font-size: 12px !important;
-    height: 2rem;
-    padding: 0.45rem !important;
+.tracks__title{
+  color: white;
+  &-row{
+    border-bottom: 2px solid a.$main-black;
   }
 }
+
+.track__row{
+  color: white;
+  height: 3em;
+  cursor: pointer;
+  &:hover{
+    background-color: rgba(255, 255, 255, 0.2) !important;
+  }
+  &:nth-child(odd){
+    background-color: #2e2e2e50;
+  }
+  &-item{
+    color: white;
+  }
+}
+
+.tracks__titles-row {
+  :nth-child(1){
+    width: 5%;
+  }
+  :nth-child(2){
+    width: 29%;
+  }
+  :nth-child(3){
+    width: 17%;
+  }
+  :nth-child(4){
+    width: 17%;
+  }
+  :nth-child(5){
+    width: 17%;
+  }
+  :nth-child(6){
+    width: 15%;
+  }
+}
+
+.track__row{
+
+  &-thumbnail {
+    width: 5%;
+  }
+  &-title {
+    width: 29%;
+  }
+  &-artist {
+    width: 17%;
+  }
+  &-genre{
+    width: 17%;
+  }
+  &-duration{
+    width: 17%;
+  }
+  &-buttons{
+    width: 15%;
+  }
+}
+
+

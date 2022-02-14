@@ -28,6 +28,10 @@
 
 .rhap_play-pause-button{
   color: a.$brand-color !important;
+  &:hover{
+    font-size: 2.3em;
+    text-align: center;
+  }
 }
 
 .rhap_repeat-button, .rhap_skip-button, .rhap_volume-button, .rhap_time {
