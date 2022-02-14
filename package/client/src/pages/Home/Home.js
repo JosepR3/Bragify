@@ -2,13 +2,16 @@ import React from "react";
 import { Navigate } from "react-router-dom";
 import { authSelector } from "../../redux/auth/auth-selectors";
 import * as ROUTES from "../../routes";
-import LikedMusic from "../../components/organisms/likedMusic/LikedMusic";
-import TrackList from "../../components/molecules/TrackList/TrackList";
+
 // REDUX
 import { useSelector } from "react-redux";
 
 // HOC
 import withLayout from "../../components/HOC/withLayout";
+
+//components
+import LikedMusic from "../../components/organisms/likedMusic/LikedMusic";
+// import TrackList from "../../components/molecules/TrackList/TrackList";
 import PlaylistsByUser from "../../components/organisms/PlaylistsByUser";
 
 
