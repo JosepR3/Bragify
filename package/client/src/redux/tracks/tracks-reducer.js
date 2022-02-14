@@ -74,12 +74,10 @@ export default function tracksReducer(state = initialState, action) {
 
     case GET_TRACK_SUCCESS: {
       localStorage.setItem("trackURL", action.payload.url);
-      
-
       return {
         ...state,
         trackId: [...state.trackId, action.payload],
-        trackURL: action.payload.url,
+        trackURL: [...state.trackURL, action.payload.url],
 
       };
     }
