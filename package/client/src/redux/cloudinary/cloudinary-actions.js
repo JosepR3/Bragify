@@ -1,4 +1,3 @@
-
 import {
   SET_TRACK_REQUEST,
 SET_TRACK_ERROR,

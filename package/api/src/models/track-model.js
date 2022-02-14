@@ -28,8 +28,11 @@ const TrackSchema = Schema(
     },
     color: {
       type: String,
-      trim: true,
     },
+    artists: {
+      type: String,
+    },
+
     genre: {
       // type: Schema.Types.ObjectId,
       // ref: "genre",
@@ -37,15 +40,6 @@ const TrackSchema = Schema(
     authorId: {
       // type: Schema.Types.ObjectId,
       // ref: "user",
-    },
-    artists: {
-      type: [
-        {
-          // type: Schema.Types.ObjectId,
-          // ref: "user",
-        },
-      ],
-      default: [],
     },
     playlists: {
       type: [

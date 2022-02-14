@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { createPlaylist } from "../../../redux/playlists/playlists-actions";
 import { getCurrentUserToken } from "../../../services/auth";
@@ -10,7 +10,7 @@ import withLayout from "../../HOC/withLayout";
 
 function CreatePlaylist() {
   const dispatch = useDispatch();
-  
+  const navigate = useNavigate();
   const [playlist, setplaylist] = useState({
     name: "",
     description: "",
@@ -38,6 +38,7 @@ function CreatePlaylist() {
   function handleSubmit(e) {
     e.preventDefault();
     dispatch(createPlaylist(playlist));
+    navigate("/playlists")
   }
 
   return (

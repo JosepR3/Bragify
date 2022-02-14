@@ -7,10 +7,11 @@ import {
   TRACKS_LOADING,
   TRACKS_LOADING_SUCCESS,
   PLAY_TRACK,
-  TO_TRACKS,
   LIKE_TRACK,
   LIKE_TRACKS,
   DELETE_TRACK,
+  GET_TRACK_SUCCESS,
+
 } from "./tracks-types";
 
 export default function tracksReducer(state = initialState, action) {
@@ -44,12 +45,7 @@ export default function tracksReducer(state = initialState, action) {
         ...state,
         status: "success",
       };
-    case TO_TRACKS:
-      return {
-        ...state,
-        inTracks: true,
-        isEditing: false,
-      };
+
     case PLAY_TRACK:
       return {
         ...state,
@@ -59,20 +55,31 @@ export default function tracksReducer(state = initialState, action) {
 
     case LIKE_TRACK: {
       const id = action.payload;
-      if (state.likedTracks.find((track) => track === id)) {
-        const likedTracks = state.likedTracks.filter((track) => track !== id);
+      if (state.likedTracksList.find((track) => track._id === id)) {
+        const likedTracks = state.likedTracksList.filter((track) => track._id !== id);
         return {
           ...state,
-          likedTracks: [...likedTracks],
+          likedTracksList: [...likedTracks],
         };
       } else {
-        const likedTracks = state.likedTracks.filter((track) => track !== id);
-        likedTracks.push(id);
+        const likedTracks = state.likedTracksList.filter((track) => track._id !== id);
+        const newlikedTrack = state.tracks.find((track) => track._id === id);
+        likedTracks.push(newlikedTrack);
         return {
           ...state,
-          likedTracks: [...likedTracks],
+          likedTracksList: [...likedTracks],
         };
       }
+    }
+
+    case GET_TRACK_SUCCESS: {
+      localStorage.setItem("trackURL", action.payload.data.url);
+      let trackURL = localStorage.getItem("trackURL");
+      return {
+        ...state,
+        trackId: action.payload,
+        trackURL: trackURL,
+      };
     }
 
     case LIKE_TRACKS: {
@@ -85,10 +92,14 @@ export default function tracksReducer(state = initialState, action) {
 
     case DELETE_TRACK: {
       const trackId = action.payload;
+      const deletedTrack = state.tracks.find((track) => track._id === trackId);
       const tracks = state.tracks.filter((track) => track._id !== trackId);
+      const deletesuccess = "DELETE_SUCCESS"
       return {
         ...state,
         tracks,
+        status: deletesuccess,
+        deletedTrack,
       };
     }
     default:

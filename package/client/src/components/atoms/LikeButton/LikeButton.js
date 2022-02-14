@@ -5,13 +5,12 @@ import { likeTrack, unlikeTrack } from "../../../redux/tracks/tracks-actions";
 
 // Icons
 import { BsSuitHeart, BsSuitHeartFill } from "react-icons/bs";
-
 export default function LikeButton({ trackId }) {
   const dispatch = useDispatch();
   const currentUser = JSON.parse(localStorage.getItem("user"));
   const userId = currentUser._id;
-  const likedTracks = useSelector((state) => state.tracks.likedTracks);
-  const isLiked = likedTracks.find((e) => e === trackId);
+  const likedTracks = useSelector((state) => state.tracks.likedTracksList);
+  const isLiked = likedTracks.find((e) => e._id === trackId);
 
   const handleLike = () => {
     if (isLiked) {
@@ -27,7 +26,7 @@ export default function LikeButton({ trackId }) {
 
   return (
     <Button className="btn__options" onClick={handleLike} id={trackId}>
-      {isLiked ? <BsSuitHeartFill className="fill_like"/> : <BsSuitHeart/>}
+      {isLiked ? <BsSuitHeartFill className="fill_like" /> : <BsSuitHeart />}
     </Button>
   );
 }

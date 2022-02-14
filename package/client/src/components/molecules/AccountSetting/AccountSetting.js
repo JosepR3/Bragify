@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { signOut, editProfile} from "../../../redux/auth/auth-actions";
+import { signOut, editProfile } from "../../../redux/auth/auth-actions";
 
 import Dropdown from "react-bootstrap/Dropdown";
 import DropdownButton from "react-bootstrap/esm/DropdownButton";

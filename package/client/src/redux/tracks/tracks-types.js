@@ -11,3 +11,6 @@ export const STOP_TRACK = "STOP_TRACK";
 export const LIKE_TRACK = "LIKE_TRACK";
 export const LIKE_TRACKS = "LIKE_TRACKS";
 export const DELETE_TRACK = "DELETE_TRACK";
+export const GET_TRACK_SUCCESS = "GET_TRACK_SUCCESS";
+export const TRACK_URL = "TRACK_URL";
+export const DELETE_SUCCESS = "DELETE_SUCCESS";
