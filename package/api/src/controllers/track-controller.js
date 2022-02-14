@@ -2,7 +2,6 @@ const { TrackRepo } = require("../repositories");
 const { handleDbResponse } = require("../repositories/repo-utils");
 
 async function createTrack(req, res, next) {
-
   const { title, url, thumbnail, genre, duration, authorId, artists } = req.body;
 
   try {
