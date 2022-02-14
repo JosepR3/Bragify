@@ -13,8 +13,8 @@ function SearchInput() {
   const dispatch = useDispatch();
   const [searchContent, setSearchContent] = useState("");
 
-  const handleSearch = () => {
-    event.preventDefault();
+  const handleSearch = (e) => {
+    e.preventDefault();
 
     dispatch(search(searchContent));
   }
