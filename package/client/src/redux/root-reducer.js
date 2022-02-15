@@ -7,7 +7,7 @@ import playlistsReducer from "./playlists/playlists-reducer";
 const rootReducer = combineReducers({
   auth: authReducer,
   tracks: tracksReducer,
-  playlistsReducer: playlistsReducer
+  playlists: playlistsReducer
 });
 
 export default rootReducer;

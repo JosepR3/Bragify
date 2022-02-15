@@ -10,32 +10,34 @@ export default function MusicPlayer() {
 
   const { trackURL} = useSelector(tracksSelector);
 
-  // useEffect(() => {
-  //   let trackId = localStorage.getItem("trackId");
-  //   dispatch(fetchTrackById(trackId));
-  // }, [dispatch]);
-  
-  console.log(trackURL)
-
   const tracksToPlay = trackURL;
+
   const [number, setNumber] = useState(0);
 
+  tracksToPlay[number]
+
   function handleClickPrevious() {
+    
     setNumber(number - 1);
+    
     if (number === 0) {
       setNumber(tracksToPlay.length - 1);
     }
   }
 
   function handleClickNext() {
+    
     setNumber(number + 1);
+    
     if (number === tracksToPlay.length - 1) {
       setNumber(0);
     }
+    
   }
 
   return (
     <AudioPlayer
+      autoPlay={true}
       autoPlayAfterSrcChange={true}
       showSkipControls={true}
       showJumpControls={false}

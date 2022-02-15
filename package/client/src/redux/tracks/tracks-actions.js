@@ -46,7 +46,7 @@ export function setLikeTrack(id) {
 export function playTrack(track) {
   return {
     type: TrackTypes.PLAY_TRACK,
-    payload: { track },
+    payload: track,
   };
 }
 

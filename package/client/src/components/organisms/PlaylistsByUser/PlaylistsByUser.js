@@ -3,7 +3,7 @@ import { fetchAllPlaylists } from "../../../redux/playlists/playlists-actions";
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import Card from "react-bootstrap/Card";
-import { playlistStateSelector } from "../../../redux/playlists/playlists-selector";
+import { playlistsSelector } from "../../../redux/playlists/playlists-selector";
 import { RiPlayCircleFill } from "react-icons/ri";
 import { fetchPlaylistById } from "../../../redux/playlists/playlists-actions";
 
@@ -15,7 +15,7 @@ export default function PlaylistsByUser() {
     dispatch(fetchAllPlaylists);
   }, [dispatch]);
 
-  const { playlists } = useSelector(playlistStateSelector);
+  const { playlists } = useSelector(playlistsSelector);
   const currentUser = JSON.parse(localStorage.getItem("user"));
 
   const handlePlaylistId = (e) => {

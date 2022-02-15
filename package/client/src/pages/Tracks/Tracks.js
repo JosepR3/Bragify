@@ -4,16 +4,16 @@ import { tracksSelector } from "../../redux/tracks/tracks-selector";
 import {
   fetchAllTracks,
   fetchLikedTracks,
+  fetchTrackById
 } from "../../redux/tracks/tracks-actions";
 
 import withLayout from "../../components/HOC/withLayout";
 import LikeButton from "../../components/atoms/LikeButton";
 import DropDownList from "../../components/atoms/DropDownList";
 import { fetchAllPlaylists } from "../../redux/playlists/playlists-actions";
-import { playlistStateSelector } from "../../redux/playlists/playlists-selector";
+import { playlistsSelector } from "../../redux/playlists/playlists-selector";
 import DeleteButton from "../../components/atoms/DeleteButton";
 import ListGroup from "react-bootstrap/ListGroup";
-import { fetchTrackById } from "../../redux/tracks/tracks-actions";
 import Button from "react-bootstrap/Button";
 
 import { BsPlusLg } from "react-icons/bs";
@@ -27,12 +27,11 @@ function Tracks() {
     dispatch(fetchLikedTracks(userId));
   }, [dispatch]);
   const { tracks } = useSelector(tracksSelector);
-  const playlist = useSelector(playlistStateSelector)
+  const playlist = useSelector(playlistsSelector)
   const handleTrackId = (e) => {
-    // const id = e.target.id;
-    // localStorage.setItem("trackId", id);
-    // let trackId = localStorage.getItem("trackId");
-    // dispatch(fetchTrackById(trackId));
+      const id = e.target.id;
+      localStorage.setItem("trackId", id);
+      dispatch(fetchTrackById(id));
   };
 
   const status = useSelector((state) => state.tracks.status);

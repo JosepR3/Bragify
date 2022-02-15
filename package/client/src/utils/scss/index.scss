@@ -47,7 +47,7 @@ $theme-colors: map-merge($theme-colors, $custom-colors);
 @import "../../components/atoms/TrackAlbumCard/track-album-card";
 @import "../../components/atoms/SearchInput/searchInput";
 @import "../../components/atoms/AddtoPlayListButton/AddList";
-// @import "../../components/atoms/LikeButton/likeButton";
+@import "../../components/atoms/LikeButton/likeButton";
 @import "../../components/atoms/DropDownList/dropDownlist";
 @import "../../components/atoms/LikeButton/likeButton";
 
@@ -63,7 +63,6 @@ $theme-colors: map-merge($theme-colors, $custom-colors);
 @import "../../components/organisms/MainContainer/mainContainer";
 @import "../../components/organisms/Footer/footer";
 @import "../../components/organisms/UploadTrack/uploadTrack.scss";
-@import "../../components/organisms/SinglePlaylist/singlePlaylist.scss";
 @import "../../components/organisms/CreatePlaylist/createPlaylist.scss";
 
 //      pages
@@ -72,6 +71,7 @@ $theme-colors: map-merge($theme-colors, $custom-colors);
 @import "../../pages/ResetPassword/resetPassword";
 @import "../../pages/NotFound/notFound";
 @import "../../pages/Tracks/tracks";
+@import "../../pages/SinglePlaylist/singlePlaylist.scss";
 
 
 @import "../../app";

@@ -5,9 +5,10 @@ import { BsSuitHeart } from "react-icons/bs";
 import { FiMoreHorizontal } from "react-icons/fi";
 import { useSelector } from "react-redux";
 import { tracksSelector } from "../../../redux/tracks/tracks-selector";
+
 export default function CurrentPlaying() {
+  
   const { trackId } = useSelector(tracksSelector);
-  console.log(trackId)
 
   return (
     <Card className="d-flex flex-row h-100 w-25 p-1">

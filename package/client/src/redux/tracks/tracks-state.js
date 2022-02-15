@@ -3,7 +3,7 @@ const initialState = {
     error: undefined,
     isPlaying: false,
     likedTracksList: [],
-    playingTrack: "",
+    playingTrack: null,
     myTracks: [],
     tracks: null,
     trackId: [],

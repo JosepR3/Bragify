@@ -12,25 +12,33 @@ import { BsPlusLg } from "react-icons/bs";
 
 function SinglePlaylistTracks(){
   const dispatch = useDispatch();
-  let { trackId } = useSelector(tracksSelector);
-  const currentPlaylistStr = localStorage.getItem('currentPlaylist')
-  const currentPlaylist = currentPlaylistStr.split(',');
+  const { trackId } = useSelector(tracksSelector);
   
   useEffect(() => {
+    const currentPlaylistStr = localStorage.getItem('currentPlaylist');
+    const currentPlaylist = currentPlaylistStr.split(',');
     currentPlaylist && currentPlaylist.map((track) => dispatch(fetchTrackById(track)))
   }, []);
 
   const handleTrackId = (e) => {
-    // const id = e.target.id;
-    // localStorage.setItem("trackId", id);
-    // let trackId = localStorage.getItem("trackId");
-    // dispatch(fetchTrackById(trackId));
+    const id = e.target.id;
+    localStorage.setItem("trackId", id);
+    dispatch(fetchTrackById(id));
   };
 
   
-
+  
+  console.log(trackId)
   return(
     <>
+    <ListGroup horizontal className="tracks__titles-row d-flex w-100 mb-1">
+        <ListGroup.Item className="tracks__title"></ListGroup.Item>
+        <ListGroup.Item className="tracks__title">Title</ListGroup.Item>
+        <ListGroup.Item className="tracks__title">Artist</ListGroup.Item>
+        <ListGroup.Item className="tracks__title">Genre</ListGroup.Item>
+        <ListGroup.Item className="tracks__title">Duration</ListGroup.Item>
+        <ListGroup.Item className="tracks__title"></ListGroup.Item>
+      </ListGroup>
       {trackId &&
         trackId.map((track) => {
           return (

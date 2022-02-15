@@ -1,7 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 
-import { playlistStateSelector } from "../../../redux/playlists/playlists-selector";
+import { playlistsSelector } from "../../../redux/playlists/playlists-selector";
 
 import DeletePlaylistButton from "../../../components/atoms/DeletePlaylistButton/DeletePlaylistButton";
 
@@ -13,10 +13,10 @@ import Image from "react-bootstrap/Image";
 import { BsFillPlayFill, BsShuffle, BsSuitHeart } from "react-icons/bs"
 
 function SinglePlaylistHeader() {
-  const { playlistId } = useSelector(playlistStateSelector);
+  const { playlistId } = useSelector(playlistsSelector);
   
   return(
-    <div className="w-100 h-100"
+    <div className="w-100"
     style={{ 
       backgroundImage: `url(${playlistId?.thumbnail})`,
       backgroundRepeat: "no-repeat",

@@ -18,7 +18,7 @@ import NotFound from "./pages/NotFound";
 import EditProfile from "./pages/EditProfile";
 import UploadTrack from "./components/organisms/UploadTrack";
 import CreatePlaylist from "./components/organisms/CreatePlaylist";
-import SinglePlaylist from "./components/organisms/SinglePlaylist/SinglePlaylist";
+import SinglePlaylist from "./pages/SinglePlaylist/SinglePlaylist";
 
 
 //REDUX
@@ -53,10 +53,8 @@ function App() {
         <Route exact path={ROUTES.RESET_PASSWORD} element={<ResetPassword />} />
         <Route exact path={ROUTES.HOME} element={<Home />} />
         <Route exact path={ROUTES.TRACKS} element={<Tracks />} />
-        <Route path={ROUTES.PLAYLISTS} element={<Playlists />}>
-          <Route path="single-playlist/:id" element={<SinglePlaylist />} />
-        </Route>
-
+        <Route exact path={ROUTES.PLAYLISTS} element={<Playlists />}/>
+        <Route exact path="playlists/single-playlist/:id" element={<SinglePlaylist />} />
         <Route exact path={ROUTES.UPLOAD_TRACK} element={<UploadTrack />} />
       <Route exact path={ROUTES.CREATE_PLAYLIST} element={<CreatePlaylist />} />
       </Routes>
