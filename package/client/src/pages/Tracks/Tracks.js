@@ -11,7 +11,7 @@ import DropDownList from "../../components/atoms/DropDownList";
 import { fetchAllPlaylists } from "../../redux/playlists/playlists-actions";
 import { playlistStateSelector } from "../../redux/playlists/playlists-selector";
 import DeleteButton from "../../components/atoms/DeleteButton";
-import { fetchTrackById } from "../../redux/tracks/tracks-actions";
+// import { fetchTrackById } from "../../redux/tracks/tracks-actions";
 import ListGroup from "react-bootstrap/ListGroup";
 import Alert from "react-bootstrap/Alert";
 
@@ -27,6 +27,7 @@ function Tracks() {
   const { tracks } = useSelector(tracksSelector);
   const playlist = useSelector(playlistStateSelector)
   const handleTrackId = (e) => {
+    console.log(e)
     // const id = e.target.id;
     // localStorage.setItem("trackId", id);
     // let trackId = localStorage.getItem("trackId");

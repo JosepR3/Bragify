@@ -4,7 +4,7 @@ import { tracksSelector } from "../../../redux/tracks/tracks-selector";
 import { fetchTrackById } from "../../../redux/tracks/tracks-actions";
 
 import LikeButton from "../../atoms/LikeButton";
-import DeleteButton from "../../atoms/DeleteButton";
+import RemoveTrackPlaylist from "../../atoms/RemoveTrackPlaylist";
 import ListGroup from "react-bootstrap/ListGroup";
 import Button from "react-bootstrap/Button";
 
@@ -15,12 +15,13 @@ function SinglePlaylistTracks(){
   let { trackId } = useSelector(tracksSelector);
   const currentPlaylistStr = localStorage.getItem('currentPlaylist')
   const currentPlaylist = currentPlaylistStr.split(',');
-  
+  console.log(currentPlaylist)
   useEffect(() => {
     currentPlaylist && currentPlaylist.map((track) => dispatch(fetchTrackById(track)))
   }, []);
 
   const handleTrackId = (e) => {
+    console.log(e)
     // const id = e.target.id;
     // localStorage.setItem("trackId", id);
     // let trackId = localStorage.getItem("trackId");
@@ -69,7 +70,7 @@ function SinglePlaylistTracks(){
               </ListGroup.Item>
               <ListGroup.Item className="track__row-buttons">
                 <LikeButton trackId={track._id} />
-                <DeleteButton id={track._id} />
+                <RemoveTrackPlaylist id={track._id} />
                 <Button className="btn__options">
                   <BsPlusLg />{" "}
                 </Button>

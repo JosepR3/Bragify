@@ -16,7 +16,6 @@ const DropDownList = (props) => {
   const dispatch = useDispatch();
   const userId = JSON.parse(localStorage.getItem('user'))._id
   function handleAddTrack(data) {
-    console.log(data)
     dispatch(addToList(data))
   }
   return (<>

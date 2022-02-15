@@ -75,6 +75,16 @@ async function addtoList(req, res, next) {
   }
 }
 
+async function removeToList(req, res, next) {
+  const trackId = req.params.id;
+  try {
+    const tracks = await playlistRepo.removePlaylist(trackId);
+    handleDbResponse(res, tracks);
+  } catch (error) {
+    next(error);
+  }
+}
+
 module.exports = {
   createPlaylist: createPlaylist,
   fetchPlaylistById: fetchPlaylistById,

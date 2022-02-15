@@ -113,6 +113,16 @@ export function addToList(data) {
       dispatch(addToPlaylistError("error add track to list"));
     }
   };
+} 
+export function removeTrackPlaylistAction(data) {
+  return async function createThunk(dispatch) {
+    try {
+      dispatch(playlistAuth(api.removeTrackPlaylist,
+        data));
+    } catch (error) {
+      console.log(error, "deleteTrackError");
+    }
+  };
 }
 
 
