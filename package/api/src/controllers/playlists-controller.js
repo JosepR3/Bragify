@@ -71,9 +71,9 @@ async function addtoList(req, res, next) {
 }
 
 async function removeToList(req, res, next) {
-  const { trackId, playlistId}=req.body
+  const { track, playlist}=req.body
   try {
-    const playlist = await playlistRepo.removePlaylist(trackId, playlistId);
+    const playlist = await playlistRepo.removePlaylist(track, playlist);
     handleDbResponse(res, playlist);
   } catch (error) {
     next(error);

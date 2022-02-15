@@ -22,11 +22,11 @@ export default function FollowButton() {
     const handleFollow = () => {
 
         if (isFollowing) {
-            // dispatch(unlikeTrack(trackId, userId)).then(() => {
+            // dispatch(unlikeTrack(track, userId)).then(() => {
             return !isFollowing;
             // });
         } else {
-            //     dispatch(likeTrack(trackId, userId)).then(() => {
+            //     dispatch(likeTrack(track, userId)).then(() => {
             return isFollowing
             // });
         }

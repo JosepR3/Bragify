@@ -27,11 +27,11 @@ const playlistsReducer = (state = playlistsState, action) => {
     }
 
     case PlaylistTypes.GET_PLAYLIST_SUCCESS: {
-      localStorage.setItem("currentPlaylist", action.payload.tracks);
+      // localStorage.setItem("currentPlaylist", action.payload.tracks);
       return {
         ...state,
         isSuccess: true,
-        playlistId: action.payload
+        playlist: action.payload
       };
     }
 

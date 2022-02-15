@@ -1,10 +1,10 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { tracksSelector } from "../../../redux/tracks/tracks-selector";
+import { playlistsSelector } from "../../../redux/playlists/playlists-selector";
 import { fetchTrackById } from "../../../redux/tracks/tracks-actions";
-
-import LikeButton from "../../atoms/LikeButton";
 import RemoveTrackPlaylist from "../../atoms/RemoveTrackPlaylist";
+import LikeButton from "../../atoms/LikeButton";
 import ListGroup from "react-bootstrap/ListGroup";
 import Button from "react-bootstrap/Button";
 
@@ -13,28 +13,33 @@ import { useParams } from "react-router-dom";
 
 function SinglePlaylistTracks(){
   const dispatch = useDispatch();
-  let { trackId } = useSelector(tracksSelector);
+  const { track } = useSelector(tracksSelector);
+  const { playlist } = useSelector(playlistsSelector);
   const params = useParams()
-  const currentPlaylistStr = localStorage.getItem('currentPlaylist')
-  const currentPlaylist = currentPlaylistStr.split(',');
+  console.log(playlist?.tracks)
+  
   useEffect(() => {
-    currentPlaylist && currentPlaylist.map((track) => dispatch(fetchTrackById(track)))
-  }, []);
+    playlist?.tracks && playlist?.tracks.map((track) => dispatch(fetchTrackById(track)))
+  }, [playlist?.tracks]);
 
   const handleTrackId = (e) => {
-    console.log(e)
-    // const id = e.target.id;
-    // localStorage.setItem("trackId", id);
-    // let trackId = localStorage.getItem("trackId");
-    // dispatch(fetchTrackById(trackId));
+    const id = e.target.id;
+    localStorage.setItem("track", id);
+    dispatch(fetchTrackById(id));
   };
-
-  
 
   return(
     <>
-      {trackId &&
-        trackId.map((track) => {
+    <ListGroup horizontal className="tracks__titles-row d-flex w-100 mb-1">
+        <ListGroup.Item className="tracks__title"></ListGroup.Item>
+        <ListGroup.Item className="tracks__title">Title</ListGroup.Item>
+        <ListGroup.Item className="tracks__title">Artist</ListGroup.Item>
+        <ListGroup.Item className="tracks__title">Genre</ListGroup.Item>
+        <ListGroup.Item className="tracks__title">Duration</ListGroup.Item>
+        <ListGroup.Item className="tracks__title"></ListGroup.Item>
+      </ListGroup>
+      {track &&
+        track.map((track) => {
           return (
             <ListGroup
               horizontal
@@ -70,8 +75,8 @@ function SinglePlaylistTracks(){
                 {track.duration}
               </ListGroup.Item>
               <ListGroup.Item className="track__row-buttons">
-                <LikeButton trackId={track._id} />
-                <RemoveTrackPlaylist trackId={track._id} playlistId={params.id}/>
+                <LikeButton track={track._id} />
+                <RemoveTrackPlaylist track={track._id} playlist={params.id}/>
                 <Button className="btn__options">
                   <BsPlusLg />{" "}
                 </Button>

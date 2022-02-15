@@ -59,6 +59,7 @@ export function fetchPlaylistById(data) {
       },
       data,
     );
+    console.log(res.data.data)
     dispatch(getPlaylistSuccess(res.data.data));
   };
 }
