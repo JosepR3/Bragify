@@ -4,7 +4,7 @@ import { tracksSelector } from "../../../redux/tracks/tracks-selector";
 import { fetchTrackById } from "../../../redux/tracks/tracks-actions";
 
 import LikeButton from "../../atoms/LikeButton";
-import RemoveTrackPlaylist from "../../atoms/RemoveTrackPlaylist";
+import { removeTrackPlaylistAction } from "../../../redux/playlists/playlists-actions";
 import ListGroup from "react-bootstrap/ListGroup";
 import Button from "react-bootstrap/Button";
 
