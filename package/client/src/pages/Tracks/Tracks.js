@@ -51,8 +51,6 @@ function Tracks() {
           <ListGroup.Item className="tracks__title">Title</ListGroup.Item>
           <ListGroup.Item className="tracks__title">Artist</ListGroup.Item>
           <ListGroup.Item className="tracks__title">Genre</ListGroup.Item>
-          <ListGroup.Item className="tracks__title">Duration</ListGroup.Item>
-          <ListGroup.Item className="tracks__title"></ListGroup.Item>
         </ListGroup>
 
         {tracks &&
@@ -87,9 +85,6 @@ function Tracks() {
                 </ListGroup.Item>
                 <ListGroup.Item className="track__row-genre">
                   {track.genre}
-                </ListGroup.Item>
-                <ListGroup.Item className="track__row-duration">
-                  {track.duration}
                 </ListGroup.Item>
                 <DropDownList
                   playlist={playlist}
