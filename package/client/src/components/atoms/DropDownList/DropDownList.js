@@ -16,6 +16,7 @@ const DropDownList = (props) => {
   const dispatch = useDispatch();
   const userId = JSON.parse(localStorage.getItem('user'))._id
   function handleAddTrack(data) {
+    console.log(data)
     dispatch(addToList(data))
   }
   return (<>
@@ -36,7 +37,7 @@ const DropDownList = (props) => {
         </Button>
       </ListGroup.Item>
       <div className="dropdown-content">
-        {listPlaylist.map((item, index) =>
+        {listPlaylist && listPlaylist.map((item, index) =>
           <a
             key={index + 1}
             onClick={() => handleAddTrack({ TrackId: trackId, playListId: item._id, userId: userId, url: url, name: name})} 

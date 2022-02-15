@@ -31,7 +31,7 @@ function LikedMusic() {
 
   return (
     <>
-      <h1 className="font-bold text-center mx-4 mb-5">Tracks that you liked</h1>
+      <h2 className="font-bold text-center mx-4 mb-5">Tracks that you liked</h2>
       <main className="container text-center d-flex">
         {likedTracksList?.length == 0 &&
           "Don't you have a favorite song yet? find one by listening to our list of available tracks!"}

@@ -24,7 +24,7 @@ class PlaylistRepository {
   }
 
   addPlaylist(TrackId, playListId) {
-    return normalizeDBQuery(db.Playlist.updateOne({ _id: playListId }, { $push: { tracks: TrackId } }, { new: true }));
+    return normalizeDBQuery(db.Playlist.updateOne({ _id: playListId }, { $addToSet: { tracks: TrackId } }, { upsert: true }));
   }
 }
 

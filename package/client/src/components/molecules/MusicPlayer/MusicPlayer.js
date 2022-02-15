@@ -8,16 +8,16 @@ import { tracksSelector } from "../../../redux/tracks/tracks-selector";
 export default function MusicPlayer() {
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    let trackId = localStorage.getItem("trackId");
-    dispatch(fetchTrackById(trackId));
-  }, [dispatch]);
-  
+  const { trackURL} = useSelector(tracksSelector);
 
-  const {trackURL} = useSelector(tracksSelector);
-
-  const tracksToPlay = [trackURL];
+  // useEffect(() => {
+  //   let trackId = localStorage.getItem("trackId");
+  //   dispatch(fetchTrackById(trackId));
+  // }, [dispatch]);
   
+  console.log(trackURL)
+
+  const tracksToPlay = trackURL;
   const [number, setNumber] = useState(0);
 
   function handleClickPrevious() {

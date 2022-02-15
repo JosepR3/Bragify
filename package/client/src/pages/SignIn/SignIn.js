@@ -44,9 +44,6 @@ function SignIn() {
     e.preventDefault();
 
     dispatch(signInWithEmailRequest(email, password));
-
-    setEmail("");
-    setPassword("");
   }
 
   function handleSetEmail(e) {

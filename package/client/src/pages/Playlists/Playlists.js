@@ -10,11 +10,10 @@ function Playlists() {
   const location = useLocation();
   const path = window.location.pathname.split("/");
   const id = path.slice(-1);
-
-  
   
   useEffect(() => {
-    dispatch(fetchPlaylistById(id))
+    dispatch(fetchPlaylistById(id));
+
   }, []);
 
   return (

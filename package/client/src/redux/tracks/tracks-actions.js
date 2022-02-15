@@ -57,8 +57,8 @@ export function updateTrack(id) {
   };
 }
 
-export function getTrackSuccess(id) {
-  return { type: TrackTypes.GET_TRACK_SUCCESS, payload: id };
+export function getTrackSuccess(data) {
+  return { type: TrackTypes.GET_TRACK_SUCCESS, payload: data };
 }
 
 // track CRUD functions
@@ -107,7 +107,7 @@ export function fetchTrackById(data) {
       },
       data,
     );
-    dispatch(getTrackSuccess(res.data));
+    dispatch(getTrackSuccess(res.data.data));
   };
 }
 
