@@ -15,7 +15,7 @@ import DeleteButton from "../../components/atoms/DeleteButton";
 // import { fetchTrackById } from "../../redux/tracks/tracks-actions";
 import ListGroup from "react-bootstrap/ListGroup";
 
-import { BsPlusLg } from "react-icons/bs";
+// import { BsPlusLg } from "react-icons/bs";
 import Alert from "react-bootstrap/Alert";
 
 function Tracks() {

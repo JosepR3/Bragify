@@ -10,7 +10,7 @@ import {
   RiUpload2Fill,
   RiDownload2Fill,
 } from "react-icons/ri";
-import { GiDrumKit } from "react-icons/gi";
+// import { GiDrumKit } from "react-icons/gi";
 import { AiFillHome } from "react-icons/ai";
 
 import * as ROUTES from "../../../routes";

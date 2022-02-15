@@ -91,7 +91,7 @@ export default function tracksReducer(state = initialState, action) {
     }
 
     case DELETE_TRACK: {
-      const track = action.payload;
+      // const track = action.payload;
       const deletedTrack = state.tracks.find((track) => track._id === track);
       const tracks = state.tracks.filter((track) => track._id !== track);
       const deletesuccess = "DELETE_SUCCESS"

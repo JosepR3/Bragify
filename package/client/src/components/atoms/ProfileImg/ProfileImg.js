@@ -1,3 +1,4 @@
+import React from "react";
 import { useSelector } from "react-redux";
 
 const ProfileImg = () => {
@@ -5,7 +6,7 @@ const ProfileImg = () => {
   console.log(img)
 
   return (<>
-    <div class="user-avatar -medium" style={{ backgroundImage: `url(${img})` }} ></div>
+    <div className="user-avatar -medium" style={{ backgroundImage: `url(${img})` }} ></div>
   </> );
 }
  

@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchPlaylistById, fetchAllPlaylists } from "../../../redux/playlists/playlists-actions";
-import { fetchAllTracks } from "../../../redux/tracks/tracks-actions";
+// import { fetchAllTracks } from "../../../redux/tracks/tracks-actions";
 import Card from "react-bootstrap/Card";
 import { playlistsSelector } from "../../../redux/playlists/playlists-selector";
 import { RiPlayCircleFill } from "react-icons/ri";
