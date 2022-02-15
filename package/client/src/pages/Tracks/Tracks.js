@@ -5,22 +5,18 @@ import {
   fetchAllTracks,
   fetchLikedTracks,
 } from "../../redux/tracks/tracks-actions";
-
 import withLayout from "../../components/HOC/withLayout";
 import LikeButton from "../../components/atoms/LikeButton";
 import DropDownList from "../../components/atoms/DropDownList";
 import { fetchAllPlaylists } from "../../redux/playlists/playlists-actions";
 import { playlistStateSelector } from "../../redux/playlists/playlists-selector";
 import DeleteButton from "../../components/atoms/DeleteButton";
+// import { fetchTrackById } from "../../redux/tracks/tracks-actions";
 import ListGroup from "react-bootstrap/ListGroup";
-import { fetchTrackById } from "../../redux/tracks/tracks-actions";
-import Button from "react-bootstrap/Button";
-
-import { BsPlusLg } from "react-icons/bs";
+import Alert from "react-bootstrap/Alert";
 
 function Tracks() {
   const dispatch = useDispatch();
-
   useEffect(() => {
     dispatch(fetchAllPlaylists);
     dispatch(fetchAllTracks);
@@ -31,6 +27,7 @@ function Tracks() {
   const playlist = useSelector(playlistStateSelector);
 
   const handleTrackId = (e) => {
+    console.log(e);
     // const id = e.target.id;
     // localStorage.setItem("trackId", id);
     // let trackId = localStorage.getItem("trackId");
@@ -92,18 +89,16 @@ function Tracks() {
                   url={track.url}
                   name={track.title}
                 />
+
                 <LikeButton trackId={track._id} />
                 <DeleteButton id={track._id} />
-                <ListGroup.Item className="track__row-buttons">
-                  <Button className="btn__options">
-                    <BsPlusLg />{" "}
-                  </Button>
-                </ListGroup.Item>
               </ListGroup>
             );
           })}
         {status === "DELETE_SUCCESS" && (
-          <p>{deletedTrack.title} was successfully deleted </p>
+          <Alert variant="success">
+            <p>{deletedTrack.title} Delete successfully</p>
+          </Alert>
         )}
       </div>
     </>

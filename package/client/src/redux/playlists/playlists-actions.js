@@ -107,10 +107,20 @@ export async function fetchAllPlaylists(dispatch) {
 export function addToList(data) {
   return async function createThunk(dispatch) {
     try {
-      await dispatch(authList(api.addToList, data));
-      // dispatch(setLikeTrack(id));
+      const res = await dispatch(authList(api.addToList, data));
+      console.log(res)
     } catch (error) {
       dispatch(addToPlaylistError("error add track to list"));
+    }
+  };
+} 
+export function removeTrackPlaylistAction(data) {
+  return async function createThunk(dispatch) {
+    try {
+      dispatch(playlistAuth(api.removeTrackPlaylist,
+        data));
+    } catch (error) {
+      console.log(error, "deleteTrackError");
     }
   };
 }

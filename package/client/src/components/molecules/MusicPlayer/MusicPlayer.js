@@ -1,12 +1,12 @@
-import React, { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
+import React, { useState } from "react";
+// import { useDispatch } from "react-redux";
 import AudioPlayer from "react-h5-audio-player";
 import "react-h5-audio-player/src/styles.scss";
 import { useSelector } from "react-redux";
-import { fetchTrackById } from "../../../redux/tracks/tracks-actions";
+// import { fetchTrackById } from "../../../redux/tracks/tracks-actions";
 import { tracksSelector } from "../../../redux/tracks/tracks-selector";
 export default function MusicPlayer() {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
   const { trackURL} = useSelector(tracksSelector);
 
@@ -15,7 +15,6 @@ export default function MusicPlayer() {
   //   dispatch(fetchTrackById(trackId));
   // }, [dispatch]);
   
-  console.log(trackURL)
 
   const tracksToPlay = trackURL;
   const [number, setNumber] = useState(0);

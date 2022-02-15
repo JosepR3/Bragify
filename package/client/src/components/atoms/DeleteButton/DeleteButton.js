@@ -10,7 +10,7 @@ export default function DeleteButton({ id }) {
     const dispatch = useDispatch();
 
     const handleDelete = () => {
-        dispatch(deleteTrack(id));
+      dispatch(deleteTrack(id));
     }
 
   return (

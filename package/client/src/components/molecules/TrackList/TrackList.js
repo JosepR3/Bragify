@@ -4,7 +4,7 @@ import TrackAlbumCard from "../../atoms/TrackAlbumCard/Track-album-card";
 function TrackList() {
   return (
     <div className="mt-3">
-      <TrackAlbumCard />
+      <TrackAlbumCard  />
     </div>
   );
 }
