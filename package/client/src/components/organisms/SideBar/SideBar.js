@@ -46,12 +46,6 @@ function SideBar() {
           </Nav.Link>
         </Nav.Item>
         <Nav.Item className="side__bar__item">
-          <Nav.Link href="" className="side__bar__link">
-            <GiDrumKit className="side__bar-icon" />
-            Genres
-          </Nav.Link>
-        </Nav.Item >
-        <Nav.Item className="side__bar__item">
           <Nav.Link href={ROUTES.PLAYLISTS} className="side__bar__link">
             <RiPlayListFill className="side__bar-icon" />
             Playlists

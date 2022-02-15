@@ -20,7 +20,7 @@ function LikedMusic() {
   const handleTrackId = (e) => {
     const id = e.target.id;
     localStorage.setItem("track", id);
-    let track = localStorage.getItem("track");
+    const track = localStorage.getItem("track");
     console.log(track);
     dispatch(fetchTrackById(track));
   };

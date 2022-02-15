@@ -7,13 +7,16 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { getCurrentUserUid } from "../../../services/auth";
 import withLayout from "../../HOC/withLayout";
+import Row from "react-bootstrap/Row";
+import Toast from "react-bootstrap/Toast";
+import Col from "react-bootstrap/Col";
+
 
 const UploadTrack = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [linkTrack, setLinkTrack] = useState("");
-  // const [linkImg, setLinkImg] = useState("");
-
+  const [show, setShow] = useState(false);
   const [track, settrack] = useState({
     title: "",
     url: "",
@@ -57,7 +60,16 @@ const UploadTrack = () => {
     navigate("/tracks")
   }
 
-  return (
+  return (<>
+    <aside>
+    <Row>
+      <Col xs={6}>
+        <Toast onClose={() => setShow(false)} show={show} delay={3000} autohide>
+            <Toast.Body>{ track.title} Upload successfully!</Toast.Body>
+        </Toast>
+        </Col>
+      </Row>
+      </aside>
     <main className="container text-center">
       <section className="auth__wrapper container px-5 py-2">
         <h1 className="font-bold align-self-start m-4">Upload a Track</h1>
@@ -131,6 +143,7 @@ const UploadTrack = () => {
               className="btn__save my-2"
               type="submit"
               variant="log-color"
+              onClick={() => setShow(true)}
             >
               Upload Track
             </Button>
@@ -138,6 +151,7 @@ const UploadTrack = () => {
         </Form>
       </section>
     </main>
+    </>
   );
 };
 export default withLayout(UploadTrack);

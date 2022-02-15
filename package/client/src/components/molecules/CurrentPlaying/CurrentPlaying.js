@@ -7,7 +7,6 @@ import { useSelector } from "react-redux";
 import { tracksSelector } from "../../../redux/tracks/tracks-selector";
 
 export default function CurrentPlaying() {
-  
   const { track } = useSelector(tracksSelector);
 
   return (

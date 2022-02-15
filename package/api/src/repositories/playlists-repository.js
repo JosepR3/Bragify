@@ -26,6 +26,11 @@ class PlaylistRepository {
   addPlaylist(TrackId, playListId) {
     return normalizeDBQuery(db.Playlist.updateOne({ _id: playListId }, { $addToSet: { tracks: TrackId } }, { upsert: true }));
   }
+
+  removePlaylist(track, playlist) {
+    console.log(track,playlist)
+    return normalizeDBQuery(db.Playlist.findByIdAndUpdate({ _id: playlist }, { $pull: { tracks: track } }, { new: true }));
+  }
 }
 
 module.exports = new PlaylistRepository();

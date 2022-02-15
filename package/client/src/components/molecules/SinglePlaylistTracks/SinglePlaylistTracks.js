@@ -1,23 +1,26 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { tracksSelector } from "../../../redux/tracks/tracks-selector";
+import { playlistsSelector } from "../../../redux/playlists/playlists-selector";
 import { fetchTrackById } from "../../../redux/tracks/tracks-actions";
-
+import RemoveTrackPlaylist from "../../atoms/RemoveTrackPlaylist";
 import LikeButton from "../../atoms/LikeButton";
-import DeleteButton from "../../atoms/DeleteButton";
 import ListGroup from "react-bootstrap/ListGroup";
 import Button from "react-bootstrap/Button";
 
 import { BsPlusLg } from "react-icons/bs";
+import { useParams } from "react-router-dom";
 
 function SinglePlaylistTracks(){
   const dispatch = useDispatch();
   const { track } = useSelector(tracksSelector);
-  const currentPlaylistStr = localStorage.getItem('currentPlaylist');
-    const currentPlaylist = currentPlaylistStr.split(',');
+  const { playlist } = useSelector(playlistsSelector);
+  const params = useParams()
+  console.log(playlist?.tracks)
+  
   useEffect(() => {
-    currentPlaylist && currentPlaylist.map((track) => dispatch(fetchTrackById(track)))
-  }, []);
+    playlist?.tracks && playlist?.tracks.map((track) => dispatch(fetchTrackById(track)))
+  }, [playlist?.tracks]);
 
   const handleTrackId = (e) => {
     const id = e.target.id;
@@ -25,9 +28,6 @@ function SinglePlaylistTracks(){
     dispatch(fetchTrackById(id));
   };
 
-  
-  
-  console.log(track)
   return(
     <>
     <ListGroup horizontal className="tracks__titles-row d-flex w-100 mb-1">
@@ -76,7 +76,7 @@ function SinglePlaylistTracks(){
               </ListGroup.Item>
               <ListGroup.Item className="track__row-buttons">
                 <LikeButton track={track._id} />
-                <DeleteButton id={track._id} />
+                <RemoveTrackPlaylist track={track._id} playlist={params.id}/>
                 <Button className="btn__options">
                   <BsPlusLg />{" "}
                 </Button>

@@ -19,7 +19,7 @@ function SinglePlaylist() {
   return (
     <div className="mb-3">
       <SinglePlaylistHeader />
-      <SinglePlaylistTracks /> 
+      <SinglePlaylistTracks />
     </div>
   );
 }
