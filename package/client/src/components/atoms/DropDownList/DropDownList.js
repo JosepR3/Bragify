@@ -5,7 +5,7 @@ import { useDispatch } from "react-redux";
 
 
 const DropDownList = (props) => {
-  const { playlist, trackId, url, name } = props
+  const { playlist, track, url, name } = props
   const listPlaylist = playlist.playlists
   const dispatch = useDispatch();
   const userId = JSON.parse(localStorage.getItem('user'))._id
@@ -21,7 +21,7 @@ const DropDownList = (props) => {
         {listPlaylist && listPlaylist.map((item, index) =>
           <a
             key={index + 1}
-            onClick={() => handleAddTrack({ TrackId: trackId, playListId: item._id, userId: userId, url: url, name: name})} 
+            onClick={() => handleAddTrack({ TrackId: track, playListId: item._id, userId: userId, url: url, name: name})} 
             >{item.name}</a>
        )}
       </div>

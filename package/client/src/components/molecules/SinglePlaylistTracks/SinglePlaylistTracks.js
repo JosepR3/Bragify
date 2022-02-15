@@ -12,23 +12,22 @@ import { BsPlusLg } from "react-icons/bs";
 
 function SinglePlaylistTracks(){
   const dispatch = useDispatch();
-  const { trackId } = useSelector(tracksSelector);
-  
-  useEffect(() => {
-    const currentPlaylistStr = localStorage.getItem('currentPlaylist');
+  const { track } = useSelector(tracksSelector);
+  const currentPlaylistStr = localStorage.getItem('currentPlaylist');
     const currentPlaylist = currentPlaylistStr.split(',');
+  useEffect(() => {
     currentPlaylist && currentPlaylist.map((track) => dispatch(fetchTrackById(track)))
   }, []);
 
   const handleTrackId = (e) => {
     const id = e.target.id;
-    localStorage.setItem("trackId", id);
+    localStorage.setItem("track", id);
     dispatch(fetchTrackById(id));
   };
 
   
   
-  console.log(trackId)
+  console.log(track)
   return(
     <>
     <ListGroup horizontal className="tracks__titles-row d-flex w-100 mb-1">
@@ -39,8 +38,8 @@ function SinglePlaylistTracks(){
         <ListGroup.Item className="tracks__title">Duration</ListGroup.Item>
         <ListGroup.Item className="tracks__title"></ListGroup.Item>
       </ListGroup>
-      {trackId &&
-        trackId.map((track) => {
+      {track &&
+        track.map((track) => {
           return (
             <ListGroup
               horizontal
@@ -76,7 +75,7 @@ function SinglePlaylistTracks(){
                 {track.duration}
               </ListGroup.Item>
               <ListGroup.Item className="track__row-buttons">
-                <LikeButton trackId={track._id} />
+                <LikeButton track={track._id} />
                 <DeleteButton id={track._id} />
                 <Button className="btn__options">
                   <BsPlusLg />{" "}

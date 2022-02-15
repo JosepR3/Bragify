@@ -116,7 +116,7 @@ export function fetchTrackById(data) {
 // like button actions
 
 export function likeTrack(id, userId) {
-  const data = { trackId: id, userId: userId };
+  const data = { track: id, userId: userId };
   return async function createThunk(dispatch) {
     try {
       await dispatch(authTrack(api.likeTrack, data));
@@ -128,7 +128,7 @@ export function likeTrack(id, userId) {
 }
 
 export function unlikeTrack(id, userId) {
-  const data = { trackId: id, userId: userId };
+  const data = { track: id, userId: userId };
   return async function createThunk(dispatch) {
     try {
       await dispatch(authTrack(api.unlikeTrack, data));

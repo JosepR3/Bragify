@@ -23,12 +23,12 @@ class TrackRepository {
     return normalizeDBQuery(db.Track.deleteOne({ _id: id }));
   }
 
-  likeTrack(trackId, userId) {
-    return normalizeDBQuery(db.Track.updateOne({ _id: trackId }, { $push: { likedBy: userId } }, { new: true }));
+  likeTrack(track, userId) {
+    return normalizeDBQuery(db.Track.updateOne({ _id: track }, { $push: { likedBy: userId } }, { new: true }));
   }
 
-  unlikeTrack(trackId, userId) {
-    return normalizeDBQuery(db.Track.findByIdAndUpdate(trackId, { $pull: { likedBy: userId } }, { new: true }));
+  unlikeTrack(track, userId) {
+    return normalizeDBQuery(db.Track.findByIdAndUpdate(track, { $pull: { likedBy: userId } }, { new: true }));
   }
 
   fetchLikedTracks(userId) {

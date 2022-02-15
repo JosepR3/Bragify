@@ -30,7 +30,7 @@ function Tracks() {
   const playlist = useSelector(playlistsSelector)
   const handleTrackId = (e) => {
       const id = e.target.id;
-      localStorage.setItem("trackId", id);
+      localStorage.setItem("track", id);
       dispatch(fetchTrackById(id));
   };
 
@@ -88,12 +88,12 @@ function Tracks() {
               </ListGroup.Item>
               <DropDownList
                 playlist={playlist}
-                trackId={track._id}
+                track={track._id}
                 url={track.url}
                 name={track.title}
                 
               />
-              <LikeButton trackId={track._id} />
+              <LikeButton track={track._id} />
               <DeleteButton id={track._id} />
               <ListGroup.Item className="track__row-buttons">
                 <Button className="btn__options">

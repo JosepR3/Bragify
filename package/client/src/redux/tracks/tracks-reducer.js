@@ -76,7 +76,7 @@ export default function tracksReducer(state = initialState, action) {
       localStorage.setItem("trackURL", action.payload.url);
       return {
         ...state,
-        trackId: [...state.trackId, action.payload],
+        track: [...state.track, action.payload],
         trackURL: [...state.trackURL, action.payload.url],
 
       };
@@ -91,9 +91,9 @@ export default function tracksReducer(state = initialState, action) {
     }
 
     case DELETE_TRACK: {
-      const trackId = action.payload;
-      const deletedTrack = state.tracks.find((track) => track._id === trackId);
-      const tracks = state.tracks.filter((track) => track._id !== trackId);
+      const track = action.payload;
+      const deletedTrack = state.tracks.find((track) => track._id === track);
+      const tracks = state.tracks.filter((track) => track._id !== track);
       const deletesuccess = "DELETE_SUCCESS"
       return {
         ...state,

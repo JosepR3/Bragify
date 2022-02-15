@@ -60,20 +60,20 @@ async function deleteTrack(req, res, next) {
 }
 
 async function likeTrack(req, res, next) {
-  const trackId = req.params.id;
+  const track = req.params.id;
   const { userId } = req.body;
   try {
-    const tracks = await TrackRepo.likeTrack(trackId, userId);
+    const tracks = await TrackRepo.likeTrack(track, userId);
     handleDbResponse(res, tracks);
   } catch (error) {
     next(error);
   }
 }
 async function unlikeTrack(req, res, next) {
-  const trackId = req.params.id;
+  const track = req.params.id;
   const { userId } = req.body;
   try {
-    const tracks = await TrackRepo.unlikeTrack(trackId, userId);
+    const tracks = await TrackRepo.unlikeTrack(track, userId);
     handleDbResponse(res, tracks);
   } catch (error) {
     next(error);
