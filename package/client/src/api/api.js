@@ -119,14 +119,14 @@ function makeApi(request = makeRequest()) {
 
   function addToList(headers, data) {
     return axios.put(
-      `http://localhost:4000/playlist/add-playlist/${data.playListId}`,
+      `http://localhost:4000/playlist/${data.playListId}/add-playlist`,
       data,
       { headers: headers },
     );
   }
   function removeTrackPlaylist(headers, data) {
     return axios.put(
-      `http://localhost:4000/playlist/remove-playlist/${data.id}`,
+      `http://localhost:4000/playlist/${data.playlistId}/remove-playlist`,
       data,
       {
       headers: headers,

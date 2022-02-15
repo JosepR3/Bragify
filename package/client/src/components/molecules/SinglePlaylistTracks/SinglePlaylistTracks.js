@@ -9,13 +9,14 @@ import ListGroup from "react-bootstrap/ListGroup";
 import Button from "react-bootstrap/Button";
 
 import { BsPlusLg } from "react-icons/bs";
+import { useParams } from "react-router-dom";
 
 function SinglePlaylistTracks(){
   const dispatch = useDispatch();
   let { trackId } = useSelector(tracksSelector);
+  const params = useParams()
   const currentPlaylistStr = localStorage.getItem('currentPlaylist')
   const currentPlaylist = currentPlaylistStr.split(',');
-  console.log(currentPlaylist)
   useEffect(() => {
     currentPlaylist && currentPlaylist.map((track) => dispatch(fetchTrackById(track)))
   }, []);
@@ -70,7 +71,7 @@ function SinglePlaylistTracks(){
               </ListGroup.Item>
               <ListGroup.Item className="track__row-buttons">
                 <LikeButton trackId={track._id} />
-                <RemoveTrackPlaylist id={track._id} />
+                <RemoveTrackPlaylist trackId={track._id} playlistId={params.id}/>
                 <Button className="btn__options">
                   <BsPlusLg />{" "}
                 </Button>

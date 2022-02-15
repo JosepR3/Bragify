@@ -48,9 +48,6 @@ async function fetchPlaylists(req, res, next) {
   } catch (error) {
     next(error);
   }
-
-  
-
 }
 
 async function deletePlaylist(req, res, next) {
@@ -66,20 +63,18 @@ async function deletePlaylist(req, res, next) {
 // --------------------------axios  playlist logic -----------------------------------
 async function addtoList(req, res, next) {
   const { TrackId, playListId }= req.body;
-  console.log(req.body)
   try {
   playlistRepo.addPlaylist(TrackId, playListId);
-    // handleDbResponse(res, playlist);
   } catch (error) {
     next(error);
   }
 }
 
 async function removeToList(req, res, next) {
-  const trackId = req.params.id;
+  const { trackId, playlistId}=req.body
   try {
-    const tracks = await playlistRepo.removePlaylist(trackId);
-    handleDbResponse(res, tracks);
+    const playlist = await playlistRepo.removePlaylist(trackId, playlistId);
+    handleDbResponse(res, playlist);
   } catch (error) {
     next(error);
   }
@@ -91,4 +86,5 @@ module.exports = {
   fetchPlaylists: fetchPlaylists,
   deletePlaylist: deletePlaylist,
   addtoList: addtoList,
+  removeToList: removeToList
 };
