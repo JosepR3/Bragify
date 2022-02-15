@@ -6,6 +6,7 @@ import Card from "react-bootstrap/Card";
 import { playlistStateSelector } from "../../../redux/playlists/playlists-selector";
 import { RiPlayCircleFill } from "react-icons/ri";
 import { fetchPlaylistById } from "../../../redux/playlists/playlists-actions";
+import { fetchAllTracks } from "../../../redux/tracks/tracks-actions";
 // import { playTrack } from "../../../redux/tracks/tracks-actions";
 
 export default function TrackAlbumCard() {
@@ -13,10 +14,12 @@ export default function TrackAlbumCard() {
   const navigate = useNavigate();
 
   useEffect(() => {
+    dispatch(fetchAllTracks)
     dispatch(fetchAllPlaylists);
   }, [dispatch]);
 
   const { playlists } = useSelector(playlistStateSelector);
+
 
   const handlePlaylistId = (e) => {
     const id = e.target.id;

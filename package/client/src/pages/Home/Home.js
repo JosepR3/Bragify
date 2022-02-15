@@ -9,10 +9,10 @@ import { useSelector } from "react-redux";
 // HOC
 import withLayout from "../../components/HOC/withLayout";
 
-//components
+//COMPONENTS
 import LikedMusic from "../../components/organisms/likedMusic/LikedMusic";
-// import TrackList from "../../components/molecules/TrackList/TrackList";
 import PlaylistsByUser from "../../components/organisms/PlaylistsByUser";
+import Genres from "../../components/organisms/Genres";
 
 
 function Home() {
@@ -25,10 +25,12 @@ function Home() {
   return (
     <>
     <PlaylistsByUser/>
-    {/* <TrackList/> */}
     <LikedMusic/>
+    <Genres/>
     </>
         
   );
 }
+
+
 export default withLayout(Home);

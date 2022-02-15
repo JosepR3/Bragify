@@ -63,7 +63,7 @@ export function getTrackSuccess(data) {
 
 // track CRUD functions
 export function createTrack(data) {
-  console.log(data)
+  console.log(data);
   return async function createThunk(dispatch) {
     try {
       dispatch(authTrack(api.createTrack, data));
@@ -90,10 +90,7 @@ export async function fetchAllTracks(dispatch) {
     const res = await api.getAllTracks({
       headers: { Authorization: `Bearer ${userToken}` },
     });
-    const reposn = res.data.data
-    console.log(reposn)
-    sessionStorage.setItem('tracks', JSON.stringify(reposn));
-    return dispatch(setTracksResult(reposn));
+    return dispatch(setTracksResult(res.data.data));
   } catch (error) {
     console.log(error, "fetcherror");
   }
@@ -111,7 +108,6 @@ export function fetchTrackById(data) {
     dispatch(getTrackSuccess(res.data.data));
   };
 }
-
 
 // like button actions
 
