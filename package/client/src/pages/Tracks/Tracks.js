@@ -31,10 +31,10 @@ function Tracks() {
   const playlist = useSelector(playlistStateSelector);
 
   const handleTrackId = (e) => {
-    const id = e.target.id;
-    localStorage.setItem("trackId", id);
-    let trackId = localStorage.getItem("trackId");
-    dispatch(fetchTrackById(trackId));
+    // const id = e.target.id;
+    // localStorage.setItem("trackId", id);
+    // let trackId = localStorage.getItem("trackId");
+    // dispatch(fetchTrackById(trackId));
   };
 
   const status = useSelector((state) => state.tracks.status);

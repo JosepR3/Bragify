@@ -78,7 +78,7 @@ export default function tracksReducer(state = initialState, action) {
       return {
         ...state,
         trackId: [...state.trackId, action.payload],
-        trackURL: action.payload.url,
+        trackURL: [...state.trackURL, action.payload.url],
 
       };
     }
