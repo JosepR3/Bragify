@@ -50,6 +50,7 @@ $theme-colors: map-merge($theme-colors, $custom-colors);
 // @import "../../components/atoms/LikeButton/likeButton";
 @import "../../components/atoms/DropDownList/dropDownlist";
 @import "../../components/atoms/LikeButton/likeButton";
+@import "../../components/atoms/ProfileImg/profile";
 
 //      molecules
 @import "../../components/molecules/CurrentPlaying/currentPlaying";

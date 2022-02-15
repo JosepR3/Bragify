@@ -146,11 +146,13 @@ export function editUser(user) {
       lastName: user.lastName,
       username: user.username,
       email: user.email,
+      img:user.img
     };
     const response = await api.editUser({
       headers: { Authorization: `Bearer ${token}` },
       body: reqBody,
     });
+    console.log(response)
     dispatch(editSuccess(response));
   };
 }
