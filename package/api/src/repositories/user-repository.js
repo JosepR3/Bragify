@@ -13,10 +13,6 @@ class UserRepository {
   findByIdAndUpdate(query) {
     return normalizeDBQuery(db.User.findByIdAndUpdate(query, "-__v"));
   }
-
-  search(data) {
-    return normalizeDBQuery(db.User.find({ $or: [{ username: { $regex: data, $options: 'i' } }, { email: { $regex: data, $options: 'i' } }] }));
-  }
 }
 
 module.exports = new UserRepository();

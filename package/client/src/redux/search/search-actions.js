@@ -3,12 +3,13 @@ import api from "../../api";
 import { getCurrentUserToken } from "../../services/auth";
 
 import {
-    SET_RESULTS
+    SET_RESULTS,
+    EMPTY_SEARCH
 
 } from './search-types';
 
+
 export function search(data) {
-    console.log(data)
     return async function createThunk(dispatch) {
         try {
             console.log(data)
@@ -19,6 +20,7 @@ export function search(data) {
             console.log(error, "searchError");
         }
     };
+
 }
 
 export function setResults(data) {
@@ -32,7 +34,6 @@ export function searchAuth(action, data) {
     console.log(data)
     return async function createThunk() {
         const token = await getCurrentUserToken();
-        console.log(token)
         const response = await action(
             {
                 Authorization: `Bearer ${token}`,
@@ -41,4 +42,11 @@ export function searchAuth(action, data) {
         );
         return response.data;
     };
+}
+
+export function emptySearch() {
+    console.log("emptySearch")
+    return {
+        type: EMPTY_SEARCH
+    }
 }

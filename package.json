@@ -1,6 +1,7 @@
 {
   "dependencies": {
-    "dotenv": "^14.3.2"
+    "dotenv": "^14.3.2",
+    "lodash.debounce": "^4.0.8"
   },
   "devDependencies": {
     "svg-react-loader": "^0.4.6"

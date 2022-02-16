@@ -10,17 +10,14 @@ async function search(req, res, next) {
 
         const tracks = await TrackRepo.search(string);
         const playlists = await playlistRepo.search(string);
-        const users = await UserRepo.search(string);
         const results = {
             data: {
                 tracks: [],
                 playlists: [],
-                users: []
             }
         }
         tracks.data.length > 0 && results.data.tracks.push(tracks.data);
         playlists.data.length > 0 && results.data.playlists.push(playlists.data);
-        users.data.length > 0 && results.data.users.push(users.data);
         handleDbResponse(res, results);
 
     } catch (error) {

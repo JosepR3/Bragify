@@ -34,9 +34,9 @@ class TrackRepository {
   fetchLikedTracks(userId) {
     return normalizeDBQuery(db.Track.find({ likedBy: { $in: [userId] } }, "-__v"));
   };
-  search(data){
-    return normalizeDBQuery(db.Track.find({$or:[{title: {$regex: data, $options: 'i'}},{description: {$regex: data, $options: 'i'}}]}));
+  search(data) {
+    return normalizeDBQuery(db.Track.find({ title: { $regex: data, $options: 'i' } }));
   }
-  
+
 }
 module.exports = new TrackRepository();

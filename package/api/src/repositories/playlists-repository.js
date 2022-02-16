@@ -22,8 +22,8 @@ class PlaylistRepository {
   deleteOne(id) {
     return normalizeDBQuery(db.Playlist.deleteOne({ _id: id }));
   }
-  search(data){
-    return normalizeDBQuery(db.Playlist.find({$or:[{name: {$regex: data, $options: 'i'}},{description: {$regex: data, $options: 'i'}}]}));
+  search(data) {
+    return normalizeDBQuery(db.Playlist.find({ name: { $regex: data, $options: 'm', } }));
   }
 }
 
