@@ -30,7 +30,6 @@ class PlaylistRepository {
         { upsert: true },
       ),
     );
-    // return normalizeDBQuery(db.Playlist.updateOne({ _id: playListId }, { $push: { tracks: TrackId } }, { new: true }));
   }
 
   removePlaylist(trackId, playlist) {

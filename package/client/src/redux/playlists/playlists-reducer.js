@@ -31,7 +31,8 @@ const playlistsReducer = (state = playlistsState, action) => {
       console.log(action.payload)
       return {
         ...state,
-        playlistTracksUrl: [action.payload]
+        playPlaylist: action.payload ,
+        playlistTracksUrl:[ action.payload]
       };
     }
 

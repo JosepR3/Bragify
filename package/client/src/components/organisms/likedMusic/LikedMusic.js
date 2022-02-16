@@ -3,9 +3,7 @@ import React, { useEffect } from "react";
 // REDUX
 import { useSelector, useDispatch } from "react-redux";
 import { tracksSelector } from "../../../redux/tracks/tracks-selector";
-
 import { fetchLikedTracks } from "../../../redux/tracks/tracks-actions";
-
 import { fetchTrackById } from "../../../redux/tracks/tracks-actions";
 import Card from "react-bootstrap/Card";
 import { RiPlayCircleFill } from "react-icons/ri";

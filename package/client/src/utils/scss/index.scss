@@ -12,6 +12,7 @@ $custom-colors: (
   "log-color": white,
   "main-black": $main-black,
   "brand": $brand-color,
+  "web-background": $web-background-color,
 );
 
 
@@ -27,8 +28,8 @@ $list-group-color: unset;
 $btn-active-box-shadow: unset;
 $btn-active-border-shade-amount: 0%;
 $btn-active-border-tint-amount: 0%;
-// $btn-active-bg-shade-amount: 0;
-// $btn-active-bg-tint-amount: 0%;
+$btn-active-bg-shade-amount: 0;
+$btn-active-bg-tint-amount: 0%;
 $btn-focus-width: unset;
 $btn-focus-box-shadow: unset;
 // $btn-transition: unset;

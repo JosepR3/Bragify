@@ -1,7 +1,6 @@
 import React from "react";
 // ---------COMPONENTS
 import SearchInput from "../../atoms/SearchInput";
-import ProfileImg from "../../atoms/ProfileImg";
 
 import AccountSetting from "../../molecules/AccountSetting";
 // ---------REACT BOOTSTRAP
@@ -14,7 +13,6 @@ function Header() {
         <SearchInput />
         <AccountSetting />
       </Nav>
-      <ProfileImg />
     </header>
     </>
   );

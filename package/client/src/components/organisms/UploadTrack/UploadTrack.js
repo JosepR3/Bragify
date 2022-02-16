@@ -70,8 +70,8 @@ const UploadTrack = () => {
         </Col>
       </Row>
       </aside>
-    <main className="container text-center">
-      <section className="auth__wrapper container px-5 py-2">
+    
+      <section className="auth__wrapper container mt-4 px-5 py-2">
         <h1 className="font-bold align-self-start m-4">Upload a Track</h1>
         <Form className="px-4 mb-2" onSubmit={handleSubmit}>
           <Form.Group className="edit__form mb-2">
@@ -150,7 +150,7 @@ const UploadTrack = () => {
           </div>
         </Form>
       </section>
-    </main>
+    
     </>
   );
 };

@@ -13,7 +13,7 @@ export default function RemoveTrackPlaylist({ trackId, playlist }) {
   }
 
   return (
-    <Button className="btn__trash-round m-0 ms-3" track={trackId} onClick={handleDelete}>
+    <Button className="btn__trash-round m-0" track={trackId} onClick={handleDelete}>
       <BsTrash className="h-50 w-50" />
     </Button>
   )

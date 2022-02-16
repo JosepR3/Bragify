@@ -42,8 +42,7 @@ function CreatePlaylist() {
   }
 
   return (
-    <main className="container text-center">
-      <section className="auth__wrapper container p-5">
+      <section className="auth__wrapper container mt-4 p-5">
         <h1 className="font-bold align-self-start mx-4 mb-5">
           Create your playlist
         </h1>
@@ -87,7 +86,6 @@ function CreatePlaylist() {
           </div>
         </Form>
       </section>
-    </main>
   );
 }
 

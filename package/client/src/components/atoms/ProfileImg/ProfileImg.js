@@ -1,13 +1,19 @@
-import React from "react";
-import { useSelector } from "react-redux";
+import React, { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import {
+  resetAuthState,
+} from "../../../redux/auth/auth-actions";
 
 const ProfileImg = () => {
-  const img = useSelector((state) => state.auth.username?.img)
+  const dispatch = useDispatch();
+  const currentUser = JSON.parse(localStorage.getItem('user'));
+  useEffect(() => {
+    dispatch(resetAuthState());
+  },[dispatch]);
 
-
-  return (<>
-    <div className="user-avatar -medium" style={{ backgroundImage: `url(${img})` }} ></div>
-  </> );
+  return ( 
+    <img className="user__avatar me-2" src={currentUser.img} />
+  );
 }
  
 export default ProfileImg;

@@ -55,4 +55,12 @@ svg{
   margin: 0;
   padding: 0;
 }
+
+.dropdown-toggle::after {
+  content: none;
+}
+
+.show > .btn-primary.dropdown-toggle {
+  background-color: transparent;
+}
   

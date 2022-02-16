@@ -1,14 +1,11 @@
 import React, { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
 
 import Button from 'react-bootstrap/Button';
 import followIcon from '../../../assets/images/follow.svg';
 import unfollowIcon from '../../../assets/images/unfollow.svg';
 
 export default function FollowButton() {
-    const dispatch = useDispatch();
-    const userId = useSelector((state) => state.auth.username._id);
-
+    
     const isFollowing = false;
 
     // const followedUsers = useSelector((state) => state.auth.followedBy);

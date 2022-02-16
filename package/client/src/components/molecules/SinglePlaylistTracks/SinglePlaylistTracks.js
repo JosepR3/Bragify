@@ -4,9 +4,9 @@ import { playlistsSelector } from "../../../redux/playlists/playlists-selector";
 import RemoveTrackPlaylist from "../../atoms/RemoveTrackPlaylist";
 import LikeButton from "../../atoms/LikeButton";
 import ListGroup from "react-bootstrap/ListGroup";
-import Button from "react-bootstrap/Button";
+
 import { fetchPlaylistTrack } from "../../../redux/playlists/playlists-actions";
-import { BsPlusLg } from "react-icons/bs";
+
 import { useParams } from "react-router-dom";
 
 function SinglePlaylistTracks() {
@@ -22,12 +22,11 @@ function SinglePlaylistTracks() {
 
   return (
     <>
-      <ListGroup horizontal className="tracks__titles-row d-flex w-100 mb-1">
+    <ListGroup horizontal className="tracks__titles-row d-flex w-100 mx-2 mb-1">
         <ListGroup.Item className="tracks__title"></ListGroup.Item>
         <ListGroup.Item className="tracks__title">Title</ListGroup.Item>
         <ListGroup.Item className="tracks__title">Artist</ListGroup.Item>
         <ListGroup.Item className="tracks__title">Genre</ListGroup.Item>
-        <ListGroup.Item className="tracks__title">Duration</ListGroup.Item>
         <ListGroup.Item className="tracks__title"></ListGroup.Item>
       </ListGroup>
 
@@ -36,7 +35,7 @@ function SinglePlaylistTracks() {
           return (
             <ListGroup
               horizontal
-              className="track__row w-100 d-flex"
+              className="track__row w-100 mx-2 d-flex"
               key={track.trackId}
               onClick={() => handleTrackId(track?.url)}
             >
@@ -65,15 +64,9 @@ function SinglePlaylistTracks() {
               <ListGroup.Item className="track__row-genre">
                 {track.genre}
               </ListGroup.Item>
-              <ListGroup.Item className="track__row-buttons">
+              <ListGroup.Item className="track__row-buttons ms-auto">
                 <LikeButton track={track.track} />
-                <RemoveTrackPlaylist
-                  trackId={track.trackId}
-                  playlist={params.id}
-                />
-                <Button className="btn__options">
-                  <BsPlusLg />
-                </Button>
+                <RemoveTrackPlaylist trackId={track.trackId} playlist={params.id}/>
               </ListGroup.Item>
             </ListGroup>
           );
