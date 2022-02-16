@@ -26,6 +26,16 @@ const playlistsReducer = (state = playlistsState, action) => {
       };
     }
 
+
+    case PlaylistTypes.GET_PLAYLIST_TRACK: {
+      console.log(action.payload)
+      return {
+        ...state,
+        playlistTracksUrl: [action.payload]
+      };
+    }
+
+
     case PlaylistTypes.GET_PLAYLIST_SUCCESS: {
       const playlistTracks = action.payload.tracks.map((i)=> i.url)
 

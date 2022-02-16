@@ -1,27 +1,17 @@
-import React, { useState, useEffect } from "react";
+import React, {  useState } from "react";
 import AudioPlayer from "react-h5-audio-player";
 import "react-h5-audio-player/src/styles.scss";
-import { useSelector, useDispatch } from "react-redux";
+// import { useDispatch } from "react-redux";
+
+import { useSelector } from "react-redux";
 // import { tracksSelector } from "../../../redux/tracks/tracks-selector";
-import { playlistsSelector } from "../../../redux/playlists/playlists-selector";
-import { fetchPlaylistById } from "../../../redux/playlists/playlists-actions";
-
+// import { playlistsSelector } from "../../../redux/playlists/playlists-selector";
+// import { fetchPlaylistById } from "../../../redux/playlists/playlists-actions";
 export default function MusicPlayer() {
-  const dispatch = useDispatch();
-  const path = window.location.pathname.split("/");
-  const id = path.slice(-1);
-  // const { trackURL } = useSelector(tracksSelector);
-  
-  useEffect(() => {
-    dispatch(fetchPlaylistById(id[0]));
-  }, [dispatch]);
-
-
   const  playlistTracksUrl = useSelector((state) => state.playlists?.playlistTracksUrl);
-  console.log(playlistTracksUrl);
 
   const [number, setNumber] = useState(0);
-  const tracksToPlay = d
+  const tracksToPlay = playlistTracksUrl
 
 
   function handleClickPrevious() {
@@ -42,7 +32,6 @@ export default function MusicPlayer() {
 
   return (
     <AudioPlayer
-      autoPlay={true}
       autoPlayAfterSrcChange={true}
       showSkipControls={true}
       showJumpControls={false}

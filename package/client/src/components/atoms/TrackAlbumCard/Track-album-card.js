@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { fetchPlaylistById, fetchAllPlaylists } from "../../../redux/playlists/playlists-actions";
+import { fetchAllPlaylists } from "../../../redux/playlists/playlists-actions";
 // import { fetchAllTracks } from "../../../redux/tracks/tracks-actions";
 import Card from "react-bootstrap/Card";
 import { playlistsSelector } from "../../../redux/playlists/playlists-selector";
@@ -21,7 +21,6 @@ export default function TrackAlbumCard() {
 
   const handlePlaylistId = (e) => {
     const id = e.target.id;
-    dispatch(fetchPlaylistById(id))
     navigate(`/playlists/single-playlist/${id}`);
   };
   

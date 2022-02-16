@@ -13,9 +13,10 @@ import { BsFillPlayFill, BsShuffle, BsSuitHeart } from "react-icons/bs"
 
 function SinglePlaylistHeader() {
   const { playlist } = useSelector(playlistsSelector);
-  
-  function handlePlayPlaylist(){
 
+  function handlePlayPlaylist(){
+    // dispatch(sendTracksToPlaylist(data))
+    
   }
 
   return(

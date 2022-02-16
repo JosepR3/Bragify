@@ -73,12 +73,9 @@ export default function tracksReducer(state = initialState, action) {
     }
 
     case GET_TRACK_SUCCESS: {
-      
-      
       return {
         ...state,
-        track: [...state.track, action.payload],
-        trackURL: [...state.trackURL, action.payload.url],
+        track: [...state.track, action.payload]
       };
     }
 
