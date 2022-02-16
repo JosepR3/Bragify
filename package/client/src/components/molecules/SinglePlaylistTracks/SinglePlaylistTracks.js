@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { tracksSelector } from "../../../redux/tracks/tracks-selector";
+// import { tracksSelector } from "../../../redux/tracks/tracks-selector";
 import { playlistsSelector } from "../../../redux/playlists/playlists-selector";
 import { fetchTrackById } from "../../../redux/tracks/tracks-actions";
 import RemoveTrackPlaylist from "../../atoms/RemoveTrackPlaylist";
@@ -13,19 +13,21 @@ import { useParams } from "react-router-dom";
 
 function SinglePlaylistTracks(){
   const dispatch = useDispatch();
-  const { track } = useSelector(tracksSelector);
+  // const { track } = useSelector(tracksSelector);
   const { playlist } = useSelector(playlistsSelector);
+
   const params = useParams()
-  console.log(playlist?.tracks)
+
+  const playliStTracks = playlist?.tracks
   
   useEffect(() => {
-    playlist?.tracks && playlist?.tracks.map((track) => dispatch(fetchTrackById(track)))
-  }, [playlist?.tracks]);
+    // playlist?.tracks && playlist?.tracks.map((track) => dispatch(fetchTrackById(track)))
+  }, []);
 
   const handleTrackId = (e) => {
-    const id = e.target.id;
-    localStorage.setItem("track", id);
-    dispatch(fetchTrackById(id));
+console.log(e)
+
+    dispatch(fetchTrackById());
   };
 
   return(
@@ -38,17 +40,17 @@ function SinglePlaylistTracks(){
         <ListGroup.Item className="tracks__title">Duration</ListGroup.Item>
         <ListGroup.Item className="tracks__title"></ListGroup.Item>
       </ListGroup>
-      {track &&
-        track.map((track) => {
+      {playliStTracks &&
+        playliStTracks.map((track) => {
           return (
             <ListGroup
               horizontal
               className="track__row w-100 d-flex"
-              key={track._id}
+              key={track.track}
             >
               <ListGroup.Item
                 className="track__row-thumbnail p-2"
-                id={track._id}
+                id={track.track}
                 onClick={(e) => handleTrackId(e)}
               >
                 <img
@@ -59,11 +61,11 @@ function SinglePlaylistTracks(){
                 ></img>
               </ListGroup.Item>
               <ListGroup.Item
-                id={track._id}
+                id={track.track}
                 onClick={(e) => handleTrackId(e)}
                 className="track__row-title"
               >
-                {track.title}
+                {track.name}
               </ListGroup.Item>
               <ListGroup.Item className="track__row-artist">
                 {track.artists}
@@ -71,12 +73,9 @@ function SinglePlaylistTracks(){
               <ListGroup.Item className="track__row-genre">
                 {track.genre}
               </ListGroup.Item>
-              <ListGroup.Item className="track__row-duration">
-                {track.duration}
-              </ListGroup.Item>
               <ListGroup.Item className="track__row-buttons">
-                <LikeButton track={track._id} />
-                <RemoveTrackPlaylist track={track._id} playlist={params.id}/>
+                <LikeButton track={track.track} />
+                <RemoveTrackPlaylist track={track.track} playlist={params.id}/>
                 <Button className="btn__options">
                   <BsPlusLg />{" "}
                 </Button>

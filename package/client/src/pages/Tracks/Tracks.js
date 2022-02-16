@@ -88,6 +88,9 @@ function Tracks() {
                   track={track._id}
                   url={track.url}
                   name={track.title}
+                  artists={track.artists}
+                  genre={track.genre}
+                  thumbnail={track.thumbnail}
                 />
                 <LikeButton track={track._id} />
                 <DeleteButton id={track._id} />

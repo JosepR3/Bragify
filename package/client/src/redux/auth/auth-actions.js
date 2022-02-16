@@ -152,7 +152,6 @@ export function editUser(user) {
       headers: { Authorization: `Bearer ${token}` },
       body: reqBody,
     });
-    console.log(response)
     dispatch(editSuccess(response));
   };
 }

@@ -21,7 +21,6 @@ function LikedMusic() {
     const id = e.target.id;
     localStorage.setItem("track", id);
     const track = localStorage.getItem("track");
-    console.log(track);
     dispatch(fetchTrackById(track));
   };
 

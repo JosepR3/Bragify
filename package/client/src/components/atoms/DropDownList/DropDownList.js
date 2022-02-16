@@ -9,7 +9,7 @@ import Col from "react-bootstrap/Col";
 import Toast from "react-bootstrap/Toast";
 
 const DropDownList = (props) => {
-  const { playlist, track, url, name } = props
+  const { playlist, track, url, name, artists, genre, thumbnail  } = props
   const listPlaylist = playlist.playlists
   const [show, setShow] = useState(false);
   const dispatch = useDispatch();
@@ -52,6 +52,9 @@ const DropDownList = (props) => {
                     userId: userId,
                     url: url,
                     name: name,
+                    artists: artists,
+                    genre: genre,
+                    thumbnail: thumbnail
                   })
                 }
               >

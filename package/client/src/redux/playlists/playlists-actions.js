@@ -108,8 +108,7 @@ export async function fetchAllPlaylists(dispatch) {
 export function addToList(data) {
   return async function createThunk(dispatch) {
     try {
-      const res = await dispatch(authList(api.addToList, data));
-      console.log(res)
+      await dispatch(authList(api.addToList, data));
     } catch (error) {
       dispatch(addToPlaylistError("error add track to list"));
     }
