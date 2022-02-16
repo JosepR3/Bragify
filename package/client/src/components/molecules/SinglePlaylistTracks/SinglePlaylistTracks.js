@@ -18,7 +18,7 @@ function SinglePlaylistTracks(){
 
   const params = useParams()
 
-  const playliStTracks = playlist?.tracks
+  const playlistTracks = playlist?.tracks
   
   useEffect(() => {
     // playlist?.tracks && playlist?.tracks.map((track) => dispatch(fetchTrackById(track)))
@@ -40,13 +40,13 @@ console.log(e)
         <ListGroup.Item className="tracks__title">Duration</ListGroup.Item>
         <ListGroup.Item className="tracks__title"></ListGroup.Item>
       </ListGroup>
-      {playliStTracks &&
-        playliStTracks.map((track) => {
+      {playlistTracks &&
+        playlistTracks.map((track) => {
           return (
             <ListGroup
               horizontal
               className="track__row w-100 d-flex"
-              key={track.track}
+              key={track.trackId}
             >
               <ListGroup.Item
                 className="track__row-thumbnail p-2"
@@ -75,7 +75,7 @@ console.log(e)
               </ListGroup.Item>
               <ListGroup.Item className="track__row-buttons">
                 <LikeButton track={track.track} />
-                <RemoveTrackPlaylist track={track.track} playlist={params.id}/>
+                <RemoveTrackPlaylist trackId={track.trackId} playlist={params.id}/>
                 <Button className="btn__options">
                   <BsPlusLg />{" "}
                 </Button>

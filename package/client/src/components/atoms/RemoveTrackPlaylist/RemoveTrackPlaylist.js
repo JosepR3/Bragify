@@ -6,14 +6,14 @@ import Button from "react-bootstrap/Button";
 
 import { BsTrash } from "react-icons/bs";
 
-export default function RemoveTrackPlaylist({ track, playlist }) {
+export default function RemoveTrackPlaylist({ trackId, playlist }) {
   const dispatch = useDispatch();
   const handleDelete = () => {
-    dispatch(removeTrackPlaylistAction({ track: track, playlist: playlist}));
+    dispatch(removeTrackPlaylistAction({ trackId: trackId, playlist: playlist}));
   }
 
   return (
-    <Button className="btn__trash-round m-0 ms-3" track={track} onClick={handleDelete}>
+    <Button className="btn__trash-round m-0 ms-3" track={trackId} onClick={handleDelete}>
       <BsTrash className="h-50 w-50" />
     </Button>
   )

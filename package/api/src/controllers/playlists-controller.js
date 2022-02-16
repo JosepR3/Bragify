@@ -51,7 +51,6 @@ async function fetchPlaylists(req, res, next) {
 }
 
 async function deletePlaylist(req, res, next) {
-
   const id = req.params.id;
   try {
     const playlist = await playlistRepo.deleteOne(id);
@@ -71,11 +70,9 @@ async function addtoList(req, next) {
 }
 
 async function removeToList(req, res, next) {
-  console.log(req.body)
-  const { track, playlist}=req.body
+  const { trackId, playlist } = req.body;
   try {
-    const response = await playlistRepo.removePlaylist(track, playlist);
-    console.log(response);
+    const response = await playlistRepo.removePlaylist(trackId, playlist);
     handleDbResponse(res, response);
   } catch (error) {
     next(error);
@@ -88,5 +85,5 @@ module.exports = {
   fetchPlaylists: fetchPlaylists,
   deletePlaylist: deletePlaylist,
   addtoList: addtoList,
-  removeToList: removeToList
+  removeToList: removeToList,
 };
