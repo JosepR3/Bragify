@@ -18,9 +18,16 @@ export default function CurrentPlaying() {
   const TrackImage = listToMap?.map((item) => {
     console.log(item);
     if (item.url === urls[0])
-      return item.thumbnail;
+      return {
+        image: item.thumbnail,
+        name: item.name,
+        artist: item.artists,
+        genre: item.genre,
+      };
 
   });
+
+  console.log(TrackImage);
 
   const finalImage = TrackImage?.filter(item => item !== undefined);
 
@@ -31,12 +38,12 @@ export default function CurrentPlaying() {
     <Card className="d-flex flex-row h-100 w-25 p-1">
       {!track && (
         <Card.Img
-          src={finalImage[0]}
+          src=""
           className="current__img"
         />
       )}
       {track && (
-        <Card.Img src={finalImage[0]} className="current__img" />
+        <Card.Img src={finalImage && finalImage[0]?.image} className="current__img" />
       )}
       <Card.Body>
         {!track && (
@@ -46,12 +53,12 @@ export default function CurrentPlaying() {
         )}
         {track && (
           <Card.Title className="pl__card-title m-0">
-            {track?.data?.title}
+            {finalImage && finalImage[0]?.name}
           </Card.Title>
         )}
 
         <Card.Subtitle className="pl__card-subtitle m-0">
-          {track?.data?.artists}
+          {finalImage && finalImage[0]?.artists}
         </Card.Subtitle>
         {track && (
           <div className="cp__options">
