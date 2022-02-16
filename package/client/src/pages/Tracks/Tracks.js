@@ -4,12 +4,11 @@ import { tracksSelector } from "../../redux/tracks/tracks-selector";
 import {
   fetchAllTracks,
   fetchLikedTracks,
-  fetchTrackById
 } from "../../redux/tracks/tracks-actions";
 import withLayout from "../../components/HOC/withLayout";
 import LikeButton from "../../components/atoms/LikeButton";
 import DropDownList from "../../components/atoms/DropDownList";
-import { fetchAllPlaylists } from "../../redux/playlists/playlists-actions";
+import { fetchAllPlaylists, fetchPlaylistTrack } from "../../redux/playlists/playlists-actions";
 import { playlistsSelector } from "../../redux/playlists/playlists-selector";
 import DeleteButton from "../../components/atoms/DeleteButton";
 // import { fetchTrackById } from "../../redux/tracks/tracks-actions";
@@ -27,11 +26,10 @@ function Tracks() {
   }, [dispatch]);
 
   const { tracks } = useSelector(tracksSelector);
-  const playlist = useSelector(playlistsSelector)
-  const handleTrackId = (e) => {
-      const id = e.target.id;
-      localStorage.setItem("track", id);
-      dispatch(fetchTrackById(id));
+  const playlist = useSelector(playlistsSelector);
+
+  const handleTrackId = (trackUrl) => {
+      dispatch(fetchPlaylistTrack(trackUrl))
   };
 
   const status = useSelector((state) => state.tracks.status);
@@ -61,18 +59,18 @@ function Tracks() {
                 <ListGroup.Item
                   className="track__row-thumbnail p-2"
                   id={track._id}
-                  onClick={(e) => handleTrackId(e)}
+                  onClick={() => handleTrackId(track?.url)}
                 >
                   <img
                     className="w-100 h-100"
                     id={track._id}
-                    onClick={(e) => handleTrackId(e)}
+                    onClick={() => handleTrackId(track?.url)}
                     src={track.thumbnail}
                   ></img>
                 </ListGroup.Item>
                 <ListGroup.Item
                   id={track._id}
-                  onClick={(e) => handleTrackId(e)}
+                  onClick={() => handleTrackId(track?.url)}
                   className="track__row-title"
                 >
                   {track.title}

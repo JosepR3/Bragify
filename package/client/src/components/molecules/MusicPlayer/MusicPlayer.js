@@ -4,9 +4,7 @@ import "react-h5-audio-player/src/styles.scss";
 // import { useDispatch } from "react-redux";
 
 import { useSelector } from "react-redux";
-// import { tracksSelector } from "../../../redux/tracks/tracks-selector";
-// import { playlistsSelector } from "../../../redux/playlists/playlists-selector";
-// import { fetchPlaylistById } from "../../../redux/playlists/playlists-actions";
+
 export default function MusicPlayer() {
   const  playlistTracksUrl = useSelector((state) => state.playlists?.playlistTracksUrl);
 
