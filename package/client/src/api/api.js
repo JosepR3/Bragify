@@ -58,7 +58,7 @@ function makeApi(request = makeRequest()) {
 
   function likeTrack(headers, data) {
     return axios.put(
-      `http://localhost:4000/tracks/${data.trackId}/like`,
+      `http://localhost:4000/tracks/${data.track}/like`,
       data,
       { headers: headers },
     );
@@ -82,7 +82,7 @@ function makeApi(request = makeRequest()) {
 
   function unlikeTrack(headers, data) {
     return axios.put(
-      `http://localhost:4000/tracks/${data.trackId}/unlike`,
+      `http://localhost:4000/tracks/${data.track}/unlike`,
       data,
       { headers: headers },
     );
@@ -126,7 +126,7 @@ function makeApi(request = makeRequest()) {
   }
   function removeTrackPlaylist(headers, data) {
     return axios.put(
-      `http://localhost:4000/playlist/${data.playlistId}/remove-playlist`,
+      `http://localhost:4000/playlist/${data.playlist}/remove-playlist`,
       data,
       {
       headers: headers,

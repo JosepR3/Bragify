@@ -26,13 +26,25 @@ const playlistsReducer = (state = playlistsState, action) => {
       };
     }
 
+
+    case PlaylistTypes.GET_PLAYLIST_TRACK: {
+      console.log(action.payload)
+      return {
+        ...state,
+        playPlaylist: action.payload ,
+        playlistTracksUrl:[ action.payload]
+      };
+    }
+
+
     case PlaylistTypes.GET_PLAYLIST_SUCCESS: {
-      localStorage.setItem("currentPlaylist", action.payload.tracks);
+      const playlistTracks = action.payload.tracks.map((i)=> i.url)
 
       return {
         ...state,
         isSuccess: true,
-        playlistId: action.payload
+        playlist: action.payload,
+        playlistTracksUrl: playlistTracks
       };
     }
 

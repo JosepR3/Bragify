@@ -1,12 +1,11 @@
 import React, { useEffect } from "react";
-import { fetchAllPlaylists } from "../../../redux/playlists/playlists-actions";
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
+import { fetchAllPlaylists } from "../../../redux/playlists/playlists-actions";
+// import { fetchAllTracks } from "../../../redux/tracks/tracks-actions";
 import Card from "react-bootstrap/Card";
-import { playlistStateSelector } from "../../../redux/playlists/playlists-selector";
+import { playlistsSelector } from "../../../redux/playlists/playlists-selector";
 import { RiPlayCircleFill } from "react-icons/ri";
-import { fetchPlaylistById } from "../../../redux/playlists/playlists-actions";
-import { fetchAllTracks } from "../../../redux/tracks/tracks-actions";
 // import { playTrack } from "../../../redux/tracks/tracks-actions";
 
 export default function TrackAlbumCard() {
@@ -14,21 +13,19 @@ export default function TrackAlbumCard() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    dispatch(fetchAllTracks)
     dispatch(fetchAllPlaylists);
   }, [dispatch]);
 
-  const { playlists } = useSelector(playlistStateSelector);
+  const { playlists } = useSelector(playlistsSelector);
 
 
   const handlePlaylistId = (e) => {
     const id = e.target.id;
-    dispatch(fetchPlaylistById(id))
     navigate(`/playlists/single-playlist/${id}`);
   };
   
   return (
-    <div className="d-flex">
+    <div className="d-flex flex-wrap">
       {playlists &&
         playlists.map((playlist) => {
           return (

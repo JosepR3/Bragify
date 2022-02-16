@@ -50,6 +50,10 @@ export function createPlaylist(data) {
   };
 }
 
+export function fetchPlaylistTrack(result){
+  return { type: PlaylistsTypes.GET_PLAYLIST_TRACK, payload: result };
+}
+
 export function fetchPlaylistById(data) {
   const token = getCurrentUserToken();
   return async function createThunk(dispatch) {
@@ -107,14 +111,15 @@ export async function fetchAllPlaylists(dispatch) {
 export function addToList(data) {
   return async function createThunk(dispatch) {
     try {
-      const res = await dispatch(authList(api.addToList, data));
-      console.log(res)
+      await dispatch(authList(api.addToList, data));
     } catch (error) {
       dispatch(addToPlaylistError("error add track to list"));
     }
   };
 } 
+
 export function removeTrackPlaylistAction(data) {
+  console.log(data)
   return async function createThunk(dispatch) {
     try {
       dispatch(playlistAuth(api.removeTrackPlaylist,

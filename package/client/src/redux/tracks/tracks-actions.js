@@ -46,7 +46,7 @@ export function setLikeTrack(id) {
 export function playTrack(track) {
   return {
     type: TrackTypes.PLAY_TRACK,
-    payload: { track },
+    payload: track,
   };
 }
 
@@ -63,7 +63,6 @@ export function getTrackSuccess(data) {
 
 // track CRUD functions
 export function createTrack(data) {
-  console.log(data);
   return async function createThunk(dispatch) {
     try {
       dispatch(authTrack(api.createTrack, data));
@@ -112,7 +111,7 @@ export function fetchTrackById(data) {
 // like button actions
 
 export function likeTrack(id, userId) {
-  const data = { trackId: id, userId: userId };
+  const data = { track: id, userId: userId };
   return async function createThunk(dispatch) {
     try {
       await dispatch(authTrack(api.likeTrack, data));
@@ -124,7 +123,7 @@ export function likeTrack(id, userId) {
 }
 
 export function unlikeTrack(id, userId) {
-  const data = { trackId: id, userId: userId };
+  const data = { track: id, userId: userId };
   return async function createThunk(dispatch) {
     try {
       await dispatch(authTrack(api.unlikeTrack, data));

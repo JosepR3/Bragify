@@ -51,7 +51,6 @@ async function fetchPlaylists(req, res, next) {
 }
 
 async function deletePlaylist(req, res, next) {
-
   const id = req.params.id;
   try {
     const playlist = await playlistRepo.deleteOne(id);
@@ -61,20 +60,21 @@ async function deletePlaylist(req, res, next) {
   }
 }
 // --------------------------axios  playlist logic -----------------------------------
-async function addtoList(req, res, next) {
-  const { TrackId, playListId }= req.body;
+async function addtoList(req, next) {
+  const track = req.body;
   try {
-  playlistRepo.addPlaylist(TrackId, playListId);
+    playlistRepo.addPlaylist(track);
   } catch (error) {
     next(error);
   }
 }
 
 async function removeToList(req, res, next) {
-  const { trackId, playlistId}=req.body
+  console.log(req.body)
+  const { trackId, playlist } = req.body;
   try {
-    const playlist = await playlistRepo.removePlaylist(trackId, playlistId);
-    handleDbResponse(res, playlist);
+    const response = await playlistRepo.removePlaylist(trackId, playlist);
+    handleDbResponse(res, response);
   } catch (error) {
     next(error);
   }
@@ -86,5 +86,5 @@ module.exports = {
   fetchPlaylists: fetchPlaylists,
   deletePlaylist: deletePlaylist,
   addtoList: addtoList,
-  removeToList: removeToList
+  removeToList: removeToList,
 };

@@ -1,67 +1,51 @@
-import React, { useState } from "react";
+import React from "react";
 import { addToList } from "../../../redux/playlists/playlists-actions";
 import { useDispatch } from "react-redux";
-import ListGroup from "react-bootstrap/ListGroup";
-import Button from "react-bootstrap/Button";
+
+import Dropdown from "react-bootstrap/Dropdown"
+
 import { BsPlusLg } from "react-icons/bs";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
-import Toast from "react-bootstrap/Toast";
+
+
 
 const DropDownList = (props) => {
-  const { playlist, trackId, url, name } = props;
-  const [show, setShow] = useState(false);
-
-  const listPlaylist = playlist.playlists;
+  const { playlist, trackId, url, name, artists, genre, thumbnail  } = props
+  const listPlaylist = playlist.playlists
   const dispatch = useDispatch();
   const userId = JSON.parse(localStorage.getItem("user"))._id;
+
   function handleAddTrack(data) {
+    console.log("handle add track")
     dispatch(addToList(data));
   }
   return (
-    <>
-      <aside>
-        <Row>
-          <Col xs={6}>
-            <Toast
-              onClose={() => setShow(false)}
-              show={show}
-              delay={3000}
-              autohide
-            >
-              <Toast.Body>{name} Upload successfully!</Toast.Body>
-            </Toast>
-          </Col>
-        </Row>
-      </aside>
-      <div className="dropdown">
-        {/* <AddtoPlayListButton isAddList={isAddList} /> */}
-        <ListGroup.Item className="track__row-buttons">
-          <Button className="btn__options">
-            <BsPlusLg />
-          </Button>
-        </ListGroup.Item>
-        <div className="dropdown-content rounded">
-          {listPlaylist &&
+    <Dropdown className="p-1">
+        <Dropdown.Toggle title="add-to-track" className="btn__options">
+          <BsPlusLg />
+        </Dropdown.Toggle>
+          <Dropdown.Menu>
+            {listPlaylist &&
             listPlaylist.map((item, index) => (
-              <a
+              <Dropdown.Item
                 key={index + 1}
                 onClick={() =>
                   handleAddTrack({
-                    TrackId: trackId,
+                    trackId: trackId,
                     playListId: item._id,
                     userId: userId,
                     url: url,
                     name: name,
+                    artists: artists,
+                    genre: genre,
+                    thumbnail: thumbnail
                   })
                 }
               >
                 {item.name}
-              </a>
-            ))}
-        </div>
-      </div>
-    </>
+              </Dropdown.Item>
+              ))}
+        </Dropdown.Menu>
+    </Dropdown>
   );
 };
 

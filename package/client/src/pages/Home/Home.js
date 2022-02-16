@@ -28,7 +28,6 @@ function Home() {
     <LikedMusic/>
     <Genres/>
     </>
-        
   );
 }
 

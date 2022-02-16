@@ -2,7 +2,8 @@ const initialState = {
   isLoading: false,
   isSuccess: false,
   playlists: null,
-  playlistId: null,
-  songInsideOnePlaylist: [],
+  playlist: null,
+  playlistTracksUrl: null,
+  playPlaylist: null
 };
 export default initialState;

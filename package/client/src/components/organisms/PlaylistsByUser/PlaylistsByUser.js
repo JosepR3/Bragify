@@ -3,9 +3,8 @@ import { fetchAllPlaylists } from "../../../redux/playlists/playlists-actions";
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import Card from "react-bootstrap/Card";
-import { playlistStateSelector } from "../../../redux/playlists/playlists-selector";
+import { playlistsSelector } from "../../../redux/playlists/playlists-selector";
 import { RiPlayCircleFill } from "react-icons/ri";
-import { fetchPlaylistById } from "../../../redux/playlists/playlists-actions";
 
 export default function PlaylistsByUser() {
   const dispatch = useDispatch();
@@ -15,12 +14,11 @@ export default function PlaylistsByUser() {
     dispatch(fetchAllPlaylists);
   }, [dispatch]);
 
-  const { playlists } = useSelector(playlistStateSelector);
+  const { playlists } = useSelector(playlistsSelector);
   const currentUser = JSON.parse(localStorage.getItem("user"));
 
   const handlePlaylistId = (e) => {
     const id = e.target.id;
-    dispatch(fetchPlaylistById(id));
     navigate(`/playlists/single-playlist/${id}`);
   };
 
@@ -31,7 +29,7 @@ export default function PlaylistsByUser() {
   );
 
   return (
-    <container className="">
+    <>
       <h2 className="font-bold text-center mx-4 mb-5">
         Playlists by {currentUser.username}
       </h2>
@@ -102,6 +100,6 @@ export default function PlaylistsByUser() {
             );
           })}
       </div>
-    </container>
+      </>
   );
 }

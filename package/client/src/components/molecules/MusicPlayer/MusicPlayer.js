@@ -1,26 +1,20 @@
-import React, { useState } from "react";
-// import { useDispatch } from "react-redux";
+import React, {  useState } from "react";
 import AudioPlayer from "react-h5-audio-player";
 import "react-h5-audio-player/src/styles.scss";
+// import { useDispatch } from "react-redux";
+
 import { useSelector } from "react-redux";
-// import { fetchTrackById } from "../../../redux/tracks/tracks-actions";
-import { tracksSelector } from "../../../redux/tracks/tracks-selector";
+
 export default function MusicPlayer() {
-  // const dispatch = useDispatch();
+  const  playlistTracksUrl = useSelector((state) => state.playlists?.playlistTracksUrl);
 
-  const { trackURL} = useSelector(tracksSelector);
-
-  // useEffect(() => {
-  //   let trackId = localStorage.getItem("trackId");
-  //   dispatch(fetchTrackById(trackId));
-  // }, [dispatch]);
-  
-
-  const tracksToPlay = trackURL;
   const [number, setNumber] = useState(0);
+  const tracksToPlay = playlistTracksUrl
+
 
   function handleClickPrevious() {
     setNumber(number - 1);
+
     if (number === 0) {
       setNumber(tracksToPlay.length - 1);
     }
@@ -28,6 +22,7 @@ export default function MusicPlayer() {
 
   function handleClickNext() {
     setNumber(number + 1);
+
     if (number === tracksToPlay.length - 1) {
       setNumber(0);
     }
