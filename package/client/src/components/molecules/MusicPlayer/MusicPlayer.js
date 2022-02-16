@@ -1,16 +1,16 @@
-import React, { useState } from "react";
+import React, {  useState } from "react";
 import AudioPlayer from "react-h5-audio-player";
 import "react-h5-audio-player/src/styles.scss";
+// import { useDispatch } from "react-redux";
+
 import { useSelector } from "react-redux";
-import { tracksSelector } from "../../../redux/tracks/tracks-selector";
 
 export default function MusicPlayer() {
-  const { trackURL } = useSelector(tracksSelector);
-  const tracksToPlay = trackURL;
+  const  playlistTracksUrl = useSelector((state) => state.playlists?.playlistTracksUrl);
 
   const [number, setNumber] = useState(0);
+  const tracksToPlay = playlistTracksUrl
 
-  tracksToPlay[number];
 
   function handleClickPrevious() {
     setNumber(number - 1);
@@ -30,7 +30,6 @@ export default function MusicPlayer() {
 
   return (
     <AudioPlayer
-      autoPlay={true}
       autoPlayAfterSrcChange={true}
       showSkipControls={true}
       showJumpControls={false}

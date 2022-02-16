@@ -5,12 +5,12 @@ import { tracksSelector } from "../../../redux/tracks/tracks-selector";
 import {
   fetchAllTracks,
   fetchLikedTracks,
-  fetchTrackById
+  fetchTrackById,
 } from "../../../redux/tracks/tracks-actions";
-
 
 import { RiPlayCircleFill } from "react-icons/ri";
 import Card from "react-bootstrap/Card";
+import { fetchPlaylistTrack } from "../../../redux/playlists/playlists-actions";
 
 function Genres() {
   const dispatch = useDispatch();
@@ -24,11 +24,8 @@ function Genres() {
   const userId = currentUser._id;
   const { tracks } = useSelector(tracksSelector);
 
-  const handleTrackId = (e) => {
-    const id = e.target.id;
-    localStorage.setItem("track", id);
-    let track = localStorage.getItem("track");
-    dispatch(fetchTrackById(track));
+  const handleTrackId = (trackUrl) => {
+    dispatch(fetchPlaylistTrack(trackUrl));
   };
 
   //find genres
@@ -45,33 +42,33 @@ function Genres() {
         {popTrack &&
           popTrack.map((track) => {
             return (
-                <Card
-                  onClick={(e) => handleTrackId(e)}
-                  key={track._id}
+              <Card
+                onClick={() => handleTrackId(track?.url)}
+                key={track._id}
+                id={track._id}
+                className="pl__card p-2 m-2"
+              >
+                <div
                   id={track._id}
-                  className="pl__card p-2 m-2"
+                  className="pl__card-img-container position-relative p-0"
                 >
-                  <div
+                  <Card.Img
                     id={track._id}
-                    className="pl__card-img-container position-relative p-0"
-                  >
-                    <Card.Img
-                      id={track._id}
-                      variant="top"
-                      className="pl__card-img"
-                      src={track.thumbnail}
-                    />
-                    <RiPlayCircleFill
-                      id={track._id}
-                      className="card__play position-absolute top-50 start-50 translate-middle"
-                    />
-                  </div>
-                  <Card.Body id={track._id} className="pl__card-body p-1 pt-2">
-                    <Card.Title id={track._id} className="pl__card-title m-0">
-                      {track.title}
-                    </Card.Title>
-                  </Card.Body>
-                </Card>
+                    variant="top"
+                    className="pl__card-img"
+                    src={track.thumbnail}
+                  />
+                  <RiPlayCircleFill
+                    id={track._id}
+                    className="card__play position-absolute top-50 start-50 translate-middle"
+                  />
+                </div>
+                <Card.Body id={track._id} className="pl__card-body p-1 pt-2">
+                  <Card.Title id={track._id} className="pl__card-title m-0">
+                    {track.title}
+                  </Card.Title>
+                </Card.Body>
+              </Card>
             );
           })}
       </div>
@@ -81,33 +78,33 @@ function Genres() {
         {houseTrack &&
           houseTrack.map((track) => {
             return (
-                <Card
-                  onClick={(e) => handleTrackId(e)}
-                  key={track._id}
+              <Card
+                onClick={() => handleTrackId(track?.url)}
+                key={track._id}
+                id={track._id}
+                className="pl__card p-2 m-2"
+              >
+                <div
                   id={track._id}
-                  className="pl__card p-2 m-2"
+                  className="pl__card-img-container position-relative p-0"
                 >
-                  <div
+                  <Card.Img
                     id={track._id}
-                    className="pl__card-img-container position-relative p-0"
-                  >
-                    <Card.Img
-                      id={track._id}
-                      variant="top"
-                      className="pl__card-img"
-                      src={track.thumbnail}
-                    />
-                    <RiPlayCircleFill
-                      id={track._id}
-                      className="card__play position-absolute top-50 start-50 translate-middle"
-                    />
-                  </div>
-                  <Card.Body id={track._id} className="pl__card-body p-1 pt-2">
-                    <Card.Title id={track._id} className="pl__card-title m-0">
-                      {track.title}
-                    </Card.Title>
-                  </Card.Body>
-                </Card>
+                    variant="top"
+                    className="pl__card-img"
+                    src={track.thumbnail}
+                  />
+                  <RiPlayCircleFill
+                    id={track._id}
+                    className="card__play position-absolute top-50 start-50 translate-middle"
+                  />
+                </div>
+                <Card.Body id={track._id} className="pl__card-body p-1 pt-2">
+                  <Card.Title id={track._id} className="pl__card-title m-0">
+                    {track.title}
+                  </Card.Title>
+                </Card.Body>
+              </Card>
             );
           })}
       </div>
@@ -117,33 +114,33 @@ function Genres() {
         {reggaetonTrack &&
           reggaetonTrack.map((track) => {
             return (
-                <Card
-                  onClick={(e) => handleTrackId(e)}
-                  key={track._id}
+              <Card
+                onClick={() => handleTrackId(track?.url)}
+                key={track._id}
+                id={track._id}
+                className="pl__card p-2 m-2"
+              >
+                <div
                   id={track._id}
-                  className="pl__card p-2 m-2"
+                  className="pl__card-img-container position-relative p-0"
                 >
-                  <div
+                  <Card.Img
                     id={track._id}
-                    className="pl__card-img-container position-relative p-0"
-                  >
-                    <Card.Img
-                      id={track._id}
-                      variant="top"
-                      className="pl__card-img"
-                      src={track.thumbnail}
-                    />
-                    <RiPlayCircleFill
-                      id={track._id}
-                      className="card__play position-absolute top-50 start-50 translate-middle"
-                    />
-                  </div>
-                  <Card.Body id={track._id} className="pl__card-body p-1 pt-2">
-                    <Card.Title id={track._id} className="pl__card-title m-0">
-                      {track.title}
-                    </Card.Title>
-                  </Card.Body>
-                </Card>
+                    variant="top"
+                    className="pl__card-img"
+                    src={track.thumbnail}
+                  />
+                  <RiPlayCircleFill
+                    id={track._id}
+                    className="card__play position-absolute top-50 start-50 translate-middle"
+                  />
+                </div>
+                <Card.Body id={track._id} className="pl__card-body p-1 pt-2">
+                  <Card.Title id={track._id} className="pl__card-title m-0">
+                    {track.title}
+                  </Card.Title>
+                </Card.Body>
+              </Card>
             );
           })}
       </div>
@@ -153,33 +150,33 @@ function Genres() {
         {trapTrack &&
           trapTrack.map((track) => {
             return (
-                <Card
-                  onClick={(e) => handleTrackId(e)}
-                  key={track._id}
+              <Card
+                onClick={() => handleTrackId(track?.url)}
+                key={track._id}
+                id={track._id}
+                className="pl__card p-2 m-2"
+              >
+                <div
                   id={track._id}
-                  className="pl__card p-2 m-2"
+                  className="pl__card-img-container position-relative p-0"
                 >
-                  <div
+                  <Card.Img
                     id={track._id}
-                    className="pl__card-img-container position-relative p-0"
-                  >
-                    <Card.Img
-                      id={track._id}
-                      variant="top"
-                      className="pl__card-img"
-                      src={track.thumbnail}
-                    />
-                    <RiPlayCircleFill
-                      id={track._id}
-                      className="card__play position-absolute top-50 start-50 translate-middle"
-                    />
-                  </div>
-                  <Card.Body id={track._id} className="pl__card-body p-1 pt-2">
-                    <Card.Title id={track._id} className="pl__card-title m-0">
-                      {track.title}
-                    </Card.Title>
-                  </Card.Body>
-                </Card>
+                    variant="top"
+                    className="pl__card-img"
+                    src={track.thumbnail}
+                  />
+                  <RiPlayCircleFill
+                    id={track._id}
+                    className="card__play position-absolute top-50 start-50 translate-middle"
+                  />
+                </div>
+                <Card.Body id={track._id} className="pl__card-body p-1 pt-2">
+                  <Card.Title id={track._id} className="pl__card-title m-0">
+                    {track.title}
+                  </Card.Title>
+                </Card.Body>
+              </Card>
             );
           })}
       </div>
@@ -187,6 +184,4 @@ function Genres() {
   );
 }
 
-  export default Genres;
-
-
+export default Genres;

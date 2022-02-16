@@ -5,7 +5,6 @@ import { useSelector, useDispatch } from "react-redux";
 import Card from "react-bootstrap/Card";
 import { playlistsSelector } from "../../../redux/playlists/playlists-selector";
 import { RiPlayCircleFill } from "react-icons/ri";
-import { fetchPlaylistById } from "../../../redux/playlists/playlists-actions";
 
 export default function PlaylistsByUser() {
   const dispatch = useDispatch();
@@ -20,7 +19,6 @@ export default function PlaylistsByUser() {
 
   const handlePlaylistId = (e) => {
     const id = e.target.id;
-    dispatch(fetchPlaylistById(id));
     navigate(`/playlists/single-playlist/${id}`);
   };
 
