@@ -32,7 +32,7 @@ function Tracks() {
     dispatch(fetchPlaylistTrack(track.url))
     dispatch(TrackData({
       image: track.thumbnail,
-      name: track.name,
+      name: track.title,
       artist: track.artists,
       genre: track.genre,
       url: track.url
