@@ -8,30 +8,15 @@ import LikeButton from "../../atoms/LikeButton";
 
 export default function CurrentPlaying() {
   const { track } = useSelector(tracksSelector);
-  const imagesURL = useSelector(state => state);
-  const listToMap = imagesURL?.playlists?.playlist?.tracks;
-
-
+  const trackInfo = useSelector((state) => state.playlists?.playlistData)
   const urls = useSelector((state) => state.playlists?.playlistTracksUrl);
-  console.log(urls);
 
-  const TrackImage = listToMap?.map((item) => {
-    console.log(item);
+  const TrackImage = trackInfo?.map((item) => {
     if (item.url === urls[0])
-      return {
-        image: item.thumbnail,
-        name: item.name,
-        artist: item.artists,
-        genre: item.genre,
-      };
-
+    return item
   });
+  const dataTrackPlayer = TrackImage?.filter(item => item !== undefined);
 
-  console.log(TrackImage);
-
-  const finalImage = TrackImage?.filter(item => item !== undefined);
-
-  console.log(finalImage);
 
   return (
 
@@ -43,7 +28,7 @@ export default function CurrentPlaying() {
         />
       )}
       {track && (
-        <Card.Img src={finalImage && finalImage[0]?.image} className="current__img" />
+        <Card.Img src={dataTrackPlayer && dataTrackPlayer[0]?.image} className="current__img" />
       )}
       <Card.Body>
         {!track && (
@@ -53,12 +38,12 @@ export default function CurrentPlaying() {
         )}
         {track && (
           <Card.Title className="pl__card-title m-0">
-            {finalImage && finalImage[0]?.name}
+            {dataTrackPlayer && dataTrackPlayer[0]?.name}
           </Card.Title>
         )}
 
         <Card.Subtitle className="pl__card-subtitle m-0">
-          {finalImage && finalImage[0]?.artist}
+          {dataTrackPlayer && dataTrackPlayer[0]?.artist}
         </Card.Subtitle>
         {track && (
           <div className="cp__options">

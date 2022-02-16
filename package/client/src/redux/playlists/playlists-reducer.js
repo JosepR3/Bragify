@@ -27,24 +27,39 @@ const playlistsReducer = (state = playlistsState, action) => {
     }
 
 
-    case PlaylistTypes.GET_PLAYLIST_TRACK: {
-      console.log(action.payload)
+    case PlaylistTypes.GET_DATA_TRACK: {
       return {
         ...state,
         playPlaylist: action.payload ,
-        playlistTracksUrl:[ action.payload]
+        playlistData:[ action.payload]
+      };
+    }
+    case PlaylistTypes.GET_PLAYLIST_TRACK: {
+      return {
+        ...state,
+        playPlaylist: action.payload,
+        playlistTracksUrl: [action.payload]
       };
     }
 
-
     case PlaylistTypes.GET_PLAYLIST_SUCCESS: {
       const playlistTracks = action.payload.tracks.map((i)=> i.url)
+      const trackData = action.payload.tracks.map((item) => {
+        return {
+          image: item.thumbnail,
+          name: item.name,
+          artist: item.artists,
+          genre: item.genre,
+          url:item.url
+        }
+      })
 
       return {
         ...state,
         isSuccess: true,
         playlist: action.payload,
-        playlistTracksUrl: playlistTracks
+        playlistTracksUrl: playlistTracks,
+        playlistData: trackData
       };
     }
 

@@ -18,7 +18,6 @@ function SinglePlaylistHeader() {
   const handlePlayPlaylist = () => {
     const playlistTracks = playlist?.tracks.map((i) => i.url);
     const playlistTracksurls = playlistTracks.map((i) => i);
-
     dispatch(fetchPlaylistTrack(playlistTracksurls));
   };
 

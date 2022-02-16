@@ -9,7 +9,7 @@ import {
 
 import { RiPlayCircleFill } from "react-icons/ri";
 import Card from "react-bootstrap/Card";
-import { fetchPlaylistTrack } from "../../../redux/playlists/playlists-actions";
+import { fetchPlaylistTrack, TrackData } from "../../../redux/playlists/playlists-actions";
 
 function Genres() {
   const dispatch = useDispatch();
@@ -23,8 +23,15 @@ function Genres() {
   const userId = currentUser._id;
   const { tracks } = useSelector(tracksSelector);
 
-  const handleTrackId = (trackUrl) => {
-    dispatch(fetchPlaylistTrack(trackUrl));
+  const handleTrackId = (track) => {
+    dispatch(fetchPlaylistTrack(track.url));
+    dispatch(TrackData({
+      image: track.thumbnail,
+      name: track.title,
+      artist: track.artists,
+      genre: track.genre,
+      url: track.url
+    }))
   };
 
   //find genres
@@ -42,7 +49,7 @@ function Genres() {
           popTrack.map((track) => {
             return (
               <Card
-                onClick={() => handleTrackId(track?.url)}
+                onClick={() => handleTrackId(track)}
                 key={track._id}
                 id={track._id}
                 className="pl__card p-2 m-2"
@@ -78,7 +85,7 @@ function Genres() {
           houseTrack.map((track) => {
             return (
               <Card
-                onClick={() => handleTrackId(track?.url)}
+                onClick={() => handleTrackId(track)}
                 key={track._id}
                 id={track._id}
                 className="pl__card p-2 m-2"
@@ -114,7 +121,7 @@ function Genres() {
           reggaetonTrack.map((track) => {
             return (
               <Card
-                onClick={() => handleTrackId(track?.url)}
+                onClick={() => handleTrackId(track)}
                 key={track._id}
                 id={track._id}
                 className="pl__card p-2 m-2"
@@ -150,7 +157,7 @@ function Genres() {
           trapTrack.map((track) => {
             return (
               <Card
-                onClick={() => handleTrackId(track?.url)}
+                onClick={() => handleTrackId(track)}
                 key={track._id}
                 id={track._id}
                 className="pl__card p-2 m-2"

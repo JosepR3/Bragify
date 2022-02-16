@@ -8,7 +8,7 @@ import { BsSuitHeart, BsSuitHeartFill } from "react-icons/bs";
 export default function LikeButton({ track }) {
   const dispatch = useDispatch();
   const currentUser = JSON.parse(localStorage.getItem("user"));
-  const userId = currentUser._id;
+  const userId = currentUser?._id;
   const likedTracks = useSelector((state) => state.tracks.likedTracksList);
   const isLiked = likedTracks.find((e) => e._id === track);
 
