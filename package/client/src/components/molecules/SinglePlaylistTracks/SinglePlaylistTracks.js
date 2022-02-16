@@ -11,28 +11,29 @@ import Button from "react-bootstrap/Button";
 import { BsPlusLg } from "react-icons/bs";
 import { useParams } from "react-router-dom";
 
-function SinglePlaylistTracks(){
+function SinglePlaylistTracks() {
   const dispatch = useDispatch();
   // const { track } = useSelector(tracksSelector);
   const { playlist } = useSelector(playlistsSelector);
 
-  const params = useParams()
-
-  const playlistTracks = playlist?.tracks
   
+  const params = useParams();
+
+  const playlistTracks = playlist?.tracks;
+
   useEffect(() => {
     // playlist?.tracks && playlist?.tracks.map((track) => dispatch(fetchTrackById(track)))
   }, []);
 
   const handleTrackId = (e) => {
-console.log(e)
-
+    console.log(e);
+    dispatch()
     dispatch(fetchTrackById());
   };
 
-  return(
+  return (
     <>
-    <ListGroup horizontal className="tracks__titles-row d-flex w-100 mb-1">
+      <ListGroup horizontal className="tracks__titles-row d-flex w-100 mb-1">
         <ListGroup.Item className="tracks__title"></ListGroup.Item>
         <ListGroup.Item className="tracks__title">Title</ListGroup.Item>
         <ListGroup.Item className="tracks__title">Artist</ListGroup.Item>
@@ -75,15 +76,17 @@ console.log(e)
               </ListGroup.Item>
               <ListGroup.Item className="track__row-buttons">
                 <LikeButton track={track.track} />
-                <RemoveTrackPlaylist trackId={track.trackId} playlist={params.id}/>
+                <RemoveTrackPlaylist
+                  trackId={track.trackId}
+                  playlist={params.id}
+                />
                 <Button className="btn__options">
                   <BsPlusLg />
                 </Button>
               </ListGroup.Item>
             </ListGroup>
           );
-        })
-      }
+        })}
     </>
   );
 }
