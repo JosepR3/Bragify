@@ -2,7 +2,6 @@ import React from "react";
 import { useSelector } from "react-redux";
 
 import { playlistsSelector } from "../../../redux/playlists/playlists-selector";
-
 import DeletePlaylistButton from "../../../components/atoms/DeletePlaylistButton/DeletePlaylistButton";
 
 // React-BsBootstrap
@@ -15,6 +14,10 @@ import { BsFillPlayFill, BsShuffle, BsSuitHeart } from "react-icons/bs"
 function SinglePlaylistHeader() {
   const { playlist } = useSelector(playlistsSelector);
   
+  function handlePlayPlaylist(){
+
+  }
+
   return(
     <div className="w-100"
     style={{ 
@@ -40,7 +43,7 @@ function SinglePlaylistHeader() {
       <p className="brand_color">{playlist?.description}</p>
       <p className="brand_color mt-3">Created by: {playlist?.authorId}</p>
       <p className="brand_color">{playlist?.tracks.length} Tracks</p>
-        <Button className="spl__play me-3 mt-2" variant="log-color"><BsFillPlayFill/>Play</Button>
+        <Button onClick={handlePlayPlaylist} className="spl__play me-3 mt-2" variant="log-color"><BsFillPlayFill/>Play</Button>
       <div className="d-flex gap-2 flex-row mt-4">
         <Button className="btn__options-round m-0"><BsShuffle className="h-50 w-50"/></Button>
         <Button className="btn__options-round m-0"><BsSuitHeart className="h-50 w-50"/></Button>
