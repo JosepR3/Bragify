@@ -19,6 +19,7 @@ import EditProfile from "./pages/EditProfile";
 import UploadTrack from "./components/organisms/UploadTrack";
 import CreatePlaylist from "./components/organisms/CreatePlaylist";
 import SinglePlaylist from "./pages/SinglePlaylist/SinglePlaylist";
+import Footer from "./components/organisms/Footer/"
 
 //REDUX
 import { onAuthStateChanged } from "./services/auth";
@@ -43,6 +44,7 @@ function App() {
     };
   }, [dispatch]);
   return (
+    <>
       <Routes>
         <Route path="*" element={<NotFound />} />
         <Route exact path={ROUTES.SIGN_UP} element={<SignUp />} />
@@ -56,6 +58,8 @@ function App() {
         <Route exact path={ROUTES.UPLOAD_TRACK} element={<UploadTrack />} />
         <Route exact path={ROUTES.CREATE_PLAYLIST} element={<CreatePlaylist />} />
       </Routes>
+      <Footer/>
+      </>
   );
 }
 
