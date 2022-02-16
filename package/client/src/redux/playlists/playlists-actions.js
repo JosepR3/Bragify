@@ -115,6 +115,7 @@ export function addToList(data) {
   };
 } 
 export function removeTrackPlaylistAction(data) {
+  console.log(data)
   return async function createThunk(dispatch) {
     try {
       dispatch(playlistAuth(api.removeTrackPlaylist,

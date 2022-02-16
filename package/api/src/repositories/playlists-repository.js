@@ -33,12 +33,12 @@ class PlaylistRepository {
     // return normalizeDBQuery(db.Playlist.updateOne({ _id: playListId }, { $push: { tracks: TrackId } }, { new: true }));
   }
 
-  removePlaylist(track, playlist) {
+  removePlaylist(trackId, playlist) {
     console.log(track, playlist);
     return normalizeDBQuery(
       db.Playlist.findByIdAndUpdate(
         { _id: playlist },
-        { $pull: { tracks: { track: track } } },
+        { $pull: { tracks: { trackId: trackId } } },
         { multi: true },
       ),
     );

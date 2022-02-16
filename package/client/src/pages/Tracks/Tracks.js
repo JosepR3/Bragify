@@ -85,7 +85,7 @@ function Tracks() {
                 </ListGroup.Item>
                 <DropDownList
                   playlist={playlist}
-                  track={track._id}
+                  trackId={track._id}
                   url={track.url}
                   name={track.title}
                   artists={track.artists}

@@ -9,7 +9,7 @@ import Col from "react-bootstrap/Col";
 import Toast from "react-bootstrap/Toast";
 
 const DropDownList = (props) => {
-  const { playlist, track, url, name, artists, genre, thumbnail  } = props
+  const { playlist, trackId, url, name, artists, genre, thumbnail  } = props
   const listPlaylist = playlist.playlists
   const [show, setShow] = useState(false);
   const dispatch = useDispatch();
@@ -47,7 +47,7 @@ const DropDownList = (props) => {
                 key={index + 1}
                 onClick={() =>
                   handleAddTrack({
-                    track: track,
+                    trackId: trackId,
                     playListId: item._id,
                     userId: userId,
                     url: url,
