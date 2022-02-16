@@ -1,6 +1,6 @@
 import React from "react";
 
-import MusicPlayer from "../../molecules/MusicPlayer"
+import MusicPlayer from "../../molecules/MusicPlayer/MusicPlayer"
 import CurrentPlaying from "../../molecules/CurrentPlaying"
 
 export default function Footer(){
