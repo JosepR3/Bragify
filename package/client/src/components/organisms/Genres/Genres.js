@@ -5,7 +5,6 @@ import { tracksSelector } from "../../../redux/tracks/tracks-selector";
 import {
   fetchAllTracks,
   fetchLikedTracks,
-  fetchTrackById,
 } from "../../../redux/tracks/tracks-actions";
 
 import { RiPlayCircleFill } from "react-icons/ri";
