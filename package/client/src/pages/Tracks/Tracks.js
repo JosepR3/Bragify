@@ -83,6 +83,8 @@ function Tracks() {
                 <ListGroup.Item className="track__row-genre">
                   {track.genre}
                 </ListGroup.Item>
+                <div className="ms-auto">
+                <LikeButton track={track._id} />
                 <DropDownList
                   playlist={playlist}
                   trackId={track._id}
@@ -92,8 +94,8 @@ function Tracks() {
                   genre={track.genre}
                   thumbnail={track.thumbnail}
                 />
-                <LikeButton track={track._id} />
                 <DeleteButton id={track._id} />
+                </div>
               </ListGroup>
             );
           })}

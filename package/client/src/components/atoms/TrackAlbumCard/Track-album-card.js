@@ -26,7 +26,7 @@ export default function TrackAlbumCard() {
   };
   
   return (
-    <div className="d-flex">
+    <div className="d-flex flex-wrap">
       {playlists &&
         playlists.map((playlist) => {
           return (

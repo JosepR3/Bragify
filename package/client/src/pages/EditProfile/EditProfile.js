@@ -16,13 +16,14 @@ function EditUserForm() {
   const dispatch = useDispatch();
   const [linkImg, setLinkImg] = useState("")
   const currentUser = JSON.parse(localStorage.getItem('user'))
-  const { editSuccess, isLoading, editMessage} = useSelector(authSelector);
+  const { editSuccess, isLoading, editMessage } = useSelector(authSelector);
 
   const [user, setUser] = useState({
     firstName: currentUser.firstName,
     lastName: currentUser.lastName,
     username: currentUser.username,
     email: currentUser.email,
+    img: currentUser.img,
   });
 
   useEffect(() => {
@@ -55,17 +56,13 @@ function EditUserForm() {
       setLinkImg(res.data.secure_url);
     });
   }
-  // if(editSuccess){
-  //   const timer = setTimeout(() => {
-  //     dispatch(resetAuthState());
-  //   }, 1000);
-  //   return () => clearTimeout(timer);
-  // }
   return (
     <>
-      <section className="auth__wrapper container px-5 py-2">
+      <section className="auth__wrapper container mt-4 px-5 py-2">
         <h1 className="font-bold align-self-start m-4">Profile</h1>
         <Form className="px-4  mb-3" onSubmit={handleSubmit}>
+          <img className="mb-2 w-75 h-25" src={user.img}>
+          </img>
           <div className="d-flex mb-2">
             <Form.Group className="mb-2">
               <Form.Label>Img Profile</Form.Label>

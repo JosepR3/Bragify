@@ -31,7 +31,7 @@ export default function PlaylistsByUser() {
   );
 
   return (
-    <container className="">
+    <>
       <h2 className="font-bold text-center mx-4 mb-5">
         Playlists by {currentUser.username}
       </h2>
@@ -102,6 +102,6 @@ export default function PlaylistsByUser() {
             );
           })}
       </div>
-    </container>
+      </>
   );
 }
