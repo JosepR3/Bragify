@@ -22,7 +22,7 @@ function AccountSetting() {
     dispatch(editProfile());
   };
   return (
-    <DropdownButton title={currentUser.username} variant="main-black">
+    <DropdownButton title={currentUser?.username} variant="main-black">
       <Dropdown.Item href={ROUTES.EDIT_PROFILE} onClick={handleEditProfile}>
         Edit Profile
       </Dropdown.Item>

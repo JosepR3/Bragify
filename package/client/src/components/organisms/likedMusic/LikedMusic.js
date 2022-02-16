@@ -26,7 +26,7 @@ function LikedMusic() {
   };
 
   const currentUser = JSON.parse(localStorage.getItem("user"));
-  const userId = currentUser._id;
+  const userId = currentUser?._id;
   const { likedTracksList } = useSelector(tracksSelector);
 
   return (
