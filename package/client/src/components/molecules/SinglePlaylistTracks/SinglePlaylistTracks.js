@@ -50,18 +50,18 @@ console.log(e)
             >
               <ListGroup.Item
                 className="track__row-thumbnail p-2"
-                id={track.track}
+                id={track.trackId}
                 onClick={(e) => handleTrackId(e)}
               >
                 <img
                   className="w-100 h-100"
-                  id={track._id}
+                  id={track.trackId}
                   onClick={(e) => handleTrackId(e)}
                   src={track.thumbnail}
                 ></img>
               </ListGroup.Item>
               <ListGroup.Item
-                id={track.track}
+                id={track.trackId}
                 onClick={(e) => handleTrackId(e)}
                 className="track__row-title"
               >
@@ -77,7 +77,7 @@ console.log(e)
                 <LikeButton track={track.track} />
                 <RemoveTrackPlaylist trackId={track.trackId} playlist={params.id}/>
                 <Button className="btn__options">
-                  <BsPlusLg />{" "}
+                  <BsPlusLg />
                 </Button>
               </ListGroup.Item>
             </ListGroup>

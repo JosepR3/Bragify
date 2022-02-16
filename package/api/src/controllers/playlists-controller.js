@@ -70,6 +70,7 @@ async function addtoList(req, next) {
 }
 
 async function removeToList(req, res, next) {
+  console.log(req.body)
   const { trackId, playlist } = req.body;
   try {
     const response = await playlistRepo.removePlaylist(trackId, playlist);

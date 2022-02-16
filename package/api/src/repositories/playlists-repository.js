@@ -34,7 +34,6 @@ class PlaylistRepository {
   }
 
   removePlaylist(trackId, playlist) {
-    console.log(track, playlist);
     return normalizeDBQuery(
       db.Playlist.findByIdAndUpdate(
         { _id: playlist },
