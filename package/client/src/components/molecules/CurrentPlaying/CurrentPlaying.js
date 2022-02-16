@@ -1,10 +1,10 @@
 import React from "react";
 
 import Card from "react-bootstrap/Card";
-import { BsSuitHeart } from "react-icons/bs";
 import { FiMoreHorizontal } from "react-icons/fi";
 import { useSelector } from "react-redux";
 import { tracksSelector } from "../../../redux/tracks/tracks-selector";
+import LikeButton from "../../atoms/LikeButton";
 
 export default function CurrentPlaying() {
   const { track } = useSelector(tracksSelector);
@@ -58,12 +58,12 @@ export default function CurrentPlaying() {
         )}
 
         <Card.Subtitle className="pl__card-subtitle m-0">
-          {finalImage && finalImage[0]?.artists}
+          {finalImage && finalImage[0]?.artist}
         </Card.Subtitle>
         {track && (
           <div className="cp__options">
             <button className="btn__options mx-1">
-              <BsSuitHeart />
+              <LikeButton />
             </button>
             <button className="btn__options mx-1">
               <FiMoreHorizontal />
