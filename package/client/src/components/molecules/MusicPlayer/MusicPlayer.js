@@ -1,4 +1,4 @@
-import React, {  useState } from "react";
+import React, {  useState} from "react";
 import AudioPlayer from "react-h5-audio-player";
 import "react-h5-audio-player/src/styles.scss";
 // import { useDispatch } from "react-redux";
@@ -10,7 +10,6 @@ export default function MusicPlayer() {
 
   const [number, setNumber] = useState(0);
   const tracksToPlay = playlistTracksUrl
-
 
   function handleClickPrevious() {
     setNumber(number - 1);

@@ -99,7 +99,8 @@ function Tracks() {
           })}
         {status === "DELETE_SUCCESS" && (
           <Alert variant="success">
-            <p>{deletedTrack.title} Delete successfully</p>
+            <p>{deletedTrack?.title} Was successfully deleted</p>
+
           </Alert>
         )}
       </div>
