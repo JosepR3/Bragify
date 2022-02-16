@@ -63,7 +63,6 @@ export function getTrackSuccess(data) {
 
 // track CRUD functions
 export function createTrack(data) {
-  console.log(data);
   return async function createThunk(dispatch) {
     try {
       dispatch(authTrack(api.createTrack, data));

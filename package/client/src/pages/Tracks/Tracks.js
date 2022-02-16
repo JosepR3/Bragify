@@ -15,7 +15,7 @@ import DeleteButton from "../../components/atoms/DeleteButton";
 // import { fetchTrackById } from "../../redux/tracks/tracks-actions";
 import ListGroup from "react-bootstrap/ListGroup";
 
-import { BsPlusLg } from "react-icons/bs";
+// import { BsPlusLg } from "react-icons/bs";
 import Alert from "react-bootstrap/Alert";
 
 function Tracks() {
@@ -88,6 +88,9 @@ function Tracks() {
                   track={track._id}
                   url={track.url}
                   name={track.title}
+                  artists={track.artists}
+                  genre={track.genre}
+                  thumbnail={track.thumbnail}
                 />
                 <LikeButton track={track._id} />
                 <DeleteButton id={track._id} />

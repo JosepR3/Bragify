@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-import Image from "react-bootstrap/Image";
+import axios from "axios"
 
 import withLayout from "../../components/HOC/withLayout";
 
@@ -14,6 +14,7 @@ import { authSelector } from "../../redux/auth/auth-selectors";
 
 function EditUserForm() {
   const dispatch = useDispatch();
+  const [linkImg, setLinkImg] = useState("")
   const currentUser = JSON.parse(localStorage.getItem('user'))
   const { editSuccess, isLoading, editMessage} = useSelector(authSelector);
 
@@ -30,7 +31,8 @@ function EditUserForm() {
 
   function handleSubmit(e) {
     e.preventDefault();
-    dispatch(editUser(user))
+    const completeUserObj = Object.assign(user, { img: linkImg})
+    dispatch(editUser(completeUserObj))
   }
 
   function handleInput(e) {
@@ -44,6 +46,15 @@ function EditUserForm() {
     setUser(newUser);
   }
 
+  function uploadImage(files) {
+
+    const formData = new FormData();
+    formData.append("file", files[0]);
+    formData.append("upload_preset", "d8nsvm8g");
+    axios.post("https://api.cloudinary.com/v1_1/drjrc7z28/image/upload", formData).then((res) => {
+      setLinkImg(res.data.secure_url);
+    });
+  }
   // if(editSuccess){
   //   const timer = setTimeout(() => {
   //     dispatch(resetAuthState());
@@ -56,11 +67,16 @@ function EditUserForm() {
         <h1 className="font-bold align-self-start m-4">Profile</h1>
         <Form className="px-4  mb-3" onSubmit={handleSubmit}>
           <div className="d-flex mb-2">
-            <Image
-              src="https://muhimu.es/wp-content/uploads/2017/04/FRENTE-NITIDA.jpg"
-              alt="profile_img"
-              className="img-thumbnail"
-            />
+            <Form.Group className="mb-2">
+              <Form.Label>Img Profile</Form.Label>
+              <Form.Control
+                type="file"
+                onChange={(e) => { uploadImage(e.target.files) }}
+                name="Img Profile"
+                accept=".jpg"
+              // required
+              />
+            </Form.Group>
           </div>
           <Form.Group className="edit__form mb-2">
             <Form.Label>First Name</Form.Label>

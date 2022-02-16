@@ -1,7 +1,6 @@
 const db = require("../models");
 const normalizeDBQuery = require("../utils/normalizeDBQuery");
 
-
 class PlaylistRepository {
   create(options) {
     return normalizeDBQuery(db.Playlist.create(options));
@@ -23,13 +22,26 @@ class PlaylistRepository {
     return normalizeDBQuery(db.Playlist.deleteOne({ _id: id }));
   }
 
-  addPlaylist(TrackId, playListId) {
-    return normalizeDBQuery(db.Playlist.updateOne({ _id: playListId }, { $addToSet: { tracks: TrackId } }, { upsert: true }));
+  addPlaylist(track) {
+    return normalizeDBQuery(
+      db.Playlist.updateOne(
+        { _id: track.playListId },
+        { $addToSet: { tracks: track } },
+        { upsert: true },
+      ),
+    );
+    // return normalizeDBQuery(db.Playlist.updateOne({ _id: playListId }, { $push: { tracks: TrackId } }, { new: true }));
   }
 
   removePlaylist(track, playlist) {
-    console.log(track,playlist)
-    return normalizeDBQuery(db.Playlist.findByIdAndUpdate({ _id: playlist }, { $pull: { tracks: track } }, { new: true }));
+    console.log(track, playlist);
+    return normalizeDBQuery(
+      db.Playlist.findByIdAndUpdate(
+        { _id: playlist },
+        { $pull: { tracks: { track: track } } },
+        { multi: true },
+      ),
+    );
   }
 }
 
