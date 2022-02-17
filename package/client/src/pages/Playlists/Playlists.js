@@ -6,7 +6,7 @@ import TrackList from "../../components/molecules/TrackList/TrackList";
 function Playlists() {
   return (
     <>
-      <div className="mx-4">
+      <div className="mx-2">
         <h2 className="my-4 px-5 page__title">Playlists</h2>
         <TrackList />
       </div>

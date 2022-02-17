@@ -1,6 +1,7 @@
 import React from "react";
 import { addToList } from "../../../redux/playlists/playlists-actions";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { authSelector } from "../../../redux/auth/auth-selectors";
 
 import Dropdown from "react-bootstrap/Dropdown"
 
@@ -9,10 +10,11 @@ import { BsPlusLg } from "react-icons/bs";
 
 
 const DropDownList = (props) => {
+  const dispatch = useDispatch();
   const { playlist, trackId, url, name, artists, genre, thumbnail  } = props
   const listPlaylist = playlist.playlists
-  const dispatch = useDispatch();
-  const userId = JSON.parse(localStorage.getItem("user"))._id;
+  const { currentUser } = useSelector(authSelector);
+  const userId = currentUser._id;
 
   function handleAddTrack(data) {
     console.log("handle add track")

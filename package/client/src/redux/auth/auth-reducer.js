@@ -26,20 +26,12 @@ const AuthReducer = (state = initialState, action) => {
       };
     }
     case AuthTypes.SIGN_UP_SUCCESS: {
-      const user = action.payload
       return {
         ...state,
         isAuthenticated: true,
         isSigningUp: false,
         signUpError: null,
-        currentUser: {
-          id:user._id,
-          email: user.email,
-          username: user.username,
-          firstName: user.firstName,
-          lastName: user.lastName,
-        },
-        username: action.payload,
+        currentUser: action.payload,
         isLoading: false,
       };
     }

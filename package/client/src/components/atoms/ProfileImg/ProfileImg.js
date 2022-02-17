@@ -1,12 +1,14 @@
 import React, { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { authSelector } from "../../../redux/auth/auth-selectors";
 import {
   resetAuthState,
 } from "../../../redux/auth/auth-actions";
 
 const ProfileImg = () => {
   const dispatch = useDispatch();
-  const currentUser = JSON.parse(localStorage.getItem('user'));
+  const { currentUser } = useSelector(authSelector);
+
   useEffect(() => {
     dispatch(resetAuthState());
   },[dispatch]);
