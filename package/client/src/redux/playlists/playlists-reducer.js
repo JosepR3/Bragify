@@ -22,6 +22,18 @@ const playlistsReducer = (state = playlistsState, action) => {
       };
     }
 
+    case PlaylistTypes.NEXT_TRACK: {
+      return {
+        ...state,
+        nextTrackState: action.payload 
+      };
+    }
+    case PlaylistTypes.PREVIOUS_TRACK: {
+      return {
+        ...state,
+        previousTrackState: action.payload
+      };
+    }
     case PlaylistTypes.SET_PLAYLISTS_RESULT: {
       return {
         ...state,

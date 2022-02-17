@@ -10,9 +10,10 @@ export default function CurrentPlaying() {
   const { track } = useSelector(tracksSelector);
   const trackInfo = useSelector((state) => state.playlists?.playlistData)
   const urls = useSelector((state) => state.playlists?.playlistTracksUrl);
+  let next = useSelector((state) => state.playlists?.nextTrackState)
 
   const TrackImage = trackInfo?.map((item) => {
-    if (item.url === urls[0])
+    if (item.url === urls[next])
     return item
   });
   const dataTrackPlayer = TrackImage?.filter(item => item !== undefined);
