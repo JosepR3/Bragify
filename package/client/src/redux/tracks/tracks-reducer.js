@@ -28,11 +28,23 @@ export default function tracksReducer(state = initialState, action) {
         ...state,
         error: action.payload,
       };
-    case TRACKS_SET_RESULT:
+    case TRACKS_SET_RESULT:{
+      const tracks = action.payload;
+      const pop = tracks?.filter((track) => track.genre === "Pop");
+      const house = tracks?.filter((track) => track.genre === "House");
+      const reggaeton= tracks?.filter((track) => track.genre === "Reggaeton");
+      const trap = tracks?.filter((track) => track.genre === "Trap");
       return {
         ...state,
-        tracks: action.payload,
+        tracks: tracks,
+        genres: {
+          pop: pop, 
+          house: house, 
+          reggaeton: reggaeton,
+          trap: trap
+        }
       };
+    }
     case TRACKS_RESET:
       return {};
     case TRACKS_LOADING:

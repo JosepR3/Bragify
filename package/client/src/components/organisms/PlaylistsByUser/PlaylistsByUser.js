@@ -29,14 +29,14 @@ export default function PlaylistsByUser() {
 
   //find user playlists
   
-  const userId = currentUser._id;
-  const userPlaylists = playlists?.filter((playlist) => playlist.authorId === userId,
+  const userId = currentUser?._id;
+  const userPlaylists = playlists?.filter((playlist) => playlist?.authorId === userId,
   );
 
   return (
     <div className="w-100">
       <h2 className="font-bold mx-2 my-2">
-        Playlists by {currentUser.username}
+        Playlists by {currentUser?.username}
       </h2>
         <Flicking moveType="freeScroll" bound={true} className="mx-auto" align="prev">
         {userPlaylists &&

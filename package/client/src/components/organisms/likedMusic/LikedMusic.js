@@ -19,7 +19,7 @@ function LikedMusic() {
   const { likedTracksList } = useSelector(tracksSelector);
   const { currentUser } = useSelector(authSelector);
 
-  const userId = currentUser._id;
+  const userId = currentUser?._id;
 
   useEffect(() => {
     dispatch(fetchLikedTracks(userId));

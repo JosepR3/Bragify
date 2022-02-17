@@ -8,6 +8,7 @@ const initialState = {
     tracks: null,
     track: [],
     trackURL: [],
+    genres: null,
     deletedTrack: [],
 }
 

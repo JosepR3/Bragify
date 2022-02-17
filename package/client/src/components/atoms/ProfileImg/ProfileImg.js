@@ -14,7 +14,7 @@ const ProfileImg = () => {
   },[dispatch]);
 
   return ( 
-    <img className="user__avatar me-2" src={currentUser.img} />
+    <img className="user__avatar me-2" src={currentUser?.img} />
   );
 }
  

@@ -1,10 +1,9 @@
-import React, { useEffect} from "react";
+import React, { createRef, useEffect} from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { tracksSelector } from "../../../redux/tracks/tracks-selector";
 import { authSelector } from "../../../redux/auth/auth-selectors";
 
 import Flicking from "@egjs/react-flicking";
-import FrameGrid from "@egjs/react-flicking"
 import "@egjs/react-flicking/dist/flicking.css";
 
 import {
@@ -18,11 +17,11 @@ import { fetchPlaylistTrack } from "../../../redux/playlists/playlists-actions";
 
 function Genres() {
   const dispatch = useDispatch();
-  const { tracks } = useSelector(tracksSelector);
+  const { genres } = useSelector(tracksSelector);
   const { currentUser } = useSelector(authSelector);
   
 
-  const userId = currentUser._id;
+  const userId = currentUser?._id;
   useEffect(() => {
     dispatch(fetchAllTracks);
     dispatch(fetchLikedTracks(userId));
@@ -31,24 +30,58 @@ function Genres() {
   const handleTrackId = (trackUrl) => {
     dispatch(fetchPlaylistTrack(trackUrl));
   };
+  
 
   //find genres
-  console.log("genres")
-  const popTrack = tracks?.filter((track) => track.genre === "Pop");
-  const houseTrack = tracks?.filter((track) => track.genre === "House");
-  const reggaetonTrack = tracks?.filter((track) => track.genre === "Reggaeton");
-  const trapTrack = tracks?.filter((track) => track.genre === "Trap");
+  console.log(genres?.pop)
+  const pop = genres?.pop;
+  const house = genres?.house;
+  const reggaeton = genres?.reggaeton;
+  const trap = genres?.trap;
 
   return (
-    <main className="container mx-2 my-2">
-      <h2 className="font-bold">Find Genres</h2>
-      {/* <Flicking>
-      <FrameGrid className="grid-panel"> */}
-        <h3> Pop </h3>
-      {/* </FrameGrid> */}
-      <div className="d-flex flex-row justify-content-start">
-        {popTrack &&
-          popTrack.map((track) => {
+    <>
+      <h2 className="font-bold my-3">Find Genres</h2>
+        <div><h3> Pop </h3></div>
+        <Flicking moveType="freeScroll" bound={true} className="grid-panel" align="prev">
+        {pop &&
+          pop.map((track) => {
+            return (
+              <Card
+                onClick={() => handleTrackId(track?.url)}
+                key={track._id}
+                id={track._id}
+                className="pl__card p-2 m-2"
+                ref={track._id}
+              >
+                <div
+                  id={track._id}
+                  className="pl__card-img-container position-relative p-0"
+                >
+                  <Card.Img
+                    id={track._id}
+                    variant="top"
+                    className="pl__card-img"
+                    src={track.thumbnail}
+                  />
+                  <RiPlayCircleFill
+                    id={track._id}
+                    className="card__play position-absolute top-50 start-50 translate-middle"
+                  />
+                </div>
+                <Card.Body id={track._id} className="pl__card-body p-1 pt-2">
+                  <Card.Title id={track._id} className="pl__card-title m-0">
+                    {track.title}
+                  </Card.Title>
+                </Card.Body>
+              </Card>
+            );
+          })}
+      </Flicking>
+      <div><h3> House </h3></div>
+      <Flicking moveType="freeScroll" bound={true} className="grid-panel" align="prev">
+        {house &&
+          house.map((track) => {
             return (
               <Card
                 onClick={() => handleTrackId(track?.url)}
@@ -79,11 +112,11 @@ function Genres() {
               </Card>
             );
           })}
-      </div>
-      <h3> House </h3>
-      <div className="d-flex flex-row justify-content-start">
-        {houseTrack &&
-          houseTrack.map((track) => {
+      </Flicking>
+      <div><h3> Reggaeton </h3></div>
+      <Flicking moveType="freeScroll" bound={true} className="grid-panel" align="prev">
+        {reggaeton &&
+          reggaeton.map((track) => {
             return (
               <Card
                 onClick={() => handleTrackId(track?.url)}
@@ -114,11 +147,11 @@ function Genres() {
               </Card>
             );
           })}
-      </div>
-      <h3> Reggaeton </h3>
-      <div className="d-flex flex-row justify-content-start">
-        {reggaetonTrack &&
-          reggaetonTrack.map((track) => {
+      </Flicking>
+      <div><h3> Trap </h3></div>
+      <Flicking moveType="freeScroll" bound={true} className="grid-panel" align="prev">
+        {trap &&
+          trap.map((track) => {
             return (
               <Card
                 onClick={() => handleTrackId(track?.url)}
@@ -149,45 +182,8 @@ function Genres() {
               </Card>
             );
           })}
-      </div>
-
-      <h3> Trap </h3>
-      <div className="d-flex flex-row justify-content-start">
-        {trapTrack &&
-          trapTrack.map((track) => {
-            return (
-              <Card
-                onClick={() => handleTrackId(track?.url)}
-                key={track._id}
-                id={track._id}
-                className="pl__card p-2 m-2"
-              >
-                <div
-                  id={track._id}
-                  className="pl__card-img-container position-relative p-0"
-                >
-                  <Card.Img
-                    id={track._id}
-                    variant="top"
-                    className="pl__card-img"
-                    src={track.thumbnail}
-                  />
-                  <RiPlayCircleFill
-                    id={track._id}
-                    className="card__play position-absolute top-50 start-50 translate-middle"
-                  />
-                </div>
-                <Card.Body id={track._id} className="pl__card-body p-1 pt-2">
-                  <Card.Title id={track._id} className="pl__card-title m-0">
-                    {track.title}
-                  </Card.Title>
-                </Card.Body>
-              </Card>
-            );
-          })}
-      </div>
-    {/* </Flicking> */}
-    </main>
+      </Flicking>
+    </>
   );
 }
 

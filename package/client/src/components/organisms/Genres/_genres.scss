@@ -1,0 +1,7 @@
+@use "../../../utils/scss/variables" as a;
+
+.genre__panel{
+    background-color: a.$main-black;
+    width: 10em;
+    height: 10em;
+}
