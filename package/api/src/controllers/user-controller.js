@@ -59,7 +59,8 @@ const editUser = (req, res) => {
     })
     .catch((error) => {
       res.status(500).send({
-        message: "Error updating User with id=" + uid
+        message: "Error updating User with id=" + uid,
+        error: error,
       });
     });
 };
@@ -75,7 +76,10 @@ async function getUser(req, res) {
     .catch(error => {
       res
         .status(500)
-        .send({ message: "Error retrieving user with id=" + uid });
+        .send({ 
+          message: "Error retrieving user with id=" + uid,
+          error: error,
+        });
     });
 }
 

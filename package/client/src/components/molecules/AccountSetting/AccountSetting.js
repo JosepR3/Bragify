@@ -4,6 +4,8 @@ import { useNavigate } from "react-router-dom";
 import { signOut, editProfile } from "../../../redux/auth/auth-actions";
 import { authSelector } from "../../../redux/auth/auth-selectors";
 
+import OverlayTrigger from "react-bootstrap/OverlayTrigger";
+import Tooltip from "react-bootstrap/Tooltip";
 import ProfileImg from "../../atoms/ProfileImg";
 import Dropdown from "react-bootstrap/Dropdown";
 
@@ -34,7 +36,9 @@ function AccountSetting() {
         <Dropdown.Item href={ROUTES.EDIT_PROFILE} onClick={handleEditProfile}>
           Edit Profile
         </Dropdown.Item>
-        <Dropdown.Item>Help</Dropdown.Item>
+        <OverlayTrigger placement="left" overlay={<Tooltip>We are not able to help you right now :(</Tooltip>}>
+          <Dropdown.Item>Help</Dropdown.Item>
+        </OverlayTrigger>
         <Dropdown.Divider />
         <Dropdown.Item onClick={handleSignOut}>Sign out</Dropdown.Item>
       </Dropdown.Menu>
