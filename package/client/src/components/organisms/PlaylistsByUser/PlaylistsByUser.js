@@ -6,7 +6,6 @@ import { RiPlayCircleFill } from "react-icons/ri";
 
 //REDUX
 import {
-  fetchAllPlaylists,
   fetchPlaylistsByUser,
 } from "../../../redux/playlists/playlists-actions";
 import { playlistsSelector } from "../../../redux/playlists/playlists-selector";
@@ -19,7 +18,7 @@ import "@egjs/react-flicking/dist/flicking.css";
 export default function PlaylistsByUser() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { playlists, userPlaylists } = useSelector(playlistsSelector);
+  const { userPlaylists } = useSelector(playlistsSelector);
   const { currentUser } = useSelector(authSelector);
   
   useEffect(() => {
