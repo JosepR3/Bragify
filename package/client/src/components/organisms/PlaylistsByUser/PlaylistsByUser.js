@@ -7,7 +7,7 @@ import { RiPlayCircleFill } from "react-icons/ri";
 //REDUX
 import {
   fetchAllPlaylists,
-  setUserPlaylists,
+  fetchPlaylistsByUser,
 } from "../../../redux/playlists/playlists-actions";
 import { playlistsSelector } from "../../../redux/playlists/playlists-selector";
 import { authSelector } from "../../../redux/auth/auth-selectors";
@@ -19,27 +19,17 @@ import "@egjs/react-flicking/dist/flicking.css";
 export default function PlaylistsByUser() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { playlists } = useSelector(playlistsSelector);
-
-  useEffect(() => {
-    dispatch(fetchAllPlaylists);
-    dispatch(setUserPlaylists({ playlists, currentUser }));
-  }, [dispatch]);
-
+  const { playlists, userPlaylists } = useSelector(playlistsSelector);
   const { currentUser } = useSelector(authSelector);
-
-  const { userPlaylists } = useSelector(playlistsSelector);
+  
+  useEffect(() => {
+    fetchPlaylistsByUser(dispatch,currentUser)
+  }, []);
 
   const handlePlaylistId = (e) => {
     const id = e.target.id;
     navigate(`/playlists/single-playlist/${id}`);
   };
-
-  //find user playlists
-  
-  // const userId = currentUser?._id;
-  // const userPlaylists = playlists?.filter((playlist) => playlist?.authorId === userId,
-  // );
 
   return (
     <div className="w-100">

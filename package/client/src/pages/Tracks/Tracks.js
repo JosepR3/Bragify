@@ -30,7 +30,7 @@ function Tracks() {
   const { tracks } = useSelector(tracksSelector);
   const playlist = useSelector(playlistsSelector);
   const { currentUser } = useSelector(authSelector);
-  const userId = currentUser._id;
+  const userId = currentUser?._id;
 
   const handleTrackId = (track) => {
     dispatch(fetchPlaylistTrack(track.url))

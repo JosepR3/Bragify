@@ -11,6 +11,7 @@ import {
   resetAuthState,
   signUpWithEmailRequest,
   signUpWithGoogleRequest,
+  editUser
 } from "../../redux/auth/auth-actions";
 
 import { authSelector } from "../../redux/auth/auth-selectors";
