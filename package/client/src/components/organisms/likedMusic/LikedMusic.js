@@ -5,7 +5,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { tracksSelector } from "../../../redux/tracks/tracks-selector";
 import { authSelector } from "../../../redux/auth/auth-selectors";
 import { fetchLikedTracks } from "../../../redux/tracks/tracks-actions";
-import { fetchPlaylistTrack } from "../../../redux/playlists/playlists-actions";
+import { fetchPlaylistTrack, TrackData } from "../../../redux/playlists/playlists-actions";
 
 import Flicking from "@egjs/react-flicking";
 import "@egjs/react-flicking/dist/flicking.css";
@@ -27,6 +27,13 @@ function LikedMusic() {
 
   const handleTrackId = (track) => {
     dispatch(fetchPlaylistTrack(track?.url));
+    dispatch(TrackData({
+      image: track.thumbnail,
+      name: track.title,
+      artist: track.artists,
+      genre: track.genre,
+      url: track.url
+    }))
   };
 
   return (

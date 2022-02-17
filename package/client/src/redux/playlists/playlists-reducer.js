@@ -11,14 +11,10 @@ const playlistsReducer = (state = playlistsState, action) => {
     }
 
     case PlaylistTypes.SET_USER_PLAYLISTS: {
-      const userId = action.payload?.currentUser?._id
-      const userPlaylists = action.payload?.playlists?.filter(
-        (playlist) => playlist?.authorId === userId,
-      );
-      console.log(userPlaylists)
+      console.log(action.payload)
       return {
         ...state,
-        userPlaylists: userPlaylists
+        userPlaylists: action.payload,
       };
     }
 
@@ -35,6 +31,7 @@ const playlistsReducer = (state = playlistsState, action) => {
       };
     }
     case PlaylistTypes.SET_PLAYLISTS_RESULT: {
+      console.log(action.payload)
       return {
         ...state,
         playlists: action.payload,

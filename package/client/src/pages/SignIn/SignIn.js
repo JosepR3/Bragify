@@ -41,7 +41,6 @@ function SignIn() {
 
   function handleSubmit(e) {
     e.preventDefault();
-
     dispatch(signInWithEmailRequest(email, password));
   }
 
