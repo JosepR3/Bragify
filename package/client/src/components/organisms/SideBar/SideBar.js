@@ -14,6 +14,7 @@ import {
 import { AiFillHome } from "react-icons/ai";
 
 import * as ROUTES from "../../../routes";
+import { Link } from "react-router-dom";
 
 function SideBar() {
   return (
@@ -28,45 +29,45 @@ function SideBar() {
           BRAGIFY
         </a>
         <Nav.Item className="mt-4 side__bar__item">
-          <Nav.Link href={ROUTES.HOME} className="side__bar__link">
-            <AiFillHome className="side__bar-icon" />
-            Home
-          </Nav.Link>
+            <Link className="side__bar__link nav-link" to={ROUTES.HOME}>
+              <AiFillHome className="side__bar-icon" />
+              Home
+            </Link>
         </Nav.Item>
         <Nav.Item className="mt-3 side__bar__item">
-          <Nav.Link href={ROUTES.TRACKS} className="side__bar__link">
+          <Link to={ROUTES.TRACKS} className="side__bar__link nav-link">
             <IoMusicalNotes className="side__bar-icon" />
             Tracks
-          </Nav.Link>
+          </Link>
         </Nav.Item>
         <OverlayTrigger placement="right" overlay={<Tooltip>We do not trust in this</Tooltip>}>
         <Nav.Item className="side__bar__item">
-          <Nav.Link href="" className="side__bar__link">
+          <Nav.Link href="" className="side__bar__link nav-link">
             <IoAlbums className="side__bar-icon" />
             Albums
           </Nav.Link>
         </Nav.Item>
         </OverlayTrigger>
         <Nav.Item className="side__bar__item">
-          <Nav.Link href={ROUTES.PLAYLISTS} className="side__bar__link">
+          <Link to={ROUTES.PLAYLISTS} className="side__bar__link nav-link">
             <RiPlayListFill className="side__bar-icon" />
             Playlists
-          </Nav.Link>
+          </Link>
         </Nav.Item>
         <Nav.Item className="mt-5 side__bar__item">
-          <Nav.Link href={ROUTES.CREATE_PLAYLIST} className="side__bar__link">
+          <Link to={ROUTES.CREATE_PLAYLIST} className="side__bar__link nav-link">
             <RiPlayListAddLine className="side__bar-icon" />
             Create Playlist
-          </Nav.Link>
+          </Link>
         </Nav.Item>
         <Nav.Item className="side__bar__item">
-          <Nav.Link href={ROUTES.UPLOAD_TRACK} className="side__bar__link">
+          <Link to={ROUTES.UPLOAD_TRACK} className="side__bar__link nav-link">
             <RiUpload2Fill className="side__bar-icon" />
             Upload Track
-          </Nav.Link>
+          </Link>
         </Nav.Item>
         <OverlayTrigger placement="right" overlay={<Tooltip>Coming Soon</Tooltip>}>
-        <Nav.Item className="mt-5 side__bar__item">
+        <Nav.Item className="mt-5 side__bar__item" disabled>
           <Nav.Link href="" className="side__bar__link">
             <RiDownload2Fill className="side__bar-icon" />
             Download App

@@ -1,19 +1,18 @@
-/* eslint-disable react/no-unescaped-entities */
 import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { useNavigate, Navigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { fbIcon, ggIcon, bIcon } from "../../assets";
 
 import * as ROUTES from "../../routes";
 
+//REDUX
+import { useDispatch, useSelector } from "react-redux";
 import {
   resetAuthState,
   signInWithEmailRequest,
   signUpWithGoogleRequest,
 } from "../../redux/auth/auth-actions";
-
 import { authSelector } from "../../redux/auth/auth-selectors";
 
 function SignIn() {
@@ -55,7 +54,7 @@ function SignIn() {
   }
 
   if (isAuthenticated) {
-    return <Navigate to={ROUTES.HOME} />;
+    return <Link to={ROUTES.HOME} />;
   }
 
   return (
@@ -139,7 +138,7 @@ function SignIn() {
           )}
         </Form>
         <div className="d-flex align-self-end mt-2 mx-4">
-          <p>Don't you have an account?</p>
+          <p>Dont you have an account?</p>
           <a className="auth__link ps-1" href={ROUTES.SIGN_UP}>
             Create one
           </a>

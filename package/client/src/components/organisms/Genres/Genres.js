@@ -1,4 +1,4 @@
-import React, { useEffect} from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { tracksSelector } from "../../../redux/tracks/tracks-selector";
 import { authSelector } from "../../../redux/auth/auth-selectors";
@@ -13,13 +13,15 @@ import {
 
 import { RiPlayCircleFill } from "react-icons/ri";
 import Card from "react-bootstrap/Card";
-import { fetchPlaylistTrack, TrackData } from "../../../redux/playlists/playlists-actions";
+import {
+  fetchPlaylistTrack,
+  TrackData,
+} from "../../../redux/playlists/playlists-actions";
 
 function Genres() {
   const dispatch = useDispatch();
   const { genres } = useSelector(tracksSelector);
   const { currentUser } = useSelector(authSelector);
-  
 
   const userId = currentUser?._id;
   useEffect(() => {
@@ -40,7 +42,6 @@ function Genres() {
   
 
   //find genres
-  console.log(genres?.pop)
   const pop = genres?.pop;
   const house = genres?.house;
   const reggaeton = genres?.reggaeton;
@@ -80,6 +81,12 @@ function Genres() {
                   <Card.Title id={track._id} className="pl__card-title m-0">
                     {track.title}
                   </Card.Title>
+                  <Card.Subtitle
+                    id={track._id}
+                    className="pl__card-subtitle m-0"
+                  >
+                    {track.artists}
+                  </Card.Subtitle>
                 </Card.Body>
               </Card>
             );
@@ -115,6 +122,12 @@ function Genres() {
                   <Card.Title id={track._id} className="pl__card-title m-0">
                     {track.title}
                   </Card.Title>
+                  <Card.Subtitle
+                    id={track._id}
+                    className="pl__card-subtitle m-0"
+                  >
+                    {track.artists}
+                  </Card.Subtitle>
                 </Card.Body>
               </Card>
             );
@@ -150,6 +163,12 @@ function Genres() {
                   <Card.Title id={track._id} className="pl__card-title m-0">
                     {track.title}
                   </Card.Title>
+                  <Card.Subtitle
+                    id={track._id}
+                    className="pl__card-subtitle m-0"
+                  >
+                    {track.artists}
+                  </Card.Subtitle>
                 </Card.Body>
               </Card>
             );
@@ -185,6 +204,12 @@ function Genres() {
                   <Card.Title id={track._id} className="pl__card-title m-0">
                     {track.title}
                   </Card.Title>
+                  <Card.Subtitle
+                    id={track._id}
+                    className="pl__card-subtitle m-0"
+                  >
+                    {track.artists}
+                  </Card.Subtitle>
                 </Card.Body>
               </Card>
             );
