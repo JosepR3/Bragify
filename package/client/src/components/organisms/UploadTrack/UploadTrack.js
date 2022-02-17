@@ -49,7 +49,6 @@ const UploadTrack = () => {
   }
 
   function handleSubmit(e) {
-    console.log(track);
     e.preventDefault();
     const completeTrack = Object.assign(
       track,

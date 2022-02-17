@@ -4,6 +4,7 @@ const initialState = {
   playlists: null,
   playlist: null,
   playlistTracksUrl: null,
-  playPlaylist: null
+  playPlaylist: null,
+  playlistData:null
 };
 export default initialState;

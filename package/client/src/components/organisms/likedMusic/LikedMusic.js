@@ -34,7 +34,7 @@ function LikedMusic() {
     <>
       
       <div className="w-100">
-        <h2 className="font-bold mx-2 my-2">Tracks that you liked</h2>
+        <h2 className="font-bold my-2">Tracks that you liked</h2>
         {likedTracksList?.length == 0 &&
           "Don't you have a favorite song yet? find one by listening to our list of available tracks!"}
         <Flicking moveType="freeScroll" bound={true} className="mx-auto" align="prev">

@@ -12,7 +12,7 @@ export default function LikeButton( {track} ) {
   const { currentUser } = useSelector(authSelector);
   const likedTracks = useSelector((state) => state.tracks.likedTracksList);
 
-  const userId = currentUser._id;
+  const userId = currentUser?._id;
   const isLiked = likedTracks.find((e) => e._id === track);
 
   const handleLike = () => {

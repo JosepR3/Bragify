@@ -9,7 +9,7 @@ import {
 import withLayout from "../../components/HOC/withLayout";
 import LikeButton from "../../components/atoms/LikeButton";
 import DropDownList from "../../components/atoms/DropDownList";
-import { fetchAllPlaylists, fetchPlaylistTrack } from "../../redux/playlists/playlists-actions";
+import { fetchAllPlaylists, fetchPlaylistTrack, TrackData} from "../../redux/playlists/playlists-actions";
 import { playlistsSelector } from "../../redux/playlists/playlists-selector";
 import DeleteButton from "../../components/atoms/DeleteButton";
 // import { fetchTrackById } from "../../redux/tracks/tracks-actions";
@@ -32,8 +32,16 @@ function Tracks() {
   const { currentUser } = useSelector(authSelector);
   const userId = currentUser._id;
 
-  const handleTrackId = (trackUrl) => {
-    dispatch(fetchPlaylistTrack(trackUrl))
+  const handleTrackId = (track) => {
+    dispatch(fetchPlaylistTrack(track.url))
+    dispatch(TrackData({
+      image: track.thumbnail,
+      name: track.title,
+      artist: track.artists,
+      genre: track.genre,
+      url: track.url
+    }))
+
   };
 
   const status = useSelector((state) => state.tracks.status);
@@ -62,18 +70,18 @@ function Tracks() {
                 <ListGroup.Item
                   className="track__row-thumbnail p-2"
                   id={track._id}
-                  onClick={() => handleTrackId(track?.url)}
+                  onClick={() => handleTrackId(track)}
                 >
                   <img
                     className="w-100 h-100"
                     id={track._id}
-                    onClick={() => handleTrackId(track?.url)}
+                    onClick={() => handleTrackId(track)}
                     src={track.thumbnail}
                   ></img>
                 </ListGroup.Item>
                 <ListGroup.Item
                   id={track._id}
-                  onClick={() => handleTrackId(track?.url)}
+                  onClick={() => handleTrackId(track)}
                   className="track__row-title"
                 >
                   {track.title}
@@ -102,7 +110,8 @@ function Tracks() {
           })}
         {status === "DELETE_SUCCESS" && (
           <Alert variant="success">
-            <p>{deletedTrack.title} Delete successfully</p>
+            <p>{deletedTrack?.title} Was successfully deleted</p>
+
           </Alert>
         )}
       </div>

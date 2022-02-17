@@ -1,6 +1,6 @@
 import { useEffect, React } from "react";
 import { Route, Routes } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import "./utils/scss/index.scss";
 import * as ROUTES from "./routes";
@@ -24,9 +24,12 @@ import Footer from "./components/organisms/Footer/"
 //REDUX
 import { onAuthStateChanged } from "./services/auth";
 import { syncSignIn, signOut, getUser } from "./redux/auth/auth-actions";
+import { authSelector } from "./redux/auth/auth-selectors"
 
 function App() {
   const dispatch = useDispatch();
+  const { isAuthenticated } = useSelector(authSelector);
+  
   useEffect(() => {
     let unsubscribeFromAuth = null;
     unsubscribeFromAuth = onAuthStateChanged((user) => {
@@ -43,6 +46,7 @@ function App() {
       }
     };
   }, [dispatch]);
+  
   return (
     <>
       <Routes>
@@ -58,7 +62,7 @@ function App() {
         <Route exact path={ROUTES.UPLOAD_TRACK} element={<UploadTrack />} />
         <Route exact path={ROUTES.CREATE_PLAYLIST} element={<CreatePlaylist />} />
       </Routes>
-      <Footer/>
+      {isAuthenticated && <Footer/>}
       </>
   );
 }

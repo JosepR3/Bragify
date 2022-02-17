@@ -35,7 +35,7 @@ export default function PlaylistsByUser() {
 
   return (
     <div className="w-100">
-      <h2 className="font-bold mx-2 my-2">
+      <h2 className="font-bold my-2">
         Playlists by {currentUser?.username}
       </h2>
         <Flicking moveType="freeScroll" bound={true} className="mx-auto" align="prev">

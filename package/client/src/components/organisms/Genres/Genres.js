@@ -13,7 +13,7 @@ import {
 
 import { RiPlayCircleFill } from "react-icons/ri";
 import Card from "react-bootstrap/Card";
-import { fetchPlaylistTrack } from "../../../redux/playlists/playlists-actions";
+import { fetchPlaylistTrack, TrackData } from "../../../redux/playlists/playlists-actions";
 
 function Genres() {
   const dispatch = useDispatch();
@@ -27,8 +27,15 @@ function Genres() {
     dispatch(fetchLikedTracks(userId));
   }, [dispatch]);
 
-  const handleTrackId = (trackUrl) => {
-    dispatch(fetchPlaylistTrack(trackUrl));
+  const handleTrackId = (track) => {
+    dispatch(fetchPlaylistTrack(track.url));
+    dispatch(TrackData({
+      image: track.thumbnail,
+      name: track.title,
+      artist: track.artists,
+      genre: track.genre,
+      url: track.url
+    }))
   };
   
 
@@ -48,7 +55,7 @@ function Genres() {
           pop.map((track) => {
             return (
               <Card
-                onClick={() => handleTrackId(track?.url)}
+                onClick={() => handleTrackId(track)}
                 key={track._id}
                 id={track._id}
                 className="pl__card p-2 m-2"
@@ -84,7 +91,7 @@ function Genres() {
           house.map((track) => {
             return (
               <Card
-                onClick={() => handleTrackId(track?.url)}
+                onClick={() => handleTrackId(track)}
                 key={track._id}
                 id={track._id}
                 className="pl__card p-2 m-2"
@@ -119,7 +126,7 @@ function Genres() {
           reggaeton.map((track) => {
             return (
               <Card
-                onClick={() => handleTrackId(track?.url)}
+                onClick={() => handleTrackId(track)}
                 key={track._id}
                 id={track._id}
                 className="pl__card p-2 m-2"
@@ -154,7 +161,7 @@ function Genres() {
           trap.map((track) => {
             return (
               <Card
-                onClick={() => handleTrackId(track?.url)}
+                onClick={() => handleTrackId(track)}
                 key={track._id}
                 id={track._id}
                 className="pl__card p-2 m-2"
