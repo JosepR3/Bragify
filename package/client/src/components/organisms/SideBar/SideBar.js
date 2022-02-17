@@ -1,6 +1,5 @@
 import React from "react";
 import Nav from "react-bootstrap/Nav";
-
 // ICONS
 import { bIcon } from "../../../assets";
 import { IoMusicalNotes, IoAlbums } from "react-icons/io5";
@@ -13,6 +12,7 @@ import {
 import { AiFillHome } from "react-icons/ai";
 
 import * as ROUTES from "../../../routes";
+import { Link } from "react-router-dom";
 
 function SideBar() {
   return (
@@ -27,15 +27,15 @@ function SideBar() {
           BRAGIFY
         </a>
         <Nav.Item className="mt-4 side__bar__item">
-          <Nav.Link href={ROUTES.HOME} className="side__bar__link">
+          <Nav.Link className="side__bar__link">
             <AiFillHome className="side__bar-icon" />
-            Home
+            <Link to={ROUTES.HOME}>Home</Link>
           </Nav.Link>
         </Nav.Item>
         <Nav.Item className="mt-3 side__bar__item">
-          <Nav.Link href={ROUTES.TRACKS} className="side__bar__link">
+          <Nav.Link className="side__bar__link">
             <IoMusicalNotes className="side__bar-icon" />
-            Tracks
+            <Link to={ROUTES.TRACKS}>Tracks</Link>
           </Nav.Link>
         </Nav.Item>
         <Nav.Item className="side__bar__item">
@@ -45,21 +45,21 @@ function SideBar() {
           </Nav.Link>
         </Nav.Item>
         <Nav.Item className="side__bar__item">
-          <Nav.Link href={ROUTES.PLAYLISTS} className="side__bar__link">
+          <Nav.Link className="side__bar__link">
             <RiPlayListFill className="side__bar-icon" />
-            Playlists
+            <Link to={ROUTES.PLAYLISTS}>Playlists</Link>
           </Nav.Link>
         </Nav.Item>
         <Nav.Item className="mt-5 side__bar__item">
-          <Nav.Link href={ROUTES.CREATE_PLAYLIST} className="side__bar__link">
+          <Nav.Link  className="side__bar__link">
             <RiPlayListAddLine className="side__bar-icon" />
-            Create Playlist
+              <Link to={ROUTES.CREATE_PLAYLIST}>Create Playlist</Link>
           </Nav.Link>
         </Nav.Item>
         <Nav.Item className="side__bar__item">
-          <Nav.Link href={ROUTES.UPLOAD_TRACK} className="side__bar__link">
+          <Nav.Link className="side__bar__link">
             <RiUpload2Fill className="side__bar-icon" />
-            Upload Track
+            <Link to={ROUTES.UPLOAD_TRACK}>Upload Track</Link>
           </Nav.Link>
         </Nav.Item>
         <Nav.Item className="mt-5 side__bar__item">
