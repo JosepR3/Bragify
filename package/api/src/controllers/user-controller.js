@@ -15,8 +15,9 @@ async function signUp(req, res, next) {
     }
 
     if (response.data) {
+      console.log(response)
       return res.status(200).send({
-        data: "OK",
+        data: response.data,
         error: null,
       });
     }
