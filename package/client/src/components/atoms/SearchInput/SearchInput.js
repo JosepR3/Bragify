@@ -6,7 +6,7 @@ import { GoSearch } from "react-icons/go"
 
 function SearchInput(){
   return(
-    <InputGroup className="search">
+    <InputGroup className="search align-items-center rounded">
       <GoSearch className="search__icon" />
       <FormControl placeholder="search" className="search__input" />
     </InputGroup>

@@ -1,6 +1,7 @@
 import { useEffect, React } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { tracksSelector } from "../../redux/tracks/tracks-selector";
+import { authSelector } from "../../redux/auth/auth-selectors";
 import {
   fetchAllTracks,
   fetchLikedTracks,
@@ -19,6 +20,7 @@ import Alert from "react-bootstrap/Alert";
 
 function Tracks() {
   const dispatch = useDispatch();
+
   useEffect(() => {
     dispatch(fetchAllPlaylists);
     dispatch(fetchAllTracks);
@@ -27,6 +29,8 @@ function Tracks() {
 
   const { tracks } = useSelector(tracksSelector);
   const playlist = useSelector(playlistsSelector);
+  const { currentUser } = useSelector(authSelector);
+  const userId = currentUser._id;
 
   const handleTrackId = (track) => {
     dispatch(fetchPlaylistTrack(track.url))
@@ -42,8 +46,7 @@ function Tracks() {
 
   const status = useSelector((state) => state.tracks.status);
   const deletedTrack = useSelector((state) => state.tracks.deletedTrack);
-  const currentUser = JSON.parse(localStorage.getItem("user"));
-  const userId = currentUser._id;
+  
 
   return (
     <>

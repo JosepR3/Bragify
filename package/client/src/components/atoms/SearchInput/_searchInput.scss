@@ -4,10 +4,16 @@
   width: 18em;
   height: inherit;
   padding: 0.1em;
+  background-color: white;
   &__icon{
-    color: white;
+    color: a.$web-background-color;
   }
   &__input{
     height: inherit;
+    border: none;
+    &:focus{
+      border: none;
+      box-shadow: none;
+    }
   }
 }

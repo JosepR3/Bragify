@@ -1,7 +1,8 @@
 import React from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { signOut, editProfile } from "../../../redux/auth/auth-actions";
+import { authSelector } from "../../../redux/auth/auth-selectors";
 
 import ProfileImg from "../../atoms/ProfileImg";
 import Dropdown from "react-bootstrap/Dropdown";
@@ -12,7 +13,8 @@ import * as ROUTES from "../../../routes";
 function AccountSetting() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const currentUser = JSON.parse(localStorage.getItem("user"));
+  
+  const { currentUser } = useSelector(authSelector);
 
   const handleSignOut = () => {
     dispatch(signOut());
@@ -24,7 +26,7 @@ function AccountSetting() {
   };
   return (
     <Dropdown>
-      <Dropdown.Toggle title="Profile" className="btn__options">
+      <Dropdown.Toggle title="Profile" className="btn__options p-0">
         <ProfileImg/>
         {currentUser?.username}
       </Dropdown.Toggle>

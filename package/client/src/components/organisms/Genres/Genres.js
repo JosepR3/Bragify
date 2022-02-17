@@ -1,6 +1,10 @@
-import { useEffect, React } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { tracksSelector } from "../../../redux/tracks/tracks-selector";
+import { authSelector } from "../../../redux/auth/auth-selectors";
+
+
+import "@egjs/react-flicking/dist/flicking.css";
 
 import {
   fetchAllTracks,
@@ -9,41 +13,50 @@ import {
 
 import { RiPlayCircleFill } from "react-icons/ri";
 import Card from "react-bootstrap/Card";
-import { fetchPlaylistTrack, TrackData } from "../../../redux/playlists/playlists-actions";
+import {
+  fetchPlaylistTrack,
+  TrackData,
+} from "../../../redux/playlists/playlists-actions";
 
 function Genres() {
   const dispatch = useDispatch();
+  const { tracks } = useSelector(tracksSelector);
+  const { currentUser } = useSelector(authSelector);
+
+  const userId = currentUser._id;
 
   useEffect(() => {
     dispatch(fetchAllTracks);
     dispatch(fetchLikedTracks(userId));
   }, [dispatch]);
 
-  const currentUser = JSON.parse(localStorage.getItem("user"));
-  const userId = currentUser._id;
-  const { tracks } = useSelector(tracksSelector);
-
   const handleTrackId = (track) => {
     dispatch(fetchPlaylistTrack(track.url));
-    dispatch(TrackData({
-      image: track.thumbnail,
-      name: track.title,
-      artist: track.artists,
-      genre: track.genre,
-      url: track.url
-    }))
+    dispatch(
+      TrackData({
+        image: track.thumbnail,
+        name: track.title,
+        artist: track.artists,
+        genre: track.genre,
+        url: track.url,
+      }),
+    );
   };
 
   //find genres
+  console.log("genres");
   const popTrack = tracks?.filter((track) => track.genre === "Pop");
   const houseTrack = tracks?.filter((track) => track.genre === "House");
   const reggaetonTrack = tracks?.filter((track) => track.genre === "Reggaeton");
   const trapTrack = tracks?.filter((track) => track.genre === "Trap");
 
   return (
-    <main className="container my-2">
-      <h2 className="font-bold text-center mx-4 mb-5">Find Genres</h2>
-      <h3 className="text-secondary"> Pop </h3>
+    <main className="container mx-2 my-2">
+      <h2 className="font-bold">Find Genres</h2>
+      {/* <Flicking>
+      <FrameGrid className="grid-panel"> */}
+      <h3> Pop </h3>
+      {/* </FrameGrid> */}
       <div className="d-flex flex-row justify-content-start">
         {popTrack &&
           popTrack.map((track) => {
@@ -78,8 +91,7 @@ function Genres() {
             );
           })}
       </div>
-      <br></br>
-      <h3 className="text-secondary"> House </h3>
+      <h3> House </h3>
       <div className="d-flex flex-row justify-content-start">
         {houseTrack &&
           houseTrack.map((track) => {
@@ -114,8 +126,7 @@ function Genres() {
             );
           })}
       </div>
-      <br></br>
-      <h3 className="text-secondary"> Reggaeton </h3>
+      <h3> Reggaeton </h3>
       <div className="d-flex flex-row justify-content-start">
         {reggaetonTrack &&
           reggaetonTrack.map((track) => {
@@ -151,7 +162,7 @@ function Genres() {
           })}
       </div>
 
-      <h3 className="text-secondary"> Trap </h3>
+      <h3> Trap </h3>
       <div className="d-flex flex-row justify-content-start">
         {trapTrack &&
           trapTrack.map((track) => {
@@ -186,6 +197,7 @@ function Genres() {
             );
           })}
       </div>
+      {/* </Flicking> */}
     </main>
   );
 }

@@ -4,6 +4,11 @@ import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import Card from "react-bootstrap/Card";
 import { playlistsSelector } from "../../../redux/playlists/playlists-selector";
+import { authSelector } from "../../../redux/auth/auth-selectors";
+
+import Flicking from "@egjs/react-flicking";
+import "@egjs/react-flicking/dist/flicking.css";
+
 import { RiPlayCircleFill } from "react-icons/ri";
 
 export default function PlaylistsByUser() {
@@ -15,7 +20,7 @@ export default function PlaylistsByUser() {
   }, [dispatch]);
 
   const { playlists } = useSelector(playlistsSelector);
-  const currentUser = JSON.parse(localStorage.getItem("user"));
+  const { currentUser } = useSelector(authSelector);
 
   const handlePlaylistId = (e) => {
     const id = e.target.id;
@@ -23,18 +28,17 @@ export default function PlaylistsByUser() {
   };
 
   //find user playlists
+  
   const userId = currentUser._id;
-  const userPlaylists = playlists?.filter(
-    (playlist) => playlist.authorId === userId,
+  const userPlaylists = playlists?.filter((playlist) => playlist.authorId === userId,
   );
 
   return (
-    <>
-      <h2 className="font-bold text-center mx-4 mb-5">
+    <div className="w-100">
+      <h2 className="font-bold mx-2 my-2">
         Playlists by {currentUser.username}
       </h2>
-      <div className="d-flex flex-row justify-content-start">
-        <hr />
+        <Flicking moveType="freeScroll" bound={true} className="mx-auto" align="prev">
         {userPlaylists &&
           userPlaylists.map((playlist) => {
             return (
@@ -59,7 +63,7 @@ export default function PlaylistsByUser() {
                       handlePlaylistId(e);
                     }}
                     variant="top"
-                    className="pl__card-img"
+                    className="pl__card-img rounded"
                     src={playlist.thumbnail}
                   />
                   <RiPlayCircleFill
@@ -99,7 +103,7 @@ export default function PlaylistsByUser() {
               </Card>
             );
           })}
-      </div>
-      </>
+        </Flicking>
+    </div>
   );
 }
