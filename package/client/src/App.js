@@ -69,7 +69,6 @@ function App() {
           element={<CreatePlaylist />}
         />
       </Routes>
-
       {isAuthenticated && <Footer />}
     </>
   );

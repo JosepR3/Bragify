@@ -13,16 +13,15 @@ import withLayout from "../../components/HOC/withLayout";
 import LikedMusic from "../../components/organisms/likedMusic/LikedMusic";
 import PlaylistsByUser from "../../components/organisms/PlaylistsByUser";
 import Genres from "../../components/organisms/Genres";
+import { fetchAllPlaylists, fetchPlaylistsByUser } from "../../redux/playlists/playlists-actions";
 
 function Home() {
-  const { isAuthenticated} = useSelector(authSelector);
+  const { isAuthenticated, currentUser} = useSelector(authSelector);
   const dispatch = useDispatch();
-  // const currentUser = JSON.parse(localStorage.getItem("user"));
 
   useEffect(()=>{
-    // console.log("use effect de home")
-    // console.log(currentUser)
-    // getUser(currentUser)
+    dispatch(fetchAllPlaylists);
+    fetchPlaylistsByUser(dispatch,currentUser)
   }, [dispatch])
 
   if (!isAuthenticated) {

@@ -15,11 +15,11 @@ export function createPlaylistSuccess() {
 }
 
 export function setPlaylistsResult(result) {
+  console.log(result)
   return { type: PlaylistsTypes.SET_PLAYLISTS_RESULT, payload: result };
 }
 
 export function setUserPlaylists(data) {
-  console.log(data)
   return { type: PlaylistsTypes.SET_USER_PLAYLISTS, payload: data };
 }
 
@@ -116,7 +116,20 @@ export async function fetchAllPlaylists(dispatch) {
   }
 }
 // ----------------------------------------- Actions add tracks to list---------------------------------------------------------
-
+export async function fetchPlaylistsByUser(dispatch, currentUser){
+  try {
+    const userToken = await getCurrentUserToken();
+    const res = await api.fetchAllPlaylists({
+      headers: { Authorization: `Bearer ${userToken}` },
+    });
+    const userId = currentUser?._id;
+    const userPlaylists = res.data.data.filter((playlist) => playlist?.authorId === userId)
+    console.log(userPlaylists)
+    return dispatch(setUserPlaylists(userPlaylists));
+  } catch (error) {
+    console.log(error, "fetch Playlists error");
+  }
+}
 
 export function addToList(data) {
   return async function createThunk(dispatch) {

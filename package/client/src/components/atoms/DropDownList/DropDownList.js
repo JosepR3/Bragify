@@ -7,14 +7,12 @@ import Dropdown from "react-bootstrap/Dropdown"
 
 import { BsPlusLg } from "react-icons/bs";
 
-
-
 const DropDownList = (props) => {
   const dispatch = useDispatch();
   const { playlist, trackId, url, name, artists, genre, thumbnail  } = props
   const listPlaylist = playlist.playlists
   const { currentUser } = useSelector(authSelector);
-  const userId = currentUser._id;
+  const userId = currentUser?._id;
 
   function handleAddTrack(data) {
     console.log("handle add track")
