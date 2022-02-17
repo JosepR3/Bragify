@@ -11,7 +11,7 @@ const playlistsReducer = (state = playlistsState, action) => {
     }
 
     case PlaylistTypes.SET_USER_PLAYLISTS: {
-      console.log(action.payload)
+
       return {
         ...state,
         userPlaylists: action.payload,
@@ -31,7 +31,7 @@ const playlistsReducer = (state = playlistsState, action) => {
       };
     }
     case PlaylistTypes.SET_PLAYLISTS_RESULT: {
-      console.log(action.payload)
+
       return {
         ...state,
         playlists: action.payload,

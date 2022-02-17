@@ -133,7 +133,7 @@ export async function fetchPlaylistsByUser(dispatch, currentUser) {
     const userPlaylists = res.data.data.filter(
       (playlist) => playlist?.authorId === userId,
     );
-    console.log(userPlaylists);
+
     return dispatch(setUserPlaylists(userPlaylists));
   } catch (error) {
     console.log(error, "fetch Playlists error");

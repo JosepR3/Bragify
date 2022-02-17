@@ -85,7 +85,6 @@ export function signUpWithGoogleRequest() {
     dispatch(signUpRequest());
     try {
       await auth.signInWithGoogle();
-      console.log("signin in with Google");
       dispatch(signUpSuccess());
     } catch (error) {
       console.log(error);
@@ -152,7 +151,6 @@ export function editUser(user) {
       headers: { Authorization: `Bearer ${token}` },
       body: reqBody,
     });
-    console.log(response)
     dispatch(editSuccess(response));
   };
 }

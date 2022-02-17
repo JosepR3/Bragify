@@ -15,7 +15,7 @@ const DropDownList = (props) => {
   const userId = currentUser?._id;
 
   function handleAddTrack(data) {
-    console.log("handle add track")
+
     dispatch(addToList(data));
   }
   return (

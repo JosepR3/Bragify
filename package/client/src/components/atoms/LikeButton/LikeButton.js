@@ -17,7 +17,7 @@ export default function LikeButton( {track} ) {
 
   const handleLike = () => {
     if (isLiked) {
-      console.log(userId)
+
       dispatch(unlikeTrack(track, userId)).then(() => {
         return isLiked;
       });
