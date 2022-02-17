@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { tracksSelector } from "../../../redux/tracks/tracks-selector";
 import { authSelector } from "../../../redux/auth/auth-selectors";
 
-
 import "@egjs/react-flicking/dist/flicking.css";
 
 import {
@@ -49,14 +48,12 @@ function Genres() {
   const houseTrack = tracks?.filter((track) => track.genre === "House");
   const reggaetonTrack = tracks?.filter((track) => track.genre === "Reggaeton");
   const trapTrack = tracks?.filter((track) => track.genre === "Trap");
+  const rockTrack = tracks?.filter((track) => track.genre === "Rock");
 
   return (
     <main className="container mx-2 my-2">
       <h2 className="font-bold">Find Genres</h2>
-      {/* <Flicking>
-      <FrameGrid className="grid-panel"> */}
-      <h3> Pop </h3>
-      {/* </FrameGrid> */}
+      <h4> Pop </h4>
       <div className="d-flex flex-row justify-content-start">
         {popTrack &&
           popTrack.map((track) => {
@@ -86,12 +83,18 @@ function Genres() {
                   <Card.Title id={track._id} className="pl__card-title m-0">
                     {track.title}
                   </Card.Title>
+                  <Card.Subtitle
+                    id={track._id}
+                    className="pl__card-subtitle m-0"
+                  >
+                    {track.artists}
+                  </Card.Subtitle>
                 </Card.Body>
               </Card>
             );
           })}
       </div>
-      <h3> House </h3>
+      <h4> House </h4>
       <div className="d-flex flex-row justify-content-start">
         {houseTrack &&
           houseTrack.map((track) => {
@@ -121,12 +124,18 @@ function Genres() {
                   <Card.Title id={track._id} className="pl__card-title m-0">
                     {track.title}
                   </Card.Title>
+                  <Card.Subtitle
+                    id={track._id}
+                    className="pl__card-subtitle m-0"
+                  >
+                    {track.artists}
+                  </Card.Subtitle>
                 </Card.Body>
               </Card>
             );
           })}
       </div>
-      <h3> Reggaeton </h3>
+      <h4> Reggaeton </h4>
       <div className="d-flex flex-row justify-content-start">
         {reggaetonTrack &&
           reggaetonTrack.map((track) => {
@@ -156,13 +165,61 @@ function Genres() {
                   <Card.Title id={track._id} className="pl__card-title m-0">
                     {track.title}
                   </Card.Title>
+                  <Card.Subtitle
+                    id={track._id}
+                    className="pl__card-subtitle m-0"
+                  >
+                    {track.artists}
+                  </Card.Subtitle>
                 </Card.Body>
               </Card>
             );
           })}
       </div>
 
-      <h3> Trap </h3>
+      <h4> Rock </h4>
+      <div className="d-flex flex-row justify-content-start">
+        {rockTrack &&
+          rockTrack.map((track) => {
+            return (
+              <Card
+                onClick={() => handleTrackId(track)}
+                key={track._id}
+                id={track._id}
+                className="pl__card p-2 m-2"
+              >
+                <div
+                  id={track._id}
+                  className="pl__card-img-container position-relative p-0"
+                >
+                  <Card.Img
+                    id={track._id}
+                    variant="top"
+                    className="pl__card-img"
+                    src={track.thumbnail}
+                  />
+                  <RiPlayCircleFill
+                    id={track._id}
+                    className="card__play position-absolute top-50 start-50 translate-middle"
+                  />
+                </div>
+                <Card.Body id={track._id} className="pl__card-body p-1 pt-2">
+                  <Card.Title id={track._id} className="pl__card-title m-0">
+                    {track.title}
+                  </Card.Title>
+                  <Card.Subtitle
+                    id={track._id}
+                    className="pl__card-subtitle m-0"
+                  >
+                    {track.artists}
+                  </Card.Subtitle>
+                </Card.Body>
+              </Card>
+            );
+          })}
+      </div>
+
+      <h4> Trap </h4>
       <div className="d-flex flex-row justify-content-start">
         {trapTrack &&
           trapTrack.map((track) => {
@@ -192,6 +249,12 @@ function Genres() {
                   <Card.Title id={track._id} className="pl__card-title m-0">
                     {track.title}
                   </Card.Title>
+                  <Card.Subtitle
+                    id={track._id}
+                    className="pl__card-subtitle m-0"
+                  >
+                    {track.artists}
+                  </Card.Subtitle>
                 </Card.Body>
               </Card>
             );

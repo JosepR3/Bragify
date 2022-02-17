@@ -18,6 +18,11 @@ export function setPlaylistsResult(result) {
   return { type: PlaylistsTypes.SET_PLAYLISTS_RESULT, payload: result };
 }
 
+export function setUserPlaylists(data) {
+  console.log(data)
+  return { type: PlaylistsTypes.SET_USER_PLAYLISTS, payload: data };
+}
+
 export function addToPlaylistSucess(result) {
   return { type: PlaylistsTypes.ADD_TO_PLAYLIST_SUCCESS, payload: result };
 }
@@ -29,6 +34,13 @@ export function removeToPlaylistSucess(result) {
 }
 export function removeToPlaylistError(result) {
   return { type: PlaylistsTypes.REMOVE_TO_PLAYLIST_ERROR, payload: result };
+}
+export function fetchPlaylistTrack(result){
+  return { type: PlaylistsTypes.GET_PLAYLIST_TRACK, payload: result };
+}
+
+export function TrackData(result) {
+  return { type: PlaylistsTypes.GET_DATA_TRACK, payload: result };
 }
 
 export function createPlaylist(data) {
@@ -50,13 +62,7 @@ export function createPlaylist(data) {
   };
 }
 
-export function fetchPlaylistTrack(result){
-  return { type: PlaylistsTypes.GET_PLAYLIST_TRACK, payload: result };
-}
 
-export function TrackData(result) {
-  return { type: PlaylistsTypes.GET_DATA_TRACK, payload: result };
-}
 
 export function fetchPlaylistById(data) {
   const token = getCurrentUserToken();
@@ -146,17 +152,3 @@ export function authList(action, data) {
     return response.data;
   };
 }
-// -------------------------------------------------Finish add tracks to List-----------------------------------------------------
-// export function updatePlaylist(playlist) {
-//   return async function updatePlaylistThunk(dispatch) {
-//     dispatch(playlistUpdateRequest());
-
-//     const res = await api.updatePlaylist(playlist);
-
-//     if (res.isSuccessful) {
-//       dispatch(playlistUpdateSuccess(res.data));
-//     } else {
-//       dispatch(playlistUpdateError(res.errorMessage));
-//     }
-//   };
-// }

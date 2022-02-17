@@ -1,26 +1,34 @@
 import React, { useEffect } from "react";
-import { fetchAllPlaylists } from "../../../redux/playlists/playlists-actions";
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import Card from "react-bootstrap/Card";
+import { RiPlayCircleFill } from "react-icons/ri";
+
+//REDUX
+import {
+  fetchAllPlaylists,
+  setUserPlaylists,
+} from "../../../redux/playlists/playlists-actions";
 import { playlistsSelector } from "../../../redux/playlists/playlists-selector";
 import { authSelector } from "../../../redux/auth/auth-selectors";
 
+//FLICKING
 import Flicking from "@egjs/react-flicking";
 import "@egjs/react-flicking/dist/flicking.css";
-
-import { RiPlayCircleFill } from "react-icons/ri";
 
 export default function PlaylistsByUser() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const { playlists } = useSelector(playlistsSelector);
 
   useEffect(() => {
     dispatch(fetchAllPlaylists);
+    dispatch(setUserPlaylists({ playlists, currentUser }));
   }, [dispatch]);
 
-  const { playlists } = useSelector(playlistsSelector);
   const { currentUser } = useSelector(authSelector);
+
+  const { userPlaylists } = useSelector(playlistsSelector);
 
   const handlePlaylistId = (e) => {
     const id = e.target.id;
@@ -28,17 +36,18 @@ export default function PlaylistsByUser() {
   };
 
   //find user playlists
-  
-  const userId = currentUser._id;
-  const userPlaylists = playlists?.filter((playlist) => playlist.authorId === userId,
-  );
 
   return (
     <div className="w-100">
       <h2 className="font-bold mx-2 my-2">
         Playlists by {currentUser.username}
       </h2>
-        <Flicking moveType="freeScroll" bound={true} className="mx-auto" align="prev">
+      <Flicking
+        moveType="freeScroll"
+        bound={true}
+        className="mx-auto"
+        align="prev"
+      >
         {userPlaylists &&
           userPlaylists.map((playlist) => {
             return (
@@ -103,7 +112,7 @@ export default function PlaylistsByUser() {
               </Card>
             );
           })}
-        </Flicking>
+      </Flicking>
     </div>
   );
 }

@@ -3,11 +3,22 @@ import * as PlaylistTypes from "./playlists-types";
 
 const playlistsReducer = (state = playlistsState, action) => {
   switch (action.type) {
-
     case PlaylistTypes.CREATE_PLAYLIST_REQUEST: {
       return {
         ...state,
         isLoading: true,
+      };
+    }
+
+    case PlaylistTypes.SET_USER_PLAYLISTS: {
+      const userId = action.payload?.currentUser?._id
+      const userPlaylists = action.payload?.playlists?.filter(
+        (playlist) => playlist?.authorId === userId,
+      );
+      console.log(userPlaylists)
+      return {
+        ...state,
+        userPlaylists: userPlaylists
       };
     }
 
@@ -26,46 +37,45 @@ const playlistsReducer = (state = playlistsState, action) => {
       };
     }
 
-
     case PlaylistTypes.GET_DATA_TRACK: {
       return {
         ...state,
-        playPlaylist: action.payload ,
-        playlistData:[ action.payload]
+        playPlaylist: action.payload,
+        playlistData: [action.payload],
       };
     }
+
     case PlaylistTypes.GET_PLAYLIST_TRACK: {
       return {
         ...state,
         playPlaylist: action.payload,
-        playlistTracksUrl: [action.payload]
+        playlistTracksUrl: [action.payload],
       };
     }
 
     case PlaylistTypes.GET_PLAYLIST_SUCCESS: {
-      const playlistTracks = action.payload.tracks.map((i)=> i.url)
+      const playlistTracks = action.payload.tracks.map((i) => i.url);
       const trackData = action.payload.tracks.map((item) => {
         return {
           image: item.thumbnail,
           name: item.name,
           artist: item.artists,
           genre: item.genre,
-          url:item.url
-        }
-      })
+          url: item.url,
+        };
+      });
 
       return {
         ...state,
         isSuccess: true,
         playlist: action.payload,
         playlistTracksUrl: playlistTracks,
-        playlistData: trackData
+        playlistData: trackData,
       };
     }
 
     case PlaylistTypes.ADD_TO_PLAYLIST_SUCCESS: {
-      return {
-      };
+      return {};
     }
     case PlaylistTypes.ADD_TO_PLAYLIST_ERROR: {
       return {
