@@ -4,5 +4,19 @@
   },
   "devDependencies": {
     "svg-react-loader": "^0.4.6"
+  },
+  "scripts": {
+    "start": "node ./src/index.js",
+    "dev": "nodemon --inspect --trace-warnings ./src/index.js",
+    "test": "jest --watchAll",
+    "test:ci:all": "jest --env=node",
+    "test:watch": "jest --watch",
+    "test:related": "jest --bail --findRelatedTests",
+    "lint:js": "eslint . --ext .js",
+    "lint:js:fix": "yarn run lint:js -- --fix",
+    "lint:format": "prettier --write .",
+    "lint:format:check": "prettier --check .",
+    "precommit": "lint-staged",
+    "build": "webpack --config webpack.prod.js"
   }
 }
