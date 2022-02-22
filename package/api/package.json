@@ -15,7 +15,8 @@
     "lint:js:fix": "yarn run lint:js -- --fix",
     "lint:format": "prettier --write .",
     "lint:format:check": "prettier --check .",
-    "precommit": "lint-staged"
+    "precommit": "lint-staged",
+    "build": "webpack --config webpack.prod.js"
   },
   "contributors": [
     {
