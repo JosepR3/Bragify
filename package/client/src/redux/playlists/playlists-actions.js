@@ -15,7 +15,6 @@ export function createPlaylistSuccess() {
 }
 
 export function setPlaylistsResult(result) {
-  console.log(result)
   return { type: PlaylistsTypes.SET_PLAYLISTS_RESULT, payload: result };
 }
 
@@ -124,7 +123,6 @@ export async function fetchPlaylistsByUser(dispatch, currentUser){
     });
     const userId = currentUser?._id;
     const userPlaylists = res.data.data.filter((playlist) => playlist?.authorId === userId)
-    console.log(userPlaylists)
     return dispatch(setUserPlaylists(userPlaylists));
   } catch (error) {
     console.log(error, "fetch Playlists error");

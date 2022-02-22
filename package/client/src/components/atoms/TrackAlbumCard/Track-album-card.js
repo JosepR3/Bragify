@@ -13,7 +13,6 @@ export default function TrackAlbumCard() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    console.log("use effect de track album card")
     dispatch(fetchAllPlaylists);
   }, [dispatch]);
 

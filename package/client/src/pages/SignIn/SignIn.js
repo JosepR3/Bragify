@@ -9,7 +9,6 @@ import * as ROUTES from "../../routes";
 //REDUX
 import { useDispatch, useSelector } from "react-redux";
 import {
-  resetAuthState,
   signInWithEmailRequest,
   signUpWithGoogleRequest,
 } from "../../redux/auth/auth-actions";
@@ -23,10 +22,6 @@ function SignIn() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
-
-  useEffect(() => {
-    dispatch(resetAuthState());
-  }, [dispatch]);
 
   function handleSignInWithGoogle(e) {
     e.preventDefault();

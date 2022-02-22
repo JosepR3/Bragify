@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
@@ -6,30 +6,21 @@ import axios from "axios"
 
 import withLayout from "../../components/HOC/withLayout";
 
-import {
-  resetAuthState,
-  editUser
-} from "../../redux/auth/auth-actions";
+import { editUser } from "../../redux/auth/auth-actions";
 import { authSelector } from "../../redux/auth/auth-selectors";
 
 function EditUserForm() {
   const dispatch = useDispatch();
   
   const { currentUser, editSuccess, isLoading, editMessage } = useSelector(authSelector);
-
+  
   const [user, setUser] = useState({
     firstName: currentUser?.firstName,
     lastName: currentUser?.lastName,
     username: currentUser?.username,
     email: currentUser?.email,
-    img: currentUser?.img,
   });
-
   const [linkImg, setLinkImg] = useState("")
-
-  useEffect(() => {
-    dispatch(resetAuthState());
-  }, [dispatch]);
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -42,7 +33,7 @@ function EditUserForm() {
     const { name, value } = target;
 
     const newUser = {
-      ...user,
+      ...currentUser,
       [name]: value,
     };
     setUser(newUser);
@@ -57,6 +48,7 @@ function EditUserForm() {
       setLinkImg(res.data.secure_url);
     });
   }
+  
   return (
     <>
       <section className="auth__wrapper container mt-4 px-5 py-2">
@@ -83,7 +75,7 @@ function EditUserForm() {
               name="firstName"
               type="text"
               placeholder="First Name"
-              value={currentUser?.firstName}
+              value={user?.firstName}
               onChange={handleInput}
               required
             />
@@ -95,7 +87,7 @@ function EditUserForm() {
               name="lastName"
               type="text"
               placeholder="Last Name"
-              value={currentUser?.lastName}
+              value={user?.lastName}
               onChange={handleInput}
               required
             />
@@ -107,7 +99,7 @@ function EditUserForm() {
               name="username"
               type="text"
               placeholder="Username"
-              value={currentUser?.username}
+              value={user?.username}
               onChange={handleInput}
               required
             />
@@ -119,7 +111,7 @@ function EditUserForm() {
               name="email"
               type="email"
               placeholder="Email"
-              value={currentUser?.email}
+              value={user?.email}
               onChange={handleInput}
               required
               disabled

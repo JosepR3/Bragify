@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Navigate } from "react-router-dom";
 import Button from "react-bootstrap/Button";
@@ -8,7 +8,6 @@ import { fbIcon, ggIcon, bIcon } from "../../assets";
 import * as ROUTES from "../../routes";
 
 import {
-  resetAuthState,
   signUpWithEmailRequest,
   signUpWithGoogleRequest,
 } from "../../redux/auth/auth-actions";
@@ -28,10 +27,6 @@ function SignUp() {
     password: "",
     confirmPassword: "",
   });
-
-  useEffect(() => {
-    dispatch(resetAuthState());
-  }, [dispatch]);
 
   function handleSignInWithGoogle(e) {
     e.preventDefault();
