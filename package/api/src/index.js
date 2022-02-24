@@ -7,7 +7,7 @@ if (!config.app.port) {
 }
 
 connect().then(() => {
-  app.listen(config.app.port, () => {
+  app.listen(process.env.PORT || config.app.port, () => {
     console.log(`Server listening on ${config.app.port}`);
   });
 });
