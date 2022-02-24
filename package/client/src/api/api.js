@@ -45,20 +45,20 @@ function makeApi(request = makeRequest()) {
   }
 
   function createTrack(headers, data) {
-    return axios.post("http://localhost:4000/tracks", data, {
+    return axios.post("https://bragify.herokuapp.com/tracks", data, {
       headers: headers,
     });
   }
 
   function deleteTrack(headers, data) {
-    return axios.delete(`http://localhost:4000/tracks/${data}`, {
+    return axios.delete(`https://bragify.herokuapp.com/tracks/${data}`, {
       headers: headers,
     });
   }
 
   function likeTrack(headers, data) {
     return axios.put(
-      `http://localhost:4000/tracks/${data.track}/like`,
+      `https://bragify.herokuapp.com/tracks/${data.track}/like`,
       data,
       { headers: headers },
     );
@@ -82,14 +82,14 @@ function makeApi(request = makeRequest()) {
 
   function unlikeTrack(headers, data) {
     return axios.put(
-      `http://localhost:4000/tracks/${data.track}/unlike`,
+      `https://bragify.herokuapp.com/${data.track}/unlike`,
       data,
       { headers: headers },
     );
   }
 
   function fetchLikedTracks(headers, userId) {
-    return axios.get(`http://localhost:4000/tracks/${userId}/liked`, {
+    return axios.get(`https://bragify.herokuapp.com/tracks/${userId}/liked`, {
       headers: headers,
     });
   }
@@ -112,21 +112,21 @@ function makeApi(request = makeRequest()) {
   }
 
   function deletePlaylist(headers, data) {
-    return axios.delete(`http://localhost:4000/playlist/${data}`, {
+    return axios.delete(`https://bragify.herokuapp.com/playlist/${data}`, {
       headers: headers,
     });
   }
 
   function addToList(headers, data) {
     return axios.put(
-      `http://localhost:4000/playlist/${data.playListId}/add-playlist`,
+      `https://bragify.herokuapp.com/${data.playListId}/add-playlist`,
       data,
       { headers: headers },
     );
   }
   function removeTrackPlaylist(headers, data) {
     return axios.put(
-      `http://localhost:4000/playlist/${data.playlist}/remove-playlist`,
+      `https://bragify.herokuapp.com/${data.playlist}/remove-playlist`,
       data,
       {
       headers: headers,

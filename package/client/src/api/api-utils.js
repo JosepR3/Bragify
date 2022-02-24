@@ -24,7 +24,7 @@ export async function normalizeResponse(promise = Promise.resolve) {
 
 export function makeRequest(
   httpClient = axios,
-  baseURL = "http://localhost:4000",
+  baseURL = "https://bragify.herokuapp.com",
   baseHeaders = {
     Accept: "application/json",
   },

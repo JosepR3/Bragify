@@ -1,7 +1,7 @@
 import axios from "axios";
 import { setTracksError } from "../redux/tracks/tracks-actions";
 
-const BASE_URL = "http://apollo.eu-west-3.elasticbeanstalk.com/";
+const BASE_URL = "https://bragify.herokuapp.com/";
 
 export async function getAllPlayLists() {
   const url = `${BASE_URL}api/playlists`;
@@ -37,7 +37,7 @@ export async function asyncLikeSong(id) {
 }
 
 export async function asyncDeleteTrack(id) {
-  const url = `http://localhost:4000/tracks/${id}`;
+  const url = `https://bragify.herokuapp.com/tracks/${id}`;
 
   const response = await axios.delete(url).catch((error) => {
     setTracksError(error);
