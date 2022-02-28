@@ -50,21 +50,21 @@ function App() {
     <>
       <Routes>
         <Route path="*" element={<NotFound />} />
-        <Route exact path={ROUTES.SIGN_UP} element={<SignUp />} />
-        <Route exact path={ROUTES.EDIT_PROFILE} element={<EditProfile />} />
-        <Route exact path={ROUTES.SIGN_IN} element={<SignIn />} />
-        <Route exact path={ROUTES.RESET_PASSWORD} element={<ResetPassword />} />
-        <Route exact path={ROUTES.HOME} element={<Home />} />
-        <Route exact path={ROUTES.TRACKS} element={<Tracks />} />
-        <Route exact path={ROUTES.PLAYLISTS} element={<Playlists />} />
+        <Route path={ROUTES.SIGN_UP} element={<SignUp />} />
+        <Route path={ROUTES.EDIT_PROFILE} element={<EditProfile />} />
+        <Route path={ROUTES.SIGN_IN} element={<SignIn />} />
+        <Route path={ROUTES.RESET_PASSWORD} element={<ResetPassword />} />
+        <Route path={ROUTES.HOME} element={<Home />} />
+        <Route path={ROUTES.TRACKS} element={<Tracks />} />
+        <Route path={ROUTES.PLAYLISTS} element={<Playlists />} />
         <Route
-          exact
+        
           path="playlists/single-playlist/:id"
           element={<SinglePlaylist />}
         />
-        <Route exact path={ROUTES.UPLOAD_TRACK} element={<UploadTrack />} />
+        <Route path={ROUTES.UPLOAD_TRACK} element={<UploadTrack />} />
         <Route
-          exact
+        
           path={ROUTES.CREATE_PLAYLIST}
           element={<CreatePlaylist />}
         />
