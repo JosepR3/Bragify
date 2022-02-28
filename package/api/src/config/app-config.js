@@ -13,7 +13,7 @@ const baseConfig = {
     port: PORT || 4000,
   },
   client: {
-    url: process.env.CLIENT_URL || "http://localhost:3000",
+    url: process.env.CLIENT_URL || "https://youthful-chandrasekhar-007fd4.netlify.app",
   },
 };
 

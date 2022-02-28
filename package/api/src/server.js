@@ -14,7 +14,7 @@ app.use(helmet());
 app.use(json());
 app.use(
   cors({
-    origin: "http://localhost:3000",
+    origin: "https://youthful-chandrasekhar-007fd4.netlify.app",
   })
 );
 
